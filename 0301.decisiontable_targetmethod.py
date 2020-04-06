@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[42]:
-
+# 
+#
+#  (C) 2020 Hiori Kino
+# 
+# This software includes the work that is distributed in the Apache License 2.0
+#
+#
 
 import pandas as pd
 from graphviz import Digraph
