@@ -162,14 +162,12 @@ class DecompositionTree:
         wayp = df.index.name
         cell1 = wayp
         funcp,methodp = self.get_func_method_1(cell1)
-        print(funcp,methodp)
         methodlist = df.index.to_list()
 
         funclist = df.columns.to_list()
         
         edgelist.append(",".join([funcp,methodp]))
         boxnodelist.append(methodp)
-        print(funclist)
         for f in funclist:
             edgelist.append(",".join([methodp,f]))        
         invisedgelist.append(",".join(funclist))
@@ -184,7 +182,6 @@ class DecompositionTree:
                 if cell1!=cell1: 
                     continue
                 func1,meth1 = self.get_func_method_1(cell1,func_prefix="apply_")
-                print( func1,meth1)
                 edgelist.append(",".join([funcp,meth1]))
                 boxnodelist.append(meth1)
 
@@ -193,7 +190,6 @@ class DecompositionTree:
         self.boxnodelist = boxnodelist
         self.sameranklist = sameranklist
         
-        print(invisedgelist)
         
         self.drop_dup()
         
@@ -212,7 +208,6 @@ class DecompositionTree:
         self.del_dup = del_dup
 
         funclist = df.columns.to_list()
-        print(funclist)
 
         edgelist = []
         boxnodelist = []
@@ -227,7 +222,6 @@ class DecompositionTree:
             methodlist = []
             applylist = []
             for imethod in range(df.shape[0]):
-            #print("method",imethod,"/",df.shape[0])
                 cell1 = df.iloc[imethod,itime]
                 if cell1 == cell1: # not nan
                     func1,method1 = self.get_func_method_1(cell1,func_prefix="apply_")
@@ -244,8 +238,6 @@ class DecompositionTree:
             #    invisedgelist.append("{},{}".format(method1,method2))
             sameranklist.append(",".join(methodlist))
 
-            print(methodlist)
-            print(applylist)
             if itime>0:
                 func1 = funclist[itime-1]
                 for meth,ap in zip(methodlist,applylist):
@@ -264,7 +256,6 @@ class DecompositionTree:
         self.boxnodelist = boxnodelist
         self.sameranklist = sameranklist
         
-        print(edgelist)
         
         self.drop_dup()
         if dot is  None:
@@ -311,7 +302,6 @@ class DecompositionTree:
                     continue
                 _,func1 = self.get_func_method_1(cell1,method_prefix="apply_")
                 _,meth1 = self.get_func_method_1(cell1,func_prefix="get_")
-                print(func1,meth1)
                 edgelist.append(",".join([methodp,func1]))
                 if False:
                     edgelist.append(",".join([func1,meth1]))
