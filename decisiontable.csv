@@ -1,4 +1,0 @@
-P,getD,relateIt,getCT,finalize
-CD_CT,CD:genCD,,CT:CDtoCT,Z:CTtoZ
-AD_CD_CT,AD:genAD,CD:ADtoCD,CT:CDtoCT,Z:CTtoZ
-AD_AT_CT,AD:genAD,AT:ADtoAT,CT:ATtoCT,Z:CTtoZ

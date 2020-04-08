@@ -1,0 +1,4 @@
+finalGoal,step1,step2,step3
+CD_CT,generateCrystDescriptor:CrystDescriptor,,CrystDescriptorToCrystTarget:CrystTarget
+AD_CD_CT,generateAtomDescriptor:AtomDescriptor,AtomDescriptorToCrystDescriptor:CrystDescriptor,AtomTargetToCrystTarget:CrystTarget
+AD_AT_CT,generateAtomDescriptor:AtomDescriptor,AtomDescriptorToAtomTarget:AtomTarget,AtomTargetToCrystTarget:CrystTarget
