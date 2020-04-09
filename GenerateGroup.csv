@@ -1,0 +1,2 @@
+﻿method,makegroup,makesubgroup
+featureselection,GenerateGroup:Group,GenerateSubgroupFromGroup:Subgroup
