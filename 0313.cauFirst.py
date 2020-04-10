@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[9]:
+
+
+#!/usr/bin/env python
+# coding: utf-8
+
 # In[39]:
 
 
@@ -157,7 +163,7 @@ class DecompositionTree:
                 itime = itime-1
                 
                 cell2 = df.iloc[imethod,itime]
-                if cell2!=cell2: #  isnan
+                if cell2!=cell2 or cell2 is None: #  isnan
                     continue
                 if cell2.startswith("2)"):
                     #cell2 = cell2[2:] # delete 2), but leave it for debug now!
@@ -201,7 +207,7 @@ class DecompositionTree:
 
             for itime in range(df.shape[1]):
                 cell1 = df.iloc[imethod,itime]
-                if cell1==cell1: # not isnan
+                if cell1==cell1 or cell1 is None: # not isnan
                     cell1 = str(cell1)
 
                     func1,method1 = self.get_func_method_1(cell1)
@@ -226,45 +232,90 @@ class DecompositionTree:
         return dot
 
 
+# In[10]:
+
+
+import pandas as pd
+
+def read_wffile(filename ):
+    with open(filename) as f:
+        lines = f.read()
+
+    lines = lines.split("\n")
+
+    # convert format 
+    vlist = []
+    for x in lines:
+        if len(x)==0:
+            continue
+        x01 = x.split(":")
+        x0 = x01[0]; x1=x01[1]
+        s = x1.replace("]",":").replace("[",",")
+        y = x0+s
+        v = y.split(",")
+        print(v)
+        vlist.append(v)
+
+    # make dataframe
+    df = pd.DataFrame(vlist)
+
+    # to change df.column
+    col = []
+    for i in range(df.shape[1]):
+        if i==0:
+            s = "method"
+        else:
+            s = "step{}".format(i)
+        col.append(s)
+        
+    df.columns = col
+    df.set_index("method",drop=True,inplace=True)
+    return df
+
+
+# In[21]:
+
+
 if __name__ == "__main__":
-        
-    basenamelist = ["RelevanceImportance","GenerateGroup", "MakeScores"]
+    import sys 
+    import os
 
-    for name in basenamelist:
-        fdt = DecompositionTree(name)
-        
-        df0 = pd.read_csv(name+".csv",index_col=[0])
-        fdt.causfirst_sparse2(df0,"causSparse_"+name)
+    basenamelist = sys.argv[1:]
+    #basenamelist = ["MakeScores.wf","GenerateGroup.wf","RelevanceImportance.wf"]
+    
+    #basenamelist = ["Importance_GenerateGroup.wf",        "Importance_VisualizeRelevanceImportance.wf", "Importance_ExhaustiveSearchDOS.wf",      "Importance_MakeScores.wf", "Importance_ExhaustiveSearchDiagram.wf",  "Importance_RelevanceImportance.wf"]
 
-        dot = fdt.create_dot(del_dup=True)
+                    
+    print (basenamelist)
 
-        dot.format="png"
-        dot.render(view=True)
+    if len(basenamelist)==0:
+        sys.exit(1)
 
+    if len(basenamelist)>1:
+        for name in basenamelist:
+            fdt = DecompositionTree(name)
+            base = os.path.split(name)[0]
+            #df0 = pd.read_csv(name,index_col=[0])
+            df0 = read_wffile(name)
+            fdt.causfirst_sparse2(df0,"causSparse_"+base)
+            dot = fdt.create_dot(del_dup=True)
+            dot.format="png"
+            dot.render(view=True)
 
-    # In[41]:
-
-
-    #basename = "decisiontable_methodouptut"
-    #basename = "methofuncmatrix_methodoutput"
-
-    #basename = "importance"
-    #basename = "makeGroup"
-    #basename = "chooseGroup"
 
     fdt = DecompositionTree("caus")
-        
     for name in basenamelist:
-        df0 = pd.read_csv(name+".csv",index_col=[0])
+        df0 = read_wffile(name)
+        #df0 = pd.read_csv(name,index_col=[0])
         fdt.causfirst_sparse2(df0)
-
     dot = fdt.create_dot()
-
     dot.format="png"
     dot.render(view=True)
 
+    print("done")
 
-    # In[ ]:
+
+# In[ ]:
 
 
 

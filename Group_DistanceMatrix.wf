@@ -1,0 +1,4 @@
+SpearmanDistance:[genAllData]AllData[FeatureSpearmanDistance]FeatureDistanceMatrix
+elcleadianDistance:[genAllData]AllData[FeatureEucleadianDistance]FeatureDistanceMatrix
+cosineDistance:[genAllData]AllData[FeatureCosineDistance]FeatureDistanceMatrix
+manhattanDistance:[genAllData]AllData[FeatureManhattanDistance]FeatureDistanceMatrix

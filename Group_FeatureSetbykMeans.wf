@@ -1,0 +1,6 @@
+
+kmeans:[]ClusteredSetCandates[DomainKnowledgeDataScienceClusteringSelection]FeatureGroups
+gmm:[]ClusteredSetCandates[DomainKnowledgeDataScienceClusteringSelection]FeatureGroups
+kmeans:[genAllData]AllData[choosekMeansParameterAll]kMeansParameter[2)FeaturekMeansClustering]ClusteredSetCandates
+gmm:[genAllData]AllData[chooseGMMParameterAll]GMMParameter[2)FeatureGMMClustering]ClusteredSetCandates
+

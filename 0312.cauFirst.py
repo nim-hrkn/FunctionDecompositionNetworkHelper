@@ -227,45 +227,33 @@ class DecompositionTree:
 
 
 if __name__ == "__main__":
-        
-    basenamelist = ["RelevanceImportance","GenerateGroup", "MakeScores"]
+    import sys 
+    import os
 
-    for name in basenamelist:
-        fdt = DecompositionTree(name)
-        
-        df0 = pd.read_csv(name+".csv",index_col=[0])
-        fdt.causfirst_sparse2(df0,"causSparse_"+name)
+    basenamelist = sys.argv[1:]
+    print (basenamelist)
 
-        dot = fdt.create_dot(del_dup=True)
+    if len(basenamelist)>1:
+        for name in basenamelist:
+            fdt = DecompositionTree(name)
+            base = os.path.split(name)[0]
+            df0 = pd.read_csv(name,index_col=[0])
+            fdt.causfirst_sparse2(df0,"causSparse_"+base)
+            dot = fdt.create_dot(del_dup=True)
+            dot.format="png"
+            dot.render(view=True)
 
-        dot.format="png"
-        dot.render(view=True)
-
-
-    # In[41]:
-
-
-    #basename = "decisiontable_methodouptut"
-    #basename = "methofuncmatrix_methodoutput"
-
-    #basename = "importance"
-    #basename = "makeGroup"
-    #basename = "chooseGroup"
 
     fdt = DecompositionTree("caus")
-        
     for name in basenamelist:
-        df0 = pd.read_csv(name+".csv",index_col=[0])
+        df0 = pd.read_csv(name,index_col=[0])
         fdt.causfirst_sparse2(df0)
-
     dot = fdt.create_dot()
-
     dot.format="png"
     dot.render(view=True)
 
 
-    # In[ ]:
-
+    print("done")
 
 
 

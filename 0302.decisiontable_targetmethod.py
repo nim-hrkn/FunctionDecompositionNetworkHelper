@@ -342,8 +342,8 @@ class DecompositionTree:
 # In[13]:
 
 
-#basename = "decisiontable_methodouptut"
-basename = "methofuncmatrix_methodoutput"
+basename = "decisiontable_methodouptut"
+#basename = "methofuncmatrix_methodoutput"
 
 df0 = pd.read_csv(basename+".csv",index_col=[0])
 

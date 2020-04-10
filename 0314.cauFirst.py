@@ -1,18 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[39]:
-
-
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[12]:
-
-
-#!/usr/bin/env python
-# coding: utf-8
-
 # 
 #
 #  (C) 2020 Hiori Kino
@@ -67,8 +55,14 @@ class DecompositionTree:
         if method_prefix is None:
             method_prefix = self.method_prefix
                     
-        method1 = method_prefix+way1
-        func1 = func_prefix+output1
+        if len(way1)>0:
+            method1 = method_prefix+way1
+        else:
+            method1 = None
+        if len(output1)>0:
+            func1 = func_prefix+output1
+        else:
+            func1 = None
         return func1,method1
 
     def get_func_method_2(self,cell1,cell2):
@@ -83,10 +77,22 @@ class DecompositionTree:
                 output2 = wayp
                 
         _,output1 = cell1.split(":")
-        funcp = "get_"+output2
-        methodp = self.method_prefix+wayp
-        func1 = "get_"+output1
-        func2 = "apply_"+wayp    
+        if len(output2)>0:
+            funcp = "get_"+output2
+        else:
+            funcp = None
+        if len(wayp)>0:
+            methodp = self.method_prefix+wayp
+        else:
+            methodp = None
+        if len(output1)>0:
+            func1 = "get_"+output1
+        else:
+            func1 = None
+        if len(wayp)>0:
+            func2 = "apply_"+wayp    
+        else:
+            func2 = None
         return func1,func2,funcp,methodp
 
     def get_func_method_3(self,cell0,cell1,cell2):
@@ -104,11 +110,26 @@ class DecompositionTree:
         _,output1 = cell1.split(":")
         _,output0 = cell0.split(":")
         
-        funcp = "get_"+output2
-        methodp = self.method_prefix+wayp
-        func0 = "get_"+output0
-        func1 = "get_"+output1
-        func2 = "apply_"+wayp    
+        if len(output2)>0:
+            funcp = "get_"+output2
+        else:
+            funcp = None
+        if len(wayp)>0:
+            methodp = self.method_prefix+wayp
+        else:
+            methodp = NOne
+        if len(output0)>0:
+            func0 = "get_"+output0
+        else:
+            func0 = None
+        if len(output1)>0:
+            func1 = "get_"+output1
+        else:
+            func1 = None
+        if len(wayp)>0:
+            func2 = "apply_"+wayp    
+        else:
+            func2 = None
         return func0,func1,func2,funcp,methodp    
     
     def drop_dup(self,del_dup):
@@ -118,7 +139,7 @@ class DecompositionTree:
             self.boxnodelist = list(set(self.boxnodelist))
             self.sameranklist = list(set(self.sameranklist))
 
-    def gen_dot(self,dot):
+    def gen_tree(self,dot):
         edgelist = self.edgelist
         invisedgelist = self.invisedgelist
         boxnodelist = self.boxnodelist
@@ -157,7 +178,7 @@ class DecompositionTree:
                 itime = itime-1
                 
                 cell2 = df.iloc[imethod,itime]
-                if cell2!=cell2: #  isnan
+                if cell2!=cell2 or cell2 is  None: #  isnan
                     continue
                 if cell2.startswith("2)"):
                     #cell2 = cell2[2:] # delete 2), but leave it for debug now!
@@ -174,11 +195,16 @@ class DecompositionTree:
                     
                     func0,func1,func2,funcp,methodp = self.get_func_method_3(cell0,cell1,cell2)
                     print("3term",func0,func1,func2)
-                    edgelist.append("{},{}".format(funcp,methodp))
-                    boxnodelist.append(methodp)
-                    edgelist.append("{},{}".format(methodp,func0))                    
-                    edgelist.append("{},{}".format(methodp,func1))
-                    edgelist.append("{},{}".format(methodp,func2))
+                    if funcp is not None and methodp is not None:
+                        edgelist.append("{},{}".format(funcp,methodp))
+                    if methodp is not None:
+                        boxnodelist.append(methodp)
+                    if methodp is not None and func0 is not None:
+                        edgelist.append("{},{}".format(methodp,func0))                    
+                    if methodp is not None and func1 is not None:
+                        edgelist.append("{},{}".format(methodp,func1))
+                    if methodp is not None and func2 is not None:
+                        edgelist.append("{},{}".format(methodp,func2))
                     invisedgelist.append(",".join([func0,func1,func2]))
                     sameranklist.append(",".join([func0,func1,func2]))     
                     itime = itime-1
@@ -191,80 +217,126 @@ class DecompositionTree:
                     cell1 = df.iloc[imethod,itime1]
 
                     func1,func2,funcp,methodp = self.get_func_method_2(cell1,cell2)
-
-                    edgelist.append("{},{}".format(funcp,methodp))
-                    boxnodelist.append(methodp)
-                    edgelist.append("{},{}".format(methodp,func1))
-                    edgelist.append("{},{}".format(methodp,func2))
-                    invisedgelist.append(",".join([func1,func2]))
-                    sameranklist.append(",".join([func1,func2]))
+                    print("1({})({})({})({})".format(func1,func2,funcp,methodp))
+                    if funcp is not None and methodp is not None:
+                        edgelist.append("{},{}".format(funcp,methodp))
+                    if methodp is not None:
+                        boxnodelist.append(methodp)
+                    if methodp is not None and func1 is not None:
+                        edgelist.append("{},{}".format(methodp,func1))
+                    if methodp is not None and func2 is not None:
+                        edgelist.append("{},{}".format(methodp,func2))
+                    if func1 is not None and func2 is not None:
+                        invisedgelist.append(",".join([func1,func2]))
+                        sameranklist.append(",".join([func1,func2]))
 
             for itime in range(df.shape[1]):
                 cell1 = df.iloc[imethod,itime]
-                if cell1==cell1: # not isnan
+                if cell1==cell1 and cell1 is not None: # not isnan
                     cell1 = str(cell1)
-
                     func1,method1 = self.get_func_method_1(cell1)
-
-                    edgelist.append("{},{}".format(func1,method1))
-                    boxnodelist.append(method1)
-                    break
+                    print("1)({})({})".format(func1,method1))
+                    if func1 is not None and method1 is not None:
+                        edgelist.append("{},{}".format(func1,method1))
+                        boxnodelist.append(method1)
         
         self.edgelist.extend(edgelist)
         self.invisedgelist.extend(invisedgelist)
         self.boxnodelist.extend(boxnodelist)
         self.sameranklist.extend(sameranklist)
 
-    def create_dot(self,del_dup=True,dot=None):
+    def create_tree(self,del_dup=True,dot=None):
     
         self.drop_dup(del_dup)
         
         if dot is None:
             dot = Digraph(self.basename)
-        dot = self.gen_dot(dot)
+        dot = self.gen_tree(dot)
         
         return dot
 
 
+# In[10]:
+
+
+import pandas as pd
+
+def read_wffile(filename ):
+    with open(filename) as f:
+        lines = f.read()
+
+    lines = lines.split("\n")
+
+    # convert format 
+    vlist = []
+    for x in lines:
+        if len(x)==0:
+            continue
+        x01 = x.split(":")
+        x0 = x01[0]; x1=x01[1]
+        s = x1.replace("]",":").replace("[",",")
+        y = x0+s
+        v = y.split(",")
+        print(v)
+        vlist.append(v)
+
+    # make dataframe
+    df = pd.DataFrame(vlist)
+
+    # to change df.column
+    col = []
+    for i in range(df.shape[1]):
+        if i==0:
+            s = "method"
+        else:
+            s = "step{}".format(i)
+        col.append(s)
+        
+    df.columns = col
+    df.set_index("method",drop=True,inplace=True)
+    return df
+
+
+
 if __name__ == "__main__":
-        
-    basenamelist = ["RelevanceImportance","GenerateGroup", "MakeScores"]
+    import sys 
+    import os
 
-    for name in basenamelist:
-        fdt = DecompositionTree(name)
-        
-        df0 = pd.read_csv(name+".csv",index_col=[0])
-        fdt.causfirst_sparse2(df0,"causSparse_"+name)
+    basenamelist = sys.argv[1:]
+    
+    #basenamelist = ["Importance_GenerateGroup.wf",        "Importance_VisualizeRelevanceImportance.wf", "Importance_ExhaustiveSearchDOS.wf",      "Importance_MakeScores.wf", "Importance_ExhaustiveSearchDiagram.wf",  "Importance_RelevanceImportance.wf"]
 
-        dot = fdt.create_dot(del_dup=True)
+                    
+    print (basenamelist)
 
-        dot.format="png"
-        dot.render(view=True)
+    if len(basenamelist)==0:
+        sys.exit(1)
 
+    if False:
+        if len(basenamelist)>1:
+            for name in basenamelist:
+                fdt = DecompositionTree(name)
+                base = os.path.split(name)[0]
+                #df0 = pd.read_csv(name,index_col=[0])
+                df0 = read_wffile(name)
+                fdt.causfirst_sparse2(df0,"causSparse_"+base)
+                dot = fdt.create_dot(del_dup=True)
+                dot.format="png"
+                dot.render(view=True)
 
-    # In[41]:
-
-
-    #basename = "decisiontable_methodouptut"
-    #basename = "methofuncmatrix_methodoutput"
-
-    #basename = "importance"
-    #basename = "makeGroup"
-    #basename = "chooseGroup"
 
     fdt = DecompositionTree("caus")
-        
     for name in basenamelist:
-        df0 = pd.read_csv(name+".csv",index_col=[0])
+        df0 = read_wffile(name)
+        #df0 = pd.read_csv(name,index_col=[0])
         fdt.causfirst_sparse2(df0)
-
-    dot = fdt.create_dot()
-
+    dot = fdt.create_tree()
     dot.format="png"
     dot.render(view=True)
 
+    print("done")
 
-    # In[ ]:
+
 
 
 
