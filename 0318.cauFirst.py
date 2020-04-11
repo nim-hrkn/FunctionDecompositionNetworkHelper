@@ -13,6 +13,49 @@ import pandas as pd
 from graphviz import Digraph
 import copy
 
+import sys
+import yaml
+
+class taxologyWay:
+    def __init__(self,basename="base"):
+        self.wflist = []
+        self.nodeorderlist = []
+
+    def load(self,filename):
+        data = None
+        with open(filename) as f:
+            data = yaml.safe_load(f)
+        print(data)
+        return data
+
+    def gen_connection_method_method(self,methodlist,pmethod=None):
+        if methodlist is None:
+            return None,None
+        namelist = []
+        for methodline in methodlist:
+            name = methodline["name"]
+            namelist.append(name)
+            try:
+                method = methodline["method"]
+            except:
+                method = None
+
+            print("m>",pmethod,name)
+            if pmethod is not None:
+                self.wflist.append("dummy:[{0}]{0}[{1}]{1}".format(name,pmethod))
+            
+            mlistnew = self.gen_connection_method_method(method,name)
+        self.nodeorderlist.append(",".join(namelist))
+
+    def gen_wf(self,filename):
+        data = self.load(filename)
+        _ = self.gen_connection_method_method(data["method"])
+
+        print(self.wflist)
+        print(self.nodeorderlist)
+        return self.wflist,self.nodeorderlist 
+
+
 
 
 class DecompositionTree:
@@ -23,6 +66,8 @@ class DecompositionTree:
         self.basename = basename
         
         self.method_prefix = "method_"
+        self.func_prefix = "get_"
+        self.applymethod_prefix = "apply_"
         
         self.edgelist = []
         self.invisedgelist = []
@@ -47,7 +92,9 @@ class DecompositionTree:
                 return itime2
         return None
     
-    def get_func_method_1(self,cell1,func_prefix="get_",method_prefix=None):
+    def get_func_method_1(self,cell1,func_prefix=None,method_prefix=None):
+        if func_prefix is None:
+            func_prefix = self.func_prefix 
         cell1 = str(cell1)
         if cell1.find(":")<0:
             output1 = cell1
@@ -82,7 +129,7 @@ class DecompositionTree:
                 
         _,output1 = cell1.split(":")
         if len(output2)>0:
-            funcp = "get_"+output2
+            funcp = self.func_prefix+output2
         else:
             funcp = None
         if len(wayp)>0:
@@ -90,11 +137,11 @@ class DecompositionTree:
         else:
             methodp = None
         if len(output1)>0:
-            func1 = "get_"+output1
+            func1 = self.func_prefix+output1
         else:
             func1 = None
         if len(wayp)>0:
-            func2 = "apply_"+wayp    
+            func2 = self.applymethod_prefix+wayp    
         else:
             func2 = None
         return func1,func2,funcp,methodp
@@ -115,7 +162,7 @@ class DecompositionTree:
         _,output0 = cell0.split(":")
         
         if len(output2)>0:
-            funcp = "get_"+output2
+            funcp = self.func_prefix+output2
         else:
             funcp = None
         if len(wayp)>0:
@@ -123,15 +170,15 @@ class DecompositionTree:
         else:
             methodp = NOne
         if len(output0)>0:
-            func0 = "get_"+output0
+            func0 = self.func_prefix+output0
         else:
             func0 = None
         if len(output1)>0:
-            func1 = "get_"+output1
+            func1 = self.func_prefix+output1
         else:
             func1 = None
         if len(wayp)>0:
-            func2 = "apply_"+wayp    
+            func2 = self.applymethod_prefix+wayp    
         else:
             func2 = None
         return func0,func1,func2,funcp,methodp    
@@ -233,7 +280,13 @@ class DecompositionTree:
 
         return dot 
     
-    def causfirst_sparse2(self,df,dot=None):
+    def nodes2funcs(self,nodes):
+        funcs = []
+        for node in nodes:
+            funcs.append(self.func_prefix+node)
+        return funcs
+
+    def causfirst_sparse2(self,df,node_orderlist=None,dot=None):
         self.df = df
 
         edgelist = []
@@ -244,6 +297,14 @@ class DecompositionTree:
         wf_edgelist = []
         wf_boxnodelist = []
         wf_invisnodelist = []
+
+        if True:
+            if node_orderlist is not None:
+                for nodes in node_orderlist:
+                    nodes = nodes.split(",")
+                    print("order",nodes)
+                    funcs = self.nodes2funcs(nodes)     
+                    invisedgelist.append(",".join(funcs))
 
         for imethod in range(df.shape[0]):
             itime = df.shape[1]
@@ -310,7 +371,7 @@ class DecompositionTree:
                     cell1 = df.iloc[imethod,itime1]
 
                     func1,func2,funcp,methodp = self.get_func_method_2(cell1,cell2)
-                    print("1({})({})({})({})".format(func1,func2,funcp,methodp))
+                    #print("1({})({})({})({})".format(func1,func2,funcp,methodp))
                     if funcp is not None and methodp is not None:
                         edgelist.append("{},{}".format(funcp,methodp))
                     if methodp is not None:
@@ -350,6 +411,9 @@ class DecompositionTree:
                     way1,output1 = self.get_wf_method_1(cell1)
                     if output1 is not None:
                         wf_invisnodelist.append(output1)
+                    if way1 is not None and output1 is not None:
+                        wf_edgelist.append(",".join([way1,output1]))
+                        wf_boxnodelist.append(way1)
                         
         
         self.edgelist.extend(edgelist)
@@ -388,12 +452,7 @@ class DecompositionTree:
 
 import pandas as pd
 
-def read_wffile(filename ):
-    with open(filename) as f:
-        lines = f.read()
-
-    lines = lines.split("\n")
-
+def convert_wf_to_csv(lines):
     # convert format 
     vlist = []
     for x in lines:
@@ -404,8 +463,17 @@ def read_wffile(filename ):
         s = x1.replace("]",":").replace("[",",")
         y = x0+s
         v = y.split(",")
-        print(v)
         vlist.append(v)
+    print(lines)
+    print(vlist)
+    return vlist
+
+def read_wffile(filename ):
+    with open(filename) as f:
+        lines = f.read()
+
+    lines = lines.split("\n")
+    vlist = convert_wf_to_csv(lines)
 
     # make dataframe
     df = pd.DataFrame(vlist)
@@ -423,52 +491,80 @@ def read_wffile(filename ):
     df.set_index("method",drop=True,inplace=True)
     return df
 
+def read_ymlfile(filename):
+    wf = taxologyWay() 
+    wflist,nodeorderlist = wf.gen_wf(filename)
 
+    vlist = convert_wf_to_csv(wflist)
+
+    # make dataframe
+    df = pd.DataFrame(vlist)
+
+    # to change df.column
+    col = []
+    for i in range(df.shape[1]):
+        if i==0:
+            s = "method"
+        else:
+            s = "step{}".format(i)
+        col.append(s)
+        
+    df.columns = col
+    df.set_index("method",drop=True,inplace=True)
+    return df,nodeorderlist
+
+
+def read_file(name,filetype=None):
+    if filetype is None:
+        # check file extension
+        basename,ext = os.path.splitext(name)
+        ext = ext[1:]
+    print("ext({})".format(ext))
+    node_orderlist = None
+    if ext == "csv":
+        df0 = pd.read_csv(name,index_col=[0])
+    elif ext == "wf":
+        df0 = read_wffile(name)
+    elif ext == "yml" or ext == "yaml":
+        df0,node_orderlist = read_ymlfile(name)
+    return df0,node_orderlist
 
 if __name__ == "__main__":
     import sys 
     import os
 
     basenamelist = sys.argv[1:]
-    
-    #basenamelist = ["Importance_GenerateGroup.wf",        "Importance_VisualizeRelevanceImportance.wf", "Importance_ExhaustiveSearchDOS.wf",      "Importance_MakeScores.wf", "Importance_ExhaustiveSearchDiagram.wf",  "Importance_RelevanceImportance.wf"]
-
                     
     print (basenamelist)
 
     if len(basenamelist)==0:
         sys.exit(1)
 
-    if False:
-        if len(basenamelist)>1:
-            for name in basenamelist:
-                fdt = DecompositionTree(name)
-                base = os.path.split(name)[0]
-                #df0 = pd.read_csv(name,index_col=[0])
-                df0 = read_wffile(name)
-                fdt.causfirst_sparse2(df0,"causSparse_"+base)
-                dot = fdt.create_dot(del_dup=True)
-                dot.format="png"
-                dot.render(view=True)
+#    if False:
+#        if len(basenamelist)>1:
+#            for name in basenamelist:
+#                fdt = DecompositionTree(name)
+#                base = os.path.split(name)[0]
+#                df0 = read_file(name)
+#                fdt.causfirst_sparse2(df0,"causSparse_"+base)
+#                dot = fdt.create_dot(del_dup=True)
+#                dot.format="png"
+#                dot.render(view=True)
 
 
     fdt = DecompositionTree("caus_wf")
     for name in basenamelist:
-        df0 = read_wffile(name)
-        #df0 = pd.read_csv(name,index_col=[0])
+        df0,node_orderlist = read_file(name)
         fdt.causfirst_sparse2(df0)
-    #dot = fdt.create_tree()
     dot = fdt.create_workflow()
     dot.format="png"
     dot.render(view=True)
 
     fdt = DecompositionTree("caus_tree")
     for name in basenamelist:
-        df0 = read_wffile(name)
-        #df0 = pd.read_csv(name,index_col=[0])
-        fdt.causfirst_sparse2(df0)
+        df0,node_orderlist = read_file(name)
+        fdt.causfirst_sparse2(df0,node_orderlist)
     dot = fdt.create_tree()
-    #dot = fdt.create_workflow()
     dot.format="png"
     dot.render(view=True)
 

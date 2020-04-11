@@ -1,0 +1,8 @@
+method:
+  - name: TargeValuePredicion
+    method:
+    - name: ModelHamiltonian
+      method:
+      - name: Spin
+      - name: Electron
+    - name: Predict

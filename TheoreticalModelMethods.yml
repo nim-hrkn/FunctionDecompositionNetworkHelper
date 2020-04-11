@@ -1,0 +1,33 @@
+method:
+  - name: TargeValuePredicion
+    method:
+     - name: ModelHamiltonian
+       method:
+         - name: ElectronModelHamiltonian
+           method:
+             - name: OneBody
+               method:
+                 - name: energyLevel
+                 - name: hoppingIntegral
+             - name: TwoBody
+               method:
+                 - name: ElectronChannel
+         - name: SpinModelHamiltonian
+           method:
+             - name: SpinChannelSelection
+               method:
+                 - name: TM3d
+                 - name: TM3dRE4f
+                 - name: TM3dRE4fRE5d
+             - name: SpinSpinInteraction
+             - name: Anisotropy
+     - name: ValuesOfTermsOfHamiltonian
+       method:
+         - name: FirstPrinciples
+         - name: MatchingExperiment
+     - name: Solver
+       method:
+         - name: meanfield
+         - name: MC
+     - name: TargetValue
+            
