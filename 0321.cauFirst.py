@@ -27,6 +27,8 @@ class DecompositionTree(object):
         self.method_prefix = "method_"
         self.func_prefix = "get_"
         self.applymethod_prefix = "apply_"
+
+        self.invisstyle = "invis"
         
         self.edgelist = []
         self.invisedgelist = []
@@ -37,7 +39,7 @@ class DecompositionTree(object):
         if ext is None:
             # check file extension
             basename,ext = os.path.splitext(name)
-            ext = ext[1:] # delete the first dot 
+            ext = ext[1:] # delete the first dottree 
         return ext
 
     def drop_dup(self,del_dup):
@@ -47,7 +49,7 @@ class DecompositionTree(object):
             self.boxnodelist = list(set(self.boxnodelist))
             self.sameranklist = list(set(self.sameranklist))
 
-    def gen_tree(self,dot,del_dup=True):
+    def gen_tree(self,dottree,del_dup=True):
         self.drop_dup(del_dup)
         edgelist = self.edgelist
         invisedgelist = self.invisedgelist
@@ -58,36 +60,37 @@ class DecompositionTree(object):
         for edge in edgelist:
             s = edge.split(",")
             for x0,x1 in zip(s[:-1],s[1:]):
-                dot.edge(x0,x1)
+                dottree.edge(x0,x1)
         for invisedge in invisedgelist:
             s = invisedge.split(",")
             for x0,x1 in zip(s[:-1],s[1:]):
-                dot.edge(x0,x1,style="invis")
-                #dot.edge(x0,x1,style="dotted")
+                dottree.edge(x0,x1,style=self.invisstyle)
         for boxnode in boxnodelist:
-            dot.node(boxnode,shape="box")
+            dottree.node(boxnode,shape="box")
         for samerank in sameranklist:
             s = samerank.split(",")
-            with dot.subgraph() as sub:
+            with dottree.subgraph() as sub:
                 sub.attr(rank="same")
                 for x in s:
                     sub.node(x)
-        return dot
+        return dottree
 
-    def create_tree(self,dot=None):
-        if dot is None:
-            dot = Digraph(self.basename)
+    def create_tree(self,dottree=None):
+        if dottree is None:
+            dottree = Digraph(self.basename)
 
-        dot = self.gen_tree(dot)
-        return dot
+        dottree = self.gen_tree(dottree)
+        return dottree
  
 class taxologyWay(DecompositionTree):
     def __init__(self,basename="taxo"):
 
         super().__init__(basename)
 
+        self.den_edgelist = []
+
         self.excludenodelist = []
-        data = None
+        self.data = None
 
     def load(self,filename):
         data = None
@@ -95,9 +98,29 @@ class taxologyWay(DecompositionTree):
             data = yaml.safe_load(f)
         self.data = data
 
+
+    def create_dendrogram(self,dot=None):
+        den_edgelist = self.den_edgelist 
+        print(den_edgelist)
+        if dot is None:
+            dot = Digraph(self.basename)
+            dot.graph_attr["rankdir"] = "TB"
+        for den in den_edgelist:
+            print(den)
+            dot.edge(den[0],den[1])
+            dot.node(den[0],shape="box")
+            dot.node(den[1],shape="box")
+        return dot
+
     def gen_connection_method_method(self,methodlist,pmethodname=None,pnodetype=None):
         if methodlist is None:
             return 
+
+        if pmethodname is not None:
+            pnodename = pmethodname
+            for methodline in methodlist:
+                name = methodline["name"]
+                self.den_edgelist.append([pnodename,name])
 
         if pmethodname is None:
             for methodline in methodlist:
@@ -345,21 +368,23 @@ class workFlowWay(DecompositionTree):
         return way0,output0,way1,output1,way2,output2
    
 
-    def gen_workflow(self,dot):
-        dot.graph_attr["rankdir"] = "BT" #"LR"
+    def gen_workflow(self,dottree):
+        print("gen_workflow")
+        print(self.wf_edgelist)
+        dottree.graph_attr["rankdir"] = "BT" #"LR"
         edgelist = self.wf_edgelist
         boxnodelist = self.wf_boxnodelist
         invisnodelist = self.wf_invisnodelist
         for edge in edgelist:
             s = edge.split(",")
             for x0,x1 in zip(s[:-1],s[1:]):
-                dot.edge(x0,x1)
+                dottree.edge(x0,x1)
         for boxnode in boxnodelist:
-            dot.node(boxnode,shape="box")
+            dottree.node(boxnode,shape="box")
         for invisnode in invisnodelist:
-            dot.node(invisnode,color="white")
-
-        return dot 
+            dottree.node(invisnode,color="white")
+        print(dottree)
+        return dottree 
     
     def nodes2funcs(self,nodes):
         funcs = []
@@ -367,7 +392,7 @@ class workFlowWay(DecompositionTree):
             funcs.append(self.func_prefix+node)
         return funcs
 
-    def causfirst_sparse2(self,dot=None):
+    def causfirst_sparse2(self,dottree=None):
         df = self.df
 
         edgelist = []
@@ -498,9 +523,15 @@ class workFlowWay(DecompositionTree):
         self.wf_boxnodelist.extend(wf_boxnodelist)
         self.wf_invisnodelist.extend(wf_invisnodelist)
 
+    def drop_dup_wf(self,del_up):
+        if del_up:
+            self.wf_edgelist = list(set(self.wf_edgelist))
+            self.wf_boxnodelist = list(set(self.wf_boxnodelist))
+            self.wf_invisnodelist = list(set(self.wf_invisnodelist))
+
     def create_workflow(self,del_dup=True,dot=None):
     
-        self.drop_dup(del_dup)
+        self.drop_dup_wf(del_dup)
         
         if dot is None:
             dot = Digraph(self.basename)
@@ -572,7 +603,7 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
-    dot = Digraph("caus")
+    dottree = Digraph("caus")
 
     for filename in namelist:
 
@@ -583,17 +614,28 @@ if __name__ == "__main__":
             taxo = taxologyWay()
             taxo.load(filename)
             taxo.methodtree()
-            dot = taxo.create_tree(dot)
-     
+            dottree = taxo.create_tree(dottree)
+
+            if True:
+                dotwf = Digraph("den_"+basename)
+                dotwf = taxo.create_dendrogram(dot=dotwf)
+                dotwf.format = "png"
+                dotwf.render(view=True)
+    
         if ext in ["wf", "csv"]:
             wf = workFlowWay()
             wf.load(filename)
             wf.causfirst_sparse2()
-            dot = wf.create_tree(dot)
-
-    dot.format = "png"
-    dot.render(view=True)
-
+            dottree = wf.create_tree(dottree)
+            if True:
+                dotwf = Digraph("wf_"+basename)
+                dotwf = wf.create_workflow(dot=dotwf)
+                dotwf.format = "png"
+                dotwf.render(view=True)
+ 
+    dottree.format = "png"
+    dottree.render(view=True)
+    
 
 
     print("done")
