@@ -1,21 +1,21 @@
 method: 
-  - name: ModelHamiltonian
+  - name: getModelHamiltonian
     nodeytpe: "PartOf"
-    method:
+    function:
      - name: ModelHamiltonianType
        nodetype: "IsA"
-       method:
+       parts:
          - name: ElectronModelHamiltonian
            nodetype: "PartOf"
-           method:
+           parts:
              - name: OneBody
                nodetype: "PartOf"
-               method:
+               parts:
                  - name: energyLevel
                  - name: hoppingIntegral
              - name: TwoBody
                nodetype: "PartOf"
-               method:
+               parts:
                  - name: ElectronTwoBodyInteractionChannel
                    nodetype: "IsA"
                    method:
@@ -23,7 +23,7 @@ method:
                      - name: UTM3dRE4f
          - name: SpinModelHamiltonian
            nodetype: "PartOf"
-           method:
+           parts:
              - name: SpinChannelSelection
                nodetype: "IsA"
                method:
@@ -33,14 +33,15 @@ method:
              - name: SpinSpinInteraction
              - name: Anisotropy
      - name: ValuesOfTermsOfHamiltonian
-       nodetype: "IsA"
-       method:
-         - name: FirstPrinciples
+       parts:
+           method:
          - name: MatchingExperiment
+           method:
   - name: Solver
     nodetype: "IsA"
     method:
       - name: meanfield
       - name: MC
   - name: TargetValue
-        
+    parts: 
+

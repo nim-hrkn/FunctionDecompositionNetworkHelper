@@ -1,78 +1,78 @@
-method:
+parts:
   - name: AtomProperty
     nodetype: IsA
-    method: 
+    parts: 
       - name: PeriodicTableAtomProperty
         nodetype: IsA
-        method:
+        parts:
         - name: Z
         - name: mass 
       - name: IsolatedThoreticalAtomProperty
         nodetype: IsA
-        method: 
+        parts: 
         - name: EigenEnergyProperty
           nodetype: IsA
-          method: 
+          parts: 
            - name: AllChannelEigenEnergyProperty
              nodetype: IsA
-             method:
+             parts:
                - name: Etot
            - name: ChannelDecomposedEigenEnergyProperty
              nodetype: IsA
-             method:
+             parts:
                - name: Es
                - name: Ep
                - name: Ed
                - name: Ef
-        - name: ThereticalLengthProperty
+        - name: TheoreticalLengthProperty
           nodetype: IsA
-          method: 
+          parts: 
             - name: AllChannelThereticalLengthProperty
               nodetype: IsA
-              method:
+              parts:
                 - name: r2
             - name: ChannelDecomposedThereticalLengthProperty 
               nodetype: IsA
-              method:
+              parts:
                 - name: r2s
                 - name: r2p
                 - name: r2d
                 - name: r2f
         - name: ValenceQuantumNumber
           nodetype: IsA
-          method:
+          parts:
             - name: ValenceQuantumNumber3d
               nodetype: IsA
-              method:
+              parts:
                 - name: S3d
                 - name: L3d
                 - name: J3d
             - name: ValenceQuantumNumber4f
               nodetype: IsA
-              method:
+              parts:
                 - name: DirectValenceQuantumNumber4f
                   nodetype: IsA
-                  method:
+                  parts:
                     - name: S4f
                     - name: L4f
                     - name: J4f
                 - name: ProjectedValenceQuantumNumber4f
                   nodetype: IsA
-                  method:
+                  parts:
                     - name: J4f(gJ-1)
                     - name: J4f(2-gJ)
       - name: ExperimentalPrepresentativeProperty
         nodetype: IsA
-        method:
+        parts:
           - name: ExperimentalLengthProperty
             nodetype: IsA
-            method:
+            parts:
               - name: AtomicRadius
               - name: AtomicCovalentRadius
               - name: AtomicVdWRadius
           - name: ExperimentalEnergyProperty
             nodetype: IsA
-            method:
+            parts:
               - name: IonizationPotential
               - name: ElectronAffinity
 
