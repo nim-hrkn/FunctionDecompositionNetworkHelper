@@ -1,0 +1,81 @@
+method:
+  - name: AtomProperty
+    nodetype: IsA
+    method: 
+      - name: PeriodicTableAtomProperty
+        nodetype: IsA
+        method:
+        - name: Z
+        - name: mass 
+      - name: IsolatedThoreticalAtomProperty
+        nodetype: IsA
+        method: 
+        - name: EigenEnergyProperty
+          nodetype: IsA
+          method: 
+           - name: AllChannelEigenEnergyProperty
+             nodetype: IsA
+             method:
+               - name: Etot
+           - name: ChannelDecomposedEigenEnergyProperty
+             nodetype: IsA
+             method:
+               - name: Es
+               - name: Ep
+               - name: Ed
+               - name: Ef
+        - name: ThereticalLengthProperty
+          nodetype: IsA
+          method: 
+            - name: AllChannelThereticalLengthProperty
+              nodetype: IsA
+              method:
+                - name: r2
+            - name: ChannelDecomposedThereticalLengthProperty 
+              nodetype: IsA
+              method:
+                - name: r2s
+                - name: r2p
+                - name: r2d
+                - name: r2f
+        - name: ValenceQuantumNumber
+          nodetype: IsA
+          method:
+            - name: ValenceQuantumNumber3d
+              nodetype: IsA
+              method:
+                - name: S3d
+                - name: L3d
+                - name: J3d
+            - name: ValenceQuantumNumber4f
+              nodetype: IsA
+              method:
+                - name: DirectValenceQuantumNumber4f
+                  nodetype: IsA
+                  method:
+                    - name: S4f
+                    - name: L4f
+                    - name: J4f
+                - name: ProjectedValenceQuantumNumber4f
+                  nodetype: IsA
+                  method:
+                    - name: J4f(gJ-1)
+                    - name: J4f(2-gJ)
+      - name: ExperimentalPrepresentativeProperty
+        nodetype: IsA
+        method:
+          - name: ExperimentalLengthProperty
+            nodetype: IsA
+            method:
+              - name: AtomicRadius
+              - name: AtomicCovalentRadius
+              - name: AtomicVdWRadius
+          - name: ExperimentalEnergyProperty
+            nodetype: IsA
+            method:
+              - name: IonizationPotential
+              - name: ElectronAffinity
+
+
+
+
