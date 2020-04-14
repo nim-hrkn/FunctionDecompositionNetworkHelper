@@ -1,0 +1,45 @@
+workflow:
+  - worflowname: CD_CT
+    workflow:
+      - group:
+        - methodname: generateCrystDescriptor
+          funcname: CrystDescriptor
+          functype: parts
+      - group:
+        - methodname: CrystDescriptorToCrystTarget
+          funcname: CrystTargetUsingDescriptor
+          functype: parts
+  - worflowname: AD_CD_CT
+    workflow:
+      - group:
+        - methodname: generateAtomDescriptor
+          funcname: AtomDescriptor
+          functype: parts
+      - group:
+        - methodname: AtomDescriptorToCrysDescriptor
+          funcname:  CrystDescriptor
+          functype:  parts
+      - group:
+        - methodname: CrystDescriptorToCrystTarget
+          funcname:  CrystTargetUsingDescriptor
+          functype:  parts
+
+  - worflowname: AD_CT_CT
+    workflow:
+      - group:
+        - methodname:  generateAtomDescriptor
+          funcname:  AtomDescriptor
+          functype: parts
+      - group:
+        - methodname: AtomDescriptorToAtomTarget
+          funcname:   AtomTarget
+          functype:  parts
+      - group:
+        - methodname:  AtomTargetToCrystTarget
+          funcname:   CrystTargetUsingDescriptor
+          functype:  parts
+
+
+
+
+
