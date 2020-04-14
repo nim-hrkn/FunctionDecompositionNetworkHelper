@@ -1,0 +1,47 @@
+workflow:
+- groupname: DomainKnowlege
+  workflow:
+  - group:
+    - funcname: FeatureGroups
+      functype: parts
+      methodname: DomainKnowledgeDivision
+- groupname: dendrogram
+  workflow:
+  - group:
+    - funcname: ClusteredSetCandates
+      functype: parts
+  - group:
+    - funcname: FeatureGroups
+      functype: parts
+      methodname: DomainKnowledgeDataScienceClusteringSelection
+- groupname: dendrogram
+  workflow:
+  - group:
+    - funcname: FeatureGroupsDistanceThresholdAll
+      functype: parts
+      methodname: chooseFeatureGroupsDistanceThresholdAll
+    - funcname: FeatureDendrogram
+      functype: parts
+  - group:
+    - funcname: ClusteredSetCandates
+      functype: parts
+      methodname: 2)DendrogramClusteringFeatureGroups
+- groupname: dendrogram
+  workflow:
+  - group:
+    - funcname: FeatureDistanceMatrix
+      functype: parts
+  - group:
+    - funcname: FeatureDendrogram
+      functype: parts
+      methodname: FeatureDistanceMatrixHierarchalClustering
+- groupname: dendrogram
+  workflow:
+  - group:
+    - funcname: AllData
+      functype: parts
+      methodname: genAllData
+  - group:
+    - funcname: FeatureDistanceMatrix
+      functype: parts
+      methodname: genFeatureDistanceMatrix

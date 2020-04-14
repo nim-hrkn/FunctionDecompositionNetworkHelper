@@ -1,0 +1,105 @@
+workflow:
+- groupname: min
+  workflow:
+  - group:
+    - funcname: AtomDescriptor
+      functype: parts
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: AtomDescriptorToCrystDescriptorByMin
+- groupname: max
+  workflow:
+  - group:
+    - funcname: AtomDescriptor
+      functype: parts
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: AtomDescriptorToCrystDescriptorByMax
+- groupname: exist
+  workflow:
+  - group:
+    - funcname: AtomDescriptor
+      functype: parts
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: AtomDescriptorToCrystDescriptorByExistence
+- groupname: multipleMomentExpansion
+  workflow:
+  - group:
+    - funcname: AtomDescriptor
+      functype: parts
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: AtomDescriptorToCrystDescriptorByMultipleMomentExpansion
+- groupname: sum
+  workflow:
+  - group:
+    - funcname: AtomDescriptor
+      functype: parts
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: AtomDescriptorToCrystDescriptorBySum
+- groupname: addvector
+  workflow:
+  - group:
+    - funcname: AtomDescriptor
+      functype: parts
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: AtomDescriptorToCrystDescriptorByAppendedVector
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: SymmetryQuantity
+      functype: parts
+      methodname: SymmetryOperation
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: generateCrystDescriptorBySymmetry
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: CrystalQuantity
+      functype: parts
+      methodname: Volume
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: generateCrystDescriptorByCrystalQuantity
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: CrystalQuantity
+      functype: parts
+      methodname: AtomicRatio
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: generateCrystDescriptorByCrystalQuantity
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: CrystalQuantity
+      functype: parts
+      methodname: FunctionalGroupRatio
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: generateCrystDescriptorByCrystalQuantity
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: SpaceQuantity
+      functype: parts
+      methodname: PersistenHomology
+  - group:
+    - funcname: CrystDescriptor
+      functype: parts
+      methodname: generateCrystDescriptorBySpaceQuantity

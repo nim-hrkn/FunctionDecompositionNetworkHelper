@@ -1,0 +1,28 @@
+workflow:
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: CrystTargetUsingDescriptor
+      functype: parts
+  - group:
+    - funcname: RegressionModel
+      functype: parts
+      methodname: NeuralNetworkRegression
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: CrystTargetUsingDescriptor
+      functype: parts
+  - group:
+    - funcname: RegressionModel
+      functype: parts
+      methodname: LinearRegression
+- groupname: ''
+  workflow:
+  - group:
+    - funcname: CrystTargetUsingDescriptor
+      functype: parts
+  - group:
+    - funcname: RegressionModel
+      functype: parts
+      methodname: KernelRegression

@@ -1,0 +1,24 @@
+workflow:
+- groupname: text
+  workflow:
+  - group:
+    - funcname: RelevanceImportance
+      functype: parts
+      methodname: GenerateStrongRelavance
+  - group:
+    - funcname: VisualizedImportance
+      functype: parts
+      methodname: VisualizeImportanceWithTextList
+- groupname: dendrogram
+  workflow:
+  - group:
+    - funcname: FeatureDendrogram
+      functype: parts
+      methodname: generateDendrogram
+    - funcname: RelevanceImportance
+      functype: parts
+      methodname: GenerateStrongRelavance
+  - group:
+    - funcname: VisualizedImportance
+      functype: parts
+      methodname: 2)VisualizeImportanceWithDendrogram

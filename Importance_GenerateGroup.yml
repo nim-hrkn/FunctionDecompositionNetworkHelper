@@ -1,67 +1,11 @@
 workflow:
-  - workflowname:  groupToSubgroup
-    workflow:
-      - groupname: dummy
-        group: 
-          - methodname: generategroup
-            funcname: group
-            functype: parts
-      - groupname: dummy
-        group: 
-          - methodname: generatesubgroupfromgroup
-            funcname: subgroup
-            functype: parts
-
-  - workflowname: AllModelsToIndicatorDiagram
-    workflow:
-      - groupname: dummy
-        group:
-          - methodname: generateAllModels
-            funcname: AllModels
-            functype: parts
-      - groupname: dummy
-        group:
-          - methodname: indicatorDiagram
-            funcname: VisualizedUnprocessedImportance
-            functype: parts
-
-  - workflowname: AllModelsToWeightDiagram
-    workflow:
-      - groupname: dummy
-        group:
-          - methodname: generateAllModels
-            funcname: AllModels
-            functype: parts
-      - groupname: dummy
-        group:
-          - methodname: weightDiagram
-            funcname: VisualizedUnprocessedImportance
-            functype: parts
-
-  - workflowname: dendrogramFeatureGroup
-    workflow:
-      - groupname: dummy
-        group:
-          - funcname: ClusteredSetCandates
-            functype: parts
-      - groupname: dummy
-        group:
-          - methodname: DomainKnowledgeDataScienceClusteringSelection
-            funcname: FeatureGroups
-            functype: parts
-
-  - workflowname: dendrogramClusteredSetCandates
-    workflow:
-      - groupname: 
-        group:
-          - funcname: FeatureDendrogram
-            functype: parts
-          - methodname: chooseFeatureGroupsDistanceThresholdAll
-            funcname: FeatureGroupsDistanceThresholdAll
-            functype: parts
-      - groupname: 
-        group:
-          - methodname: 2)DendrogramClusteringFeatureGroups
-            funcname: ClusteredSetCandates
-            funckind: function
-
+- groupname: featureselection
+  workflow:
+  - group:
+    - funcname: Group
+      functype: parts
+      methodname: GenerategGroup
+  - group:
+    - funcname: Subgroup
+      functype: parts
+      methodname: GenerateSubgroupFromGroup

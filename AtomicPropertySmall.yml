@@ -1,0 +1,11 @@
+link:
+  - nodename: AtomProperty
+    linktype: IsA
+    link: 
+      - nodename: PeriodicTableAtomProperty
+        linktype: IsA
+        link:
+        - nodename: Z
+        - nodename: mass 
+
+

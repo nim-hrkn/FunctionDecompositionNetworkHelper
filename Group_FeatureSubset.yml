@@ -1,0 +1,26 @@
+workflow:
+- groupname: domainknowledgeSubgroup
+  workflow:
+  - group:
+    - funcname: FeatureGroups
+      functype: parts
+  - group:
+    - funcname: AllFeatureSubgroups
+      functype: parts
+      methodname: domainknowledgeSubgroupSelection
+- groupname: DendrogramSubgroupSelection
+  workflow:
+  - group:
+    - funcname: FeatureGroups
+      functype: parts
+  - group:
+    - funcname: FeatureSubgroupDistanceThresholdAll
+      functype: parts
+      methodname: chooseFeatureSubgroupDistanceThresholdAll
+    - funcname: FeatureGroupDendrogram
+      functype: parts
+      methodname: genFeatureGroupDendrogram
+  - group:
+    - funcname: AllFeatureSubgroups
+      functype: parts
+      methodname: 2)DendrogramSubgroupsSelection

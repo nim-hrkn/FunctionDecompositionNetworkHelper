@@ -115,6 +115,7 @@ class DecompositionTree(object):
     def create_tree(self,dottree=None):
         if dottree is None:
             dottree = Digraph(self.basename)
+            dottree.graph_attr["rankdir"] = "TB"
 
         dottree = self.gen_tree(dottree)
         return dottree
@@ -135,6 +136,7 @@ class workflowWay(DecompositionTree):
         with open(filename) as f:
             data = yaml.safe_load(f)
         self.data = data
+        print(data)
 
     def get_keyvalue(self,line,key):
         if key in line.keys():
@@ -146,17 +148,38 @@ class workflowWay(DecompositionTree):
     def convert_workflow(self,wf):
         grouplist = []
         for groupline in wf:
+            print(">>>",groupline)
+            print(">>group",groupline["group"])
             grouplist.append( groupline["group"] )
+
         for group1,group2 in zip(grouplist[:-1],grouplist[1:]):
             print("g1",group1)
             print("g2",group2)
+
+            funcname1list = []
+            for g1 in group1:
+                nodename1 = self.get_keyvalue(g1,"funcname")
+                functype1 = self.get_keyvalue(g1,"functype")
+                funcname1 = self.func_prefix(functype1)+nodename1
+            if len(funcname1list)>1:
+                self.invisedgelist.append(",".join(funcname1list))
+            funcname2list = []
+            for g2 in group2:
+                nodename2 = self.get_keyvalue(g2,"funcname")
+                functype2 = self.get_keyvalue(g2,"functype")
+                funcname2 = self.func_prefix(functype2)+nodename2
+            if len(funcname2list)>1:
+                self.invisedgelist.append(",".join(funcname2list))
+
             for g1 in group1:
                 nodename1 = self.get_keyvalue(g1,"funcname")
                 functype1 = self.get_keyvalue(g1,"functype")
                 methodname1 = self.get_keyvalue(g1,"methodname")
                 methodtype1 = self.get_keyvalue(g1,"methodtype")
-
                 funcname1 = self.func_prefix(functype1)+nodename1
+
+                funcname1list.append(funcname1)
+
                 if methodname1 is not None:
                     methodname1 = self.method_prefix(methodtype1)+methodname1
 
@@ -166,7 +189,10 @@ class workflowWay(DecompositionTree):
                     methodname2 = self.get_keyvalue(g2,"methodname")
                     methodtype2 = self.get_keyvalue(g2,"methodtype")
                     funcname2 = self.func_prefix(functype2)+nodename2
-                    applymethodname2 = self.applymethod_prefix(functype2)+nodename2
+
+                    print("apply",functype2,methodname2)
+                    applymethodname2 = self.applymethod_prefix(functype2)+methodname2
+
                     if methodname2 is not None:
                         methodname2 = self.method_prefix(methodtype2)+methodname2
 
@@ -740,23 +766,40 @@ if __name__ == "__main__":
 
     namelist = sys.argv[1:]
                     
-    print (namelist)
-
     if len(namelist)==0:
         sys.exit(1)
 
     dottree = Digraph("caus")
+    dottree.graph_attr["rankdir"] = "TB"
 
     for filename in namelist:
 
         basename,ext = os.path.splitext(filename)
         ext = ext[1:]
 
+        with open(filename) as f:
+            data = yaml.safe_load(f)
+        print(list(data.keys()))
+        if "workflow" in data.keys():
+            filetype = "wf"
+        elif "link" in data.keys():
+            filetype = "taxo"
+        else:
+            print("format not supported in",filename)
+            raise
+
         if ext in ["yml"]:
-            wf = workflowWay()
-            wf.load(filename)
-            wf.linktree()
-            dottree = wf.create_tree(dottree)
+            if filetype == "wf":
+                wf = workflowWay()
+                wf.load(filename)
+                wf.linktree()
+                dottree = wf.create_tree(dottree)
+
+            elif filetype == "taxo":
+                taxo = taxologyWay()
+                taxo.load(filename)
+                taxo.linktree()
+                dottree = taxo.create_tree(dottree)
     
     dottree.format="png"
     dottree.render(view=True)
