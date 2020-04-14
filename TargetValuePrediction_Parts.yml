@@ -1,47 +1,53 @@
-method: 
-  - name: getModelHamiltonian
-    nodeytpe: "PartOf"
-    function:
-     - name: ModelHamiltonianType
-       nodetype: "IsA"
-       parts:
-         - name: ElectronModelHamiltonian
-           nodetype: "PartOf"
-           parts:
-             - name: OneBody
-               nodetype: "PartOf"
-               parts:
-                 - name: energyLevel
-                 - name: hoppingIntegral
-             - name: TwoBody
-               nodetype: "PartOf"
-               parts:
-                 - name: ElectronTwoBodyInteractionChannel
-                   nodetype: "IsA"
-                   method:
-                     - name: UTM3d
-                     - name: UTM3dRE4f
-         - name: SpinModelHamiltonian
-           nodetype: "PartOf"
-           parts:
-             - name: SpinChannelSelection
-               nodetype: "IsA"
-               method:
-                 - name: SpinTM3d
-                 - name: SpinTM3dRE4f
-                 - name: SpinTM3dRE4fRE5d
-             - name: SpinSpinInteraction
-             - name: Anisotropy
-     - name: ValuesOfTermsOfHamiltonian
-       parts:
-           method:
-         - name: MatchingExperiment
-           method:
-  - name: Solver
-    nodetype: "IsA"
-    method:
-      - name: meanfield
-      - name: MC
-  - name: TargetValue
-    parts: 
+link: 
+  - nodename: getModelHamiltonian
+    linktype: "PartOf"
+    link:
+     - nodename: ModelHamiltonianType
+       nodetype: parts
+       linktype: "IsA"
+       link:
+         - nodename: ElectronModelHamiltonian
+           nodetype: parts
+           linktype: "PartOf"
+           link:
+             - nodename: OneBody
+               nodetype: parts
+               linktype: "PartOf"
+               link:
+                 - nodename: energyLevel
+                 - nodename: hoppingIntegral
+             - nodename: TwoBody
+               nodetype: parts
+               linktype: "PartOf"
+               link:
+                 - nodename: ElectronTwoBodyInteractionChannel
+                   linktype: "IsA"
+                   link:
+                     - nodename: UTM3d
+                     - nodename: UTM3dRE4f
+         - nodename: SpinModelHamiltonian
+           linktype: "PartOf"
+           nodetype: parts
+           link:
+             - nodename: SpinChannelSelection
+               linktype: "IsA"
+               link:
+                 - nodename: SpinTM3d
+                 - nodename: SpinTM3dRE4f
+                 - nodename: SpinTM3dRE4fRE5d
+             - nodename: SpinSpinInteraction
+             - nodename: Anisotropy
+     - nodename: ValuesOfTermsOfHamiltonian
+       nodetype: parts
+       linktype: IsA
+       link:
+         - nodename: MatchingExperiment
+         - nodename: FirstPrinciples
+  - nodename: Solver
+    linktype: "IsA"
+    link:
+      - nodename: meanfield
+      - nodename: MC
+  - nodename: TargetValue
+    nodetype: parts 
 

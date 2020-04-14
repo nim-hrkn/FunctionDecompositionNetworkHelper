@@ -1,0 +1,11 @@
+link:
+  - nodename: getTargetValue
+    nodetype: function
+    linktype: FunctionFirst
+    link:
+      - nodename: Hamiltinian
+        nodetype: parts
+      - nodename: Solver
+        nodetype: method
+      - nodename: PredictTargetValue
+        nodetype: function

@@ -64,7 +64,7 @@ class DecompositionTree(object):
         if linktype is None:
             linktype = "method"
         if linktype=="parts":
-            return "integrate_themToGet_"
+            return "apply_thethodToGet_"
         elif linktype == "method":
             return "apply_"
         elif linktype=="function":
@@ -245,12 +245,12 @@ class taxologyWay(DecompositionTree):
 
                     name1 = self.get_keyvalue(linkline1,"nodename")
                     linktype1 = self.get_keyvalue(linkline1,"linktype")
-                    method1 = self.get_keyvalue(linkline1,"link")
+                    link1 = self.get_keyvalue(linkline1,"link")
                     nodetype1 = self.get_keyvalue(linkline1,"nodetype")
                     
                     name2 = self.get_keyvalue(linkline2,"nodename")
                     linktype2 = self.get_keyvalue(linkline2,"linktype")
-                    metohd2 = self.get_keyvalue(linkline2,"link")
+                    link2 = self.get_keyvalue(linkline2,"link")
                     nodetype2 = self.get_keyvalue(linkline2,"nodetype")
 
                     funcp = self.func_prefix(pnodetype) + plinkname
@@ -258,16 +258,23 @@ class taxologyWay(DecompositionTree):
                     func1 = self.func_prefix(nodetype1) + name1
                     method1 = self.method_prefix(nodetype1) + name1
                     func2 = self.func_prefix(nodetype2) + name2
-                    metohd2 = self.method_prefix(nodetype2) + name2
+                    method2 = self.method_prefix(nodetype2) + name2
                     apply2 = self.applymethod_prefix(nodetype2) + name2
 
                     # generate links
-                    self.edgelist.append(",".join([func2,metohd2]))
-                    self.boxnodelist.append(metohd2)
-                    self.edgelist.append(",".join([metohd2,func1]))
-                    self.edgelist.append(",".join([metohd2,apply2]))
+                    self.edgelist.append(",".join([func2,method2]))
+                    self.boxnodelist.append(method2)
+                    self.edgelist.append(",".join([method2,func1]))
+                    self.edgelist.append(",".join([method2,apply2]))
                     self.invisedgelist.append(",".join([func1,apply2]))
                     self.sameranklist.append(",".join([func1,apply2]))
+
+                    self.gen_connection_link_link(link1,linktype1,name1,nodetype1)
+                    self.gen_connection_link_link(link2,linktype2,name2,nodetype2)
+
+            else:
+                print("not supported, linktype=",plinktype)
+                raise
 
                     
     def linktree(self):
