@@ -4,8 +4,10 @@ workflow:
   - group:
     - funcname: Group
       functype: parts
-      methodname: GenerategGroup
+      methodname: GenerateGroup
+      methodtype: function
   - group:
     - funcname: Subgroup
       functype: parts
       methodname: GenerateSubgroupFromGroup
+      methodtype: function

@@ -10,3 +10,4 @@ workflow:
     - funcname: PredictedTargetValue
       functype: parts
       methodname: PredictedTargetValue
+      methodtype: parts

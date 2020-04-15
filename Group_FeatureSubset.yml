@@ -17,9 +17,11 @@ workflow:
     - funcname: FeatureSubgroupDistanceThresholdAll
       functype: parts
       methodname: chooseFeatureSubgroupDistanceThresholdAll
+      methodtype: function
     - funcname: FeatureGroupDendrogram
       functype: parts
       methodname: genFeatureGroupDendrogram
+      methodtype: function
   - group:
     - funcname: AllFeatureSubgroups
       functype: parts

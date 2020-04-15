@@ -5,6 +5,7 @@ workflow:
     - funcname: AllModels
       functype: parts
       methodname: generateAllModels
+      methodtype: function
   - group:
     - funcname: VisualizedUnprocessedImportance
       functype: parts
@@ -15,6 +16,7 @@ workflow:
     - funcname: AllModels
       functype: parts
       methodname: generateAllModels
+      methodtype: function
   - group:
     - funcname: VisualizedUnprocessedImportance
       functype: parts

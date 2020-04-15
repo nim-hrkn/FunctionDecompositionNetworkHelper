@@ -52,7 +52,7 @@ class DecompositionTree(object):
             linktype = "method"
         if linktype == "parts":
             return "method_toGet_"
-        elif linktype == "method":
+        elif linktype == "method" or linktype == "direct":
             return ""
         elif linktype == "function":
             return "method_to_"
@@ -63,11 +63,11 @@ class DecompositionTree(object):
     def func_prefix(self,linktype=None):
         if linktype is None:
             linktype ="parts"
-        if linktype=="parts":
+        if linktype == "parts":
             return "get_"
         elif linktype == "method":
             return "get_outputOf_"
-        elif linktype=="function":
+        elif linktype == "function" or linktype == "direct":
             return ""
         else:
             print("func_prefix: unsupported",linktype)
@@ -76,11 +76,11 @@ class DecompositionTree(object):
     def applymethod_prefix(self,linktype=None):
         if linktype is None:
             linktype = "method"
-        if linktype=="parts":
+        if linktype == "parts":
             return "apply_methodToGet_"
         elif linktype == "method":
             return "apply_"
-        elif linktype=="function":
+        elif linktype == "function":
             return "apply_methodTo_"
         else:
             print("applymethod_prefix: unsupported",linktype)
@@ -266,7 +266,7 @@ class workflowWay(DecompositionTree):
                        self.wf_edgelist.append(",".join([methodname2,nodename2]))
 
                     if methodname1 is not None:
-                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(methodname1,methodtype2))
+                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(methodname1,methodtype1))
                     if methodname2 is not None:
                         self.wf_methodlist.append("{0},{{{0}|{1}}}".format(methodname2,methodtype2))
                     if nodename1 is not None:

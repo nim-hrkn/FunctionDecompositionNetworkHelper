@@ -16,7 +16,9 @@ link:
                linktype: "PartOf"
                link:
                  - nodename: energyLevel
+                   nodetype: parts
                  - nodename: hoppingIntegral
+                   nodetype: parts
              - nodename: TwoBody
                nodetype: parts
                linktype: "PartOf"
@@ -37,7 +39,9 @@ link:
                  - nodename: SpinTM3dRE4f
                  - nodename: SpinTM3dRE4fRE5d
              - nodename: SpinSpinInteraction
+               nodetype: parts
              - nodename: Anisotropy
+               nodetype: parts
      - nodename: ValuesOfTermsOfHamiltonian
        nodetype: parts
        linktype: IsA
