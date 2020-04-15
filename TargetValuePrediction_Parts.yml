@@ -1,5 +1,6 @@
 link: 
-  - nodename: getModelHamiltonian
+  - nodename: get_ModelHamiltonian
+    nodetype: function
     linktype: "PartOf"
     link:
      - nodename: ModelHamiltonianType

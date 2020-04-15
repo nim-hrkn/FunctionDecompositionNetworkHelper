@@ -19,15 +19,20 @@ import yaml
         
 class DecompositionTree(object):
 
-    def __init__(self,basename = "caus"):
+    def __init__(self,basename = "caus",dotoption=None):
         if basename is None:
             basename = "caus"
         self.basename = basename
+
+        if dotoption is None:
+             dotoption={"invisstyle":"invis"}
+        self.dotoption = dotoption
+        
         
         self.nodetype = ["method","parts","function"] 
         self.linktype = ["IsA","PartOf","FunctionFirst"]
 
-        self.invisstyle = "invis"
+        self.invisstyle = self.dotoption["invisstyle"]
         
         self.edgelist = []
         self.invisedgelist = []
@@ -64,7 +69,7 @@ class DecompositionTree(object):
         if linktype is None:
             linktype = "method"
         if linktype=="parts":
-            return "apply_thethodToGet_"
+            return "apply_methodToGet_"
         elif linktype == "method":
             return "apply_"
         elif linktype=="function":
@@ -122,9 +127,9 @@ class DecompositionTree(object):
         
 
 class workflowWay(DecompositionTree):
-    def __init__(self,basename="taxo"):
+    def __init__(self,basename="taxo",dotoption=None):
         print("workflowWay")
-        super().__init__(basename)
+        super().__init__(basename,dotoption)
 
         self.den_edgelist = []
 
@@ -148,9 +153,20 @@ class workflowWay(DecompositionTree):
     def convert_workflow(self,wf):
         grouplist = []
         for groupline in wf:
-            print(">>>",groupline)
-            print(">>group",groupline["group"])
             grouplist.append( groupline["group"] )
+
+        # node order
+        for group1 in grouplist:
+            funcname1list = []
+            for g1 in group1:
+                nodename1 = self.get_keyvalue(g1,"funcname")
+                functype1 = self.get_keyvalue(g1,"functype")
+                funcname1 = self.func_prefix(functype1)+nodename1
+                funcname1list.append(funcname1)
+            if len(funcname1list)>1:
+                print(">invis",funcname1list)
+                self.invisedgelist.append(",".join(funcname1list))
+                self.sameranklist.append(",".join(funcname1list))
 
         for group1,group2 in zip(grouplist[:-1],grouplist[1:]):
             print("g1",group1)
@@ -222,9 +238,9 @@ class workflowWay(DecompositionTree):
 
 
 class taxologyWay(DecompositionTree):
-    def __init__(self,basename="taxo"):
+    def __init__(self,basename="taxo",dotoption=None):
 
-        super().__init__(basename)
+        super().__init__(basename,dotoption)
 
         self.den_edgelist = []
 
@@ -769,6 +785,8 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
+    dotoption = {"invisstyle":"dotted"}
+
     dottree = Digraph("caus")
     dottree.graph_attr["rankdir"] = "TB"
 
@@ -790,13 +808,13 @@ if __name__ == "__main__":
 
         if ext in ["yml"]:
             if filetype == "wf":
-                wf = workflowWay()
+                wf = workflowWay(dotoption=dotoption)
                 wf.load(filename)
                 wf.linktree()
                 dottree = wf.create_tree(dottree)
 
             elif filetype == "taxo":
-                taxo = taxologyWay()
+                taxo = taxologyWay(dotoption=dotoption)
                 taxo.load(filename)
                 taxo.linktree()
                 dottree = taxo.create_tree(dottree)

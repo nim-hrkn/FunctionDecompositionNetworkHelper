@@ -20,12 +20,13 @@ workflow:
     - funcname: FeatureGroupsDistanceThresholdAll
       functype: parts
       methodname: chooseFeatureGroupsDistanceThresholdAll
+      methodtype: function
     - funcname: FeatureDendrogram
       functype: parts
   - group:
     - funcname: ClusteredSetCandates
       functype: parts
-      methodname: 2)DendrogramClusteringFeatureGroups
+      methodname: DendrogramClusteringFeatureGroups
 - groupname: dendrogram
   workflow:
   - group:
@@ -41,7 +42,9 @@ workflow:
     - funcname: AllData
       functype: parts
       methodname: genAllData
+      methodtype: function
   - group:
     - funcname: FeatureDistanceMatrix
       functype: parts
       methodname: genFeatureDistanceMatrix
+      methodtype: function

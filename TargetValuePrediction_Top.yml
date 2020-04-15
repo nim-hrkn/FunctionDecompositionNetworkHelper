@@ -1,11 +1,12 @@
-link:
-  - nodename: getTargetValue
-    nodetype: function
-    linktype: FunctionFirst
-    link:
-      - nodename: Hamiltinian
-        nodetype: parts
-      - nodename: Solver
-        nodetype: method
-      - nodename: PredictTargetValue
-        nodetype: function
+workflow:
+- groupname: dummy
+  workflow:
+  - group:
+    - funcname: ModelHamiltonian
+      functype: parts
+    - funcname: Solver
+      functype: parts
+  - group:
+    - funcname: PredictedTargetValue
+      functype: parts
+      methodname: PredictedTargetValue

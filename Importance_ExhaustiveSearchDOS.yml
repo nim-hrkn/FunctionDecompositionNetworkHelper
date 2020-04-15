@@ -11,7 +11,7 @@ workflow:
   - group:
     - funcname: VisualizedImportance
       functype: parts
-      methodname: 2)VisualizeStrongRelevanceDOS
+      methodname: VisualizeStrongRelevanceDOS
 - groupname: weakDOS
   workflow:
   - group:
@@ -24,4 +24,4 @@ workflow:
   - group:
     - funcname: VisualizedImportance
       functype: parts
-      methodname: 2)VisualiWeakRelevanceDOS
+      methodname: VisualiWeakRelevanceDOS

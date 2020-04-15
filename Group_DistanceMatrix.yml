@@ -5,6 +5,7 @@ workflow:
     - funcname: AllData
       functype: parts
       methodname: genAllData
+      methodtype: function
   - group:
     - funcname: FeatureDistanceMatrix
       functype: parts
@@ -15,6 +16,7 @@ workflow:
     - funcname: AllData
       functype: parts
       methodname: genAllData
+      methodtype: function
   - group:
     - funcname: FeatureDistanceMatrix
       functype: parts
@@ -25,6 +27,7 @@ workflow:
     - funcname: AllData
       functype: parts
       methodname: genAllData
+      methodtype: function
   - group:
     - funcname: FeatureDistanceMatrix
       functype: parts
@@ -35,6 +38,7 @@ workflow:
     - funcname: AllData
       functype: parts
       methodname: genAllData
+      methodtype: function
   - group:
     - funcname: FeatureDistanceMatrix
       functype: parts

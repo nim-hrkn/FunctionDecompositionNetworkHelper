@@ -59,6 +59,7 @@ link:
                 - nodename: ProjectedValenceQuantumNumber4f
                   linktype: IsA
                   link:
+                    - nodename: gJ
                     - nodename: J4f(gJ-1)
                     - nodename: J4f(2-gJ)
       - nodename: ExperimentalPrepresentativeProperty

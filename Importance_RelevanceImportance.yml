@@ -5,23 +5,29 @@ workflow:
     - funcname: BestScoreExceptGroup
       functype: parts
       methodname: generateBestScoreExceptGroup
+      methodtype: function
     - funcname: BestScoreOfAll
       functype: parts
       methodname: generateBestOfAllModels
+      methodtype: function
   - group:
     - funcname: StrongDescriptorGroupImportance
       functype: parts
-      methodname: 2)takeDifferenceBetwenBestScoreOfAllAndBestScoreExceptGroup
+      methodname: takeDifferenceBetwenBestScoreOfAllAndBestScoreExceptGroup
+      methodtype: function
 - groupname: weakRelevance
   workflow:
   - group:
     - funcname: BestScoreExceptGroupWithSubgroup
       functype: parts
       methodname: generateBestScoreExceptGroupWithSubgroup
+      methodtype: function
     - funcname: BestScoreExceptGroup
       functype: parts
       methodname: generateBestScoreExceptGroup
+      methodtype: function
   - group:
     - funcname: WeakDescriptorGroupImportance
       functype: parts
-      methodname: 2)takeDifferenceBetwenBestScoreExceptGroupAndBestScoreExceptGroupWithSubgroup
+      methodname: takeDifferenceBetwenBestScoreExceptGroupAndBestScoreExceptGroupWithSubgroup
+      methodtype: function

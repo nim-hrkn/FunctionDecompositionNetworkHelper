@@ -5,20 +5,25 @@ workflow:
     - funcname: RelevanceImportance
       functype: parts
       methodname: GenerateStrongRelavance
+      metohdtype: function
   - group:
     - funcname: VisualizedImportance
       functype: parts
       methodname: VisualizeImportanceWithTextList
+      metohdtype: function
 - groupname: dendrogram
   workflow:
   - group:
     - funcname: FeatureDendrogram
       functype: parts
       methodname: generateDendrogram
+      metohdtype: function
     - funcname: RelevanceImportance
       functype: parts
       methodname: GenerateStrongRelavance
+      metohdtype: function
   - group:
     - funcname: VisualizedImportance
       functype: parts
-      methodname: 2)VisualizeImportanceWithDendrogram
+      methodname: VisualizeImportanceWithDendrogram
+      metohdtype: function

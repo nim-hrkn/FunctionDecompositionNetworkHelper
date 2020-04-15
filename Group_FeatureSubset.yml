@@ -23,4 +23,4 @@ workflow:
   - group:
     - funcname: AllFeatureSubgroups
       functype: parts
-      methodname: 2)DendrogramSubgroupsSelection
+      methodname: DendrogramSubgroupsSelection

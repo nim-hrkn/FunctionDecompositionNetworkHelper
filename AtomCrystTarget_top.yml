@@ -8,6 +8,7 @@ workflow:
     - funcname: CrystTargetUsingDescriptor
       functype: parts
       methodname: CrystDescriptorToCrystTarget
+      methodtype: method
 - groupname: AD_CD_CT
   workflow:
   - group:
@@ -18,21 +19,26 @@ workflow:
     - funcname: CrystDescriptor
       functype: parts
       methodname: AtomDescriptorToCrystDescriptor
+      methodtype: method
   - group:
     - funcname: CrystTargetUsingDescriptor
       functype: parts
       methodname: AtomTargetToCrystTarget
+      methodtype: method
 - groupname: AD_AT_CT
   workflow:
   - group:
     - funcname: AtomDescriptor
       functype: parts
       methodname: generateAtomDescriptor
+      methodtype: function
   - group:
     - funcname: AtomTarget
       functype: parts
       methodname: AtomDescriptorToAtomTarget
+      methodtype: method
   - group:
     - funcname: CrystTargetUsingDescriptor
       functype: parts
       methodname: AtomTargetToCrystTarget
+      methodtype: method
