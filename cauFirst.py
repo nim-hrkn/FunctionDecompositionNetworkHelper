@@ -41,11 +41,11 @@ class DecompositionTree(object):
         self.sameranklist = []
 
     def make_nodelabel(self,s):
-        if self.nodelabel_length>0:
+        if self.nodelabel_length>5:
             v = [ s[i:i+self.nodelabel_length] for i in range(0,len(s),self.nodelabel_length) ]
             return "\n".join(v)
         else:
-            return v
+            return s
      
     def method_prefix(self,linktype=None):
         if linktype is None:
@@ -146,6 +146,13 @@ class workflowWay(DecompositionTree):
         #self.den_edgelist = []
 
         #self.excludenodelist = []
+
+        self.wf_edgelist = []
+        self.wf_objlist = []
+        self.wf_methodlist = []
+        self.wf_invisedgelist = []
+        self.wf_sameranklist = []
+
         self.data = None
 
     def load(self,filename):
@@ -162,7 +169,7 @@ class workflowWay(DecompositionTree):
             value = None
         return value
 
-    def convert_workflow(self,wf):
+    def convert_from_workflow(self,wf):
         grouplist = []
         for groupline in wf:
             grouplist.append( groupline["group"] )
@@ -170,15 +177,27 @@ class workflowWay(DecompositionTree):
         # node order
         for group1 in grouplist:
             funcname1list = []
+            nodename1list = []
+            methodname1list = []
             for g1 in group1:
                 nodename1 = self.get_keyvalue(g1,"funcname")
                 functype1 = self.get_keyvalue(g1,"functype")
+                methodname1 = self.get_keyvalue(g1,"methodname")
+                methodtype1 = self.get_keyvalue(g1,"methodtype")
                 funcname1 = self.func_prefix(functype1)+nodename1
+                if methodname1 is not None:
+                    methodname1 = self.method_prefix(methodtype1)+methodname1
                 funcname1list.append(funcname1)
+                nodename1list.append(nodename1)
+                if methodname1 is not None:
+                    methodname1list.append(methodname1)
             if len(funcname1list)>1:
-                print(">invis",funcname1list)
                 self.invisedgelist.append(",".join(funcname1list))
                 self.sameranklist.append(",".join(funcname1list))
+            if len(methodname1list)>1:
+                print(">wf_invis",funcname1list)
+                self.wf_invisedgelist.append(",".join(methodname1list))
+                self.wf_sameranklist.append(",".join(methodname1list))
 
         for group1,group2 in zip(grouplist[:-1],grouplist[1:]):
             print("g1",group1)
@@ -239,10 +258,69 @@ class workflowWay(DecompositionTree):
                     print("> [{}]({})-{}({})".format(methodname2,methodtype2,funcname2,functype2))
                     print()
 
+                    if methodname1 is not None and nodename1 is not None:
+                       self.wf_edgelist.append(",".join([methodname1,nodename1]))
+                    if methodname2 is not None and nodename1 is not None:
+                       self.wf_edgelist.append(",".join([nodename1,methodname2]))
+                    if methodname2 is not None and nodename2 is not None:
+                       self.wf_edgelist.append(",".join([methodname2,nodename2]))
+
+                    if methodname1 is not None:
+                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(methodname1,methodtype2))
+                    if methodname2 is not None:
+                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(methodname2,methodtype2))
+                    if nodename1 is not None:
+                        self.wf_objlist.append("{0},{{{0}|{1}}}".format(nodename1,functype2))
+                    if nodename2 is not None:
+                        self.wf_objlist.append("{0},{{{0}|{1}}}".format(nodename2,functype2))
+
+    def drop_wf_dup(self,del_dup=True):
+        if del_dup:
+            self.wf_edgelist = list(set(self.wf_edgelist))
+            self.wf_invisedgelist = list(set(self.wf_invisedgelist))
+            self.wf_objlist = list(set(self.wf_objlist))
+            self.wf_methodlist = list(set(self.wf_methodlist))
+            self.wf_sameranklist = list(set(self.wf_sameranklist))
+
+    def create_workflow(self,dot=None):
+        if dot is None:
+            dot = graphiz(self.basename)
+            dot.graph_attr["rankdir"] = "BT"
+
+        self.drop_wf_dup()
+
+        print("wf_invisedgelist>",self.wf_invisedgelist)
+
+        for edge in self.wf_edgelist:
+            edge = edge.split(",")
+            print("wf_edge",edge)
+            for edge1,edge2 in zip(edge[:-1],edge[1:]):
+                dot.edge(edge1,edge2)
+#        for node in self.boxnodelist:
+#            dot.node(node,shape="record")
+        invisstyle = self.dotoption["node_sequence_style"]
+        for edge in self.wf_invisedgelist:
+            edge = edge.split(",")
+            for edge1,edge2 in zip(edge[:-1],edge[1:]):
+                dot.edge(edge1,edge2,style=invisstyle)
+        for node in self.wf_objlist:
+            s = node.split(",")
+            dot.node(s[0],shape="record",color="white",label=s[1]) 
+        for node in self.wf_methodlist:
+            s = node.split(",")
+            dot.node(s[0],shape="record",label=s[1]) 
+        for samerank in self.wf_sameranklist:
+            s = samerank.split(",")
+            with dot.subgraph() as sub:
+                sub.attr(rank="same")
+                for x in s:
+                    sub.node(x)
+
+        return dot 
 
     def gen_dendrogram(self,workflowlist):
         for wf in workflowlist:
-            self.convert_workflow(wf["workflow"])
+            self.convert_from_workflow(wf["workflow"])
 
     def linktree(self):
         data = self.data
@@ -740,6 +818,7 @@ class workFlowWay(DecompositionTree):
         
         if dot is None:
             dot = Digraph(self.basename)
+            dot.graph_attr["rankdir"] = "BT"
         dot = self.gen_workflow(dot)
         
         return dot
@@ -804,7 +883,7 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
-    dotoption = {"node_sequence_style":"dotted"}
+    dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0}
 
     dottree = Digraph("caus")
     dottree.graph_attr["rankdir"] = "TB"
@@ -832,6 +911,12 @@ if __name__ == "__main__":
                 wf.linktree()
                 dottree = wf.create_tree(dottree)
 
+                dotwf = Digraph(basename)
+                dotwf.graph_attr["rankdir"] = "BT"
+                dotwf = wf.create_workflow(dotwf)
+                dotwf.format = "png"
+                dotwf.render(view=True)
+ 
             elif filetype == "taxo":
                 taxo = taxologyWay(dotoption=dotoption)
                 taxo.load(filename)
