@@ -15,6 +15,7 @@ workflow:
     - funcname: AtomDescriptor
       functype: parts
       methodname: generateAtomDescriptor
+      methodtype: function
   - group:
     - funcname: CrystDescriptor
       functype: parts
