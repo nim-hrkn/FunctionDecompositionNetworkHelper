@@ -11,7 +11,7 @@ workflow:
       methodname: generateAllModels
       methodtype: function
   - group:
-    - funcname: VisualizedImportance
+    - funcname: VisualizedRelevanceDOSImportance
       functype: parts
       methodname: VisualizeStrongRelevanceDOS
       methodtype: function
@@ -27,7 +27,7 @@ workflow:
       methodname: ChooseAllModelsExceptGroup
       methodtype: function
   - group:
-    - funcname: VisualizedImportance
+    - funcname: VisualizedRelevanceDOSImportance
       functype: parts
       methodname: VisualizeWeakRelevanceDOS
       methodtype: function

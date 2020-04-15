@@ -36,15 +36,15 @@ workflow:
     - funcname: FeatureDendrogram
       functype: parts
       methodname: FeatureDistanceMatrixHierarchalClustering
-- groupname: dendrogram
-  workflow:
-  - group:
-    - funcname: AllData
-      functype: parts
-      methodname: genAllData
-      methodtype: function
-  - group:
-    - funcname: FeatureDistanceMatrix
-      functype: parts
-      methodname: genFeatureDistanceMatrix
-      methodtype: function
+#- groupname: dendrogram
+#  workflow:
+#  - group:
+#    - funcname: AllData
+#      functype: parts
+#      methodname: genAllData
+#      methodtype: function
+#  - group:
+#    - funcname: FeatureDistanceMatrix
+#      functype: parts
+#      methodname: genFeatureDistanceMatrix
+#      methodtype: function

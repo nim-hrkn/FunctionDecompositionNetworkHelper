@@ -429,8 +429,8 @@ class taxologyWay(DecompositionTree):
                     link = self.get_keyvalue(linkline,"link")
                     nodetype = self.get_keyvalue(linkline,"nodetype")
 
-                    print(">>",pnodename,plinktype,pnodetype,":",name,nodetype,linktype)
-                    print(">",link)
+                    print(">>parent-child>",pnodename,plinktype,pnodetype,":",name,nodetype,linktype)
+                    print(">>link>",link)
 
 
                     namelist.append(name)
@@ -441,13 +441,19 @@ class taxologyWay(DecompositionTree):
                     func1 = self.func_prefix(nodetype) + name
                     method1 = self.method_prefix(nodetype) + name
 
-                    if link is None: 
-                        self.edgelist.append(",".join([funcp,method1]))
-                        self.boxnodelist.append(method1)
+                    if False:
+                        if link is None: 
+                            self.edgelist.append(",".join([funcp,method1]))
+                            self.boxnodelist.append(method1)
+                        else:
+                            self.edgelist.append(",".join([funcp,methodp]))
+                            self.boxnodelist.append(methodp)
+                            self.edgelist.append(",".join([methodp,func1]))
                     else:
-                        self.edgelist.append(",".join([funcp,methodp]))
-                        self.boxnodelist.append(methodp)
-                        self.edgelist.append(",".join([methodp,func1]))
+                        print("connect>",funcp,method1)
+                        self.edgelist.append(",".join([funcp,method1]))
+                        self.edgelist.append(",".join([method1,func1]))
+                        self.boxnodelist.append(method1)
                   
                     self.gen_connection_link_link(link,linktype,name,nodetype)
 
@@ -883,7 +889,8 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
-    dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0}
+    #dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0}
+    dotoption = { "nodelabel_length": 15}
 
     dottree = Digraph("caus")
     dottree.graph_attr["rankdir"] = "TB"
