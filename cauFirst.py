@@ -143,9 +143,9 @@ class workflowWay(DecompositionTree):
         print("workflowWay")
         super().__init__(basename,dotoption)
 
-        self.den_edgelist = []
+        #self.den_edgelist = []
 
-        self.excludenodelist = []
+        #self.excludenodelist = []
         self.data = None
 
     def load(self,filename):
@@ -256,7 +256,7 @@ class taxologyWay(DecompositionTree):
 
         self.den_edgelist = []
 
-        self.excludenodelist = []
+        #self.excludenodelist = []
         self.data = None
 
 
@@ -322,8 +322,8 @@ class taxologyWay(DecompositionTree):
                     funcp = self.func_prefix(pnodetype) + plinkname
                     methodp = self.method_prefix(pnodetype) + plinkname 
 
-                    if plinkname not in self.excludenodelist:
-                        self.edgelist.append(",".join([funcp,methodp]) ) 
+                    #if plinkname not in self.excludenodelist:
+                    self.edgelist.append(",".join([funcp,methodp]) ) 
                     self.boxnodelist.append(methodp)
 
                     #methodp->func edge
