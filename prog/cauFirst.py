@@ -171,16 +171,40 @@ class workflowWay(DecompositionTree):
 
     def gen_names(self,g2):
 
-        nodename2 = self.get_keyvalue(g2,"funcname")
-        functype2 = self.get_keyvalue(g2,"functype")
-        methodname2 = self.get_keyvalue(g2,"methodname")
-        methodtype2 = self.get_keyvalue(g2,"methodtype")
-        funcname2 = self.func_prefix(functype2)+nodename2
-        applymethodname2 = None
+        complement = self.get_keyvalue(g2,"complement")
 
-        if methodname2 is not None:
-            methodname2 = self.method_prefix(methodtype2)+methodname2
-            applymethodname2 = self.applymethod_prefix(functype2)+methodname2
+        if complement == "auto":
+
+            nodename2 = self.get_keyvalue(g2,"funcname")
+            methodname2 = self.get_keyvalue(g2,"methodname")
+            functype2 = self.get_keyvalue(g2,"functype")
+            methodtype2 = self.get_keyvalue(g2,"methodtype")
+            if nodename2 is not None:
+                funcname2 = self.func_prefix(functype2)+nodename2
+            applymethodname2 = None
+
+            if nodename2 is None and methodname2 is not None:
+                nodename2 = "outputOf_to"+methodname2
+                funcname2 = "gen_outputOfTo_"+methodname2                   
+                nodetype2 = "auto"
+            elif nodename2 is not None and methodname2 is None:
+                methodname2 = "method_to_"+funcname2
+                methodtype2 = "auto"
+
+            applymethodname2 = self.applymethod_prefix("method")+methodname2
+
+        else:
+
+            nodename2 = self.get_keyvalue(g2,"funcname")
+            functype2 = self.get_keyvalue(g2,"functype")
+            methodname2 = self.get_keyvalue(g2,"methodname")
+            methodtype2 = self.get_keyvalue(g2,"methodtype")
+            funcname2 = self.func_prefix(functype2)+nodename2
+            applymethodname2 = None
+
+            if methodname2 is not None:
+                methodname2 = self.method_prefix(methodtype2)+methodname2
+                applymethodname2 = self.applymethod_prefix(methodtype2)+methodname2
 
         return nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2
  
