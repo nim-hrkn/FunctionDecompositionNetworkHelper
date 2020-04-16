@@ -1,0 +1,23 @@
+workflow:
+- groupname: indicatordiagram
+  workflow:
+  - group:
+    - funcname: AllModels
+      functype: parts
+      methodname: generateAllModels
+      methodtype: function
+  - group:
+    - funcname: VisualizedUnprocessedImportance
+      functype: parts
+      methodname: indicatorDiagram
+- groupname: weightdiagram
+  workflow:
+  - group:
+    - funcname: AllModels
+      functype: parts
+      methodname: generateAllModels
+      methodtype: function
+  - group:
+    - funcname: VisualizedUnprocessedImportance
+      functype: parts
+      methodname: weightDiagram

@@ -1,0 +1,97 @@
+link:
+  - nodename: AtomProperty
+    nodetype: parts
+    linktype: IsA
+    link: 
+      - nodename: PeriodicTableAtomProperty
+        nodetype: parts
+        linktype: IsA
+        link:
+        - nodename: Z
+        - nodename: mass 
+      - nodename: IsolatedThoreticalAtomProperty
+        nodetype: parts
+        linktype: IsA
+        link: 
+        - nodename: EigenEnergyProperty
+          nodetype: parts
+          linktype: IsA
+          link: 
+           - nodename: AllChannelEigenEnergyProperty
+             nodetype: parts
+             linktype: IsA
+             link:
+               - nodename: Etot
+           - nodename: ChannelDecomposedEigenEnergyProperty
+             nodetype: parts
+             linktype: IsA
+             link:
+               - nodename: Es
+               - nodename: Ep
+               - nodename: Ed
+               - nodename: Ef
+        - nodename: TheoreticalLengthProperty
+          nodetype: parts
+          linktype: IsA
+          link: 
+            - nodename: AllChannelThereticalLengthProperty
+              nodetype: parts
+              linktype: IsA
+              link:
+                - nodename: r2
+            - nodename: ChannelDecomposedThereticalLengthProperty 
+              nodetype: parts
+              linktype: IsA
+              link:
+                - nodename: r2s
+                - nodename: r2p
+                - nodename: r2d
+                - nodename: r2f
+        - nodename: ValenceQuantumNumber
+          nodetype: parts
+          linktype: IsA
+          link:
+            - nodename: ValenceQuantumNumber3d
+              nodetype: parts
+              linktype: IsA
+              link:
+                - nodename: S3d
+                - nodename: L3d
+                - nodename: J3d
+            - nodename: ValenceQuantumNumber4f
+              nodetype: parts
+              linktype: IsA
+              link:
+                - nodename: DirectValenceQuantumNumber4f
+                  linktype: IsA
+                  link:
+                    - nodename: S4f
+                    - nodename: L4f
+                    - nodename: J4f
+                - nodename: ProjectedValenceQuantumNumber4f
+                  linktype: IsA
+                  link:
+                    - nodename: gJ
+                    - nodename: J4f(gJ-1)
+                    - nodename: J4f(2-gJ)
+      - nodename: ExperimentalPrepresentativeProperty
+        nodetype: parts
+        linktype: IsA
+        link:
+          - nodename: ExperimentalLengthProperty
+            nodetype: parts
+            linktype: IsA
+            link:
+              - nodename: AtomicRadius
+              - nodename: AtomicCovalentRadius
+              - nodename: AtomicVdWRadius
+          - nodename: ExperimentalEnergyProperty
+            nodetype: parts
+            linktype: IsA
+            link:
+              - nodename: IonizationPotential
+              - nodename: ElectronAffinity
+
+
+
+
