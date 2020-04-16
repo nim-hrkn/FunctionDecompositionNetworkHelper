@@ -169,6 +169,22 @@ class workflowWay(DecompositionTree):
             value = None
         return value
 
+    def gen_names(self,g2):
+
+        nodename2 = self.get_keyvalue(g2,"funcname")
+        functype2 = self.get_keyvalue(g2,"functype")
+        methodname2 = self.get_keyvalue(g2,"methodname")
+        methodtype2 = self.get_keyvalue(g2,"methodtype")
+        funcname2 = self.func_prefix(functype2)+nodename2
+        applymethodname2 = None
+
+        if methodname2 is not None:
+            methodname2 = self.method_prefix(methodtype2)+methodname2
+            applymethodname2 = self.applymethod_prefix(functype2)+methodname2
+
+        return nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2
+ 
+
     def convert_from_workflow(self,wf):
         grouplist = []
         for groupline in wf:
@@ -180,13 +196,17 @@ class workflowWay(DecompositionTree):
             nodename1list = []
             methodname1list = []
             for g1 in group1:
-                nodename1 = self.get_keyvalue(g1,"funcname")
-                functype1 = self.get_keyvalue(g1,"functype")
-                methodname1 = self.get_keyvalue(g1,"methodname")
-                methodtype1 = self.get_keyvalue(g1,"methodtype")
-                funcname1 = self.func_prefix(functype1)+nodename1
-                if methodname1 is not None:
-                    methodname1 = self.method_prefix(methodtype1)+methodname1
+                if False:
+                    nodename1 = self.get_keyvalue(g1,"funcname")
+                    functype1 = self.get_keyvalue(g1,"functype")
+                    methodname1 = self.get_keyvalue(g1,"methodname")
+                    methodtype1 = self.get_keyvalue(g1,"methodtype")
+                    funcname1 = self.func_prefix(functype1)+nodename1
+                    if methodname1 is not None:
+                        methodname1 = self.method_prefix(methodtype1)+methodname1
+                else:
+                    nodename1,funcname1,funtype1,methodname1,methodtype1,_ = self.gen_names(g1)
+
                 funcname1list.append(funcname1)
                 nodename1list.append(nodename1)
                 if methodname1 is not None:
@@ -203,45 +223,36 @@ class workflowWay(DecompositionTree):
             print("g1",group1)
             print("g2",group2)
 
-            funcname1list = []
             for g1 in group1:
-                nodename1 = self.get_keyvalue(g1,"funcname")
-                functype1 = self.get_keyvalue(g1,"functype")
-                funcname1 = self.func_prefix(functype1)+nodename1
-            if len(funcname1list)>1:
-                self.invisedgelist.append(",".join(funcname1list))
-            funcname2list = []
-            for g2 in group2:
-                nodename2 = self.get_keyvalue(g2,"funcname")
-                functype2 = self.get_keyvalue(g2,"functype")
-                funcname2 = self.func_prefix(functype2)+nodename2
-            if len(funcname2list)>1:
-                self.invisedgelist.append(",".join(funcname2list))
+                if False:
+                    nodename1 = self.get_keyvalue(g1,"funcname")
+                    functype1 = self.get_keyvalue(g1,"functype")
+                    methodname1 = self.get_keyvalue(g1,"methodname")
+                    methodtype1 = self.get_keyvalue(g1,"methodtype")
+                    funcname1 = self.func_prefix(functype1)+nodename1
+                    if methodname1 is not None:
+                        methodname1 = self.method_prefix(methodtype1)+methodname1
 
-            for g1 in group1:
-                nodename1 = self.get_keyvalue(g1,"funcname")
-                functype1 = self.get_keyvalue(g1,"functype")
-                methodname1 = self.get_keyvalue(g1,"methodname")
-                methodtype1 = self.get_keyvalue(g1,"methodtype")
-                funcname1 = self.func_prefix(functype1)+nodename1
+                else:
+                    nodename1,funcname1,functype1,methodname1,methodtype1,_ = self.gen_names(g1)
+
 
                 funcname1list.append(funcname1)
 
-                if methodname1 is not None:
-                    methodname1 = self.method_prefix(methodtype1)+methodname1
-
                 for g2 in group2:
-                    nodename2 = self.get_keyvalue(g2,"funcname")
-                    functype2 = self.get_keyvalue(g2,"functype")
-                    methodname2 = self.get_keyvalue(g2,"methodname")
-                    methodtype2 = self.get_keyvalue(g2,"methodtype")
-                    funcname2 = self.func_prefix(functype2)+nodename2
+                    if False:
+                        nodename2 = self.get_keyvalue(g2,"funcname")
+                        functype2 = self.get_keyvalue(g2,"functype")
+                        methodname2 = self.get_keyvalue(g2,"methodname")
+                        methodtype2 = self.get_keyvalue(g2,"methodtype")
+                        funcname2 = self.func_prefix(functype2)+nodename2
+                        print("apply",functype2,methodname2)
+                        applymethodname2 = self.applymethod_prefix(functype2)+methodname2
+                        if methodname2 is not None:
+                            methodname2 = self.method_prefix(methodtype2)+methodname2
+                    else:
+                        nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2 = self.gen_names(g2)
 
-                    print("apply",functype2,methodname2)
-                    applymethodname2 = self.applymethod_prefix(functype2)+methodname2
-
-                    if methodname2 is not None:
-                        methodname2 = self.method_prefix(methodtype2)+methodname2
 
                     if methodname2 is not None:
                        self.edgelist.append(",".join([funcname2,methodname2]))
