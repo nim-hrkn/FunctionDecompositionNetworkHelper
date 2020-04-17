@@ -1,0 +1,37 @@
+workflow:
+- groupname:
+  workflow:
+  - group:
+     - funcname: raiseMaterialsList
+       functype: function
+  - group:
+     - methodname: selectNoExperiment
+       methodtype: function
+       funcname: NoExperimentMaterialsList
+       functype: parts
+  - group:
+     - methodname: MaterialSynthesis
+       methodtype: method
+       funcname: SynthesizedMaterils
+       functype: parts
+  - group:
+     - methodname: measureTargetQuanitty
+       methodtype: method
+       funcname: newTargetValues
+       functype: parts
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseMaterialsDatabase
+      functype: function
+      methodname: MaterialsDatabase 
+      methodtype: method
+    - funcname: chooseTargetValues
+      functype: function
+  - group:
+    - methodname: storeInMaterialsDataBase
+      methodtype: function
+      funcname: RicherMaterialsDatabase
+      functype: parts
+

@@ -1,8 +1,29 @@
 workflow:
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseMaterialsDatabase
+      functype: function
+  - group:
+    - funcname: materialDescriptorsHavingTargetValues
+      functype: parts
+      methodname: searchMaterialsHavingTargetValues
+      methodtype: function
+    - funcname: chooseTargetValues
+      functype: function
+      methodname: searchTargetValuesfromDatabase
+      methodtype: function
+
+  - group:
+    - funcname: CrystTargetAndDescriptor
+      functype: parts
+      methodname: CrystTargetAndDescriptorGeneration
+      methodtype:  method
+  
 - groupname: ''
   workflow:
   - group:
-    - funcname: CrystTargetUsingDescriptor
+    - funcname: CrystTargetAndDescriptor
       functype: parts
   - group:
     - funcname: RegressionModel
@@ -11,7 +32,7 @@ workflow:
 - groupname: ''
   workflow:
   - group:
-    - funcname: CrystTargetUsingDescriptor
+    - funcname: CrystTargetAndDescriptor
       functype: parts
   - group:
     - funcname: RegressionModel
@@ -20,7 +41,7 @@ workflow:
 - groupname: ''
   workflow:
   - group:
-    - funcname: CrystTargetUsingDescriptor
+    - funcname: CrystTargetAndDescriptor
       functype: parts
   - group:
     - funcname: RegressionModel

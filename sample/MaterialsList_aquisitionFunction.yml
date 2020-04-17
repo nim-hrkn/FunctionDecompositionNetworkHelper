@@ -2,7 +2,7 @@ workflow:
 - groupname:
   workflow:
     - group:
-      - funcname: CrystTargetUsingDescriptor
+      - funcname: CrystTargetAndDescriptor
         functype: parts
     - group:
       - methodname: BayeseLinearRegression
