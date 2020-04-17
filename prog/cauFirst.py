@@ -881,8 +881,16 @@ class workFlowWay(DecompositionTree):
 if __name__ == "__main__":
     import sys 
     import os
+    import argparse
 
-    namelist = sys.argv[1:]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filenames",nargs="*")
+    parser.add_argument("--no_wf",action="store_true")
+    parser.add_argument("--no_taxo",action="store_true")
+
+    cmdopt = parser.parse_args()
+
+    namelist = cmdopt.filenames
                     
     if len(namelist)==0:
         sys.exit(1)
@@ -916,11 +924,12 @@ if __name__ == "__main__":
                 wf.linktree()
                 dottree = wf.create_tree(dottree)
 
-                dotwf = Digraph(basename)
-                dotwf.graph_attr["rankdir"] = "BT"
-                dotwf = wf.create_workflow(dotwf)
-                dotwf.format = "png"
-                dotwf.render(view=True)
+                if not cmdopt.no_wf :
+                    dotwf = Digraph(basename)
+                    dotwf.graph_attr["rankdir"] = "BT"
+                    dotwf = wf.create_workflow(dotwf)
+                    dotwf.format = "png"
+                    dotwf.render(view=True)
  
             elif filetype == "taxo":
                 taxo = taxologyWay(dotoption=dotoption)
@@ -928,11 +937,12 @@ if __name__ == "__main__":
                 taxo.linktree()
                 dottree = taxo.create_tree(dottree)
 
-                dottaxo = Digraph(basename)
-                dottaxo.graph_attr["rankdir"] = "TB"
-                dottaxo = taxo.create_dendrogram(dottaxo)
-                dottaxo.format = "png"
-                dottaxo.render(view=True)
+                if not cmdopt.no_taxo:
+                    dottaxo = Digraph(basename)
+                    dottaxo.graph_attr["rankdir"] = "TB"
+                    dottaxo = taxo.create_dendrogram(dottaxo)
+                    dottaxo.format = "png"
+                    dottaxo.render(view=True)
     
     dottree.format="png"
     dottree.render(view=True)
