@@ -1,0 +1,25 @@
+workflow:
+- groupname:
+  workflow:
+    - group:
+      - funcname: CrystTargetUsingDescriptor
+        functype: parts
+    - group:
+      - methodname: BayeseLinearRegression
+        methodtype: parts
+        funcname: PredictionMeanAndVariance
+        functype: parts
+    - group:
+      - methodname: UCBaquisitionFunction
+        methodtype: parts
+        funcname: aquisitionFunctionValues
+        functype: parts
+      - methodname: ThonpsonSamplingaquisitionFunction
+        methodtype: parts
+        funcname: aquisitionFunctionValues
+        functype: parts
+    - group:
+      - methodname: sortAquisitionFunctionValues
+        methodtype: function
+        funcname: raiseMaterialsList
+        functype: function

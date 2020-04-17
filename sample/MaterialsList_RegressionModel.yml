@@ -26,3 +26,21 @@ workflow:
     - funcname: RegressionModel
       functype: parts
       methodname: KernelRegression
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: RegressionModel
+      functpype: parts
+  - group:
+    - methodname: evaluateRegressionModel
+      methodtype: function
+      funcname: RegressionModelValues
+      functype: function
+  - group:
+    - methodname: sortRegressionModelValues
+      methodtype: function
+      funcname: raiseMaterialsList
+      functype: function
+
+
