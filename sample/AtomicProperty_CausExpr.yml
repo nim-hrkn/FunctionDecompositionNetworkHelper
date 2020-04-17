@@ -1,0 +1,69 @@
+
+workflow:
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseElement
+      functype: function
+  - group:
+    - methodname: typicalMaterials
+      mthodtype:  function
+      funcname: chooseTypicalMaterialsOfElement
+      functype: function
+
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseTypicalMaterialsOfElement
+      functype: function
+  - group:
+    - methodname: XrayExperiment
+      methodtype: method
+      funcname: experimentalCrystalGeometries
+      functype: parts
+  - group:
+    - methodname: calculateAtomicRadius
+      methodtype: function
+      funcname: atomicRadius
+      functype: parts
+    - methodname: calculatevdWRadius
+      methodtype: function
+      funcname: vdWRadius
+      functype: parts
+    - methodname: calculateCovalentRadius
+      methodtype: function
+      funcname: covalentRadius
+      functype: parts
+
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseTypicalMaterialsOfElement
+      functype: function
+  - group:
+    - methodname: getExperimentalIonicPotential
+      methodtype: function
+      funcname: ExperimentalIonicPotential
+      functype: parts
+    - methodname: getExperimentalElectronAffinity
+      methodtype: function
+      funcname: ExperimentalElectronAffinity
+      functype: parts
+    - methodname: getExperimentalBindingEnergies
+      methodtype: function
+      funcname: BindingEnergies
+      functype: parts
+
+
+- groupname:
+  workflow:
+    - group:
+      - funcname: BindingEnergies
+        functype: parts
+    - group:
+      - methodname: calculateElectronNegativity
+        methodtype: function
+        funcname: ElectronNegativity
+        functype: parts
