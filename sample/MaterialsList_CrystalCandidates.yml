@@ -20,22 +20,6 @@ workflow:
         methodtype: function
         funcname: CrystalCandidates
         functype: parts
-- groupname: 
-  workflow:
-    - group:
-      - methodname: GeneticAlgorithm
-        methodtype: method
-        funcname: CrystalCandidates
-        functype: parts
-      - methodname: ParticleSwarm
-        methodtype: method
-        funcname: CrystalCandidates
-        functype: parts
-    - group:
-      - methodname: DescriptorGeneration
-        methodtype: method
-        funcname: DescriptorNew
-        functype: parts
 
 - groupname: mateirals knowledge
   workflow:

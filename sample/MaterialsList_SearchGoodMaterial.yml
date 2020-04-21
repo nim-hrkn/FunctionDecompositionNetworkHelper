@@ -4,6 +4,8 @@ workflow:
   - group:
      - funcname: raiseMaterialsList
        functype: function
+     - funcname: searchMaterialsListHavingTargetVariable
+       functype: function
   - group:
      - methodname: selectNoExperiment
        methodtype: function
@@ -16,9 +18,28 @@ workflow:
        functype: parts
   - group:
      - methodname: measureTargetQuanitty
-       methodtype: method
+       methodtype: function
        funcname: newTargetValues
        functype: parts
+     - funcname: getTargetSelectionCriterion
+       functype: function
+  - group:
+     - methodname: SelectSynthesizedTaretMaterialsIteratively
+       methodtype: function
+       funcname: newTargetMaterial
+       functype: parts
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: TargetCriterion
+      functype: parts
+  - group:
+    - methodname: TargetSelectionCriterion
+      methodtype: parts
+      funcname: getTargetSelectionCriterion
+      functype:  function
+
 
 - groupname:
   workflow:
