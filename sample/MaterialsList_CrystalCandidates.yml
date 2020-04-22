@@ -70,23 +70,3 @@ workflow:
 
 
 
-- groupname: crystal candidate to descriptor 
-  workflow:
-    - group:
-      - funcname: CrystalCandidates
-        functype: parts
-    - group: 
-      - funcname: PredictionModel
-        functype: parts
-      - methodname: DescriptorGeneration
-        methodtype: method
-        funcname: DescriptorNew
-        functype: parts
-    - group:
-      - methodname: RegressionDataGeneration
-        methodtype: method
-        funcname: CrystTargetUsingDescriptor
-        functype: parts
-
-
-
