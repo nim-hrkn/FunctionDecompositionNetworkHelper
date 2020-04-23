@@ -9,6 +9,8 @@ workflow:
         methodtype: method
         funcname: CrystalCandidates
         functype: parts
+        funcgeneralname: Crystal
+        funcgeneraltype: parts
 
 - groupname: random generation
   workflow:
@@ -20,6 +22,8 @@ workflow:
         methodtype: function
         funcname: CrystalCandidates
         functype: parts
+        funcgeneralname: Crystal
+        funcgeneraltype: parts
 
 - groupname: mateirals knowledge
   workflow:
