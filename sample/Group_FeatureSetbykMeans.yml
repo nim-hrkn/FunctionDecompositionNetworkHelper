@@ -1,49 +1,65 @@
 workflow:
-- groupname: kmeans
-  workflow:
-  - group:
-    - funcname: ClusteredSetCandates
-      functype: parts
-  - group:
-    - funcname: FeatureGroups
-      functype: parts
-      methodname: DomainKnowledgeDataScienceClusteringSelection
-- groupname: gmm
-  workflow:
-  - group:
-    - funcname: ClusteredSetCandates
-      functype: parts
-  - group:
-    - funcname: FeatureGroups
-      functype: parts
-      methodname: DomainKnowledgeDataScienceClusteringSelection
-- groupname: kmeans
-  workflow:
-  - group:
-    - funcname: AllData
-      functype: parts
-      methodname: genAllData
-      methodtype: function
-    - funcname: kMeansParameter
-      functype: parts
-      methodname: choosekMeansParameterAll
-      methodtype: function
-  - group:
-    - funcname: ClusteredSetCandates
-      functype: parts
-      methodname: FeaturekMeansClustering
-- groupname: gmm
-  workflow:
-  - group:
-    - funcname: AllData
-      functype: parts
-      methodname: genAllData
-      methodtype: function
-    - funcname: GMMParameter
-      functype: parts
-      methodname: chooseGMMParameterAll
-      methodtype: function
-  - group:
-    - funcname: ClusteredSetCandates
-      functype: parts
-      methodname: FeatureGMMClustering
+  format: v2.1
+  block:
+  - blockname: kmeans
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: ClusteredSetCandates
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: DomainKnowledgeDataScienceClusteringSelection
+        - funcname: FeatureGroups
+        - functype: parts
+  - blockname: gmm
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: ClusteredSetCandates
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: DomainKnowledgeDataScienceClusteringSelection
+        - funcname: FeatureGroups
+        - functype: parts
+  - blockname: kmeans
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: genAllData
+        - methodtype: function
+        - funcname: AllData
+        - functype: parts
+      - !!omap
+        - methodname: choosekMeansParameterAll
+        - methodtype: function
+        - funcname: kMeansParameter
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: FeaturekMeansClustering
+        - funcname: ClusteredSetCandates
+        - functype: parts
+  - blockname: gmm
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: genAllData
+        - methodtype: function
+        - funcname: AllData
+        - functype: parts
+      - !!omap
+        - methodname: chooseGMMParameterAll
+        - methodtype: function
+        - funcname: GMMParameter
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: FeatureGMMClustering
+        - funcname: ClusteredSetCandates
+        - functype: parts

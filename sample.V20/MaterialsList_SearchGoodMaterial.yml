@@ -1,0 +1,58 @@
+workflow:
+- groupname:
+  workflow:
+  - group:
+     - funcname: raiseMaterialsList
+       functype: function
+     - funcname: searchMaterialsListHavingTargetVariable
+       functype: function
+  - group:
+     - methodname: selectNoExperiment
+       methodtype: function
+       funcname: NoExperimentMaterialsList
+       functype: parts
+  - group:
+     - methodname: MaterialSynthesis
+       methodtype: method
+       funcname: SynthesizedMaterils
+       functype: parts
+  - group:
+     - methodname: measureTargetQuanitty
+       methodtype: function
+       funcname: newTargetValues
+       functype: parts
+     - funcname: getTargetSelectionCriterion
+       functype: function
+  - group:
+     - methodname: SelectSynthesizedTaretMaterialsIteratively
+       methodtype: function
+       funcname: newTargetMaterial
+       functype: parts
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: TargetCriterion
+      functype: parts
+  - group:
+    - methodname: TargetSelectionCriterion
+      methodtype: parts
+      funcname: getTargetSelectionCriterion
+      functype:  function
+
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseMaterialsDatabase
+      functype: function
+      methodname: MaterialsDatabase 
+      methodtype: method
+    - funcname: chooseTargetValues
+      functype: function
+  - group:
+    - methodname: storeInMaterialsDataBase
+      methodtype: function
+      funcname: RicherMaterialsDatabase
+      functype: parts
+

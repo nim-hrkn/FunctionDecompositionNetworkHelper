@@ -1,28 +1,38 @@
 workflow:
-- groupname: domainknowledgeSubgroup
-  workflow:
-  - group:
-    - funcname: FeatureGroups
-      functype: parts
-  - group:
-    - funcname: AllFeatureSubgroups
-      functype: parts
-      methodname: domainknowledgeSubgroupSelection
-- groupname: DendrogramSubgroupSelection
-  workflow:
-  - group:
-    - funcname: FeatureGroups
-      functype: parts
-  - group:
-    - funcname: FeatureSubgroupDistanceThresholdAll
-      functype: parts
-      methodname: chooseFeatureSubgroupDistanceThresholdAll
-      methodtype: function
-    - funcname: FeatureGroupDendrogram
-      functype: parts
-      methodname: genFeatureGroupDendrogram
-      methodtype: function
-  - group:
-    - funcname: AllFeatureSubgroups
-      functype: parts
-      methodname: DendrogramSubgroupsSelection
+  format: v2.1
+  block:
+  - blockname: domainknowledgeSubgroup
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: FeatureGroups
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: domainknowledgeSubgroupSelection
+        - funcname: AllFeatureSubgroups
+        - functype: parts
+  - blockname: DendrogramSubgroupSelection
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: FeatureGroups
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: chooseFeatureSubgroupDistanceThresholdAll
+        - methodtype: function
+        - funcname: FeatureSubgroupDistanceThresholdAll
+        - functype: parts
+      - !!omap
+        - methodname: genFeatureGroupDendrogram
+        - methodtype: function
+        - funcname: FeatureGroupDendrogram
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: DendrogramSubgroupsSelection
+        - funcname: AllFeatureSubgroups
+        - functype: parts

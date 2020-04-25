@@ -1,0 +1,65 @@
+workflow:
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseMaterialsDatabase
+      functype: function
+  - group:
+    - methodname: searchCrystalHavingTargetValuesfromDatabase
+      methodtype: function
+      funcname: chooseTrainingSetCrystal
+      functype: function
+
+#- groupname:
+#  workflow:
+#  - group:
+#    - methodname: searchCrystalHavingTargetValuesfromDatabase
+#      methodtype: function
+#      funcname: CrystalDataHavingTargetValue
+#      functype: parts
+#  - group:
+#    - methodname: ChooseTargetValues
+#      methodtype: function
+#      funcname: TargetValues
+#      functype: parts
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseMaterialsDatabase
+      functype: function
+  - group:
+    - methodname: queryCrysalDataHavingTarget
+      methodtype: function
+      funcname: CrystalHavingTargetValuesFromDatabase
+      functype: parts
+  - group:
+    - methodname: chooseTargetValues
+      methodtype: parts
+      funcname: TargetValues
+      functype: parts
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: chooseTrainingSetCrystal
+      functype: function
+  - group:
+    - methodname: CrystalToDescriptorAndRlationToTargetVariable
+      methodtype: function
+      funcname: TrainingSetDescriptorAndRelationToTargetVariable
+      functype: parts
+
+- groupname:
+  workflow:
+  - group:
+    - funcname: TrainingSetDescriptorAndRelationToTargetVariable
+      functype: parts
+    - funcname: TargetValues
+      functype: parts
+  - group:
+    - methodname: TrainingDataGeneration
+      methodtype: method
+      funcname: TrainingData
+      functype: parts
+

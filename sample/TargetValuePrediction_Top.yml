@@ -1,13 +1,19 @@
 workflow:
-- groupname: dummy
-  workflow:
-  - group:
-    - funcname: ModelHamiltonian
-      functype: parts
-    - funcname: Solver
-      functype: parts
-  - group:
-    - funcname: PredictedTargetValue
-      functype: parts
-      methodname: PredictedTargetValue
-      methodtype: parts
+  format: v2.1
+  block:
+  - blockname: dummy
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: ModelHamiltonian
+        - functype: parts
+      - !!omap
+        - funcname: Solver
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: PredictedTargetValue
+        - methodtype: parts
+        - funcname: PredictedTargetValue
+        - functype: parts

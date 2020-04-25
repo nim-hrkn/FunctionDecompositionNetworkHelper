@@ -1,67 +1,74 @@
 workflow:
-- groupname:
-  workflow:
-  - group:
-    - funcname: chooseMaterialsDatabase
-      functype: function
-  - group:
-    - funcname: materialDescriptorsHavingTargetValues
-      functype: parts
-      methodname: searchMaterialsHavingTargetValues
-      methodtype: function
-    - funcname: chooseTargetValues
-      functype: function
-      methodname: searchTargetValuesfromDatabase
-      methodtype: function
-
-  - group:
-    - funcname: CrystTargetAndDescriptor
-      functype: parts
-      methodname: CrystTargetAndDescriptorGeneration
-      methodtype:  method
-  
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: CrystTargetAndDescriptor
-      functype: parts
-  - group:
-    - funcname: RegressionModel
-      functype: parts
-      methodname: NeuralNetworkRegression
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: CrystTargetAndDescriptor
-      functype: parts
-  - group:
-    - funcname: RegressionModel
-      functype: parts
-      methodname: LinearRegression
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: CrystTargetAndDescriptor
-      functype: parts
-  - group:
-    - funcname: RegressionModel
-      functype: parts
-      methodname: KernelRegression
-
-- groupname:
-  workflow:
-  - group:
-    - funcname: RegressionModel
-      functpype: parts
-  - group:
-    - methodname: evaluateRegressionModel
-      methodtype: function
-      funcname: RegressionModelValues
-      functype: function
-  - group:
-    - methodname: sortRegressionModelValues
-      methodtype: function
-      funcname: raiseMaterialsList
-      functype: function
-
-
+  format: v2.1
+  block:
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: CrystTargetAndDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: NeuralNetworkRegression
+        - funcname: RegressionModel
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: CrystTargetAndDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: LinearRegression
+        - funcname: RegressionModel
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: CrystTargetAndDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: KernelRegression
+        - funcname: RegressionModel
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: RegressionModel
+        - functype: parts
+      - !!omap
+        - funcname: NewsetDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: evaluateRegressionModel
+        - methodtype: function
+        - funcname: RegressionModelValues
+        - functype: function
+    - group:
+      - !!omap
+        - methodname: sortRegressionModelValues
+        - methodtype: function
+        - funcname: raiseMaterialsList
+        - functype: function
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: NewsetCrystal
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: CrystalToDescriptor
+        - methodtype: method
+        - funcname: NewsetDescriptor
+        - functype: parts

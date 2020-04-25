@@ -1,45 +1,59 @@
 workflow:
-- groupname: SpearmanDistance
-  workflow:
-  - group:
-    - funcname: AllData
-      functype: parts
-      methodname: genAllData
-      methodtype: function
-  - group:
-    - funcname: FeatureDistanceMatrix
-      functype: parts
-      methodname: FeatureSpearmanDistance
-- groupname: elcleadianDistance
-  workflow:
-  - group:
-    - funcname: AllData
-      functype: parts
-      methodname: genAllData
-      methodtype: function
-  - group:
-    - funcname: FeatureDistanceMatrix
-      functype: parts
-      methodname: FeatureEucleadianDistance
-- groupname: cosineDistance
-  workflow:
-  - group:
-    - funcname: AllData
-      functype: parts
-      methodname: genAllData
-      methodtype: function
-  - group:
-    - funcname: FeatureDistanceMatrix
-      functype: parts
-      methodname: FeatureCosineDistance
-- groupname: manhattanDistance
-  workflow:
-  - group:
-    - funcname: AllData
-      functype: parts
-      methodname: genAllData
-      methodtype: function
-  - group:
-    - funcname: FeatureDistanceMatrix
-      functype: parts
-      methodname: FeatureManhattanDistance
+  format: v2.1
+  block:
+  - blockname: SpearmanDistance
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: genAllData
+        - methodtype: function
+        - funcname: AllData
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: FeatureSpearmanDistance
+        - funcname: FeatureDistanceMatrix
+        - functype: parts
+  - blockname: elcleadianDistance
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: genAllData
+        - methodtype: function
+        - funcname: AllData
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: FeatureEucleadianDistance
+        - funcname: FeatureDistanceMatrix
+        - functype: parts
+  - blockname: cosineDistance
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: genAllData
+        - methodtype: function
+        - funcname: AllData
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: FeatureCosineDistance
+        - funcname: FeatureDistanceMatrix
+        - functype: parts
+  - blockname: manhattanDistance
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: genAllData
+        - methodtype: function
+        - funcname: AllData
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: FeatureManhattanDistance
+        - funcname: FeatureDistanceMatrix
+        - functype: parts

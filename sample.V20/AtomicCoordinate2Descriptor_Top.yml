@@ -1,0 +1,10 @@
+link:
+- nodename: AtomicDescriptor
+  nodetype: parts
+  linktype: IsA
+  link:
+    - nodename: BehlerSymmetryFunction3bodyVector 
+    - nodename: BehlerSymmetryFunction2bodyVector 
+    - nodename: RadialDistributionFunctionVector
+    - nodename: AtomicOrbitalFieldMatrixRepresentation
+    - nodename: SOAPVector

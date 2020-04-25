@@ -1,0 +1,28 @@
+workflow:
+- groupname: text
+  workflow:
+  - group:
+    - funcname: DescriptorGroupRelevanceImportance
+      functype: parts
+  - group:
+    - funcname: VisualizedRelevanceImportance
+      functype: parts
+      methodname: VisualizeImportanceWithTextList
+      methodtype: function
+- groupname: dendrogram
+  workflow:
+  - group:
+    - funcname: FeatureDendrogram
+      functype: parts
+      methodname: generateDendrogram
+      methodtype: function
+    - funcname: DescriptorGroupRelevanceImportance
+      functype: parts
+#      methodname: generateDescriptorRelevanceImportance
+#      methodtype: function
+  - group:
+    - funcname: VisualizedRelevanceImportance
+      functype: parts
+      methodname: VisualizeImportanceWithDendrogram
+      methodtype: function
+

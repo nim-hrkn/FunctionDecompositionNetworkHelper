@@ -1,135 +1,167 @@
 workflow:
-- groupname: min
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: AtomicDescriptorToCrystalDescriptorByMin
-      methodtype: method
-- groupname: max
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: AtomicDescriptorToCrystalDescriptorByMax
-      methodtype: method
-- groupname: exist
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: AtomicDescriptorToCrystalDescriptorByExistence
-      methodtype: method
-- groupname: multipleMomentExpansion
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: AtomicDescriptorToCrystalDescriptorByMultipleMomentExpansion
-      methodtype: method
-- groupname: sum
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: AtomicDescriptorToCrystalDescriptorBySum
-      methodtype: method
-- groupname: addvector
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: AtomicDescriptorToCrystalDescriptorByAppendedVector
-      methodtype: method
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: SymmetryQuantity
-      functype: parts
-      methodname: SymmetryOperation
-      methodtype: method
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: generateCrystalDescriptorBySymmetry
-      methodtype: method
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: CrystalQuantity
-      functype: parts
-      methodname: Volume
-      methodtype: method
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: generateCrystalDescriptorByCrystalQuantity
-      methodtype: function
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: CrystalQuantity
-      functype: parts
-      methodname: AtomicRatio
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: generateCrystalDescriptorByCrystalQuantity
-      methodtype: function
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: CrystalQuantity
-      functype: parts
-      methodname: FunctionalGroupRatio
-      methodtype: method
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: generateCrystalDescriptorByCrystalQuantity
-      methodtype: function
-- groupname: ''
-  workflow:
-  - group:
-    - funcname: SpaceQuantity
-      functype: parts
-      methodname: PersistenHomology
-      methodtype: method
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: generateCrystalDescriptorBySpaceQuantity
-      methodtype: function 
+  format: v2.1
+  block:
+  - blockname: min
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomicDescriptorToCrystalDescriptorByMin
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname: max
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomicDescriptorToCrystalDescriptorByMax
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname: exist
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomicDescriptorToCrystalDescriptorByExistence
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname: multipleMomentExpansion
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomicDescriptorToCrystalDescriptorByMultipleMomentExpansion
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname: sum
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomicDescriptorToCrystalDescriptorBySum
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname: addvector
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomicDescriptorToCrystalDescriptorByAppendedVector
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: SymmetryOperation
+        - methodtype: method
+        - funcname: SymmetryQuantity
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: generateCrystalDescriptorBySymmetry
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: Volume
+        - methodtype: method
+        - funcname: CrystalQuantity
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: generateCrystalDescriptorByCrystalQuantity
+        - methodtype: function
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: AtomicRatio
+        - funcname: CrystalQuantity
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: generateCrystalDescriptorByCrystalQuantity
+        - methodtype: function
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: FunctionalGroupRatio
+        - methodtype: method
+        - funcname: CrystalQuantity
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: generateCrystalDescriptorByCrystalQuantity
+        - methodtype: function
+        - funcname: CrystalDescriptor
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: PersistenHomology
+        - methodtype: method
+        - funcname: SpaceQuantity
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: generateCrystalDescriptorBySpaceQuantity
+        - methodtype: function
+        - funcname: CrystalDescriptor
+        - functype: parts

@@ -1,47 +1,60 @@
 workflow:
-- groupname: CD_CT
-  workflow:
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: DirectlyGenerateCrystalDescriptor
-      methodtype: function
-  - group:
-    - funcname: RelationshipBetweenCrystalTargetAndDescriptor
-      functype: parts
-      methodname: CrystalDescriptorToCrystalTarget
-      methodtype: method
-- groupname: AD_CD_CT
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-  - group:
-    - funcname: CrystalDescriptor
-      functype: parts
-      methodname: AtomDescriptorToCrystalDescriptor
-      methodtype: method
-  - group:
-    - funcname: RelationshipBetweenCrystalTargetAndDescriptor
-      functype: parts
-      methodname: CrystalDescriptorToCrystalTarget
-      methodtype: method
-- groupname: AD_AT_CT
-  workflow:
-  - group:
-    - funcname: AtomicDescriptor
-      functype: parts
-      methodname: generateAtomicDescriptor
-      methodtype: function
-  - group:
-    - funcname: AtomicTarget
-      functype: parts
-      methodname: RelationshipBetweenAtomicDescriptorToAtomTarget
-      methodtype: method
-  - group:
-    - funcname: RelationshipBetweenCrystalTargetAndDescriptor
-      functype: parts
-      methodname: AtomTargetToCrystalTarget
-      methodtype: method
+  format: v2.1
+  block:
+  - blockname: CD_CT
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: DirectlyGenerateCrystalDescriptor
+        - methodtype: function
+        - funcname: CrystalDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: CrystalDescriptorToCrystalTarget
+        - methodtype: method
+        - funcname: RelationshipBetweenCrystalTargetAndDescriptor
+        - functype: parts
+  - blockname: AD_CD_CT
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomDescriptorToCrystalDescriptor
+        - methodtype: method
+        - funcname: CrystalDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: CrystalDescriptorToCrystalTarget
+        - methodtype: method
+        - funcname: RelationshipBetweenCrystalTargetAndDescriptor
+        - functype: parts
+  - blockname: AD_AT_CT
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAtomicDescriptor
+        - methodtype: function
+        - funcname: AtomicDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: RelationshipBetweenAtomicDescriptorToAtomTarget
+        - methodtype: method
+        - funcname: AtomicTarget
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomTargetToCrystalTarget
+        - methodtype: method
+        - funcname: RelationshipBetweenCrystalTargetAndDescriptor
+        - functype: parts

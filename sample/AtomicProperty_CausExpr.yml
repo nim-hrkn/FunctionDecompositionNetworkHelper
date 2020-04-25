@@ -1,69 +1,81 @@
-
 workflow:
-- groupname:
-  workflow:
-  - group:
-    - funcname: chooseElement
-      functype: function
-  - group:
-    - methodname: typicalMaterials
-      mthodtype:  function
-      funcname: chooseTypicalMaterialsOfElement
-      functype: function
-
-
-- groupname:
-  workflow:
-  - group:
-    - funcname: chooseTypicalMaterialsOfElement
-      functype: function
-  - group:
-    - methodname: XrayExperiment
-      methodtype: method
-      funcname: experimentalCrystalGeometries
-      functype: parts
-  - group:
-    - methodname: calculateAtomicRadius
-      methodtype: function
-      funcname: atomicRadius
-      functype: parts
-    - methodname: calculatevdWRadius
-      methodtype: function
-      funcname: vdWRadius
-      functype: parts
-    - methodname: calculateCovalentRadius
-      methodtype: function
-      funcname: covalentRadius
-      functype: parts
-
-
-- groupname:
-  workflow:
-  - group:
-    - funcname: chooseTypicalMaterialsOfElement
-      functype: function
-  - group:
-    - methodname: getExperimentalIonicPotential
-      methodtype: function
-      funcname: ExperimentalIonicPotential
-      functype: parts
-    - methodname: getExperimentalElectronAffinity
-      methodtype: function
-      funcname: ExperimentalElectronAffinity
-      functype: parts
-    - methodname: getExperimentalBindingEnergies
-      methodtype: function
-      funcname: BindingEnergies
-      functype: parts
-
-
-- groupname:
-  workflow:
+  format: v2.1
+  block:
+  - blockname:
+    order: workflow
+    list:
     - group:
-      - funcname: BindingEnergies
-        functype: parts
+      - !!omap
+        - funcname: chooseElement
+        - functype: function
     - group:
-      - methodname: calculateElectronNegativity
-        methodtype: function
-        funcname: ElectronNegativity
-        functype: parts
+      - !!omap
+        - methodname: typicalMaterials
+        - methodtype: function
+        - funcname: chooseTypicalMaterialsOfElement
+        - functype: function
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: chooseTypicalMaterialsOfElement
+        - functype: function
+    - group:
+      - !!omap
+        - methodname: XrayExperiment
+        - methodtype: method
+        - funcname: experimentalCrystalGeometries
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: calculateAtomicRadius
+        - methodtype: function
+        - funcname: atomicRadius
+        - functype: parts
+      - !!omap
+        - methodname: calculatevdWRadius
+        - methodtype: function
+        - funcname: vdWRadius
+        - functype: parts
+      - !!omap
+        - methodname: calculateCovalentRadius
+        - methodtype: function
+        - funcname: covalentRadius
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: chooseTypicalMaterialsOfElement
+        - functype: function
+    - group:
+      - !!omap
+        - methodname: getExperimentalIonicPotential
+        - methodtype: function
+        - funcname: ExperimentalIonicPotential
+        - functype: parts
+      - !!omap
+        - methodname: getExperimentalElectronAffinity
+        - methodtype: function
+        - funcname: ExperimentalElectronAffinity
+        - functype: parts
+      - !!omap
+        - methodname: getExperimentalBindingEnergies
+        - methodtype: function
+        - funcname: BindingEnergies
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: BindingEnergies
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: calculateElectronNegativity
+        - methodtype: function
+        - funcname: ElectronNegativity
+        - functype: parts

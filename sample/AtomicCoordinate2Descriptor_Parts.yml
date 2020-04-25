@@ -1,81 +1,94 @@
-
 workflow:
-- groupname: CrystalCoordinatesToRelativeVectors
-  workflow:
-  - group:
-    - funcname: Crystal
-      functype: parts
-    - funcname: ChooseCenterAtom
-      functype: function
-  - group:
-    - methodname: AbsolutePositionToRelativeCoorinates
-      methodtype: method
-      funcname: relativeCoordiantes
-      functype: parts
-
-- groupname: Behler symmetry function
-  workflow:
-   - group:
-     - funcname: relativeCoordiantes
-       functype: parts
-   - group:
-     - methodname: relativeRadialDistributionWithAngleConvolution
-       methodtype: parts
-       funcname: BehlerSymmetryFunction3bodyVector
-       functype: parts
-
-- groupname: RDF
-  workflow:
-   - group:
-     - funcname: relativeCoordiantes
-       functype: parts
-   - group:
-     - methodname: relativeRadialDistribution
-       methodtype: parts
-       funcname: RadialDistributionFunctionVector
-       functype: parts
-   - group:
-     - methodname: relativeRadialDistributionConvolution
-       methodtype: parts
-       funcname: BehlerSymmetryFunction2bodyVector
-       functype: parts
- 
-- groupname: Voronoi
-  workflow:
+  format: v2.1
+  block:
+  - blockname: CrystalCoordinatesToRelativeVectors
+    order: workflow
+    list:
     - group:
-      - funcname: relativeCoordiantes
-        functype: parts
+      - !!omap
+        - funcname: Crystal
+        - functype: parts
+      - !!omap
+        - funcname: ChooseCenterAtom
+        - functype: function
     - group:
-      - methodname: VoronoiAngle
-        methodtype: method
-        funcname: GeneralizedCoordinationNumber
-        functype: parts
-      - methodname: VoronoiAngle
-        methodtype: method
-        funcname: VoroniiNearestNeighbourAtoms
-        functype: parts
+      - !!omap
+        - methodname: AbsolutePositionToRelativeCoorinates
+        - methodtype: method
+        - funcname: relativeCoordiantes
+        - functype: parts
+  - blockname: Behler symmetry function
+    order: workflow
+    list:
     - group:
-      - methodname: AtomicOrbitalFieldMatrix
-        methodtype: method
-        funcname: AtomicOrbitalFieldMatrixRepresentation
-        functype: parts
- 
-
-- groupname: bispectrum
-  workflow:
+      - !!omap
+        - funcname: relativeCoordiantes
+        - functype: parts
     - group:
-      - funcname: relativeCoordiantes
-        functype: parts
+      - !!omap
+        - methodname: relativeRadialDistributionWithAngleConvolution
+        - methodtype: parts
+        - funcname: BehlerSymmetryFunction3bodyVector
+        - functype: parts
+  - blockname: RDF
+    order: workflow
+    list:
     - group:
-      - methodname: 4DExpansion
-        methodtype: method
-        funcname:  4DExpansionCoefficients
-        functype:  parts
+      - !!omap
+        - funcname: relativeCoordiantes
+        - functype: parts
     - group:
-      - methodname: bispectrum
-        methodtype: method
-        funcname:   SOAPVector
-        functype:   parts
-
-
-
+      - !!omap
+        - methodname: relativeRadialDistribution
+        - methodtype: parts
+        - funcname: RadialDistributionFunctionVector
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: relativeRadialDistributionConvolution
+        - methodtype: parts
+        - funcname: BehlerSymmetryFunction2bodyVector
+        - functype: parts
+  - blockname: Voronoi
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: relativeCoordiantes
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: VoronoiAngle
+        - methodtype: method
+        - funcname: GeneralizedCoordinationNumber
+        - functype: parts
+      - !!omap
+        - methodname: VoronoiAngle
+        - methodtype: method
+        - funcname: VoroniiNearestNeighbourAtoms
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: AtomicOrbitalFieldMatrix
+        - methodtype: method
+        - funcname: AtomicOrbitalFieldMatrixRepresentation
+        - functype: parts
+  - blockname: bispectrum
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: relativeCoordiantes
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: 4DExpansion
+        - methodtype: method
+        - funcname: 4DExpansionCoefficients
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: bispectrum
+        - methodtype: method
+        - funcname: SOAPVector
+        - functype: parts

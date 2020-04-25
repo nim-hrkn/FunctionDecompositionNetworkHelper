@@ -1,23 +1,31 @@
 workflow:
-- groupname: indicatordiagram
-  workflow:
-  - group:
-    - funcname: AllModels
-      functype: parts
-      methodname: generateAllModels
-      methodtype: function
-  - group:
-    - funcname: VisualizedUnprocessedImportance
-      functype: parts
-      methodname: indicatorDiagram
-- groupname: weightdiagram
-  workflow:
-  - group:
-    - funcname: AllModels
-      functype: parts
-      methodname: generateAllModels
-      methodtype: function
-  - group:
-    - funcname: VisualizedUnprocessedImportance
-      functype: parts
-      methodname: weightDiagram
+  format: v2.1
+  block:
+  - blockname: indicatordiagram
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAllModels
+        - methodtype: function
+        - funcname: AllModels
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: indicatorDiagram
+        - funcname: VisualizedUnprocessedImportance
+        - functype: parts
+  - blockname: weightdiagram
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateAllModels
+        - methodtype: function
+        - funcname: AllModels
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: weightDiagram
+        - funcname: VisualizedUnprocessedImportance
+        - functype: parts

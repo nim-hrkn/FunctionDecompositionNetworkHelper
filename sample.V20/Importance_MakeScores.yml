@@ -1,0 +1,47 @@
+workflow:
+- groupname: all
+  workflow:
+  - group:
+    - funcname: AllModels
+      functype: parts
+      methodname: generateAllModels
+      methodtype: function
+  - group:
+    - funcname: BestScoreOfAll
+      functype: parts
+      methodname: generateBestOfAllModels
+      methodtype: function
+- groupname: deleteGroup
+  workflow:
+  - group:
+    - funcname: AllModels
+      functype: parts
+      methodname: generateAllModels
+      methodtype: function
+    - funcname: Group
+      functype: parts
+      methodname: GenerateGroup
+      methodtype: function
+  - group:
+    - funcname: AllModelsExceptGroup
+      functype: parts
+      methodname: DeleteGroupFromAllModels
+      methodtype: function
+- groupname: deleteGroupAddSubgroup
+  workflow:
+  - group:
+    - funcname: AllModelsExceptGroup
+      functype: parts
+      methodname: DeleteGroupFromAllModels
+      methodtype: function
+    - funcname: Subgroup
+      functype: parts
+      methodname: GenerateSubgroupFromGroup
+      methodtype: function
+  - group:
+    - funcname: AllModelsExceptGroupWithSubgroup
+      functype: parts
+      methodname: AddSubgroup
+      methodtype: function
+
+

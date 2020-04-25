@@ -1,90 +1,86 @@
 link:
-  - nodename: AtomicQuantity
-    nodeytype: parts
-    linktype: IsA 
+- nodename: AtomicQuantity
+  nodeytype: parts
+  linktype: IsA
+  link:
+  - nodename: ExperimentalAtomicQuantity
+    nodetype: parts
+    linktype: IsA
     link:
-      - nodename: ExperimentalAtomicQuantity
+    - nodename: ExperimentalAtomicLength
+      nodetype: parts
+      linktype: IsA
+      link:
+      - nodename: atomicRadius
+      - nodename: vdWRadius
+      - nodename: covalentRadius
+    - nodename: ExperimentalAtomicEnergy
+      nodetype: parts
+      linktype: IsA
+      link:
+      - nodename: ExperimentalIonicPotential
+      - nodename: ExperimentalElectronAffinity
+    - nodename: ExperimentalEnergyRelatedQuantity
+      nodetype: parts
+      linktype: IsA
+      link:
+      - nodename: ElectronNegativity
+  - nodename: fundamentalAtomicQuantity
+    nodetype: parts
+    linktype: IsA
+    link:
+    - nodename: numberOfElectron
+    - nodename: averagedMass
+  - nodename: fundamentalAtomicQuantity
+    nodetype: parts
+    linktype: IsA
+    link:
+    - nodename: numberOfElectron
+    - nodename: averagedMass
+  - nodename: PeriodictableQuantity
+    nonetype: parts
+    linktype: IsA
+    link:
+    - nodename: PeriodictableRow
+    - nodename: PeriodictableColumn
+  - nodename: TheoreticalAtomicQuantity
+    nodetype: parts
+    linktype: IsA
+    link:
+    - nodename: TheoreticalLength
+      nodetype: parts
+      linktype: IsA
+      link:
+      - nodename: r2
+      - nodename: r2_s
+      - nodename: r2_p
+      - nodename: r2_d
+      - nodename: r2_f
+    - nodename: TheoreicalEnergy
+      nodetype: parts
+      linktype: IsA
+      link:
+      - nodename: TotalEnergy
+      - nodename: sOrbitalEnergy
+      - nodename: pOrbitalEnergy
+      - nodename: dOrbitalEnergy
+      - nodename: fOrbitalEnergy
+    - nodename: AngularMomentum
+      nodetype: parts
+      linktype: IsA
+      link:
+      - nodename: 3dAngularMomentum
         nodetype: parts
         linktype: IsA
         link:
-           - nodename: ExperimentalAtomicLength
-             nodetype: parts
-             linktype: IsA
-             link:
-               - nodename: atomicRadius
-               - nodename: vdWRadius
-               - nodename: covalentRadius
-           - nodename: ExperimentalAtomicEnergy
-             nodetype: parts
-             linktype: IsA
-             link:
-               - nodename: ExperimentalIonicPotential
-               - nodename: ExperimentalElectronAffinity 
-           - nodename: ExperimentalEnergyRelatedQuantity
-             nodetype: parts
-             linktype: IsA
-             link:
-               - nodename: ElectronNegativity
-      - nodename: fundamentalAtomicQuantity
+        - nodename: S3d
+        - nodename: L3d
+        - nodename: J3d
+      - nodename: 4fAngularMomentum
         nodetype: parts
         linktype: IsA
         link:
-          - nodename: numberOfElectron
-          - nodename: averagedMass
-
-      - nodename: fundamentalAtomicQuantity
-        nodetype: parts
-        linktype: IsA
-        link:
-          - nodename: numberOfElectron
-          - nodename: averagedMass
-
-      - nodename: PeriodictableQuantity
-        nonetype: parts
-        linktype: IsA
-        link:
-          - nodename: PeriodictableRow
-          - nodename: PeriodictableColumn
-     
-      - nodename: TheoreticalAtomicQuantity
-        nodetype: parts
-        linktype: IsA
-        link: 
-          - nodename: TheoreticalLength
-            nodetype: parts
-            linktype: IsA
-            link: 
-              - nodename: r2
-              - nodename: r2_s
-              - nodename: r2_p
-              - nodename: r2_d
-              - nodename: r2_f
-          - nodename: TheoreicalEnergy
-            nodetype:  parts
-            linktype: IsA
-            link: 
-              - nodename: TotalEnergy
-              - nodename: sOrbitalEnergy
-              - nodename: pOrbitalEnergy
-              - nodename: dOrbitalEnergy
-              - nodename: fOrbitalEnergy
-          - nodename: AngularMomentum
-            nodetype:  parts
-            linktype: IsA
-            link: 
-              - nodename: 3dAngularMomentum
-                nodetype: parts
-                linktype: IsA
-                link:
-                  - nodename: S3d
-                  - nodename: L3d
-                  - nodename: J3d
-              - nodename: 4fAngularMomentum
-                nodetype: parts
-                linktype: IsA
-                link:
-                  - nodename: J4f
-                  - nodename: gJ
-                  - nodename: J4fSpinDirectionProjection
-                  - nodename: J4fOrbitalDirectionProjection
-
+        - nodename: J4f
+        - nodename: gJ
+        - nodename: J4fSpinDirectionProjection
+        - nodename: J4fOrbitalDirectionProjection

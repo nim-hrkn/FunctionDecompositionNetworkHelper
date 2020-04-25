@@ -1,0 +1,33 @@
+workflow:
+- groupname: strongDOS
+  workflow:
+  - group:
+    - funcname: AllModelsExceptGroup
+      functype: parts
+      methodname: ChooseAllModelsExceptGroup
+      methodtype: function
+    - funcname: AllModels
+      functype: parts
+      methodname: generateAllModels
+      methodtype: function
+  - group:
+    - funcname: VisualizedRelevanceDOSImportance
+      functype: parts
+      methodname: VisualizeStrongRelevanceDOS
+      methodtype: function
+- groupname: weakDOS
+  workflow:
+  - group:
+    - funcname: AllModelsExceptGroupWithSubgroup
+      functype: parts
+      methodname: ChooseAllModelsExceptGroupWithSubgroup
+      methodtype: function
+    - funcname: AllModelsExceptGroup
+      functype: parts
+      methodname: ChooseAllModelsExceptGroup
+      methodtype: function
+  - group:
+    - funcname: VisualizedRelevanceDOSImportance
+      functype: parts
+      methodname: VisualizeWeakRelevanceDOS
+      methodtype: function

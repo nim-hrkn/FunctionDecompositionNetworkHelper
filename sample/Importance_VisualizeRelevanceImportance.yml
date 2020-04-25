@@ -1,28 +1,34 @@
 workflow:
-- groupname: text
-  workflow:
-  - group:
-    - funcname: DescriptorGroupRelevanceImportance
-      functype: parts
-  - group:
-    - funcname: VisualizedRelevanceImportance
-      functype: parts
-      methodname: VisualizeImportanceWithTextList
-      methodtype: function
-- groupname: dendrogram
-  workflow:
-  - group:
-    - funcname: FeatureDendrogram
-      functype: parts
-      methodname: generateDendrogram
-      methodtype: function
-    - funcname: DescriptorGroupRelevanceImportance
-      functype: parts
-#      methodname: generateDescriptorRelevanceImportance
-#      methodtype: function
-  - group:
-    - funcname: VisualizedRelevanceImportance
-      functype: parts
-      methodname: VisualizeImportanceWithDendrogram
-      methodtype: function
-
+  format: v2.1
+  block:
+  - blockname: text
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: DescriptorGroupRelevanceImportance
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: VisualizeImportanceWithTextList
+        - methodtype: function
+        - funcname: VisualizedRelevanceImportance
+        - functype: parts
+  - blockname: dendrogram
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: generateDendrogram
+        - methodtype: function
+        - funcname: FeatureDendrogram
+        - functype: parts
+      - !!omap
+        - funcname: DescriptorGroupRelevanceImportance
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: VisualizeImportanceWithDendrogram
+        - methodtype: function
+        - funcname: VisualizedRelevanceImportance
+        - functype: parts

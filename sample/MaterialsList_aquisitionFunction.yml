@@ -1,25 +1,51 @@
 workflow:
-- groupname:
-  workflow:
+  format: v2.1
+  block:
+  - blockname:
+    order: workflow
+    list:
     - group:
-      - funcname: CrystTargetAndDescriptor
-        functype: parts
+      - !!omap
+        - funcname: CrystTargetAndDescriptor
+        - functype: parts
     - group:
-      - methodname: BayeseLinearRegression
-        methodtype: parts
-        funcname: PredictionMeanAndVariance
-        functype: parts
+      - !!omap
+        - funcname: BayesianLinearRegression
+        - functype: parts
     - group:
-      - methodname: UCBaquisitionFunction
-        methodtype: parts
-        funcname: aquisitionFunctionValues
-        functype: parts
-      - methodname: ThonpsonSamplingaquisitionFunction
-        methodtype: parts
-        funcname: aquisitionFunctionValues
-        functype: parts
+      - !!omap
+        - funcname: PredictionMeanAndVariance
+        - functype: parts
     - group:
-      - methodname: sortAquisitionFunctionValues
-        methodtype: function
-        funcname: raiseMaterialsList
-        functype: function
+      - !!omap
+        - methodname: UCBaquisitionFunction
+        - methodtype: parts
+        - funcname: aquisitionFunctionValues
+        - functype: parts
+      - !!omap
+        - methodname: ThonpsonSamplingaquisitionFunction
+        - methodtype: parts
+        - funcname: aquisitionFunctionValues
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: sortAquisitionFunctionValues
+        - methodtype: function
+        - funcname: raiseMaterialsList
+        - functype: function
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: BayesianLinearRegression
+        - functype: parts
+      - !!omap
+        - funcname: NewsetDescriptor
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: apply_BayesianLinearRegression
+        - methodtype: function
+        - funcname: PredictionMeanAndVariance
+        - functype: parts

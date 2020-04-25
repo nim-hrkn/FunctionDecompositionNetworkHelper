@@ -161,6 +161,7 @@ class workflowWay(DecompositionTree):
         self.data = data
 
     def get_keyvalue(self,line,key):
+        line = dict(line)
         if key in line.keys():
             value = line[key]
         else:
@@ -169,6 +170,7 @@ class workflowWay(DecompositionTree):
 
     def check_names(self,g2):
         namelist = ["funcname","functype","methodname","methodtype"]
+        g2 = dict(g2)
         print("g2",g2)
         for x in g2.keys():
             if x not in namelist:
@@ -220,7 +222,9 @@ class workflowWay(DecompositionTree):
         return nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2
  
 
-    def convert_from_workflow(self,wf):
+    def convert_from_workflow(self,wflist):
+        wf = wflist["list"]
+
         grouplist = []
         for groupline in wf:
             grouplist.append( groupline["group"] )
@@ -329,15 +333,16 @@ class workflowWay(DecompositionTree):
 
         return dot 
 
-    def gen_dendrogram(self,workflowlist):
-        for wf in workflowlist:
-            self.convert_from_workflow(wf["workflow"])
-
     def linktree(self):
         data = self.data
-        self.gen_dendrogram(data["workflow"])
+        wf = data["workflow"]
+        print(wf["format"])
+        for wfblock in wf["block"]:
+           print("block",wfblock)
+           print(wfblock["blockname"],wfblock["order"])
+           self.convert_from_workflow(wfblock)
 
-
+       
 class taxologyWay(DecompositionTree):
     def __init__(self,basename="taxo",dotoption=None):
 

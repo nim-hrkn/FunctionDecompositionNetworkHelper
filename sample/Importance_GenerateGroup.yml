@@ -1,13 +1,18 @@
 workflow:
-- groupname: featureselection
-  workflow:
-  - group:
-    - funcname: Group
-      functype: parts
-      methodname: GenerateGroup
-      methodtype: function
-  - group:
-    - funcname: Subgroup
-      functype: parts
-      methodname: GenerateSubgroupFromGroup
-      methodtype: function
+  format: v2.1
+  block:
+  - blockname: featureselection
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: GenerateGroup
+        - methodtype: function
+        - funcname: Group
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: GenerateSubgroupFromGroup
+        - methodtype: function
+        - funcname: Subgroup
+        - functype: parts

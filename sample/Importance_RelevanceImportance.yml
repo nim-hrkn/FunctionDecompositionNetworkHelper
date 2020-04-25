@@ -1,58 +1,69 @@
 workflow:
-- groupname: strongRelevance
-  workflow:
-  - group:
-    - funcname: BestScoreOfAll
-      functype: parts
-      methodname: generateBestOfAllModels
-      methodtype: function
-    - funcname: BestScoreExceptGroup
-      functype: parts
-      methodname: generateBestScoreExceptGroup
-      methodtype: function
-  - group:
-    - funcname: StrongDescriptorGroupImportance
-      functype: parts
-      methodname: takeDifferenceBetwenBestScoreOfAllAndBestScoreExceptGroup
-      methodtype: function
-- groupname: weakRelevance
-  workflow:
-  - group:
-    - funcname: BestScoreExceptGroup
-      functype: parts
-      methodname: generateBestScoreExceptGroup
-      methodtype: function
-    - funcname: BestScoreExceptGroupWithSubgroup
-      functype: parts
-      methodname: generateBestScoreExceptGroupWithSubgroup
-      methodtype: function
-  - group:
-    - funcname: WeakDescriptorGroupImportance
-      functype: parts
-      methodname: takeDifferenceBetwenBestScoreExceptGroupAndBestScoreExceptGroupWithSubgroup
-      methodtype: function
-- groupname: 
-  workflow:
+  format: v2.1
+  block:
+  - blockname: strongRelevance
+    order: workflow
+    list:
     - group:
-        - funcname: AllModelsExceptGroup
-          functype: parts
-    - group:
+      - !!omap
+        - methodname: generateBestOfAllModels
+        - methodtype: function
+        - funcname: BestScoreOfAll
+        - functype: parts
+      - !!omap
         - methodname: generateBestScoreExceptGroup
-          methodtype: function
-          funcname:  BestScoreExceptGroup
-          functype:  parts
-- groupname: 
-  workflow:
+        - methodtype: function
+        - funcname: BestScoreExceptGroup
+        - functype: parts
     - group:
-        - funcname: AllModelsExceptGroupWithSubgroup
-          functype: parts
+      - !!omap
+        - methodname: takeDifferenceBetwenBestScoreOfAllAndBestScoreExceptGroup
+        - methodtype: function
+        - funcname: StrongDescriptorGroupImportance
+        - functype: parts
+  - blockname: weakRelevance
+    order: workflow
+    list:
     - group:
+      - !!omap
+        - methodname: generateBestScoreExceptGroup
+        - methodtype: function
+        - funcname: BestScoreExceptGroup
+        - functype: parts
+      - !!omap
         - methodname: generateBestScoreExceptGroupWithSubgroup
-          methodtype: function
-          funcname:  BestScoreExceptGroupWithSubgroup
-          functype:  parts
-
-
- 
-
-    
+        - methodtype: function
+        - funcname: BestScoreExceptGroupWithSubgroup
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: takeDifferenceBetwenBestScoreExceptGroupAndBestScoreExceptGroupWithSubgroup
+        - methodtype: function
+        - funcname: WeakDescriptorGroupImportance
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: AllModelsExceptGroup
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: generateBestScoreExceptGroup
+        - methodtype: function
+        - funcname: BestScoreExceptGroup
+        - functype: parts
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: AllModelsExceptGroupWithSubgroup
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: generateBestScoreExceptGroupWithSubgroup
+        - methodtype: function
+        - funcname: BestScoreExceptGroupWithSubgroup
+        - functype: parts

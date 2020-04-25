@@ -1,76 +1,84 @@
 workflow:
-- groupname: random generation
-  workflow:
+  format: v2.1
+  block:
+  - blockname: random generation
+    order: workflow
+    list:
     - group:
-      - funcname: MaterialsKnowledge
-        functype: method
-    - group: 
-      - methodname: randomGeneration
-        methodtype: method
-        funcname: CrystalCandidates
-        functype: parts
-        funcgeneralname: Crystal
-        funcgeneraltype: parts
-
-- groupname: random generation
-  workflow:
+      - !!omap
+        - funcname: MaterialsKnowledge
+        - functype: method
     - group:
-      - funcname: existingCrystals
-        functype: parts
-    - group: 
-      - methodname: substituteElements
-        methodtype: function
-        funcname: CrystalCandidates
-        functype: parts
-        funcgeneralname: Crystal
-        funcgeneraltype: parts
-
-- groupname: mateirals knowledge
-  workflow:
-    - group: 
-      - methodname: MaterialsDatabase
-        methodtype: method
-        funcname: chooseMaterialsDatabase
-        functype: function
-      - funcname: chooseMaterialSystem
-        functype: function
+      - !!omap
+        - methodname: randomGeneration
+        - methodtype: method
+        - funcname: CrystalCandidates
+        - functype: parts
+  - blockname: random generation
+    order: workflow
+    list:
     - group:
-      - methodname: CrystalsFromDatabase
-        methodtype: parts
-        funcname: existingCrystals
-        functype: parts
-    - group: 
-      - methodname: getParticularQuantities
-        methodtype: function
-        funcname: MaterialsKnowledge
-        functype: method
-
-- groupname: mateirals knowledge Target variable
-  workflow:
-    - group: 
-      - methodname: MaterialsDatabase
-        methodtype: method
-        funcname: chooseMaterialsDatabase
-        functype: function
+      - !!omap
+        - funcname: existingCrystals
+        - functype: parts
     - group:
-      - methodname: TargetValuesFromDatabase
-        methodtype: parts
-        funcname: chooseTargetValues
-        functype: function
-
-- groupname: mateirals knowledge Target variable
-  workflow:
-    - group: 
-      - funcname: chooseMaterialsDatabase
-        functype: function
-      - funcname: chooseCrystals
-        functype: function
+      - !!omap
+        - methodname: substituteElements
+        - methodtype: function
+        - funcname: CrystalCandidates
+        - functype: parts
+  - blockname: mateirals knowledge
+    order: workflow
+    list:
     - group:
-      - methodname: CrystalsFromDatabase
-        methodtype: parts
-        funcname: existingCrystals
-        functype: parts
-
-
-
-
+      - !!omap
+        - methodname: MaterialsDatabase
+        - methodtype: method
+        - funcname: chooseMaterialsDatabase
+        - functype: function
+      - !!omap
+        - funcname: chooseMaterialSystem
+        - functype: function
+    - group:
+      - !!omap
+        - methodname: CrystalsFromDatabase
+        - methodtype: parts
+        - funcname: existingCrystals
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: getParticularQuantities
+        - methodtype: function
+        - funcname: MaterialsKnowledge
+        - functype: method
+  - blockname: mateirals knowledge Target variable
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: MaterialsDatabase
+        - methodtype: method
+        - funcname: chooseMaterialsDatabase
+        - functype: function
+    - group:
+      - !!omap
+        - methodname: TargetValuesFromDatabase
+        - methodtype: parts
+        - funcname: chooseTargetValues
+        - functype: function
+  - blockname: mateirals knowledge Target variable
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - funcname: chooseMaterialsDatabase
+        - functype: function
+      - !!omap
+        - funcname: chooseCrystals
+        - functype: function
+    - group:
+      - !!omap
+        - methodname: CrystalsFromDatabase
+        - methodtype: parts
+        - funcname: existingCrystals
+        - functype: parts

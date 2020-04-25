@@ -1,33 +1,43 @@
 workflow:
-- groupname: strongDOS
-  workflow:
-  - group:
-    - funcname: AllModelsExceptGroup
-      functype: parts
-      methodname: ChooseAllModelsExceptGroup
-      methodtype: function
-    - funcname: AllModels
-      functype: parts
-      methodname: generateAllModels
-      methodtype: function
-  - group:
-    - funcname: VisualizedRelevanceDOSImportance
-      functype: parts
-      methodname: VisualizeStrongRelevanceDOS
-      methodtype: function
-- groupname: weakDOS
-  workflow:
-  - group:
-    - funcname: AllModelsExceptGroupWithSubgroup
-      functype: parts
-      methodname: ChooseAllModelsExceptGroupWithSubgroup
-      methodtype: function
-    - funcname: AllModelsExceptGroup
-      functype: parts
-      methodname: ChooseAllModelsExceptGroup
-      methodtype: function
-  - group:
-    - funcname: VisualizedRelevanceDOSImportance
-      functype: parts
-      methodname: VisualizeWeakRelevanceDOS
-      methodtype: function
+  format: v2.1
+  block:
+  - blockname: strongDOS
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: ChooseAllModelsExceptGroup
+        - methodtype: function
+        - funcname: AllModelsExceptGroup
+        - functype: parts
+      - !!omap
+        - methodname: generateAllModels
+        - methodtype: function
+        - funcname: AllModels
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: VisualizeStrongRelevanceDOS
+        - methodtype: function
+        - funcname: VisualizedRelevanceDOSImportance
+        - functype: parts
+  - blockname: weakDOS
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - methodname: ChooseAllModelsExceptGroupWithSubgroup
+        - methodtype: function
+        - funcname: AllModelsExceptGroupWithSubgroup
+        - functype: parts
+      - !!omap
+        - methodname: ChooseAllModelsExceptGroup
+        - methodtype: function
+        - funcname: AllModelsExceptGroup
+        - functype: parts
+    - group:
+      - !!omap
+        - methodname: VisualizeWeakRelevanceDOS
+        - methodtype: function
+        - funcname: VisualizedRelevanceDOSImportance
+        - functype: parts
