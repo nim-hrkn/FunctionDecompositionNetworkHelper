@@ -167,7 +167,19 @@ class workflowWay(DecompositionTree):
             value = None
         return value
 
+    def check_names(self,g2):
+        namelist = ["funcname","functype","methodname","methodtype"]
+        print("g2",g2)
+        for x in g2.keys():
+            if x not in namelist:
+                print("unknown keyword",x)
+                print("group=",g2)
+                print("keywordlist=",namelist)
+                raise 
+
     def gen_names(self,g2):
+
+        self.check_names(g2)
 
         complement = self.get_keyvalue(g2,"complement")
 
