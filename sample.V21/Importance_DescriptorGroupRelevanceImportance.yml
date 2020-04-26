@@ -1,0 +1,9 @@
+link:
+- nodename: DescriptorGroupRelevanceImportance
+  nodetype: parts
+  linktype: IsA
+  link:
+  - nodename: WeakDescriptorGroupImportance
+    nodetype: parts
+  - nodename: StrongDescriptorGroupImportance
+    nodetype: parts

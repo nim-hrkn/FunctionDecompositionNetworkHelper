@@ -1,30 +1,30 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: kmeans
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+        - funcname: ClusteredSetCandates
+        - functype: parts
     - group:
       - !!omap
         - methodname: DomainKnowledgeDataScienceClusteringSelection
-        - outputname: FeatureGroups
-        - outputtype: parts
+        - funcname: FeatureGroups
+        - functype: parts
   - blockname: gmm
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+        - funcname: ClusteredSetCandates
+        - functype: parts
     - group:
       - !!omap
         - methodname: DomainKnowledgeDataScienceClusteringSelection
-        - outputname: FeatureGroups
-        - outputtype: parts
+        - funcname: FeatureGroups
+        - functype: parts
   - blockname: kmeans
     order: workflow
     list:
@@ -32,18 +32,18 @@ workflow:
       - !!omap
         - methodname: genAllData
         - methodtype: function
-        - outputname: AllData
-        - outputtype: parts
+        - funcname: AllData
+        - functype: parts
       - !!omap
         - methodname: choosekMeansParameterAll
         - methodtype: function
-        - outputname: kMeansParameter
-        - outputtype: parts
+        - funcname: kMeansParameter
+        - functype: parts
     - group:
       - !!omap
         - methodname: FeaturekMeansClustering
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+        - funcname: ClusteredSetCandates
+        - functype: parts
   - blockname: gmm
     order: workflow
     list:
@@ -51,15 +51,15 @@ workflow:
       - !!omap
         - methodname: genAllData
         - methodtype: function
-        - outputname: AllData
-        - outputtype: parts
+        - funcname: AllData
+        - functype: parts
       - !!omap
         - methodname: chooseGMMParameterAll
         - methodtype: function
-        - outputname: GMMParameter
-        - outputtype: parts
+        - funcname: GMMParameter
+        - functype: parts
     - group:
       - !!omap
         - methodname: FeatureGMMClustering
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+        - funcname: ClusteredSetCandates
+        - functype: parts

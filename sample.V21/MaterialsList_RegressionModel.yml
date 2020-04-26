@@ -1,79 +1,79 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: TrainingData
-        - outputtype: parts
+        - funcname: TrainingData
+        - functype: parts
     - group:
       - !!omap
         - methodname: NeuralNetworkRegression
-        - outputname: RegressionModel
-        - outputtype: parts
+        - funcname: RegressionModel
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: TrainingData
-        - outputtype: parts
+        - funcname: TrainingData
+        - functype: parts
     - group:
       - !!omap
         - methodname: LinearRegression
-        - outputname: RegressionModel
-        - outputtype: parts
+        - funcname: RegressionModel
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: TrainingData
-        - outputtype: parts
+        - funcname: TrainingData
+        - functype: parts
     - group:
       - !!omap
         - methodname: KernelRegression
-        - outputname: RegressionModel
-        - outputtype: parts
+        - funcname: RegressionModel
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: RegressionModel
-        - outputtype: parts
+        - funcname: RegressionModel
+        - functype: parts
       - !!omap
-        - outputname: NewsetDescriptor
-        - outputtype: parts
+        - funcname: NewsetDescriptor
+        - functype: parts
     - group:
       - !!omap
         - methodname: evaluateRegressionModel
         - methodtype: function
-        - outputname: RegressionModelValues
-        - outputtype: function
+        - funcname: RegressionModelValues
+        - functype: function
     - group:
       - !!omap
         - methodname: sortRegressionModelValues
         - methodtype: function
-        - outputname: raiseMaterialsList
-        - outputtype: function
+        - funcname: raiseMaterialsList
+        - functype: function
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: NewsetCrystal
-        - outputtype: parts
+        - funcname: NewsetCrystal
+        - functype: parts
       - !!omap
         - methodname: CrystalToDescriptorAndRelationToTargetVariable
         - methodtype: method
-        - outputname: methodFromCrystalToDescriptor
-        - outputtype: parts
+        - funcname: methodFromCrystalToDescriptor
+        - functype: parts
     - group:
       - !!omap
         - methodname: CrystalToDescriptorAndRelationToTargetVariable(newSet)
         - methodtype: method
-        - outputname: NewsetDescriptor
-        - outputtype: parts
+        - funcname: NewsetDescriptor
+        - functype: parts

@@ -1,69 +1,69 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+        - funcname: chooseMaterialsDatabase
+        - functype: function
     - group:
       - !!omap
         - methodname: searchCrystalHavingTargetValuesfromDatabase
         - methodtype: function
-        - outputname: chooseTrainingSetCrystal
-        - outputtype: function
+        - funcname: chooseTrainingSetCrystal
+        - functype: function
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+        - funcname: chooseMaterialsDatabase
+        - functype: function
     - group:
       - !!omap
         - methodname: queryCrysalDataHavingTarget
         - methodtype: function
-        - outputname: CrystalHavingTargetValuesFromDatabase
-        - outputtype: parts
+        - funcname: CrystalHavingTargetValuesFromDatabase
+        - functype: parts
     - group:
       - !!omap
         - methodname: chooseTargetValues
         - methodtype: parts
-        - outputname: TargetValues
-        - outputtype: parts
+        - funcname: TargetValues
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: chooseTrainingSetCrystal
-        - outputtype: function
+        - funcname: chooseTrainingSetCrystal
+        - functype: function
       - !!omap
         - methodname: CrystalToDescriptorAndRelationToTargetVariable
         - methodtype: method
-        - outputname: methodFromCrystalToDescriptor
-        - outputtype: parts
+        - funcname: methodFromCrystalToDescriptor
+        - functype: parts
     - group:
       - !!omap
         - methodname: CrystalToDescriptorAndRelationToTargetVariable(trainingSet)
         - methodtype: method
-        - outputname: TrainingSetDescriptorAndRelationToTargetVariable
-        - outputtype: parts
+        - funcname: TrainingSetDescriptorAndRelationToTargetVariable
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: TrainingSetDescriptorAndRelationToTargetVariable
-        - outputtype: parts
+        - funcname: TrainingSetDescriptorAndRelationToTargetVariable
+        - functype: parts
       - !!omap
-        - outputname: TargetValues
-        - outputtype: parts
+        - funcname: TargetValues
+        - functype: parts
     - group:
       - !!omap
         - methodname: TrainingDataGeneration
         - methodtype: method
-        - outputname: TrainingData
-        - outputtype: parts
+        - funcname: TrainingData
+        - functype: parts

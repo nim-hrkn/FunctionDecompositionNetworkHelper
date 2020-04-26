@@ -1,51 +1,51 @@
 workflow:
-  format: v2.1
+  format: v2.2
   block:
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - funcname: TrainingData
-        - functype: parts
+        - outputname: TrainingData
+        - outputtype: parts
     - group:
       - !!omap
-        - funcname: BayesianLinearRegression
-        - functype: parts
+        - outputname: BayesianLinearRegression
+        - outputtype: parts
     - group:
       - !!omap
-        - funcname: PredictionMeanAndVariance
-        - functype: parts
+        - outputname: PredictionMeanAndVariance
+        - outputtype: parts
     - group:
       - !!omap
         - methodname: UCBaquisitionFunction
         - methodtype: parts
-        - funcname: aquisitionFunctionValues
-        - functype: parts
+        - outputname: aquisitionFunctionValues
+        - outputtype: parts
       - !!omap
         - methodname: ThonpsonSamplingaquisitionFunction
         - methodtype: parts
-        - funcname: aquisitionFunctionValues
-        - functype: parts
+        - outputname: aquisitionFunctionValues
+        - outputtype: parts
     - group:
       - !!omap
         - methodname: sortAquisitionFunctionValues
         - methodtype: function
-        - funcname: raiseMaterialsList
-        - functype: function
+        - outputname: raiseMaterialsList
+        - outputtype: function
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - funcname: BayesianLinearRegression
-        - functype: parts
+        - outputname: BayesianLinearRegression
+        - outputtype: parts
       - !!omap
-        - funcname: NewsetDescriptor
-        - functype: parts
+        - outputname: NewsetDescriptor
+        - outputtype: parts
     - group:
       - !!omap
         - methodname: apply_BayesianLinearRegression
         - methodtype: function
-        - funcname: PredictionMeanAndVariance
-        - functype: parts
+        - outputname: PredictionMeanAndVariance
+        - outputtype: parts

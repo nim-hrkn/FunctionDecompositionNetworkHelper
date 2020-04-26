@@ -1,5 +1,5 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname:
     order: workflow
@@ -8,59 +8,59 @@ workflow:
       - !!omap
         - methodname: Element
         - methodtype: method
-        - outputname: chooseElement
-        - outputtype: function
+        - funcname: chooseElement
+        - functype: function
     - group:
       - !!omap
         - methodname: getnumberOfElectron
         - methodtype: function
-        - outputname: numberOfElectron
-        - outputtype: parts
+        - funcname: numberOfElectron
+        - functype: parts
     - group:
       - !!omap
         - methodname: SchroedingerDiracEq
         - methodtype: method
-        - outputname: EigenWavefunction
-        - outputtype: parts
+        - funcname: EigenWavefunction
+        - functype: parts
       - !!omap
         - methodname: SchroedingerDiracEq
         - methodtype: method
-        - outputname: ElectricConfiguration
-        - outputtype: parts
+        - funcname: ElectricConfiguration
+        - functype: parts
     - group:
       - !!omap
         - methodname: constructGroundStateWavefunction
         - methodtype: function
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+        - funcname: GroundStateWavefunction
+        - functype: parts
   - blockname: orbitalEnergy
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: EigenWavefunction
-        - outputtype: parts
+        - funcname: EigenWavefunction
+        - functype: parts
     - group:
       - !!omap
         - methodname: evaluateSOrbitalEnergy
         - methodtype: function
-        - outputname: sOrbitalEnergy
-        - outputtype: parts
+        - funcname: sOrbitalEnergy
+        - functype: parts
       - !!omap
         - methodname: evaluatepOrbitalEnergy
         - methodtype: function
-        - outputname: pOrbitalEnergy
-        - outputtype: parts
+        - funcname: pOrbitalEnergy
+        - functype: parts
       - !!omap
         - methodname: evaluatedOrbitalEnergy
         - methodtype: function
-        - outputname: dOrbitalEnergy
-        - outputtype: parts
+        - funcname: dOrbitalEnergy
+        - functype: parts
       - !!omap
         - methodname: evaluatefOrbitalEnergy
         - methodtype: function
-        - outputname: fOrbitalEnergy
-        - outputtype: parts
+        - funcname: fOrbitalEnergy
+        - functype: parts
   - blockname: mass
     order: workflow
     list:
@@ -68,32 +68,32 @@ workflow:
       - !!omap
         - methodname: Element
         - methodtype: method
-        - outputname: chooseElement
-        - outputtype: function
+        - funcname: chooseElement
+        - functype: function
     - group:
       - !!omap
         - methodname: chooseIsotopeMass
         - methodtype: function
-        - outputname: isotopeMass
-        - outputtype: parts
+        - funcname: isotopeMass
+        - functype: parts
       - !!omap
         - methodname: averageMass
         - methodtype: function
-        - outputname: averagedMass
-        - outputtype: parts
+        - funcname: averagedMass
+        - functype: parts
   - blockname: totalenergy
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+        - funcname: GroundStateWavefunction
+        - functype: parts
     - group:
       - !!omap
         - methodname: evaluateTotalEnergy
         - methodtype: function
-        - outputname: TotalEnergy
-        - outputtype: parts
+        - funcname: TotalEnergy
+        - functype: parts
   - blockname: angularMoment
     order: workflow
     list:
@@ -101,24 +101,24 @@ workflow:
       - !!omap
         - methodname: constructGroundStateWavefunction
         - methodtype: function
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+        - funcname: GroundStateWavefunction
+        - functype: parts
     - group:
       - !!omap
         - methodname: S3dAngularMoment
         - methodtype: method
-        - outputname: S3d
-        - outputtype: parts
+        - funcname: S3d
+        - functype: parts
       - !!omap
         - methodname: L3dAngularMoment
         - methodtype: method
-        - outputname: L3d
-        - outputtype: parts
+        - funcname: L3d
+        - functype: parts
       - !!omap
         - methodname: J3dAngularMoment
         - methodtype: method
-        - outputname: J3d
-        - outputtype: parts
+        - funcname: J3d
+        - functype: parts
   - blockname: J4fangularMoment
     order: workflow
     list:
@@ -126,14 +126,14 @@ workflow:
       - !!omap
         - methodname: constructGroundStateWavefunction
         - methodtype: function
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+        - funcname: GroundStateWavefunction
+        - functype: parts
     - group:
       - !!omap
         - methodname: J4fAngularMoment
         - methodtype: method
-        - outputname: J4f
-        - outputtype: parts
+        - funcname: J4f
+        - functype: parts
   - blockname: J4fangularMomentProjection
     order: workflow
     list:
@@ -141,88 +141,88 @@ workflow:
       - !!omap
         - methodname: J4fAngularMoment
         - methodtype: method
-        - outputname: J4f
-        - outputtype: parts
+        - funcname: J4f
+        - functype: parts
       - !!omap
         - methodname: getgJ
         - methodtype: function
-        - outputname: gJ
-        - outputtype: parts
+        - funcname: gJ
+        - functype: parts
     - group:
       - !!omap
         - methodname: (gJ-1)J4f
         - methodtype: parts
-        - outputname: J4fSpinDirectionProjection
-        - outputtype: parts
+        - funcname: J4fSpinDirectionProjection
+        - functype: parts
       - !!omap
         - methodname: (2-gJ)J4f
         - methodtype: parts
-        - outputname: J4fOrbitalDirectionProjection
-        - outputtype: parts
+        - funcname: J4fOrbitalDirectionProjection
+        - functype: parts
   - blockname: r2
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+        - funcname: GroundStateWavefunction
+        - functype: parts
     - group:
       - !!omap
         - methodname: r2Expectation
         - methodtype: method
-        - outputname: r2
-        - outputtype: parts
+        - funcname: r2
+        - functype: parts
   - blockname: r2_L
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: EigenWavefunction
-        - outputtype: parts
+        - funcname: EigenWavefunction
+        - functype: parts
     - group:
       - !!omap
         - methodname: sChanneldensityExpectation
         - methodtype: method
-        - outputname: r2_s
-        - outputtype: parts
+        - funcname: r2_s
+        - functype: parts
       - !!omap
         - methodname: pChanneldensityExpectation
         - methodtype: method
-        - outputname: r2_p
-        - outputtype: parts
+        - funcname: r2_p
+        - functype: parts
       - !!omap
         - methodname: dChanneldensityExpectation
         - methodtype: method
-        - outputname: r2_d
-        - outputtype: parts
+        - funcname: r2_d
+        - functype: parts
       - !!omap
         - methodname: fChanneldensityExpectation
         - methodtype: method
-        - outputname: r2_f
-        - outputtype: parts
+        - funcname: r2_f
+        - functype: parts
   - blockname: periodictable
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: chooseElement
-        - outputtype: function
+        - funcname: chooseElement
+        - functype: function
     - group:
       - !!omap
         - methodname: getperiodictableRow
         - methodtype: function
-        - outputname: PeriodictableRow
-        - outputtype: parts
+        - funcname: PeriodictableRow
+        - functype: parts
   - blockname: periodictable
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: chooseElement
-        - outputtype: function
+        - funcname: chooseElement
+        - functype: function
     - group:
       - !!omap
         - methodname: getperiodictableColumn
         - methodtype: function
-        - outputname: PeriodictableColumn
-        - outputtype: parts
+        - funcname: PeriodictableColumn
+        - functype: parts

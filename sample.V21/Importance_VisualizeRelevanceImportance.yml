@@ -1,19 +1,19 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: text
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: DescriptorGroupRelevanceImportance
-        - outputtype: parts
+        - funcname: DescriptorGroupRelevanceImportance
+        - functype: parts
     - group:
       - !!omap
         - methodname: VisualizeImportanceWithTextList
         - methodtype: function
-        - outputname: VisualizedRelevanceImportance
-        - outputtype: parts
+        - funcname: VisualizedRelevanceImportance
+        - functype: parts
   - blockname: dendrogram
     order: workflow
     list:
@@ -21,14 +21,14 @@ workflow:
       - !!omap
         - methodname: generateDendrogram
         - methodtype: function
-        - outputname: FeatureDendrogram
-        - outputtype: parts
+        - funcname: FeatureDendrogram
+        - functype: parts
       - !!omap
-        - outputname: DescriptorGroupRelevanceImportance
-        - outputtype: parts
+        - funcname: DescriptorGroupRelevanceImportance
+        - functype: parts
     - group:
       - !!omap
         - methodname: VisualizeImportanceWithDendrogram
         - methodtype: function
-        - outputname: VisualizedRelevanceImportance
-        - outputtype: parts
+        - funcname: VisualizedRelevanceImportance
+        - functype: parts

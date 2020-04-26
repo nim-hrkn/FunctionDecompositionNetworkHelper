@@ -1,32 +1,32 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: random generation
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: MaterialsKnowledge
-        - outputtype: method
+        - funcname: MaterialsKnowledge
+        - functype: method
     - group:
       - !!omap
         - methodname: randomGeneration
         - methodtype: method
-        - outputname: NewsetCrystal
-        - outputtype: parts
+        - funcname: NewsetCrystal
+        - functype: parts
   - blockname: random generation
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: existingCrystals
-        - outputtype: parts
+        - funcname: existingCrystals
+        - functype: parts
     - group:
       - !!omap
         - methodname: substituteElements
         - methodtype: function
-        - outputname: NewsetCrystal
-        - outputtype: parts
+        - funcname: NewsetCrystal
+        - functype: parts
   - blockname: mateirals knowledge
     order: workflow
     list:
@@ -34,23 +34,23 @@ workflow:
       - !!omap
         - methodname: MaterialsDatabase
         - methodtype: method
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+        - funcname: chooseMaterialsDatabase
+        - functype: function
       - !!omap
-        - outputname: chooseMaterialSystem
-        - outputtype: function
+        - funcname: chooseMaterialSystem
+        - functype: function
     - group:
       - !!omap
         - methodname: CrystalsFromDatabase
         - methodtype: parts
-        - outputname: existingCrystals
-        - outputtype: parts
+        - funcname: existingCrystals
+        - functype: parts
     - group:
       - !!omap
         - methodname: getParticularQuantities
         - methodtype: function
-        - outputname: MaterialsKnowledge
-        - outputtype: method
+        - funcname: MaterialsKnowledge
+        - functype: method
   - blockname: mateirals knowledge Target variable
     order: workflow
     list:
@@ -58,27 +58,27 @@ workflow:
       - !!omap
         - methodname: MaterialsDatabase
         - methodtype: method
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+        - funcname: chooseMaterialsDatabase
+        - functype: function
     - group:
       - !!omap
         - methodname: TargetValuesFromDatabase
         - methodtype: parts
-        - outputname: chooseTargetValues
-        - outputtype: function
+        - funcname: chooseTargetValues
+        - functype: function
   - blockname: mateirals knowledge Target variable
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+        - funcname: chooseMaterialsDatabase
+        - functype: function
       - !!omap
-        - outputname: chooseCrystals
-        - outputtype: function
+        - funcname: chooseCrystals
+        - functype: function
     - group:
       - !!omap
         - methodname: CrystalsFromDatabase
         - methodtype: parts
-        - outputname: existingCrystals
-        - outputtype: parts
+        - funcname: existingCrystals
+        - functype: parts

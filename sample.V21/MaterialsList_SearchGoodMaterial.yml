@@ -1,56 +1,56 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: raiseMaterialsList
-        - outputtype: function
+        - funcname: raiseMaterialsList
+        - functype: function
       - !!omap
-        - outputname: searchMaterialsListHavingTargetVariable
-        - outputtype: function
+        - funcname: searchMaterialsListHavingTargetVariable
+        - functype: function
     - group:
       - !!omap
         - methodname: selectNoExperiment
         - methodtype: function
-        - outputname: NoExperimentMaterialsList
-        - outputtype: parts
+        - funcname: NoExperimentMaterialsList
+        - functype: parts
     - group:
       - !!omap
         - methodname: MaterialSynthesis
         - methodtype: method
-        - outputname: SynthesizedMaterils
-        - outputtype: parts
+        - funcname: SynthesizedMaterils
+        - functype: parts
     - group:
       - !!omap
         - methodname: measureTargetQuanitty
         - methodtype: function
-        - outputname: newTargetValues
-        - outputtype: parts
+        - funcname: newTargetValues
+        - functype: parts
       - !!omap
-        - outputname: getTargetSelectionCriterion
-        - outputtype: function
+        - funcname: getTargetSelectionCriterion
+        - functype: function
     - group:
       - !!omap
         - methodname: SelectSynthesizedTaretMaterialsIteratively
         - methodtype: function
-        - outputname: newTargetMaterial
-        - outputtype: parts
+        - funcname: newTargetMaterial
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: TargetCriterion
-        - outputtype: parts
+        - funcname: TargetCriterion
+        - functype: parts
     - group:
       - !!omap
         - methodname: TargetSelectionCriterion
         - methodtype: parts
-        - outputname: getTargetSelectionCriterion
-        - outputtype: function
+        - funcname: getTargetSelectionCriterion
+        - functype: function
   - blockname:
     order: workflow
     list:
@@ -58,14 +58,14 @@ workflow:
       - !!omap
         - methodname: MaterialsDatabase
         - methodtype: method
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+        - funcname: chooseMaterialsDatabase
+        - functype: function
       - !!omap
-        - outputname: chooseTargetValues
-        - outputtype: function
+        - funcname: chooseTargetValues
+        - functype: function
     - group:
       - !!omap
         - methodname: storeInMaterialsDataBase
         - methodtype: function
-        - outputname: RicherMaterialsDatabase
-        - outputtype: parts
+        - funcname: RicherMaterialsDatabase
+        - functype: parts

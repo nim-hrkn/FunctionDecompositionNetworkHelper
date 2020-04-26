@@ -169,7 +169,7 @@ class workflowWay(DecompositionTree):
         return value
 
     def check_names(self,g2):
-        namelist = ["funcname","functype","methodname","methodtype"]
+        namelist = ["outputname","outputtype","methodname","methodtype"]
         g2 = dict(g2)
         print("g2",g2)
         for x in g2.keys():
@@ -187,9 +187,9 @@ class workflowWay(DecompositionTree):
 
         if complement == "auto":
 
-            nodename2 = self.get_keyvalue(g2,"funcname")
+            nodename2 = self.get_keyvalue(g2,"outputname")
             methodname2 = self.get_keyvalue(g2,"methodname")
-            functype2 = self.get_keyvalue(g2,"functype")
+            functype2 = self.get_keyvalue(g2,"outputtype")
             methodtype2 = self.get_keyvalue(g2,"methodtype")
             if nodename2 is not None:
                 funcname2 = self.func_prefix(functype2)+nodename2
@@ -207,8 +207,8 @@ class workflowWay(DecompositionTree):
 
         else:
 
-            nodename2 = self.get_keyvalue(g2,"funcname")
-            functype2 = self.get_keyvalue(g2,"functype")
+            nodename2 = self.get_keyvalue(g2,"outputname")
+            functype2 = self.get_keyvalue(g2,"outputtype")
             methodname2 = self.get_keyvalue(g2,"methodname")
             methodtype2 = self.get_keyvalue(g2,"methodtype")
             funcname2 = self.func_prefix(functype2)+nodename2

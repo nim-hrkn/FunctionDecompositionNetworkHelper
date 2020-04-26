@@ -1,5 +1,5 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: strongRelevance
     order: workflow
@@ -8,19 +8,19 @@ workflow:
       - !!omap
         - methodname: generateBestOfAllModels
         - methodtype: function
-        - outputname: BestScoreOfAll
-        - outputtype: parts
+        - funcname: BestScoreOfAll
+        - functype: parts
       - !!omap
         - methodname: generateBestScoreExceptGroup
         - methodtype: function
-        - outputname: BestScoreExceptGroup
-        - outputtype: parts
+        - funcname: BestScoreExceptGroup
+        - functype: parts
     - group:
       - !!omap
         - methodname: takeDifferenceBetwenBestScoreOfAllAndBestScoreExceptGroup
         - methodtype: function
-        - outputname: StrongDescriptorGroupImportance
-        - outputtype: parts
+        - funcname: StrongDescriptorGroupImportance
+        - functype: parts
   - blockname: weakRelevance
     order: workflow
     list:
@@ -28,42 +28,42 @@ workflow:
       - !!omap
         - methodname: generateBestScoreExceptGroup
         - methodtype: function
-        - outputname: BestScoreExceptGroup
-        - outputtype: parts
+        - funcname: BestScoreExceptGroup
+        - functype: parts
       - !!omap
         - methodname: generateBestScoreExceptGroupWithSubgroup
         - methodtype: function
-        - outputname: BestScoreExceptGroupWithSubgroup
-        - outputtype: parts
+        - funcname: BestScoreExceptGroupWithSubgroup
+        - functype: parts
     - group:
       - !!omap
         - methodname: takeDifferenceBetwenBestScoreExceptGroupAndBestScoreExceptGroupWithSubgroup
         - methodtype: function
-        - outputname: WeakDescriptorGroupImportance
-        - outputtype: parts
+        - funcname: WeakDescriptorGroupImportance
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: AllModelsExceptGroup
-        - outputtype: parts
+        - funcname: AllModelsExceptGroup
+        - functype: parts
     - group:
       - !!omap
         - methodname: generateBestScoreExceptGroup
         - methodtype: function
-        - outputname: BestScoreExceptGroup
-        - outputtype: parts
+        - funcname: BestScoreExceptGroup
+        - functype: parts
   - blockname:
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: AllModelsExceptGroupWithSubgroup
-        - outputtype: parts
+        - funcname: AllModelsExceptGroupWithSubgroup
+        - functype: parts
     - group:
       - !!omap
         - methodname: generateBestScoreExceptGroupWithSubgroup
         - methodtype: function
-        - outputname: BestScoreExceptGroupWithSubgroup
-        - outputtype: parts
+        - funcname: BestScoreExceptGroupWithSubgroup
+        - functype: parts

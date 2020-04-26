@@ -1,5 +1,5 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: CD_CT
     order: workflow
@@ -8,14 +8,14 @@ workflow:
       - !!omap
         - methodname: DirectlyGenerateCrystalDescriptor
         - methodtype: function
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+        - funcname: CrystalDescriptor
+        - functype: parts
     - group:
       - !!omap
         - methodname: CrystalDescriptorToCrystalTarget
         - methodtype: method
-        - outputname: RelationshipBetweenCrystalTargetAndDescriptor
-        - outputtype: parts
+        - funcname: RelationshipBetweenCrystalTargetAndDescriptor
+        - functype: parts
   - blockname: AD_CD_CT
     order: workflow
     list:
@@ -23,20 +23,20 @@ workflow:
       - !!omap
         - methodname: generateAtomicDescriptor
         - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+        - funcname: AtomicDescriptor
+        - functype: parts
     - group:
       - !!omap
         - methodname: AtomDescriptorToCrystalDescriptor
         - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+        - funcname: CrystalDescriptor
+        - functype: parts
     - group:
       - !!omap
         - methodname: CrystalDescriptorToCrystalTarget
         - methodtype: method
-        - outputname: RelationshipBetweenCrystalTargetAndDescriptor
-        - outputtype: parts
+        - funcname: RelationshipBetweenCrystalTargetAndDescriptor
+        - functype: parts
   - blockname: AD_AT_CT
     order: workflow
     list:
@@ -44,17 +44,17 @@ workflow:
       - !!omap
         - methodname: generateAtomicDescriptor
         - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+        - funcname: AtomicDescriptor
+        - functype: parts
     - group:
       - !!omap
         - methodname: RelationshipBetweenAtomicDescriptorToAtomTarget
         - methodtype: method
-        - outputname: AtomicTarget
-        - outputtype: parts
+        - funcname: AtomicTarget
+        - functype: parts
     - group:
       - !!omap
         - methodname: AtomTargetToCrystalTarget
         - methodtype: method
-        - outputname: RelationshipBetweenCrystalTargetAndDescriptor
-        - outputtype: parts
+        - funcname: RelationshipBetweenCrystalTargetAndDescriptor
+        - functype: parts

@@ -1,5 +1,5 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: indicatordiagram
     order: workflow
@@ -8,13 +8,13 @@ workflow:
       - !!omap
         - methodname: generateAllModels
         - methodtype: function
-        - outputname: AllModels
-        - outputtype: parts
+        - funcname: AllModels
+        - functype: parts
     - group:
       - !!omap
         - methodname: indicatorDiagram
-        - outputname: VisualizedUnprocessedImportance
-        - outputtype: parts
+        - funcname: VisualizedUnprocessedImportance
+        - functype: parts
   - blockname: weightdiagram
     order: workflow
     list:
@@ -22,10 +22,10 @@ workflow:
       - !!omap
         - methodname: generateAllModels
         - methodtype: function
-        - outputname: AllModels
-        - outputtype: parts
+        - funcname: AllModels
+        - functype: parts
     - group:
       - !!omap
         - methodname: weightDiagram
-        - outputname: VisualizedUnprocessedImportance
-        - outputtype: parts
+        - funcname: VisualizedUnprocessedImportance
+        - functype: parts

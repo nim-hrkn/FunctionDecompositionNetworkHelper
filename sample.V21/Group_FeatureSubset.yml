@@ -1,38 +1,38 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: domainknowledgeSubgroup
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: FeatureGroups
-        - outputtype: parts
+        - funcname: FeatureGroups
+        - functype: parts
     - group:
       - !!omap
         - methodname: domainknowledgeSubgroupSelection
-        - outputname: AllFeatureSubgroups
-        - outputtype: parts
+        - funcname: AllFeatureSubgroups
+        - functype: parts
   - blockname: DendrogramSubgroupSelection
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: FeatureGroups
-        - outputtype: parts
+        - funcname: FeatureGroups
+        - functype: parts
     - group:
       - !!omap
         - methodname: chooseFeatureSubgroupDistanceThresholdAll
         - methodtype: function
-        - outputname: FeatureSubgroupDistanceThresholdAll
-        - outputtype: parts
+        - funcname: FeatureSubgroupDistanceThresholdAll
+        - functype: parts
       - !!omap
         - methodname: genFeatureGroupDendrogram
         - methodtype: function
-        - outputname: FeatureGroupDendrogram
-        - outputtype: parts
+        - funcname: FeatureGroupDendrogram
+        - functype: parts
     - group:
       - !!omap
         - methodname: DendrogramSubgroupsSelection
-        - outputname: AllFeatureSubgroups
-        - outputtype: parts
+        - funcname: AllFeatureSubgroups
+        - functype: parts

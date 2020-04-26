@@ -1,5 +1,5 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: strongDOS
     order: workflow
@@ -8,19 +8,19 @@ workflow:
       - !!omap
         - methodname: ChooseAllModelsExceptGroup
         - methodtype: function
-        - outputname: AllModelsExceptGroup
-        - outputtype: parts
+        - funcname: AllModelsExceptGroup
+        - functype: parts
       - !!omap
         - methodname: generateAllModels
         - methodtype: function
-        - outputname: AllModels
-        - outputtype: parts
+        - funcname: AllModels
+        - functype: parts
     - group:
       - !!omap
         - methodname: VisualizeStrongRelevanceDOS
         - methodtype: function
-        - outputname: VisualizedRelevanceDOSImportance
-        - outputtype: parts
+        - funcname: VisualizedRelevanceDOSImportance
+        - functype: parts
   - blockname: weakDOS
     order: workflow
     list:
@@ -28,16 +28,16 @@ workflow:
       - !!omap
         - methodname: ChooseAllModelsExceptGroupWithSubgroup
         - methodtype: function
-        - outputname: AllModelsExceptGroupWithSubgroup
-        - outputtype: parts
+        - funcname: AllModelsExceptGroupWithSubgroup
+        - functype: parts
       - !!omap
         - methodname: ChooseAllModelsExceptGroup
         - methodtype: function
-        - outputname: AllModelsExceptGroup
-        - outputtype: parts
+        - funcname: AllModelsExceptGroup
+        - functype: parts
     - group:
       - !!omap
         - methodname: VisualizeWeakRelevanceDOS
         - methodtype: function
-        - outputname: VisualizedRelevanceDOSImportance
-        - outputtype: parts
+        - funcname: VisualizedRelevanceDOSImportance
+        - functype: parts

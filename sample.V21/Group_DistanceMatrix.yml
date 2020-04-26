@@ -1,5 +1,5 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: SpearmanDistance
     order: workflow
@@ -8,13 +8,13 @@ workflow:
       - !!omap
         - methodname: genAllData
         - methodtype: function
-        - outputname: AllData
-        - outputtype: parts
+        - funcname: AllData
+        - functype: parts
     - group:
       - !!omap
         - methodname: FeatureSpearmanDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+        - funcname: FeatureDistanceMatrix
+        - functype: parts
   - blockname: elcleadianDistance
     order: workflow
     list:
@@ -22,13 +22,13 @@ workflow:
       - !!omap
         - methodname: genAllData
         - methodtype: function
-        - outputname: AllData
-        - outputtype: parts
+        - funcname: AllData
+        - functype: parts
     - group:
       - !!omap
         - methodname: FeatureEucleadianDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+        - funcname: FeatureDistanceMatrix
+        - functype: parts
   - blockname: cosineDistance
     order: workflow
     list:
@@ -36,13 +36,13 @@ workflow:
       - !!omap
         - methodname: genAllData
         - methodtype: function
-        - outputname: AllData
-        - outputtype: parts
+        - funcname: AllData
+        - functype: parts
     - group:
       - !!omap
         - methodname: FeatureCosineDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+        - funcname: FeatureDistanceMatrix
+        - functype: parts
   - blockname: manhattanDistance
     order: workflow
     list:
@@ -50,10 +50,10 @@ workflow:
       - !!omap
         - methodname: genAllData
         - methodtype: function
-        - outputname: AllData
-        - outputtype: parts
+        - funcname: AllData
+        - functype: parts
     - group:
       - !!omap
         - methodname: FeatureManhattanDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+        - funcname: FeatureDistanceMatrix
+        - functype: parts

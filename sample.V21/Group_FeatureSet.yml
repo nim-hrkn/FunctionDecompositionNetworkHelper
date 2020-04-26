@@ -1,5 +1,5 @@
 workflow:
-  format: v2.2
+  format: v2.1
   block:
   - blockname: DomainKnowlege
     order: workflow
@@ -7,20 +7,20 @@ workflow:
     - group:
       - !!omap
         - methodname: DomainKnowledgeDivision
-        - outputname: FeatureGroups
-        - outputtype: parts
+        - funcname: FeatureGroups
+        - functype: parts
   - blockname: dendrogram
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+        - funcname: ClusteredSetCandates
+        - functype: parts
     - group:
       - !!omap
         - methodname: DomainKnowledgeDataScienceClusteringSelection
-        - outputname: FeatureGroups
-        - outputtype: parts
+        - funcname: FeatureGroups
+        - functype: parts
   - blockname: dendrogram
     order: workflow
     list:
@@ -28,25 +28,25 @@ workflow:
       - !!omap
         - methodname: chooseFeatureGroupsDistanceThresholdAll
         - methodtype: function
-        - outputname: FeatureGroupsDistanceThresholdAll
-        - outputtype: parts
+        - funcname: FeatureGroupsDistanceThresholdAll
+        - functype: parts
       - !!omap
-        - outputname: FeatureDendrogram
-        - outputtype: parts
+        - funcname: FeatureDendrogram
+        - functype: parts
     - group:
       - !!omap
         - methodname: DendrogramClusteringFeatureGroups
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+        - funcname: ClusteredSetCandates
+        - functype: parts
   - blockname: dendrogram
     order: workflow
     list:
     - group:
       - !!omap
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+        - funcname: FeatureDistanceMatrix
+        - functype: parts
     - group:
       - !!omap
         - methodname: FeatureDistanceMatrixHierarchalClustering
-        - outputname: FeatureDendrogram
-        - outputtype: parts
+        - funcname: FeatureDendrogram
+        - functype: parts
