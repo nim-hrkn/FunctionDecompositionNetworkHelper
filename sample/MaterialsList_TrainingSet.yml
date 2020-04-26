@@ -40,10 +40,15 @@ workflow:
       - !!omap
         - funcname: chooseTrainingSetCrystal
         - functype: function
+      - !!omap
+        - methodname: CrystalToDescriptorAndRelationToTargetVariable
+        - methodtype: method
+        - funcname: methodFromCrystalToDescriptor
+        - functype: parts
     - group:
       - !!omap
-        - methodname: CrystalToDescriptorAndRlationToTargetVariable
-        - methodtype: function
+        - methodname: CrystalToDescriptorAndRelationToTargetVariable(trainingSet)
+        - methodtype: method
         - funcname: TrainingSetDescriptorAndRelationToTargetVariable
         - functype: parts
   - blockname:

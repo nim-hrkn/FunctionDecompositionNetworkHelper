@@ -6,7 +6,7 @@ workflow:
     list:
     - group:
       - !!omap
-        - funcname: CrystTargetAndDescriptor
+        - funcname: TrainingData
         - functype: parts
     - group:
       - !!omap

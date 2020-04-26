@@ -6,7 +6,7 @@ workflow:
     list:
     - group:
       - !!omap
-        - funcname: CrystTargetAndDescriptor
+        - funcname: TrainingData
         - functype: parts
     - group:
       - !!omap
@@ -18,7 +18,7 @@ workflow:
     list:
     - group:
       - !!omap
-        - funcname: CrystTargetAndDescriptor
+        - funcname: TrainingData
         - functype: parts
     - group:
       - !!omap
@@ -30,7 +30,7 @@ workflow:
     list:
     - group:
       - !!omap
-        - funcname: CrystTargetAndDescriptor
+        - funcname: TrainingData
         - functype: parts
     - group:
       - !!omap
@@ -66,9 +66,14 @@ workflow:
       - !!omap
         - funcname: NewsetCrystal
         - functype: parts
+      - !!omap
+        - methodname: CrystalToDescriptorAndRelationToTargetVariable
+        - methodtype: method
+        - funcname: methodFromCrystalToDescriptor
+        - functype: parts
     - group:
       - !!omap
-        - methodname: CrystalToDescriptor
+        - methodname: CrystalToDescriptorAndRelationToTargetVariable(newSet)
         - methodtype: method
         - funcname: NewsetDescriptor
         - functype: parts

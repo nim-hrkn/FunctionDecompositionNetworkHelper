@@ -12,7 +12,7 @@ workflow:
       - !!omap
         - methodname: randomGeneration
         - methodtype: method
-        - funcname: CrystalCandidates
+        - funcname: NewsetCrystal
         - functype: parts
   - blockname: random generation
     order: workflow
@@ -25,7 +25,7 @@ workflow:
       - !!omap
         - methodname: substituteElements
         - methodtype: function
-        - funcname: CrystalCandidates
+        - funcname: NewsetCrystal
         - functype: parts
   - blockname: mateirals knowledge
     order: workflow
