@@ -1,19 +1,19 @@
 link:
 - nodename: get_ModelHamiltonian
   nodetype: function
-  linktype: PartOf
+  linktype: part-of
   link:
   - nodename: ModelHamiltonianType
     nodetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: ElectronModelHamiltonian
       nodetype: parts
-      linktype: PartOf
+      linktype: part-of
       link:
       - nodename: OneBody
         nodetype: parts
-        linktype: PartOf
+        linktype: part-of
         link:
         - nodename: energyLevel
           nodetype: parts
@@ -21,19 +21,19 @@ link:
           nodetype: parts
       - nodename: TwoBody
         nodetype: parts
-        linktype: PartOf
+        linktype: part-of
         link:
         - nodename: ElectronTwoBodyInteractionChannel
-          linktype: IsA
+          linktype: is-a
           link:
           - nodename: UTM3d
           - nodename: UTM3dRE4f
     - nodename: SpinModelHamiltonian
-      linktype: PartOf
+      linktype: part-of
       nodetype: parts
       link:
       - nodename: SpinChannelSelection
-        linktype: IsA
+        linktype: is-a
         link:
         - nodename: SpinTM3d
         - nodename: SpinTM3dRE4f
@@ -44,12 +44,12 @@ link:
         nodetype: parts
   - nodename: ValuesOfTermsOfHamiltonian
     nodetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: MatchingExperiment
     - nodename: FirstPrinciples
 - nodename: Solver
-  linktype: IsA
+  linktype: is-a
   link:
   - nodename: meanfield
   - nodename: MC

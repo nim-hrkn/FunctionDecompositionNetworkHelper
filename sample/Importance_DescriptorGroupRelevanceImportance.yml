@@ -1,7 +1,7 @@
 link:
 - nodename: DescriptorGroupRelevanceImportance
   nodetype: parts
-  linktype: IsA
+  linktype: is-a
   link:
   - nodename: WeakDescriptorGroupImportance
     nodetype: parts

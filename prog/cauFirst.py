@@ -31,7 +31,7 @@ class DecompositionTree(object):
         self.nodelabel_length = self.dotoption["nodelabel_length"]
         
         self.nodetype = ["method","parts","function"] 
-        self.linktype = ["IsA","PartOf","FunctionFirst"]
+        self.linktype = ["is-a","part-of","FunctionFirst"]
 
         self.node_sequence_style = self.dotoption["node_sequence_style"]
         
@@ -403,7 +403,7 @@ class taxologyWay(DecompositionTree):
                 nodetype = self.get_keyvalue(linkline,"nodetype")
                 self.gen_connection_link_link(link,linktype,name,nodetype)
         else:
-            if plinktype == "PartOf" or plinktype is None:
+            if plinktype == "part-of" or plinktype is None:
                 funcnamelist = []
                 for linkline in linklist:
                     name = self.get_keyvalue(linkline,"nodename")
@@ -434,7 +434,7 @@ class taxologyWay(DecompositionTree):
                 self.invisedgelist.append(",".join(funcnamelist))
                 self.sameranklist.append(",".join(funcnamelist))
 
-            elif plinktype == "IsA":
+            elif plinktype == "is-a":
 
                 namelist = []
                 for linkline in linklist:
@@ -464,7 +464,7 @@ class taxologyWay(DecompositionTree):
                             self.edgelist.append(",".join([methodp,func1]))
                     else:
                         self.edgelist.append(",".join([funcp,method1]))
-                        if linktype != "PartOf":
+                        if linktype != "part-of":
                             self.edgelist.append(",".join([method1,func1]))
                             
                         self.boxnodelist.append(method1)

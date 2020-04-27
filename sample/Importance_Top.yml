@@ -1,18 +1,18 @@
 link:
 - nodename: VisualizedImportance
   nodetype: parts
-  linktype: IsA
+  linktype: is-a
   link:
   - nodename: VisualizedProcessedImportance
     nodetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: VisualizedRelevanceImportance
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
     - nodename: VisualizedRelevanceDOSImportance
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
   - nodename: VisualizedUnprocessedImportance
     nodetype: parts
-    linktype: IsA
+    linktype: is-a

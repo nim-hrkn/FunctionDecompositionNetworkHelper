@@ -1,55 +1,55 @@
 link:
 - nodename: AtomicPropertyQuantityFromElementAttribute
   nodeytype: parts
-  linktype: IsA
+  linktype: is-a
   link:
   - nodename: ExperimentalAtomicPropertyQuantity
     nodetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: ExperimentalAtomicLength
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
       link:
       - nodename: atomicRadius
       - nodename: vdWRadius
       - nodename: covalentRadius
     - nodename: ExperimentalAtomicEnergy
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
       link:
       - nodename: ExperimentalIonicPotential
       - nodename: ExperimentalElectronAffinity
     - nodename: ExperimentalEnergyRelatedPropertyQuantity
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
       link:
       - nodename: ElectronNegativity
   - nodename: fundamentalAtomicPropertyQuantity
     nodetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: numberOfElectron
     - nodename: averagedMass
   - nodename: fundamentalAtomicPropertyQuantity
     nodetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: numberOfElectron
     - nodename: averagedMass
   - nodename: PeriodictablePropertyQuantity
     nonetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: PeriodictableRow
     - nodename: PeriodictableColumn
   - nodename: TheoreticalAtomicPropertyQuantity
     nodetype: parts
-    linktype: IsA
+    linktype: is-a
     link:
     - nodename: TheoreticalLength
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
       link:
       - nodename: r2
       - nodename: r2_s
@@ -58,7 +58,7 @@ link:
       - nodename: r2_f
     - nodename: TheoreicalEnergy
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
       link:
       - nodename: TotalEnergy
       - nodename: sOrbitalEnergy
@@ -67,18 +67,18 @@ link:
       - nodename: fOrbitalEnergy
     - nodename: AngularMomentum
       nodetype: parts
-      linktype: IsA
+      linktype: is-a
       link:
       - nodename: 3dAngularMomentum
         nodetype: parts
-        linktype: IsA
+        linktype: is-a
         link:
         - nodename: S3d
         - nodename: L3d
         - nodename: J3d
       - nodename: 4fAngularMomentum
         nodetype: parts
-        linktype: IsA
+        linktype: is-a
         link:
         - nodename: J4f
         - nodename: gJ
