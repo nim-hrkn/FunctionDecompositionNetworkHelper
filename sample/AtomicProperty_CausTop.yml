@@ -1,9 +1,9 @@
 link:
-- nodename: AtomicQuantity
+- nodename: AtomicPropertyQuantityFromElementAttribute
   nodeytype: parts
   linktype: IsA
   link:
-  - nodename: ExperimentalAtomicQuantity
+  - nodename: ExperimentalAtomicPropertyQuantity
     nodetype: parts
     linktype: IsA
     link:
@@ -20,30 +20,30 @@ link:
       link:
       - nodename: ExperimentalIonicPotential
       - nodename: ExperimentalElectronAffinity
-    - nodename: ExperimentalEnergyRelatedQuantity
+    - nodename: ExperimentalEnergyRelatedPropertyQuantity
       nodetype: parts
       linktype: IsA
       link:
       - nodename: ElectronNegativity
-  - nodename: fundamentalAtomicQuantity
+  - nodename: fundamentalAtomicPropertyQuantity
     nodetype: parts
     linktype: IsA
     link:
     - nodename: numberOfElectron
     - nodename: averagedMass
-  - nodename: fundamentalAtomicQuantity
+  - nodename: fundamentalAtomicPropertyQuantity
     nodetype: parts
     linktype: IsA
     link:
     - nodename: numberOfElectron
     - nodename: averagedMass
-  - nodename: PeriodictableQuantity
+  - nodename: PeriodictablePropertyQuantity
     nonetype: parts
     linktype: IsA
     link:
     - nodename: PeriodictableRow
     - nodename: PeriodictableColumn
-  - nodename: TheoreticalAtomicQuantity
+  - nodename: TheoreticalAtomicPropertyQuantity
     nodetype: parts
     linktype: IsA
     link:

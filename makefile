@@ -1,7 +1,7 @@
 
 Importance= sample/Importance_*.yml
 CrystalTarget= sample/CrystalTargetToDescriptor_*.yml
-TargetValuePrediction= sample/TargetValuePrediction_*.yml
+TargetValuePrediction= sample/TheoreticalTargetValuePrediction_*.yml
 AtomicProperty= sample/AtomicProperty_Caus*.yml
 Group= sample/Group_*.yml
 MaterialsList= sample/MaterialsList_*.yml
@@ -13,7 +13,7 @@ Importance:
 	$(PROG) $(Importance)
 CrystalTarget:
 	$(PROG) $(CrystalTarget)
-TargetValuePrediction:
+TheoreticalTargetValuePrediction:
 	$(PROG) $(TargetValuePrediction)
 Group:
 	$(PROG) $(Group)

@@ -8,6 +8,12 @@ workflow:
       - !!omap
         - outputname: Crystal
         - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: getCrystalCoodianteAttribute
+        - methodtype: function
+        - outputname: CrystalCoordinates
+        - outputtype: parts
       - !!omap
         - outputname: ChooseCenterAtom
         - outputtype: function

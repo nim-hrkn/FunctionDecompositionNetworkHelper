@@ -6,8 +6,12 @@ workflow:
     list:
     - group:
       - !!omap
-        - methodname: Element
-        - methodtype: method
+        - outputname: Crystal
+        - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: getElementAttribute
+        - methodtype: function
         - outputname: chooseElement
         - outputtype: function
     - group:

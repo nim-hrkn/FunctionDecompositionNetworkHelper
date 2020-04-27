@@ -98,7 +98,7 @@ workflow:
       - !!omap
         - methodname: SymmetryOperation
         - methodtype: method
-        - outputname: SymmetryQuantity
+        - outputname: SymmetryPropertyQuantity
         - outputtype: parts
     - group:
       - !!omap
@@ -113,11 +113,11 @@ workflow:
       - !!omap
         - methodname: Volume
         - methodtype: method
-        - outputname: CrystalQuantity
+        - outputname: CrystalPropertyQuantity
         - outputtype: parts
     - group:
       - !!omap
-        - methodname: generateCrystalDescriptorByCrystalQuantity
+        - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
         - methodtype: function
         - outputname: CrystalDescriptor
         - outputtype: parts
@@ -127,11 +127,11 @@ workflow:
     - group:
       - !!omap
         - methodname: AtomicRatio
-        - outputname: CrystalQuantity
+        - outputname: CrystalPropertyQuantity
         - outputtype: parts
     - group:
       - !!omap
-        - methodname: generateCrystalDescriptorByCrystalQuantity
+        - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
         - methodtype: function
         - outputname: CrystalDescriptor
         - outputtype: parts
@@ -142,11 +142,11 @@ workflow:
       - !!omap
         - methodname: FunctionalGroupRatio
         - methodtype: method
-        - outputname: CrystalQuantity
+        - outputname: CrystalPropertyQuantity
         - outputtype: parts
     - group:
       - !!omap
-        - methodname: generateCrystalDescriptorByCrystalQuantity
+        - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
         - methodtype: function
         - outputname: CrystalDescriptor
         - outputtype: parts
@@ -157,11 +157,11 @@ workflow:
       - !!omap
         - methodname: PersistenHomology
         - methodtype: method
-        - outputname: SpaceQuantity
+        - outputname: SpacePropertyQuantity
         - outputtype: parts
     - group:
       - !!omap
-        - methodname: generateCrystalDescriptorBySpaceQuantity
+        - methodname: generateCrystalDescriptorBySpacePropertyQuantity
         - methodtype: function
         - outputname: CrystalDescriptor
         - outputtype: parts
