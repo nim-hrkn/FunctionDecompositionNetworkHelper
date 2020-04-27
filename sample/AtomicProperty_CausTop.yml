@@ -1,5 +1,21 @@
 link:
-- nodename: AtomicPropertyQuantityFromElementAttribute
+- nodename: AtomicDescriptor
+  nodetype: parts
+  linktype: part-of
+  link: 
+  - nodename: AtomicDescriptorFeature
+    nodetype: parts
+
+- nodename: AtomicDescriptorFeature
+  nodetype: parts
+  linktype: is-a
+  link:
+  - nodename: AtomicElementDescriptor
+    nodetype: parts
+  - nodename: AtomicCoordinateDescriptor
+    nodetype: parts
+
+- nodename: AtomicElementDescriptor
   nodeytype: parts
   linktype: is-a
   link:

@@ -1,5 +1,5 @@
 link:
-- nodename: AtomicDescriptor
+- nodename: AtomicCoordinateDescriptor
   nodetype: parts
   linktype: is-a
   link:
