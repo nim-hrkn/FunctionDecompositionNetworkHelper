@@ -1,57 +1,57 @@
 link:
-- link:
-  - link:
-    - link:
-      - link:
+- nodename: get_ModelHamiltonian
+  nodetype: function
+  linktype: part-of
+  link:
+  - nodename: ModelHamiltonianType
+    nodetype: parts
+    linktype: is-a
+    link:
+    - nodename: ElectronModelHamiltonian
+      nodetype: parts
+      linktype: part-of
+      link:
+      - nodename: OneBody
+        nodetype: parts
+        linktype: part-of
+        link:
         - nodename: energyLevel
           nodetype: parts
         - nodename: hoppingIntegral
           nodetype: parts
-        linktype: part-of
-        nodename: OneBody
+      - nodename: TwoBody
         nodetype: parts
-      - link:
-        - link:
+        linktype: part-of
+        link:
+        - nodename: ElectronTwoBodyInteractionChannel
+          linktype: is-a
+          link:
           - nodename: UTM3d
           - nodename: UTM3dRE4f
-          linktype: is-a
-          nodename: ElectronTwoBodyInteractionChannel
-        linktype: part-of
-        nodename: TwoBody
-        nodetype: parts
-      linktype: part-of
-      nodename: ElectronModelHamiltonian
+    - nodename: SpinModelHamiltonian
       nodetype: parts
-    - link:
-      - link:
+      linktype: part-of
+      link:
+      - nodename: SpinChannelSelection
+        linktype: is-a
+        link:
         - nodename: SpinTM3d
         - nodename: SpinTM3dRE4f
         - nodename: SpinTM3dRE4fRE5d
-        linktype: is-a
-        nodename: SpinChannelSelection
       - nodename: SpinSpinInteraction
         nodetype: parts
       - nodename: Anisotropy
         nodetype: parts
-      linktype: part-of
-      nodename: SpinModelHamiltonian
-      nodetype: parts
-    linktype: is-a
-    nodename: ModelHamiltonianType
+  - nodename: ValuesOfTermsOfHamiltonian
     nodetype: parts
-  - link:
+    linktype: is-a
+    link:
     - nodename: MatchingExperiment
     - nodename: FirstPrinciples
-    linktype: is-a
-    nodename: ValuesOfTermsOfHamiltonian
-    nodetype: parts
-  linktype: part-of
-  nodename: get_ModelHamiltonian
-  nodetype: function
-- link:
+- nodename: Solver
+  linktype: is-a
+  link:
   - nodename: meanfield
   - nodename: MC
-  linktype: is-a
-  nodename: Solver
 - nodename: TargetValue
   nodetype: parts

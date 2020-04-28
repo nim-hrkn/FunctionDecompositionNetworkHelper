@@ -1,14 +1,14 @@
 link:
-- link:
-  - linktype: is-a
-    nodename: VisualizedRelevanceScoreImportance
-    nodetype: parts
-  - linktype: is-a
-    nodename: VisualizedRelevanceDOSImportance
-    nodetype: parts
-  - linktype: is-a
-    nodename: VisualizedFeatureImportance
-    nodetype: parts
-  linktype: is-a
-  nodename: VisualizedImportance
+- nodename: VisualizedImportance
   nodetype: parts
+  linktype: is-a
+  link:
+  - nodename: VisualizedRelevanceScoreImportance
+    nodetype: parts
+    linktype: is-a
+  - nodename: VisualizedRelevanceDOSImportance
+    nodetype: parts
+    linktype: is-a
+  - nodename: VisualizedFeatureImportance
+    nodetype: parts
+    linktype: is-a

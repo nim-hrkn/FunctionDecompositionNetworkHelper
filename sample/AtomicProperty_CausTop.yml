@@ -1,100 +1,98 @@
 link:
-- link:
+- nodename: AtomicDescriptor
+  nodetype: parts
+  linktype: part-of
+  link:
   - nodename: AtomicDescriptorFeature
     nodetype: parts
-  linktype: part-of
-  nodename: AtomicDescriptor
+- nodename: AtomicDescriptorFeature
   nodetype: parts
-- link:
+  linktype: is-a
+  link:
   - nodename: AtomicElementDescriptor
     nodetype: parts
   - nodename: AtomicCoordinateDescriptor
     nodetype: parts
+- nodename: AtomicElementDescriptor
   linktype: is-a
-  nodename: AtomicDescriptorFeature
-  nodetype: parts
-- link:
-  - link:
-    - link:
+  link:
+  - nodename: ExperimentalAtomicPropertyQuantity
+    nodetype: parts
+    linktype: is-a
+    link:
+    - nodename: ExperimentalAtomicLength
+      nodetype: parts
+      linktype: is-a
+      link:
       - nodename: atomicRadius
       - nodename: vdWRadius
       - nodename: covalentRadius
-      linktype: is-a
-      nodename: ExperimentalAtomicLength
+    - nodename: ExperimentalAtomicEnergy
       nodetype: parts
-    - link:
+      linktype: is-a
+      link:
       - nodename: ExperimentalIonicPotential
       - nodename: ExperimentalElectronAffinity
-      linktype: is-a
-      nodename: ExperimentalAtomicEnergy
+    - nodename: ExperimentalEnergyRelatedPropertyQuantity
       nodetype: parts
-    - link:
+      linktype: is-a
+      link:
       - nodename: ElectronNegativity
-      linktype: is-a
-      nodename: ExperimentalEnergyRelatedPropertyQuantity
-      nodetype: parts
-    linktype: is-a
-    nodename: ExperimentalAtomicPropertyQuantity
+  - nodename: fundamentalAtomicPropertyQuantity
     nodetype: parts
-  - link:
+    linktype: is-a
+    link:
     - nodename: numberOfElectron
     - nodename: averagedMass
-    linktype: is-a
-    nodename: fundamentalAtomicPropertyQuantity
+  - nodename: fundamentalAtomicPropertyQuantity
     nodetype: parts
-  - link:
+    linktype: is-a
+    link:
     - nodename: numberOfElectron
     - nodename: averagedMass
+  - nodename: PeriodictablePropertyQuantity
     linktype: is-a
-    nodename: fundamentalAtomicPropertyQuantity
-    nodetype: parts
-  - link:
+    link:
     - nodename: PeriodictableRow
     - nodename: PeriodictableColumn
+  - nodename: TheoreticalAtomicPropertyQuantity
+    nodetype: parts
     linktype: is-a
-    nodename: PeriodictablePropertyQuantity
-    nonetype: parts
-  - link:
-    - link:
+    link:
+    - nodename: TheoreticalLength
+      nodetype: parts
+      linktype: is-a
+      link:
       - nodename: r2
       - nodename: r2_s
       - nodename: r2_p
       - nodename: r2_d
       - nodename: r2_f
-      linktype: is-a
-      nodename: TheoreticalLength
+    - nodename: TheoreicalEnergy
       nodetype: parts
-    - link:
+      linktype: is-a
+      link:
       - nodename: TotalEnergy
       - nodename: sOrbitalEnergy
       - nodename: pOrbitalEnergy
       - nodename: dOrbitalEnergy
       - nodename: fOrbitalEnergy
-      linktype: is-a
-      nodename: TheoreicalEnergy
+    - nodename: AngularMomentum
       nodetype: parts
-    - link:
-      - link:
+      linktype: is-a
+      link:
+      - nodename: 3dAngularMomentum
+        nodetype: parts
+        linktype: is-a
+        link:
         - nodename: S3d
         - nodename: L3d
         - nodename: J3d
-        linktype: is-a
-        nodename: 3dAngularMomentum
+      - nodename: 4fAngularMomentum
         nodetype: parts
-      - link:
+        linktype: is-a
+        link:
         - nodename: J4f
         - nodename: gJ
         - nodename: J4fSpinDirectionProjection
         - nodename: J4fOrbitalDirectionProjection
-        linktype: is-a
-        nodename: 4fAngularMomentum
-        nodetype: parts
-      linktype: is-a
-      nodename: AngularMomentum
-      nodetype: parts
-    linktype: is-a
-    nodename: TheoreticalAtomicPropertyQuantity
-    nodetype: parts
-  linktype: is-a
-  nodename: AtomicElementDescriptor
-  nodeytype: parts

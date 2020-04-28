@@ -1,7 +1,7 @@
 link:
-- link:
+- nodename: NewsetCrystal
+  nodetype: parts
+  linktype: is-a
+  link:
   - nodename: ParticleSwarm
   - nodename: GeneticAlgorithm
-  linktype: is-a
-  nodename: NewsetCrystal
-  nodetype: parts

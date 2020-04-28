@@ -1,19 +1,19 @@
 link:
-- link:
+- nodename: LinearRegression
+  nodetype: parts
+  linktype: is-a
+  link:
   - nodename: LassoModel
     nodetype: parts
   - nodename: RidgeModel
     nodetype: parts
   - nodename: noPenaltyLinearModel
     nodetype: parts
-  linktype: is-a
-  nodename: LinearRegression
+- nodename: SparseModeling
   nodetype: parts
-- link:
+  linktype: is-a
+  link:
   - nodename: greedyBestModel
     nodetype: parts
   - nodename: LassoModel
     nodetype: parts
-  linktype: is-a
-  nodename: SparseModeling
-  nodetype: parts
