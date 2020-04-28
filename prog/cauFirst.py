@@ -962,7 +962,7 @@ if __name__ == "__main__":
                     dottaxo.render(view=True)
     
     dottree.format="png"
-    dottree.render(view=True)
+    dottree.render(view=False)
     print("done")
 
 

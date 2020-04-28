@@ -26,9 +26,9 @@ workflow:
         - outputname: AllModels
         - outputtype: parts
       - !!omap
-        - methodname: GenerateGroup
+        - methodname: GenerateFeatureGroup
         - methodtype: function
-        - outputname: Group
+        - outputname: FeatureGroups
         - outputtype: parts
     - group:
       - !!omap
@@ -48,7 +48,7 @@ workflow:
       - !!omap
         - methodname: GenerateSubgroupFromGroup
         - methodtype: function
-        - outputname: Subgroup
+        - outputname: FeatureSubgroups
         - outputtype: parts
     - group:
       - !!omap

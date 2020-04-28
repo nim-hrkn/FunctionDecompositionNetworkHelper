@@ -1,0 +1,107 @@
+workflow:
+  format: v2.2
+  block:
+
+  - blockname: group
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - outputname: LinearRegression
+        - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: LinearRegressionCoefficient
+        - methodtype: parts
+        - outputname: FeatureImportance
+        - outputtype: parts
+
+  - blockname: group
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - outputname: decisionTreeRegressionModel
+        - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: decisionTreeImpurityMethod
+        - methodtype: method
+        - outputname: FeatureImportance
+        - outputtype: parts
+
+  - blockname: group
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - outputname: LinearRegression
+        - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: LinearRegressionCoefficient
+        - methodtype: parts
+        - outputname: FeatureImportance
+        - outputtype: parts
+
+  - blockname: group
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - outputname: FeatureImportance
+        - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: plotFeatureImportance
+        - methodtype: function
+        - outputname: VisualizedFeatureImportance
+        - outputtype: parts
+
+
+
+#    - group:
+#      - !!omap
+#        - methodname: FeatureImportanceMethod
+#        - methodtype: method
+#        - outputname: FeatureImportance
+#        - outputtype: function
+
+#  - blockname: feature
+#    order: workflow
+#    list:
+#    - group:
+#      - !!omap
+#        - outputname: FeatureGroupImportance
+#        - outputtype: parts
+#    - group:
+#      - !!omap
+#        - methodname: VisualizeImportanceMethod
+#        - methodtype: method
+#        - outputname: FeatureGroupImportance
+#        - outputtype: function
+#
+
+
+#
+#  - blockname: feature
+#    order: workflow
+#    list:
+#    - group:
+#      - !!omap
+#        - methodname: GreedyIncrementMethod
+#        - methodtype: method
+#        - outputname: greedyBestModel
+#        - outputtype: parts
+#      - !!omap
+#        - methodname: LassoMethod
+#        - methodtype: method
+#        - outputname: LassoModel
+#        - outputtype: parts
+#      - !!omap
+#        - methodname: ExhaustiveSearchMethod
+#        - methodtype: method
+#        - outputname: theBestModel
+#        - outputtype: parts
+#
+#

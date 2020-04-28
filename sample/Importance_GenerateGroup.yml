@@ -8,11 +8,11 @@ workflow:
       - !!omap
         - methodname: GenerateGroup
         - methodtype: function
-        - outputname: Group
+        - outputname: FeatureGroups
         - outputtype: parts
     - group:
       - !!omap
         - methodname: GenerateSubgroupFromGroup
         - methodtype: function
-        - outputname: Subgroup
+        - outputname: FeatureSubgroups
         - outputtype: parts

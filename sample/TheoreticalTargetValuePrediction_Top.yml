@@ -17,3 +17,12 @@ workflow:
         - methodtype: parts
         - outputname: PredictedTargetValue
         - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: sortTheoreticalModelValues
+        - methodtype: function
+        - outputname: raiseMaterialsList
+        - outputtype: function
+
+
+

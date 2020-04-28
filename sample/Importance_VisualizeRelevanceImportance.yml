@@ -12,7 +12,7 @@ workflow:
       - !!omap
         - methodname: VisualizeImportanceWithTextList
         - methodtype: function
-        - outputname: VisualizedRelevanceImportance
+        - outputname: VisualizedRelevanceScoreImportance
         - outputtype: parts
   - blockname: dendrogram
     order: workflow
@@ -30,5 +30,5 @@ workflow:
       - !!omap
         - methodname: VisualizeImportanceWithDendrogram
         - methodtype: function
-        - outputname: VisualizedRelevanceImportance
+        - outputname: VisualizedRelevanceScoreImportance
         - outputtype: parts

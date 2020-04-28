@@ -11,7 +11,7 @@ workflow:
     - group:
       - !!omap
         - methodname: domainknowledgeSubgroupSelection
-        - outputname: AllFeatureSubgroups
+        - outputname: FeatureSubgroups
         - outputtype: parts
   - blockname: DendrogramSubgroupSelection
     order: workflow
@@ -34,5 +34,5 @@ workflow:
     - group:
       - !!omap
         - methodname: DendrogramSubgroupsSelection
-        - outputname: AllFeatureSubgroups
+        - outputname: FeatureSubgroups
         - outputtype: parts

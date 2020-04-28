@@ -13,30 +13,20 @@ workflow:
         - methodname: NeuralNetworkRegression
         - outputname: RegressionModel
         - outputtype: parts
-  - blockname:
-    order: workflow
-    list:
-    - group:
-      - !!omap
-        - outputname: TrainingData
-        - outputtype: parts
-    - group:
       - !!omap
         - methodname: LinearRegression
         - outputname: RegressionModel
         - outputtype: parts
-  - blockname:
-    order: workflow
-    list:
-    - group:
-      - !!omap
-        - outputname: TrainingData
-        - outputtype: parts
-    - group:
       - !!omap
         - methodname: KernelRegression
         - outputname: RegressionModel
         - outputtype: parts
+      - !!omap
+        - methodname: RandomForestRegression
+        - outputname: RegressionModel
+        - outputtype: parts
+
+
   - blockname:
     order: workflow
     list:
