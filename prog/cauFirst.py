@@ -24,7 +24,7 @@ class DecompositionTree(object):
             basename = "caus"
         self.basename = basename
 
-        self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15}
+        self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, "apply_same_rank": True }
         if dotoption is not None:
            self.dotoption.update(dotoption)
         
@@ -106,6 +106,8 @@ class DecompositionTree(object):
         invisedgelist = self.invisedgelist
         boxnodelist = self.boxnodelist
         sameranklist = self.sameranklist
+
+        apply_same_rank = self.dotoption["apply_same_rank"]
         
         for edge in edgelist:
             s = edge.split(",")
@@ -121,12 +123,13 @@ class DecompositionTree(object):
                 dottree.edge(x0,x1,style=self.node_sequence_style)
         for boxnode in boxnodelist:
             dottree.node(boxnode,shape="box")
-        for samerank in sameranklist:
-            s = samerank.split(",")
-            with dottree.subgraph() as sub:
-                sub.attr(rank="same")
-                for x in s:
-                    sub.node(x)
+        if apply_same_rank:
+            for samerank in sameranklist:
+                s = samerank.split(",")
+                with dottree.subgraph() as sub:
+                    sub.attr(rank="same")
+                    for x in s:
+                        sub.node(x)
         return dottree
 
     def create_tree(self,dottree=None):
@@ -912,8 +915,8 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
-    #dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0}
-    dotoption = { "nodelabel_length": 15}
+    dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0, "apply_same_rank": False }
+    #dotoption = { "nodelabel_length": 15}
 
     dottree = Digraph("caus")
     dottree.graph_attr["rankdir"] = "TB"
