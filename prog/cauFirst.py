@@ -915,8 +915,8 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
-    dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0, "apply_same_rank": False }
-    #dotoption = { "nodelabel_length": 15}
+    #dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0, "apply_same_rank": False }
+    dotoption = { "nodelabel_length": 15}
 
     dottree = Digraph("caus")
     dottree.graph_attr["rankdir"] = "TB"

@@ -30,9 +30,9 @@ workflow:
     list:
     - group:
       - !!omap
-        - methodname: genAllData
+        - methodname: genDescriptorOfAllData
         - methodtype: function
-        - outputname: AllData
+        - outputname: DescriptorOfAllData
         - outputtype: parts
       - !!omap
         - methodname: choosekMeansParameterAll
@@ -49,9 +49,9 @@ workflow:
     list:
     - group:
       - !!omap
-        - methodname: genAllData
+        - methodname: genDescriptorOfAllData
         - methodtype: function
-        - outputname: AllData
+        - outputname: DescriptorOfAllData
         - outputtype: parts
       - !!omap
         - methodname: chooseGMMParameterAll

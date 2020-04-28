@@ -14,7 +14,7 @@ workflow:
       - !!omap
         - methodname: generateBestOfAllModels
         - methodtype: function
-        - outputname: BestScoreOfAll
+        - outputname: BestScoreOfAllModels
         - outputtype: parts
   - blockname: deleteGroup
     order: workflow

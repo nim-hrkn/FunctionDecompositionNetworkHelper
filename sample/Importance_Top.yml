@@ -12,10 +12,10 @@ link:
   - nodename: VisualizedFeatureImportance
     nodetype: parts
     linktype: is-a
-    link:
-    - nodename: decisionTreeMethod
-      nodetype: method
-      linketype: is-a
+#    link:
+#    - nodename: decisionTreeMethod
+#      nodetype: method
+#      linketype: is-a
 #  - nodename: weightDiagram
 #    nodetype: method
 #  - nodename: indicatorDiagram

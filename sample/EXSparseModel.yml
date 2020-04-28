@@ -1,0 +1,17 @@
+workflow:
+  format: v2.2
+  block:
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - !!omap
+        - outputname: AllModels
+        - outputtype: parts
+    - group:
+      - !!omap
+        - methodname: chooseModelByMaxScore
+        - methodtype: function
+        - outputname: SparseModeling
+        - outputtype: parts
+  

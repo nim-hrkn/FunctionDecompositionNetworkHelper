@@ -18,6 +18,4 @@ link:
     nodetype: parts
   - nodename: LassoModel
     nodetype: parts
-  - nodename: ExhaustiveSearchBestModel
-    nodetype: parts
 

@@ -7,6 +7,8 @@ AtomicCoordinate2Descriptor= sample/AtomicCoordinate2Descriptor_*.yml
 
 PROG= prog/cauFirst.py --no_wf --no_taxo
 
+default: Understanding
+
 Prediction= $(TargetValuePrediction)  $(MaterialsList)
 Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
 	$(PROG) $(Prediction)
@@ -30,7 +32,7 @@ AtomicProperty:
 	$(PROG) $(AtomicProperty)
 
 
-UnderstandingFiles= sample/Understand_taxo.yml sample/SparseModeling.yml sample/LinearModel_taxo.yml $(Importance) $(Group)
+UnderstandingFiles= sample/Understand_taxo.yml sample/SparseModeling.yml sample/LinearModel_taxo.yml sample/EXSparseModel.yml  $(Importance) $(Group)
 
 Understanding: $(UnderstandingFiles)
 	$(PROG) $(UnderstandingFiles)
