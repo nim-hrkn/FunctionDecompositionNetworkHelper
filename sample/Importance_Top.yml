@@ -1,23 +1,14 @@
 link:
-- nodename: VisualizedImportance
-  nodetype: parts
+- link:
+  - linktype: is-a
+    nodename: VisualizedRelevanceScoreImportance
+    nodetype: parts
+  - linktype: is-a
+    nodename: VisualizedRelevanceDOSImportance
+    nodetype: parts
+  - linktype: is-a
+    nodename: VisualizedFeatureImportance
+    nodetype: parts
   linktype: is-a
-  link:
-  - nodename: VisualizedRelevanceScoreImportance
-    nodetype: parts
-    linktype: is-a
-  - nodename: VisualizedRelevanceDOSImportance
-    nodetype: parts
-    linktype: is-a
-  - nodename: VisualizedFeatureImportance
-    nodetype: parts
-    linktype: is-a
-#    link:
-#    - nodename: decisionTreeMethod
-#      nodetype: method
-#      linketype: is-a
-#  - nodename: weightDiagram
-#    nodetype: method
-#  - nodename: indicatorDiagram
-#    nodetype: method
-
+  nodename: VisualizedImportance
+  nodetype: parts

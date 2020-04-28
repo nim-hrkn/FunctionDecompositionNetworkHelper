@@ -1,28 +1,21 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: dummy
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: ModelHamiltonian
-        - outputtype: parts
-      - !!omap
-        - outputname: Solver
-        - outputtype: parts
+      - outputname: ModelHamiltonian
+        outputtype: parts
+      - outputname: Solver
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: PredictedTargetValue
-        - methodtype: parts
-        - outputname: PredictedTargetValue
-        - outputtype: parts
+      - methodname: PredictedTargetValue
+        methodtype: parts
+        outputname: PredictedTargetValue
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: sortTheoreticalModelValues
-        - methodtype: function
-        - outputname: raiseMaterialsList
-        - outputtype: function
-
-
-
+      - methodname: sortTheoreticalModelValues
+        methodtype: function
+        outputname: raiseMaterialsList
+        outputtype: function

@@ -1,59 +1,51 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: SpearmanDistance
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: genDescriptorOfAllData
-        - methodtype: function
-        - outputname: DescriptorOfAllData
-        - outputtype: parts
+      - methodname: genDescriptorOfAllData
+        methodtype: function
+        outputname: DescriptorOfAllData
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: FeatureSpearmanDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+      - methodname: FeatureSpearmanDistance
+        outputname: FeatureDistanceMatrix
+        outputtype: parts
   - blockname: elcleadianDistance
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: genDescriptorOfAllData
-        - methodtype: function
-        - outputname: DescriptorOfAllData
-        - outputtype: parts
+      - methodname: genDescriptorOfAllData
+        methodtype: function
+        outputname: DescriptorOfAllData
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: FeatureEucleadianDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+      - methodname: FeatureEucleadianDistance
+        outputname: FeatureDistanceMatrix
+        outputtype: parts
   - blockname: cosineDistance
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: genDescriptorOfAllData
-        - methodtype: function
-        - outputname: DescriptorOfAllData
-        - outputtype: parts
+      - methodname: genDescriptorOfAllData
+        methodtype: function
+        outputname: DescriptorOfAllData
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: FeatureCosineDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+      - methodname: FeatureCosineDistance
+        outputname: FeatureDistanceMatrix
+        outputtype: parts
   - blockname: manhattanDistance
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: genDescriptorOfAllData
-        - methodtype: function
-        - outputname: DescriptorOfAllData
-        - outputtype: parts
+      - methodname: genDescriptorOfAllData
+        methodtype: function
+        outputname: DescriptorOfAllData
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: FeatureManhattanDistance
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+      - methodname: FeatureManhattanDistance
+        outputname: FeatureDistanceMatrix
+        outputtype: parts

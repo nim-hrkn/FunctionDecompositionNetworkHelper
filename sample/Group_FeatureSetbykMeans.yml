@@ -1,65 +1,55 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: kmeans
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+      - outputname: ClusteredSetCandates
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: DomainKnowledgeDataScienceClusteringSelection
-        - outputname: FeatureGroups
-        - outputtype: parts
+      - methodname: DomainKnowledgeDataScienceClusteringSelection
+        outputname: FeatureGroups
+        outputtype: parts
   - blockname: gmm
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+      - outputname: ClusteredSetCandates
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: DomainKnowledgeDataScienceClusteringSelection
-        - outputname: FeatureGroups
-        - outputtype: parts
+      - methodname: DomainKnowledgeDataScienceClusteringSelection
+        outputname: FeatureGroups
+        outputtype: parts
   - blockname: kmeans
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: genDescriptorOfAllData
-        - methodtype: function
-        - outputname: DescriptorOfAllData
-        - outputtype: parts
-      - !!omap
-        - methodname: choosekMeansParameterAll
-        - methodtype: function
-        - outputname: kMeansParameter
-        - outputtype: parts
+      - methodname: genDescriptorOfAllData
+        methodtype: function
+        outputname: DescriptorOfAllData
+        outputtype: parts
+      - methodname: choosekMeansParameterAll
+        methodtype: function
+        outputname: kMeansParameter
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: FeaturekMeansClustering
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+      - methodname: FeaturekMeansClustering
+        outputname: ClusteredSetCandates
+        outputtype: parts
   - blockname: gmm
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: genDescriptorOfAllData
-        - methodtype: function
-        - outputname: DescriptorOfAllData
-        - outputtype: parts
-      - !!omap
-        - methodname: chooseGMMParameterAll
-        - methodtype: function
-        - outputname: GMMParameter
-        - outputtype: parts
+      - methodname: genDescriptorOfAllData
+        methodtype: function
+        outputname: DescriptorOfAllData
+        outputtype: parts
+      - methodname: chooseGMMParameterAll
+        methodtype: function
+        outputname: GMMParameter
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: FeatureGMMClustering
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+      - methodname: FeatureGMMClustering
+        outputname: ClusteredSetCandates
+        outputtype: parts

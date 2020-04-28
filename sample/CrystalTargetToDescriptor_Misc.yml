@@ -1,167 +1,145 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: min
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAtomicDescriptor
-        - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+      - methodname: generateAtomicDescriptor
+        methodtype: function
+        outputname: AtomicDescriptor
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AtomicDescriptorToCrystalDescriptorByMin
-        - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+      - methodname: AtomicDescriptorToCrystalDescriptorByMin
+        methodtype: method
+        outputname: CrystalDescriptor
+        outputtype: parts
   - blockname: max
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAtomicDescriptor
-        - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+      - methodname: generateAtomicDescriptor
+        methodtype: function
+        outputname: AtomicDescriptor
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AtomicDescriptorToCrystalDescriptorByMax
-        - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+      - methodname: AtomicDescriptorToCrystalDescriptorByMax
+        methodtype: method
+        outputname: CrystalDescriptor
+        outputtype: parts
   - blockname: exist
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAtomicDescriptor
-        - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+      - methodname: generateAtomicDescriptor
+        methodtype: function
+        outputname: AtomicDescriptor
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AtomicDescriptorToCrystalDescriptorByExistence
-        - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+      - methodname: AtomicDescriptorToCrystalDescriptorByExistence
+        methodtype: method
+        outputname: CrystalDescriptor
+        outputtype: parts
   - blockname: multipleMomentExpansion
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAtomicDescriptor
-        - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+      - methodname: generateAtomicDescriptor
+        methodtype: function
+        outputname: AtomicDescriptor
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AtomicDescriptorToCrystalDescriptorByMultipleMomentExpansion
-        - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+      - methodname: AtomicDescriptorToCrystalDescriptorByMultipleMomentExpansion
+        methodtype: method
+        outputname: CrystalDescriptor
+        outputtype: parts
   - blockname: sum
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAtomicDescriptor
-        - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+      - methodname: generateAtomicDescriptor
+        methodtype: function
+        outputname: AtomicDescriptor
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AtomicDescriptorToCrystalDescriptorBySum
-        - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+      - methodname: AtomicDescriptorToCrystalDescriptorBySum
+        methodtype: method
+        outputname: CrystalDescriptor
+        outputtype: parts
   - blockname: addvector
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAtomicDescriptor
-        - methodtype: function
-        - outputname: AtomicDescriptor
-        - outputtype: parts
+      - methodname: generateAtomicDescriptor
+        methodtype: function
+        outputname: AtomicDescriptor
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AtomicDescriptorToCrystalDescriptorByAppendedVector
-        - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
-  - blockname:
+      - methodname: AtomicDescriptorToCrystalDescriptorByAppendedVector
+        methodtype: method
+        outputname: CrystalDescriptor
+        outputtype: parts
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: SymmetryOperation
-        - methodtype: method
-        - outputname: SymmetryPropertyQuantity
-        - outputtype: parts
+      - methodname: SymmetryOperation
+        methodtype: method
+        outputname: SymmetryPropertyQuantity
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: generateCrystalDescriptorBySymmetry
-        - methodtype: method
-        - outputname: CrystalDescriptor
-        - outputtype: parts
-  - blockname:
+      - methodname: generateCrystalDescriptorBySymmetry
+        methodtype: method
+        outputname: CrystalDescriptor
+        outputtype: parts
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: Volume
-        - methodtype: method
-        - outputname: CrystalPropertyQuantity
-        - outputtype: parts
+      - methodname: Volume
+        methodtype: method
+        outputname: CrystalPropertyQuantity
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
-        - methodtype: function
-        - outputname: CrystalDescriptor
-        - outputtype: parts
-  - blockname:
+      - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
+        methodtype: function
+        outputname: CrystalDescriptor
+        outputtype: parts
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: AtomicRatio
-        - outputname: CrystalPropertyQuantity
-        - outputtype: parts
+      - methodname: AtomicRatio
+        outputname: CrystalPropertyQuantity
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
-        - methodtype: function
-        - outputname: CrystalDescriptor
-        - outputtype: parts
-  - blockname:
+      - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
+        methodtype: function
+        outputname: CrystalDescriptor
+        outputtype: parts
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: FunctionalGroupRatio
-        - methodtype: method
-        - outputname: CrystalPropertyQuantity
-        - outputtype: parts
+      - methodname: FunctionalGroupRatio
+        methodtype: method
+        outputname: CrystalPropertyQuantity
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
-        - methodtype: function
-        - outputname: CrystalDescriptor
-        - outputtype: parts
-  - blockname:
+      - methodname: generateCrystalDescriptorByCrystalPropertyQuantity
+        methodtype: function
+        outputname: CrystalDescriptor
+        outputtype: parts
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: PersistenHomology
-        - methodtype: method
-        - outputname: SpacePropertyQuantity
-        - outputtype: parts
+      - methodname: PersistenHomology
+        methodtype: method
+        outputname: SpacePropertyQuantity
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: generateCrystalDescriptorBySpacePropertyQuantity
-        - methodtype: function
-        - outputname: CrystalDescriptor
-        - outputtype: parts
+      - methodname: generateCrystalDescriptorBySpacePropertyQuantity
+        methodtype: function
+        outputname: CrystalDescriptor
+        outputtype: parts

@@ -1,100 +1,84 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: CrystalCoordinatesToRelativeVectors
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: Crystal
-        - outputtype: parts
+      - outputname: Crystal
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: getCrystalCoodianteAttribute
-        - methodtype: function
-        - outputname: CrystalCoordinates
-        - outputtype: parts
-      - !!omap
-        - outputname: ChooseCenterAtom
-        - outputtype: function
+      - methodname: getCrystalCoodianteAttribute
+        methodtype: function
+        outputname: CrystalCoordinates
+        outputtype: parts
+      - outputname: ChooseCenterAtom
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: AbsolutePositionToRelativeCoorinates
-        - methodtype: method
-        - outputname: relativeCoordiantes
-        - outputtype: parts
+      - methodname: AbsolutePositionToRelativeCoorinates
+        methodtype: method
+        outputname: relativeCoordiantes
+        outputtype: parts
   - blockname: Behler symmetry function
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: relativeCoordiantes
-        - outputtype: parts
+      - outputname: relativeCoordiantes
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: relativeRadialDistributionWithAngleConvolution
-        - methodtype: parts
-        - outputname: BehlerSymmetryFunction3bodyVector
-        - outputtype: parts
+      - methodname: relativeRadialDistributionWithAngleConvolution
+        methodtype: parts
+        outputname: BehlerSymmetryFunction3bodyVector
+        outputtype: parts
   - blockname: RDF
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: relativeCoordiantes
-        - outputtype: parts
+      - outputname: relativeCoordiantes
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: relativeRadialDistribution
-        - methodtype: parts
-        - outputname: RadialDistributionFunctionVector
-        - outputtype: parts
+      - methodname: relativeRadialDistribution
+        methodtype: parts
+        outputname: RadialDistributionFunctionVector
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: relativeRadialDistributionConvolution
-        - methodtype: parts
-        - outputname: BehlerSymmetryFunction2bodyVector
-        - outputtype: parts
+      - methodname: relativeRadialDistributionConvolution
+        methodtype: parts
+        outputname: BehlerSymmetryFunction2bodyVector
+        outputtype: parts
   - blockname: Voronoi
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: relativeCoordiantes
-        - outputtype: parts
+      - outputname: relativeCoordiantes
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: VoronoiAngle
-        - methodtype: method
-        - outputname: GeneralizedCoordinationNumber
-        - outputtype: parts
-      - !!omap
-        - methodname: VoronoiAngle
-        - methodtype: method
-        - outputname: VoroniiNearestNeighbourAtoms
-        - outputtype: parts
+      - methodname: VoronoiAngle
+        methodtype: method
+        outputname: GeneralizedCoordinationNumber
+        outputtype: parts
+      - methodname: VoronoiAngle
+        methodtype: method
+        outputname: VoroniiNearestNeighbourAtoms
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AtomicOrbitalFieldMatrix
-        - methodtype: method
-        - outputname: AtomicOrbitalFieldMatrixRepresentation
-        - outputtype: parts
+      - methodname: AtomicOrbitalFieldMatrix
+        methodtype: method
+        outputname: AtomicOrbitalFieldMatrixRepresentation
+        outputtype: parts
   - blockname: bispectrum
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: relativeCoordiantes
-        - outputtype: parts
+      - outputname: relativeCoordiantes
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: 4DExpansion
-        - methodtype: method
-        - outputname: 4DExpansionCoefficients
-        - outputtype: parts
+      - methodname: 4DExpansion
+        methodtype: method
+        outputname: 4DExpansionCoefficients
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: bispectrum
-        - methodtype: method
-        - outputname: SOAPVector
-        - outputtype: parts
+      - methodname: bispectrum
+        methodtype: method
+        outputname: SOAPVector
+        outputtype: parts

@@ -1,13 +1,7 @@
 link:
-- nodename: UnderstandRegressionModel
-  nodetype: function
-  linktype: is-a
-  link:
+- link:
   - nodename: VisualizedImportance
     nodetype: parts
-#  - nodename: UnvisualizedImportance
-#    nodetype: parts
-#    linktype: is-a
-#    link:
-#    - nodename: FeatureImportance 
-#    - nodename: FeatureGroupImportance 
+  linktype: is-a
+  nodename: UnderstandRegressionModel
+  nodetype: function

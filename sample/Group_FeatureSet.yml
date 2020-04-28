@@ -1,52 +1,44 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: DomainKnowlege
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: DomainKnowledgeDivision
-        - outputname: FeatureGroups
-        - outputtype: parts
+      - methodname: DomainKnowledgeDivision
+        outputname: FeatureGroups
+        outputtype: parts
   - blockname: dendrogram
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+      - outputname: ClusteredSetCandates
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: DomainKnowledgeDataScienceClusteringSelection
-        - outputname: FeatureGroups
-        - outputtype: parts
+      - methodname: DomainKnowledgeDataScienceClusteringSelection
+        outputname: FeatureGroups
+        outputtype: parts
   - blockname: dendrogram
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: chooseFeatureGroupsDistanceThresholdAll
-        - methodtype: function
-        - outputname: FeatureGroupsDistanceThresholdAll
-        - outputtype: parts
-      - !!omap
-        - outputname: FeatureDendrogram(Candidates)
-        - outputtype: parts
+      - methodname: chooseFeatureGroupsDistanceThresholdAll
+        methodtype: function
+        outputname: FeatureGroupsDistanceThresholdAll
+        outputtype: parts
+      - outputname: FeatureDendrogram(Candidates)
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: DendrogramClusteringFeatureGroups
-        - outputname: ClusteredSetCandates
-        - outputtype: parts
+      - methodname: DendrogramClusteringFeatureGroups
+        outputname: ClusteredSetCandates
+        outputtype: parts
   - blockname: dendrogram
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: FeatureDistanceMatrix
-        - outputtype: parts
+      - outputname: FeatureDistanceMatrix
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: FeatureDistanceMatrixHierarchalClustering
-        - outputname: FeatureDendrogram(Candidates)
-        - outputtype: parts
+      - methodname: FeatureDistanceMatrixHierarchalClustering
+        outputname: FeatureDendrogram(Candidates)
+        outputtype: parts

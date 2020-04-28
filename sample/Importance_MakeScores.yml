@@ -1,58 +1,50 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: all
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAllModels
-        - methodtype: function
-        - outputname: AllModels
-        - outputtype: parts
+      - methodname: generateAllModels
+        methodtype: function
+        outputname: AllModels
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: generateBestOfAllModels
-        - methodtype: function
-        - outputname: BestScoreOfAllModels
-        - outputtype: parts
+      - methodname: generateBestOfAllModels
+        methodtype: function
+        outputname: BestScoreOfAllModels
+        outputtype: parts
   - blockname: deleteGroup
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAllModels
-        - methodtype: function
-        - outputname: AllModels
-        - outputtype: parts
-      - !!omap
-        - methodname: GenerateFeatureGroup
-        - methodtype: function
-        - outputname: FeatureGroups
-        - outputtype: parts
+      - methodname: generateAllModels
+        methodtype: function
+        outputname: AllModels
+        outputtype: parts
+      - methodname: GenerateFeatureGroup
+        methodtype: function
+        outputname: FeatureGroups
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: DeleteGroupFromAllModels
-        - methodtype: function
-        - outputname: AllModelsExceptGroup
-        - outputtype: parts
+      - methodname: DeleteGroupFromAllModels
+        methodtype: function
+        outputname: AllModelsExceptGroup
+        outputtype: parts
   - blockname: deleteGroupAddSubgroup
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: DeleteGroupFromAllModels
-        - methodtype: function
-        - outputname: AllModelsExceptGroup
-        - outputtype: parts
-      - !!omap
-        - methodname: GenerateSubgroupFromGroup
-        - methodtype: function
-        - outputname: FeatureSubgroups
-        - outputtype: parts
+      - methodname: DeleteGroupFromAllModels
+        methodtype: function
+        outputname: AllModelsExceptGroup
+        outputtype: parts
+      - methodname: GenerateSubgroupFromGroup
+        methodtype: function
+        outputname: FeatureSubgroups
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: AddSubgroup
-        - methodtype: function
-        - outputname: AllModelsExceptGroupWithSubgroup
-        - outputtype: parts
+      - methodname: AddSubgroup
+        methodtype: function
+        outputname: AllModelsExceptGroupWithSubgroup
+        outputtype: parts

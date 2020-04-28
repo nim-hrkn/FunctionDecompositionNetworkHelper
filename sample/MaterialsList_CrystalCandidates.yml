@@ -1,84 +1,71 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: random generation
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: MaterialsKnowledge
-        - outputtype: method
+      - outputname: MaterialsKnowledge
+        outputtype: method
     - group:
-      - !!omap
-        - methodname: randomGeneration
-        - methodtype: method
-        - outputname: NewsetCrystal
-        - outputtype: parts
+      - methodname: randomGeneration
+        methodtype: method
+        outputname: NewsetCrystal
+        outputtype: parts
   - blockname: random generation
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: existingCrystals
-        - outputtype: parts
+      - outputname: existingCrystals
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: substituteElements
-        - methodtype: function
-        - outputname: NewsetCrystal
-        - outputtype: parts
+      - methodname: substituteElements
+        methodtype: function
+        outputname: NewsetCrystal
+        outputtype: parts
   - blockname: mateirals knowledge
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: MaterialsDatabase
-        - methodtype: method
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
-      - !!omap
-        - outputname: chooseMaterialSystem
-        - outputtype: function
+      - methodname: MaterialsDatabase
+        methodtype: method
+        outputname: chooseMaterialsDatabase
+        outputtype: function
+      - outputname: chooseMaterialSystem
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: CrystalsFromDatabase
-        - methodtype: parts
-        - outputname: existingCrystals
-        - outputtype: parts
+      - methodname: CrystalsFromDatabase
+        methodtype: parts
+        outputname: existingCrystals
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: getParticularQuantities
-        - methodtype: function
-        - outputname: MaterialsKnowledge
-        - outputtype: method
+      - methodname: getParticularQuantities
+        methodtype: function
+        outputname: MaterialsKnowledge
+        outputtype: method
   - blockname: mateirals knowledge Target variable
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: MaterialsDatabase
-        - methodtype: method
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+      - methodname: MaterialsDatabase
+        methodtype: method
+        outputname: chooseMaterialsDatabase
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: TargetValuesFromDatabase
-        - methodtype: parts
-        - outputname: chooseTargetValues
-        - outputtype: function
+      - methodname: TargetValuesFromDatabase
+        methodtype: parts
+        outputname: chooseTargetValues
+        outputtype: function
   - blockname: mateirals knowledge Target variable
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
-      - !!omap
-        - outputname: chooseCrystals
-        - outputtype: function
+      - outputname: chooseMaterialsDatabase
+        outputtype: function
+      - outputname: chooseCrystals
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: CrystalsFromDatabase
-        - methodtype: parts
-        - outputname: existingCrystals
-        - outputtype: parts
+      - methodname: CrystalsFromDatabase
+        methodtype: parts
+        outputname: existingCrystals
+        outputtype: parts

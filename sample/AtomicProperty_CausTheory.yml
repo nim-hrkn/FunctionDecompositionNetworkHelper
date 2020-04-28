@@ -1,232 +1,195 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
-  - blockname:
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: Crystal
-        - outputtype: parts
+      - outputname: Crystal
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: getElementAttribute
-        - methodtype: function
-        - outputname: chooseElement
-        - outputtype: function
+      - methodname: getElementAttribute
+        methodtype: function
+        outputname: chooseElement
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: getnumberOfElectron
-        - methodtype: function
-        - outputname: numberOfElectron
-        - outputtype: parts
+      - methodname: getnumberOfElectron
+        methodtype: function
+        outputname: numberOfElectron
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: SchroedingerDiracEq
-        - methodtype: method
-        - outputname: EigenWavefunction
-        - outputtype: parts
-      - !!omap
-        - methodname: SchroedingerDiracEq
-        - methodtype: method
-        - outputname: ElectricConfiguration
-        - outputtype: parts
+      - methodname: SchroedingerDiracEq
+        methodtype: method
+        outputname: EigenWavefunction
+        outputtype: parts
+      - methodname: SchroedingerDiracEq
+        methodtype: method
+        outputname: ElectricConfiguration
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: constructGroundStateWavefunction
-        - methodtype: function
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+      - methodname: constructGroundStateWavefunction
+        methodtype: function
+        outputname: GroundStateWavefunction
+        outputtype: parts
   - blockname: orbitalEnergy
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: EigenWavefunction
-        - outputtype: parts
+      - outputname: EigenWavefunction
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: evaluateSOrbitalEnergy
-        - methodtype: function
-        - outputname: sOrbitalEnergy
-        - outputtype: parts
-      - !!omap
-        - methodname: evaluatepOrbitalEnergy
-        - methodtype: function
-        - outputname: pOrbitalEnergy
-        - outputtype: parts
-      - !!omap
-        - methodname: evaluatedOrbitalEnergy
-        - methodtype: function
-        - outputname: dOrbitalEnergy
-        - outputtype: parts
-      - !!omap
-        - methodname: evaluatefOrbitalEnergy
-        - methodtype: function
-        - outputname: fOrbitalEnergy
-        - outputtype: parts
+      - methodname: evaluateSOrbitalEnergy
+        methodtype: function
+        outputname: sOrbitalEnergy
+        outputtype: parts
+      - methodname: evaluatepOrbitalEnergy
+        methodtype: function
+        outputname: pOrbitalEnergy
+        outputtype: parts
+      - methodname: evaluatedOrbitalEnergy
+        methodtype: function
+        outputname: dOrbitalEnergy
+        outputtype: parts
+      - methodname: evaluatefOrbitalEnergy
+        methodtype: function
+        outputname: fOrbitalEnergy
+        outputtype: parts
   - blockname: mass
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: Element
-        - methodtype: method
-        - outputname: chooseElement
-        - outputtype: function
+      - methodname: Element
+        methodtype: method
+        outputname: chooseElement
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: chooseIsotopeMass
-        - methodtype: function
-        - outputname: isotopeMass
-        - outputtype: parts
-      - !!omap
-        - methodname: averageMass
-        - methodtype: function
-        - outputname: averagedMass
-        - outputtype: parts
+      - methodname: chooseIsotopeMass
+        methodtype: function
+        outputname: isotopeMass
+        outputtype: parts
+      - methodname: averageMass
+        methodtype: function
+        outputname: averagedMass
+        outputtype: parts
   - blockname: totalenergy
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+      - outputname: GroundStateWavefunction
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: evaluateTotalEnergy
-        - methodtype: function
-        - outputname: TotalEnergy
-        - outputtype: parts
+      - methodname: evaluateTotalEnergy
+        methodtype: function
+        outputname: TotalEnergy
+        outputtype: parts
   - blockname: angularMoment
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: constructGroundStateWavefunction
-        - methodtype: function
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+      - methodname: constructGroundStateWavefunction
+        methodtype: function
+        outputname: GroundStateWavefunction
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: S3dAngularMoment
-        - methodtype: method
-        - outputname: S3d
-        - outputtype: parts
-      - !!omap
-        - methodname: L3dAngularMoment
-        - methodtype: method
-        - outputname: L3d
-        - outputtype: parts
-      - !!omap
-        - methodname: J3dAngularMoment
-        - methodtype: method
-        - outputname: J3d
-        - outputtype: parts
+      - methodname: S3dAngularMoment
+        methodtype: method
+        outputname: S3d
+        outputtype: parts
+      - methodname: L3dAngularMoment
+        methodtype: method
+        outputname: L3d
+        outputtype: parts
+      - methodname: J3dAngularMoment
+        methodtype: method
+        outputname: J3d
+        outputtype: parts
   - blockname: J4fangularMoment
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: constructGroundStateWavefunction
-        - methodtype: function
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+      - methodname: constructGroundStateWavefunction
+        methodtype: function
+        outputname: GroundStateWavefunction
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: J4fAngularMoment
-        - methodtype: method
-        - outputname: J4f
-        - outputtype: parts
+      - methodname: J4fAngularMoment
+        methodtype: method
+        outputname: J4f
+        outputtype: parts
   - blockname: J4fangularMomentProjection
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: J4fAngularMoment
-        - methodtype: method
-        - outputname: J4f
-        - outputtype: parts
-      - !!omap
-        - methodname: getgJ
-        - methodtype: function
-        - outputname: gJ
-        - outputtype: parts
+      - methodname: J4fAngularMoment
+        methodtype: method
+        outputname: J4f
+        outputtype: parts
+      - methodname: getgJ
+        methodtype: function
+        outputname: gJ
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: (gJ-1)J4f
-        - methodtype: parts
-        - outputname: J4fSpinDirectionProjection
-        - outputtype: parts
-      - !!omap
-        - methodname: (2-gJ)J4f
-        - methodtype: parts
-        - outputname: J4fOrbitalDirectionProjection
-        - outputtype: parts
+      - methodname: (gJ-1)J4f
+        methodtype: parts
+        outputname: J4fSpinDirectionProjection
+        outputtype: parts
+      - methodname: (2-gJ)J4f
+        methodtype: parts
+        outputname: J4fOrbitalDirectionProjection
+        outputtype: parts
   - blockname: r2
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: GroundStateWavefunction
-        - outputtype: parts
+      - outputname: GroundStateWavefunction
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: r2Expectation
-        - methodtype: method
-        - outputname: r2
-        - outputtype: parts
+      - methodname: r2Expectation
+        methodtype: method
+        outputname: r2
+        outputtype: parts
   - blockname: r2_L
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: EigenWavefunction
-        - outputtype: parts
+      - outputname: EigenWavefunction
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: sChanneldensityExpectation
-        - methodtype: method
-        - outputname: r2_s
-        - outputtype: parts
-      - !!omap
-        - methodname: pChanneldensityExpectation
-        - methodtype: method
-        - outputname: r2_p
-        - outputtype: parts
-      - !!omap
-        - methodname: dChanneldensityExpectation
-        - methodtype: method
-        - outputname: r2_d
-        - outputtype: parts
-      - !!omap
-        - methodname: fChanneldensityExpectation
-        - methodtype: method
-        - outputname: r2_f
-        - outputtype: parts
+      - methodname: sChanneldensityExpectation
+        methodtype: method
+        outputname: r2_s
+        outputtype: parts
+      - methodname: pChanneldensityExpectation
+        methodtype: method
+        outputname: r2_p
+        outputtype: parts
+      - methodname: dChanneldensityExpectation
+        methodtype: method
+        outputname: r2_d
+        outputtype: parts
+      - methodname: fChanneldensityExpectation
+        methodtype: method
+        outputname: r2_f
+        outputtype: parts
   - blockname: periodictable
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: chooseElement
-        - outputtype: function
+      - outputname: chooseElement
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: getperiodictableRow
-        - methodtype: function
-        - outputname: PeriodictableRow
-        - outputtype: parts
+      - methodname: getperiodictableRow
+        methodtype: function
+        outputname: PeriodictableRow
+        outputtype: parts
   - blockname: periodictable
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: chooseElement
-        - outputtype: function
+      - outputname: chooseElement
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: getperiodictableColumn
-        - methodtype: function
-        - outputname: PeriodictableColumn
-        - outputtype: parts
+      - methodname: getperiodictableColumn
+        methodtype: function
+        outputname: PeriodictableColumn
+        outputtype: parts

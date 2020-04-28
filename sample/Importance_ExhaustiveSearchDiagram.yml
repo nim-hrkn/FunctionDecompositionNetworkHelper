@@ -1,34 +1,29 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: indicatordiagram
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAllModels
-        - methodtype: function
-        - outputname: AllModels
-        - outputtype: parts
+      - methodname: generateAllModels
+        methodtype: function
+        outputname: AllModels
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: indicatorDiagram
-        - methodtype: method
-        - outputname: VisualizedImportance
-        - outputtype: parts
-
+      - methodname: indicatorDiagram
+        methodtype: method
+        outputname: VisualizedImportance
+        outputtype: parts
   - blockname: weightdiagram
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: generateAllModels
-        - methodtype: function
-        - outputname: AllModels
-        - outputtype: parts
+      - methodname: generateAllModels
+        methodtype: function
+        outputname: AllModels
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: weightDiagram
-        - methodtype: method
-        - outputname: VisualizedImportance
-        - outputtype: parts
+      - methodname: weightDiagram
+        methodtype: method
+        outputname: VisualizedImportance
+        outputtype: parts

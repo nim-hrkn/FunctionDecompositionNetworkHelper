@@ -1,18 +1,16 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
   - blockname: featureselection
     order: workflow
     list:
     - group:
-      - !!omap
-        - methodname: GenerateGroup
-        - methodtype: function
-        - outputname: FeatureGroups
-        - outputtype: parts
+      - methodname: GenerateGroup
+        methodtype: function
+        outputname: FeatureGroups
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: GenerateSubgroupFromGroup
-        - methodtype: function
-        - outputname: FeatureSubgroups
-        - outputtype: parts
+      - methodname: GenerateSubgroupFromGroup
+        methodtype: function
+        outputname: FeatureSubgroups
+        outputtype: parts

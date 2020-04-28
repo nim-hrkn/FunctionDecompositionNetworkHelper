@@ -1,64 +1,54 @@
 workflow:
-  format: v2.2
+  format: v2.3
   block:
-  - blockname:
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+      - outputname: chooseMaterialsDatabase
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: searchCrystalHavingTargetValuesfromDatabase
-        - methodtype: function
-        - outputname: chooseTrainingSetCrystal
-        - outputtype: function
-  - blockname:
+      - methodname: searchCrystalHavingTargetValuesfromDatabase
+        methodtype: function
+        outputname: chooseTrainingSetCrystal
+        outputtype: function
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: chooseMaterialsDatabase
-        - outputtype: function
+      - outputname: chooseMaterialsDatabase
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: queryCrysalDataHavingTarget
-        - methodtype: function
-        - outputname: CrystalHavingTargetValuesFromDatabase
-        - outputtype: parts
+      - methodname: queryCrysalDataHavingTarget
+        methodtype: function
+        outputname: CrystalHavingTargetValuesFromDatabase
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: chooseTargetValues
-        - methodtype: parts
-        - outputname: TargetValues
-        - outputtype: parts
-  - blockname:
+      - methodname: chooseTargetValues
+        methodtype: parts
+        outputname: TargetValues
+        outputtype: parts
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: chooseTrainingSetCrystal
-        - outputtype: function
+      - outputname: chooseTrainingSetCrystal
+        outputtype: function
     - group:
-      - !!omap
-        - methodname: CrystalToDescriptorAndRelationToTargetVariable(trainingSet)
-        - methodtype: method
-        - outputname: TrainingSetDescriptorAndRelationToTargetVariable
-        - outputtype: parts
-  - blockname:
+      - methodname: CrystalToDescriptorAndRelationToTargetVariable(trainingSet)
+        methodtype: method
+        outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+  - blockname: null
     order: workflow
     list:
     - group:
-      - !!omap
-        - outputname: TrainingSetDescriptorAndRelationToTargetVariable
-        - outputtype: parts
-      - !!omap
-        - outputname: TargetValues
-        - outputtype: parts
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+      - outputname: TargetValues
+        outputtype: parts
     - group:
-      - !!omap
-        - methodname: TrainingDataGeneration
-        - methodtype: method
-        - outputname: TrainingData
-        - outputtype: parts
+      - methodname: TrainingDataGeneration
+        methodtype: method
+        outputname: TrainingData
+        outputtype: parts
