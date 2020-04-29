@@ -14,6 +14,9 @@ default: Understanding
 Prediction= $(TargetValuePrediction)  $(MaterialsList)
 Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
 	$(CONVERT) $(Prediction)
+	$(PROG) a.yml
+	mv caus.gv.png a.png 
+	$(PROG) $(Prediction)
 
 CrystalTarget:
 	$(PROG) $(CrystalTarget)
@@ -36,6 +39,9 @@ UnderstandingFiles= sample/Understand_Taxo.yml sample/SparseModeling.yml sample/
 
 Understanding: $(UnderstandingFiles)
 	$(CONVERT) $(UnderstandingFiles)
+	$(PROG) a.yml
+	mv caus.gv.png a.png 
+	$(PROG) $(UnderstandingFiles)
 
 
 

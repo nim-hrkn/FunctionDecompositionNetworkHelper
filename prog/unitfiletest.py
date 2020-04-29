@@ -37,7 +37,7 @@ def apply_link(data,filename):
         if "link" in link.keys():
             newlink = apply_link(link,filename)
             alink.append( ("link", newlink ) )
-        linklist.append( OrderedDict(alink) )
+        linklist.append(  OrderedDict(alink) )
     return linklist
 
 def wf_add_tag_filename(blocklist,filename):
@@ -70,8 +70,11 @@ def wf_add_tag_filename(blocklist,filename):
 def lk_add_tag_filename(blocklist,filename):
     linkblockall = []
     for link in blocklist:
-        link.update({"filename":filename})
-        linkblockall.extend(apply_link(link,filename) )
+        print("link")
+        print(yaml.dump(link))
+        #link.update({"filename":filename})
+        #linkblockall.extend(apply_link(link,filename) )
+        linkblockall.extend(link )
     return linkblockall
 
 def load_all_yml(filenames):
@@ -90,14 +93,21 @@ def load_all_yml(filenames):
               data = wf_add_tag_filename(data[key]["block"],filename)
               wfblockall.extend(data)
           elif key=="linkset":
-              data = lk_add_tag_filename(data[key]["block"],filename)
-              lkblockall.extend(data)
+              #data = lk_add_tag_filename(data[key]["block"],filename)
+              ablock = data[key]["block"]
+              print(yaml.dump(ablock))
+              lkblockall.extend(ablock)
 
    print("wkblockall")
    print(yaml.dump(wfblockall))
    print("-------")
+   print("lkblockall")
+   print(yaml.dump(lkblockall))
+   print(lkblockall)
+   print("-------")
 
-   return {"workflow": {"block": wfblockall} , "linkset": {"block": lkblockall} }
+   output = OrderedDict([("workflow",{ "block": wfblockall}), ("linkset",{"block": lkblockall} )] )
+   return output
 
 if __name__ == "__main__":
 

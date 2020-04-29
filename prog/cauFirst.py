@@ -381,7 +381,6 @@ class taxologyWay(DecompositionTree):
         return dot
 
     def get_keyvalue(self,line,key):
-        print("line",line)
         if key in line.keys():
             value = line[key]
         else:
@@ -391,10 +390,6 @@ class taxologyWay(DecompositionTree):
     def gen_connection_link_link(self,linklist,plinktype=None,plinkname=None,pnodetype=None):
         if linklist is None:
             return 
-        print("gen_connection")
-        print("================")
-        print(linklist)
-
         if plinkname is not None:
             pnodename = plinkname
             for linkline in linklist:
@@ -408,7 +403,6 @@ class taxologyWay(DecompositionTree):
 
         if plinkname is None:
             for linkline in linklist:
-                print(">linkline",linkline)
                 name = self.get_keyvalue(linkline,"nodename")
                 linktype = self.get_keyvalue(linkline,"linktype")
                 link = self.get_keyvalue(linkline,"link")
@@ -526,6 +520,8 @@ class taxologyWay(DecompositionTree):
         data = self.data
         linktype = self.get_keyvalue(data,"linktype")
         if "link" in list(data.keys()):
+            print("linktyp",linktype)
+            print(yaml.dump(data))
             self.gen_connection_link_link([data],linktype)
 
        
@@ -555,7 +551,7 @@ if __name__ == "__main__":
     for filename in namelist:
 
         basename,ext = os.path.splitext(filename)
-        ext = ext[1:]
+        #ext = ext[1:]
 
         with open(filename) as f:
             dataall = yaml.safe_load(f)
