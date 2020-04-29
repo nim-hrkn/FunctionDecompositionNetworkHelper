@@ -11,4 +11,4 @@ def load(filename):
 
 if __name__ == "__main__":
    data = load(sys.argv[1])
-   print(data)
+   print(yaml.dump(data))

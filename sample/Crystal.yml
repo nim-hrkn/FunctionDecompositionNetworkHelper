@@ -1,7 +1,0 @@
-link:
-- nodename: Crystal
-  nodetype: parts
-  linktype: is-a
-  link:
-  - nodename: CrystalCandidates
-    nodetype: parts

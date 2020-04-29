@@ -7,12 +7,13 @@ AtomicCoordinate2Descriptor= sample/AtomicCoordinate2Descriptor_*.yml
 
 PROG= prog/cauFirst.py --no_wf --no_taxo
 
+CONVERT= prog/unitfiletest.py 
+
 default: Understanding
 
 Prediction= $(TargetValuePrediction)  $(MaterialsList)
 Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
-	$(PROG) $(Prediction)
-	mv caus.gv.png Prediction.png
+	$(CONVERT) $(Prediction)
 
 CrystalTarget:
 	$(PROG) $(CrystalTarget)
@@ -22,7 +23,6 @@ TheoreticalTargetValuePrediction:
 DescriptorGeneration= $(CrystalTarget)  $(AtomicProperty)  $(AtomicCoordinate2Descriptor)
 DescriptorGeneration: $(DescriptorGeneration)
 	$(PROG) $(DescriptorGeneration)
-	mv caus.gv.png DescriptorGeneration.png
 
 MaterialsList:
 	$(PROG) $(MaterialsList)
@@ -32,10 +32,12 @@ AtomicProperty:
 	$(PROG) $(AtomicProperty)
 
 
-UnderstandingFiles= sample/Understand_taxo.yml sample/SparseModeling.yml sample/LinearModel_taxo.yml sample/EXSparseModel.yml  $(Importance) $(Group)
+UnderstandingFiles= sample/Understand_Taxo.yml sample/SparseModeling.yml sample/LinearModel_Taxo.yml sample/EXSparseModel.yml  $(Importance) $(Group)
 
 Understanding: $(UnderstandingFiles)
-	$(PROG) $(UnderstandingFiles)
+	$(CONVERT) $(UnderstandingFiles)
+
+
 
 
 

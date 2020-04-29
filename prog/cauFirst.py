@@ -157,11 +157,16 @@ class workflowWay(DecompositionTree):
 
         self.data = None
 
-    def load(self,filename):
-        data = None
-        with open(filename) as f:
-            data = yaml.safe_load(f)
-        self.data = data
+    def load(self,filename=None,data=None):
+        if data is None and filename is not None:
+            with open(filename) as f:
+                data = yaml.safe_load(f)
+            self.data = data
+        elif filename is None and data is not None:
+            self.data = data
+        else:
+            print("error: in load")
+            raise
 
     def get_keyvalue(self,line,key):
         line = dict(line)
@@ -174,7 +179,6 @@ class workflowWay(DecompositionTree):
     def check_names(self,g2):
         namelist = ["outputname","outputtype","methodname","methodtype"]
         g2 = dict(g2)
-        print("g2",g2)
         for x in g2.keys():
             if x not in namelist:
                 print("unknown keyword",x)
@@ -217,7 +221,6 @@ class workflowWay(DecompositionTree):
             funcname2 = self.func_prefix(functype2)+nodename2
             applymethodname2 = None
 
-            print("methodname>",methodname2)
             if methodname2 is not None:
                 methodname2 = self.method_prefix(methodtype2)+methodname2
                 applymethodname2 = self.applymethod_prefix(methodtype2)+methodname2
@@ -262,8 +265,6 @@ class workflowWay(DecompositionTree):
 
                     nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2 = self.gen_names(g2)
 
-                    print("g1>",funcname1,functype1,methodname1,methodtype1)
-                    print("g2>",funcname2,functype2,methodname2,methodtype2)
 
 
                     if methodname2 is not None:
@@ -339,10 +340,7 @@ class workflowWay(DecompositionTree):
     def linktree(self):
         data = self.data
         wf = data["workflow"]
-        print(wf["format"])
         for wfblock in wf["block"]:
-           print("block",wfblock)
-           print(wfblock["blockname"],wfblock["order"])
            self.convert_from_workflow(wfblock)
 
        
@@ -357,11 +355,16 @@ class taxologyWay(DecompositionTree):
         self.data = None
 
 
-    def load(self,filename):
-        data = None
-        with open(filename) as f:
-            data = yaml.safe_load(f)
-        self.data = data
+    def load(self,filename=None,data=None):
+        if filename is not None and data is None:
+            with open(filename) as f:
+                data = yaml.safe_load(f)
+            self.data = data
+        elif filename is None and data is not None:
+            self.data = data
+        else:
+            print("erorr in load")
+            raise
 
 
     def create_dendrogram(self,dot=None):
@@ -378,6 +381,7 @@ class taxologyWay(DecompositionTree):
         return dot
 
     def get_keyvalue(self,line,key):
+        print("line",line)
         if key in line.keys():
             value = line[key]
         else:
@@ -387,6 +391,10 @@ class taxologyWay(DecompositionTree):
     def gen_connection_link_link(self,linklist,plinktype=None,plinkname=None,pnodetype=None):
         if linklist is None:
             return 
+        print("gen_connection")
+        print("================")
+        print(linklist)
+
         if plinkname is not None:
             pnodename = plinkname
             for linkline in linklist:
@@ -400,6 +408,7 @@ class taxologyWay(DecompositionTree):
 
         if plinkname is None:
             for linkline in linklist:
+                print(">linkline",linkline)
                 name = self.get_keyvalue(linkline,"nodename")
                 linktype = self.get_keyvalue(linkline,"linktype")
                 link = self.get_keyvalue(linkline,"link")
@@ -516,388 +525,10 @@ class taxologyWay(DecompositionTree):
     def linktree(self):
         data = self.data
         linktype = self.get_keyvalue(data,"linktype")
-        self.gen_connection_link_link(data["link"],linktype)
+        if "link" in list(data.keys()):
+            self.gen_connection_link_link([data],linktype)
 
        
-
-class workFlowWay(DecompositionTree):
-
-    def __init__(self,basename = "caus"):
-
-        super().__init__(basename)
-
-        self.wf_edgelist = []
-        self.wf_boxnodelist = []
-        self.wf_invisnodelist = []
-        
-    def next_itime(self,df,itime,imethod):
-        for itime2 in range(itime+1,df.shape[1]):
-            output2 = df.iloc[imethod,itime2]
-            if output2==output2: # not isnan
-                return itime2
-        return None
-
-    def prev_itime(self,df,itime,imethod):
-        for itime2 in range(itime-1,-1,-1):
-            output2 = df.iloc[imethod,itime2]
-            if output2==output2: # not isnan
-                return itime2
-        return None
-    
-    def get_func_method_1(self,cell1,func_prefix=None,method_prefix=None):
-        if func_prefix is None:
-            func_prefix = self.func_prefix()
-        cell1 = str(cell1)
-        if cell1.find(":")<0:
-            output1 = cell1
-            way1 = cell1
-        else:
-            way1,output1 = cell1.split(":")
-            if way1 is None:
-                way1 = output1
-        if method_prefix is None:
-            method_prefix = self.method_prefix()
-                    
-        if len(way1)>0:
-            method1 = method_prefix+way1
-        else:
-            method1 = None
-        if len(output1)>0:
-            func1 = func_prefix+output1
-        else:
-            func1 = None
-        return func1,method1
-
-    def get_func_method_2(self,cell1,cell2):
-        cell1 = str(cell1)
-        cell2 = str(cell2)
-        if cell2.find(":")<0:
-            wayp = cell2
-            output2 = cell2
-        else:
-            wayp,output2 = cell2.split(":")
-            if output2 is None:
-                output2 = wayp
-                
-        _,output1 = cell1.split(":")
-        if len(output2)>0:
-            funcp = self.func_prefix()+output2
-        else:
-            funcp = None
-        if len(wayp)>0:
-            methodp = self.method_prefix()+wayp
-        else:
-            methodp = None
-        if len(output1)>0:
-            func1 = self.func_prefix()+output1
-        else:
-            func1 = None
-        if len(wayp)>0:
-            func2 = self.applymethod_prefix()+wayp    
-        else:
-            func2 = None
-        return func1,func2,funcp,methodp
-
-    def get_func_method_3(self,cell0,cell1,cell2):
-        cell0 = str(cell0)
-        cell1 = str(cell1)
-        cell2 = str(cell2)
-        if cell2.find(":")<0:
-            wayp = cell2
-            output2 = cell2
-        else:
-            wayp,output2 = cell2.split(":")
-            if output2 is None:
-                output2 = wayp
-                
-        _,output1 = cell1.split(":")
-        _,output0 = cell0.split(":")
-        
-        if len(output2)>0:
-            funcp = self.func_prefix()+output2
-        else:
-            funcp = None
-        if len(wayp)>0:
-            methodp = self.method_prefix()+wayp
-        else:
-            methodp = NOne
-        if len(output0)>0:
-            func0 = self.func_prefix()+output0
-        else:
-            func0 = None
-        if len(output1)>0:
-            func1 = self.func_prefix()+output1
-        else:
-            func1 = None
-        if len(wayp)>0:
-            func2 = self.applymethod_prefix()+wayp    
-        else:
-            func2 = None
-        return func0,func1,func2,funcp,methodp    
- 
-    def get_wf_method_1(self,cell0):
-        cell0 = str(cell0)
-        way0,output0 = cell0.split(":")
-        if len(way0)==0:
-            way0 = None
-        if len(output0)==0:
-            output0 = None
-        return way0,output0
-
-    def get_wf_method_2(self,cell0,cell1):
-        cell0 = str(cell0)
-        cell1 = str(cell1)
-        way0,output0 = cell0.split(":")
-        way1,output1 = cell1.split(":")
-        if len(way0)==0:
-            way0 = None
-        if len(output0)==0:
-            output0 = None
-        if len(way1)==0:
-            way1 = None
-        if len(output1)==0:
-            ouptut1 = None
-        return way0,output0,way1,output1
- 
-    def get_wf_method_3(self,cell0,cell1,cell2):
-        cell0 = str(cell0)
-        cell1 = str(cell1)
-        cell2 = str(cell2)
-        way0,output0 = cell0.split(":")
-        way1,output1 = cell1.split(":")
-        way2,output2 = cell2.split(":")
-        if len(way0)==0:
-            way0 = None
-        if len(output0)==0:
-            output0 = None
-        if len(way1)==0:
-            way1 = None
-        if len(output1)==0:
-            ouptut1 = None
-        if len(way2)==0:
-            way2 = None
-        if len(output2)==0:
-            ouptut2 = None
-        return way0,output0,way1,output1,way2,output2
-   
-
-    def gen_workflow(self,dottree):
-        dottree.graph_attr["rankdir"] = "BT" #"LR"
-        edgelist = self.wf_edgelist
-        boxnodelist = self.wf_boxnodelist
-        invisnodelist = self.wf_invisnodelist
-        for edge in edgelist:
-            s = edge.split(",")
-            for x0,x1 in zip(s[:-1],s[1:]):
-                dottree.edge(x0,x1)
-        for boxnode in boxnodelist:
-            dottree.node(boxnode,shape="box")
-        for invisnode in invisnodelist:
-            dottree.node(invisnode,color="white")
-        return dottree 
-    
-    def nodes2funcs(self,nodes):
-        funcs = []
-        for node in nodes:
-            funcs.append(self.func_prefix()+node)
-        return funcs
-
-    def causfirst_sparse2(self,dottree=None):
-        df = self.df
-
-        edgelist = []
-        invisedgelist = []
-        boxnodelist = []
-        sameranklist = []
-
-        wf_edgelist = []
-        wf_boxnodelist = []
-        wf_invisnodelist = []
-
-        for imethod in range(df.shape[0]):
-            itime = df.shape[1]
-            while itime>0:
-                itime = itime-1
-                
-                cell2 = df.iloc[imethod,itime]
-                if cell2!=cell2 or cell2 is  None: #  isnan
-                    continue
-                if cell2.startswith("2)"):
-                    #cell2 = cell2[2:] # delete 2), but leave it for debug now!
-                    # search output1
-                    itime1 = self.prev_itime(df,itime,imethod)
-                    if itime1 is None:
-                        continue
-                    cell1 = df.iloc[imethod,itime1]
-                    # serach output0
-                    itime0 = self.prev_itime(df,itime1,imethod)
-                    if itime0 is None:
-                        continue
-                    cell0 = df.iloc[imethod,itime0]
-                    
-                    func0,func1,func2,funcp,methodp = self.get_func_method_3(cell0,cell1,cell2)
-                    if funcp is not None and methodp is not None:
-                        edgelist.append("{},{}".format(funcp,methodp))
-                    if methodp is not None:
-                        boxnodelist.append(methodp)
-                    if methodp is not None and func0 is not None:
-                        edgelist.append("{},{}".format(methodp,func0))                    
-                    if methodp is not None and func1 is not None:
-                        edgelist.append("{},{}".format(methodp,func1))
-                    if methodp is not None and func2 is not None:
-                        edgelist.append("{},{}".format(methodp,func2))
-                    invisedgelist.append(",".join([func0,func1,func2]))
-                    sameranklist.append(",".join([func0,func1,func2]))     
-
-                    # workflow edge
-                    way0,output0,way1,output1,way2,output2 = self.get_wf_method_3(cell0,cell1,cell2)
-                    if way0 is not None and output0 is not None:
-                        wf_edgelist.append(",".join([way0,output0]))
-                        wf_boxnodelist.append(way0)
-                        wf_invisnodelist.append(output0)
-                    if way1 is not None and output1 is not None:
-                        wf_edgelist.append(",".join([way1,output1]))
-                        wf_boxnodelist.append(way1)
-                        wf_invisnodelist.append(output1)
-                    if way2 is not None and output2 is not None:
-                        wf_edgelist.append(",".join([way2,output2]))
-                        wf_boxnodelist.append(way2)
-                        wf_invisnodelist.append(output2)
-                    if output0 is not None and output1 is not None and output2 is not None and way2 is not None:
-                        wf_edgelist.append(",".join([output0,way2]))
-                        wf_edgelist.append(",".join([output1,way2]))
-                        wf_edgelist.append(",".join([way2,output2]))
-
-                    itime = itime-1
-                    
-                else:
-                    # search output1
-                    itime1 = self.prev_itime(df,itime,imethod)
-                    if itime1 is None:
-                        continue
-                    cell1 = df.iloc[imethod,itime1]
-
-                    func1,func2,funcp,methodp = self.get_func_method_2(cell1,cell2)
-                    if funcp is not None and methodp is not None:
-                        edgelist.append("{},{}".format(funcp,methodp))
-                    if methodp is not None:
-                        boxnodelist.append(methodp)
-                    if methodp is not None and func1 is not None:
-                        edgelist.append("{},{}".format(methodp,func1))
-                    if methodp is not None and func2 is not None:
-                        edgelist.append("{},{}".format(methodp,func2))
-                    if func1 is not None and func2 is not None:
-                        invisedgelist.append(",".join([func1,func2]))
-                        sameranklist.append(",".join([func1,func2]))
-
-                    # workflow edge
-                    way0,output0,way1,output1 = self.get_wf_method_2(cell1,cell2)
-                    if way0 is not None and output0 is not None:
-                        wf_edgelist.append(",".join([way0,output0]))
-                        wf_boxnodelist.append(way0)
-                        wf_invisnodelist.append(output0)
-                    if way1 is not None and output1 is not None:
-                        wf_edgelist.append(",".join([way1,output1]))
-                        wf_boxnodelist.append(way1)
-                        wf_invisnodelist.append(output1)
-                    if output0 is not None and output1 is not None and way1 is not None:
-                        wf_edgelist.append(",".join([output0,way1]))
-                        wf_edgelist.append(",".join([way1,output1]))
-
-
-            for itime in range(df.shape[1]):
-                cell1 = df.iloc[imethod,itime]
-                if cell1==cell1 and cell1 is not None: # not isnan
-                    cell1 = str(cell1)
-                    func1,method1 = self.get_func_method_1(cell1)
-                    if func1 is not None and method1 is not None:
-                        edgelist.append("{},{}".format(func1,method1))
-                        boxnodelist.append(method1)
-                    way1,output1 = self.get_wf_method_1(cell1)
-                    if output1 is not None:
-                        wf_invisnodelist.append(output1)
-                    if way1 is not None and output1 is not None:
-                        wf_edgelist.append(",".join([way1,output1]))
-                        wf_boxnodelist.append(way1)
-                        
-        
-        self.edgelist.extend(edgelist)
-        self.invisedgelist.extend(invisedgelist)
-        self.boxnodelist.extend(boxnodelist)
-        self.sameranklist.extend(sameranklist)
-
-        self.wf_edgelist.extend(wf_edgelist)
-        self.wf_boxnodelist.extend(wf_boxnodelist)
-        self.wf_invisnodelist.extend(wf_invisnodelist)
-
-    def drop_dup_wf(self,del_up):
-        if del_up:
-            self.wf_edgelist = list(set(self.wf_edgelist))
-            self.wf_boxnodelist = list(set(self.wf_boxnodelist))
-            self.wf_invisnodelist = list(set(self.wf_invisnodelist))
-
-    def create_workflow(self,del_dup=True,dot=None):
-    
-        self.drop_dup_wf(del_dup)
-        
-        if dot is None:
-            dot = Digraph(self.basename)
-            dot.graph_attr["rankdir"] = "BT"
-        dot = self.gen_workflow(dot)
-        
-        return dot
-
-
-    def convert_wf_to_csv(self,lines):
-        # convert format 
-        vlist = []
-        for x in lines:
-            if len(x)==0:
-                continue
-            x01 = x.split(":")
-            x0 = x01[0]; x1=x01[1]
-            s = x1.replace("]",":").replace("[",",")
-            y = x0+s
-            v = y.split(",")
-            vlist.append(v)
-        return vlist
-
-    def read_wffile(self,filename ):
-        with open(filename) as f:
-            lines = f.read()
-
-        lines = lines.split("\n")
-        vlist = self.convert_wf_to_csv(lines)
-
-        # make dataframe
-        df = pd.DataFrame(vlist)
-
-        # to change df.column
-        col = []
-        for i in range(df.shape[1]):
-            if i==0:
-                s = "method"
-            else:
-                s = "step{}".format(i)
-            col.append(s)
-            
-        df.columns = col
-        df.set_index("method",drop=True,inplace=True)
-        return df
-
-    def load(self,name,ext=None):
-        if ext is None:
-            ext = self.check_extension(name)
-
-        df0 = None
-        if ext == "csv":
-            df0 = pd.read_csv(name,index_col=[0])
-        elif ext == "wf":
-            df0 = self.read_wffile(name)
-        else:
-            print("extension",ext,"not supported.")
-        self.df = df0 
-
 if __name__ == "__main__":
     import sys 
     import os
@@ -927,20 +558,14 @@ if __name__ == "__main__":
         ext = ext[1:]
 
         with open(filename) as f:
-            data = yaml.safe_load(f)
-        print(list(data.keys()))
-        if "workflow" in data.keys():
-            filetype = "wf"
-        elif "link" in data.keys():
-            filetype = "taxo"
-        else:
-            print("format not supported in",filename)
-            raise
+            dataall = yaml.safe_load(f)
 
-        if ext in ["yml"]:
-            if filetype == "wf":
+        for key in dataall:
+            data = dataall[key]
+
+            if key == "workflow":
                 wf = workflowWay(dotoption=dotoption)
-                wf.load(filename)
+                wf.load(data={"workflow":data})
                 wf.linktree()
                 dottree = wf.create_tree(dottree)
 
@@ -949,20 +574,22 @@ if __name__ == "__main__":
                     dotwf.graph_attr["rankdir"] = "BT"
                     dotwf = wf.create_workflow(dotwf)
                     dotwf.format = "png"
-                    dotwf.render(view=True)
+                    dotwf.render(view=False)
  
-            elif filetype == "taxo":
+            elif key == "linkset":
                 taxo = taxologyWay(dotoption=dotoption)
-                taxo.load(filename)
-                taxo.linktree()
-                dottree = taxo.create_tree(dottree)
+
+                for ataxo in data["block"]:
+                    taxo.load(data=ataxo)
+                    taxo.linktree()
+                    dottree = taxo.create_tree(dottree)
 
                 if not cmdopt.no_taxo:
                     dottaxo = Digraph(basename)
                     dottaxo.graph_attr["rankdir"] = "TB"
                     dottaxo = taxo.create_dendrogram(dottaxo)
                     dottaxo.format = "png"
-                    dottaxo.render(view=True)
+                    dottaxo.render(view=False)
     
     dottree.format="png"
     dottree.render(view=False)

@@ -1,0 +1,59 @@
+linkset:
+  block:
+  - link:
+    - nodename: get_ModelHamiltonian
+      nodetype: function
+      linktype: part-of
+      link:
+      - nodename: ModelHamiltonianType
+        nodetype: parts
+        linktype: is-a
+        link:
+        - nodename: ElectronModelHamiltonian
+          nodetype: parts
+          linktype: part-of
+          link:
+          - nodename: OneBody
+            nodetype: parts
+            linktype: part-of
+            link:
+            - nodename: energyLevel
+              nodetype: parts
+            - nodename: hoppingIntegral
+              nodetype: parts
+          - nodename: TwoBody
+            nodetype: parts
+            linktype: part-of
+            link:
+            - nodename: ElectronTwoBodyInteractionChannel
+              linktype: is-a
+              link:
+              - nodename: UTM3d
+              - nodename: UTM3dRE4f
+        - nodename: SpinModelHamiltonian
+          nodetype: parts
+          linktype: part-of
+          link:
+          - nodename: SpinChannelSelection
+            linktype: is-a
+            link:
+            - nodename: SpinTM3d
+            - nodename: SpinTM3dRE4f
+            - nodename: SpinTM3dRE4fRE5d
+          - nodename: SpinSpinInteraction
+            nodetype: parts
+          - nodename: Anisotropy
+            nodetype: parts
+      - nodename: ValuesOfTermsOfHamiltonian
+        nodetype: parts
+        linktype: is-a
+        link:
+        - nodename: MatchingExperiment
+        - nodename: FirstPrinciples
+    - nodename: Solver
+      linktype: is-a
+      link:
+      - nodename: meanfield
+      - nodename: MC
+    - nodename: TargetValue
+      nodetype: parts

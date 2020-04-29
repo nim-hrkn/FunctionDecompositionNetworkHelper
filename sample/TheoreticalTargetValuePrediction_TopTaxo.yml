@@ -1,7 +1,9 @@
-link:
-- nodename: raiseMaterialsList
-  nodetype: function
-  linktype: is-a
-  link:
-  - nodename: RandomSelection
-  - nodename: IntutuionSelection
+linkset:
+  block:
+  - link:
+    - nodename: raiseMaterialsList
+      nodetype: function
+      linktype: is-a
+      link:
+      - nodename: RandomSelection
+      - nodename: IntutuionSelection
