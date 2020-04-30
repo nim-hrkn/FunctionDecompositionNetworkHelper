@@ -5,7 +5,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseElement
+      - outputname: chooseDatabase
         outputtype: function
     - group:
       - methodname: typicalMaterials
