@@ -514,7 +514,6 @@ class taxologyWay(DecompositionTree):
             else:
                 print("not supported, linktype=",plinktype)
                 raise
-
                     
     def linktree(self):
         data = self.data
@@ -524,37 +523,30 @@ class taxologyWay(DecompositionTree):
             print(yaml.dump(data))
             self.gen_connection_link_link([data],linktype)
 
-       
-if __name__ == "__main__":
-    import sys 
-    import os
-    import argparse
 
-    parser = argparse.ArgumentParser()
-    parser.add_argument("filenames",nargs="*")
-    parser.add_argument("--no_wf",action="store_true")
-    parser.add_argument("--no_taxo",action="store_true")
+class FDTree(object):
+    def __init__(self,dottree=None,dotoption=None):
+        self.dotoption = None
+        if dotoption is None:
+            #self.dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0, "apply_same_rank": False }
+            self.dotoption = { "nodelabel_length": 15}
 
-    cmdopt = parser.parse_args()
+        self.dottree = dottree
+        if dottree is None:
+            self.dottree = Digraph("caus")
+            self.dottree.graph_attr["rankdir"] = "TB"
 
-    namelist = cmdopt.filenames
-                    
-    if len(namelist)==0:
-        sys.exit(1)
 
-    #dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0, "apply_same_rank": False }
-    dotoption = { "nodelabel_length": 15}
+    def apply(self,dataall,basename = None,make_png = True): 
+        if basename is None:
+            basename = "caus"
 
-    dottree = Digraph("caus")
-    dottree.graph_attr["rankdir"] = "TB"
+        dotoption = self.dotoption
+        dottree = self.dottree
 
-    for filename in namelist:
-
-        basename,ext = os.path.splitext(filename)
-        #ext = ext[1:]
-
-        with open(filename) as f:
-            dataall = yaml.safe_load(f)
+        # options,  fix them now
+        no_wf = True
+        no_taxo = True
 
         for key in dataall:
             data = dataall[key]
@@ -565,7 +557,7 @@ if __name__ == "__main__":
                 wf.linktree()
                 dottree = wf.create_tree(dottree)
 
-                if not cmdopt.no_wf :
+                if not no_wf :
                     dotwf = Digraph(basename)
                     dotwf.graph_attr["rankdir"] = "BT"
                     dotwf = wf.create_workflow(dotwf)
@@ -580,15 +572,92 @@ if __name__ == "__main__":
                     taxo.linktree()
                     dottree = taxo.create_tree(dottree)
 
-                if not cmdopt.no_taxo:
+                if not no_taxo:
                     dottaxo = Digraph(basename)
                     dottaxo.graph_attr["rankdir"] = "TB"
                     dottaxo = taxo.create_dendrogram(dottaxo)
                     dottaxo.format = "png"
                     dottaxo.render(view=False)
-    
-    dottree.format="png"
-    dottree.render(view=False)
-    print("done")
+
+        if make_png:
+            dottree.format="png"
+            dottree.render(view=False)
+            print("png is made.")
+
+        return dottree
+
+    def apply_files(self,namelist):
+
+        dotoption = self.dotoption
+        dottree = self.dottree
+
+        for filename in namelist:
+
+            basename,ext = os.path.splitext(filename)
+            #ext = ext[1:]
+
+            with open(filename) as f:
+                dataall = yaml.safe_load(f)
+
+            self.apply(dataall,make_png = False)
+
+        if True:
+            dottree.format="png"
+            dottree.render(view=False)
+            print("png is made.")
+
+      
+if __name__ == "__main__":
+    import sys 
+    import os
+    import argparse
+
+    def parse_cmd_option():
+        parser = argparse.ArgumentParser()
+        parser.add_argument("filenames",nargs="*")
+        parser.add_argument("--no_wf",action="store_true")
+        parser.add_argument("--no_taxo",action="store_true")
+
+        cmdopt = parser.parse_args()
+
+        return cmdopt.filenames
+
+    def doit_each(namelist):
+        dottree = Digraph("caus")
+        dottree.graph_attr["rankdir"] = "TB"
+
+        for filename in namelist:
+
+            basename,ext = os.path.splitext(filename)
+            #ext = ext[1:]
+
+            with open(filename) as f:
+                dataall = yaml.safe_load(f)
+
+            fdtree = FDTree(dottree,basename)
+            dottree = fdtree.apply(dataall,make_png=False)
+       
+        dottree.format="png"
+        dottree.render(view=False)
+        print("done")
+
+    # start 
+
+    namelist = parse_cmd_option()
+                    
+    if len(namelist)==0:
+        sys.exit(1)
+
+    doit = "each"
+
+    if doit == "each":
+        doit_each(namelist)
+
+    elif doit == "all":
+        
+        fdtree = FDTree()
+        dottree = fdtree.apply_files(namelist)
+
+    #end 
 
 
