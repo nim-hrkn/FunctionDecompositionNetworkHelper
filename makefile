@@ -18,10 +18,11 @@ Prediction:  $(TargetValuePrediction)  $(MaterialsList)
 	mv caus.gv.png a.png 
 	$(PROG) $(Prediction)
 
+TargetValuePrediction: $(TargetValuePrediction)
+	$(PROG) $(TargetValuePrediction)
+
 CrystalTarget:
 	$(PROG) $(CrystalTarget)
-TheoreticalTargetValuePrediction:
-	$(PROG) $(TargetValuePrediction)
 
 DescriptorGeneration= $(CrystalTarget)  $(AtomicProperty)  $(AtomicCoordinate2Descriptor)
 DescriptorGeneration: $(DescriptorGeneration)
