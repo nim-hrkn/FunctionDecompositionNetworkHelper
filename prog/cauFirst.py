@@ -9,6 +9,7 @@
 #
 #
 
+import os
 import pandas as pd
 from graphviz import Digraph
 import copy
@@ -112,7 +113,7 @@ class DecompositionTree(object):
         for edge in edgelist:
             s = edge.split(",")
             for x in s:
-                dottree.node(x,label= self.make_nodelabel(x))
+                dottree.node(x,label= self.make_nodelabel(x),shape="oval")
         for edge in edgelist:
             s = edge.split(",")
             for x0,x1 in zip(s[:-1],s[1:]):
@@ -525,7 +526,7 @@ class taxologyWay(DecompositionTree):
 
 
 class FDTree(object):
-    def __init__(self,dottree=None,dotoption=None):
+    def __init__(self,basename = "caus", dottree=None,dotoption=None):
         self.dotoption = None
         if dotoption is None:
             #self.dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0, "apply_same_rank": False }
@@ -533,7 +534,7 @@ class FDTree(object):
 
         self.dottree = dottree
         if dottree is None:
-            self.dottree = Digraph("caus")
+            self.dottree = Digraph(basename)
             self.dottree.graph_attr["rankdir"] = "TB"
 
 

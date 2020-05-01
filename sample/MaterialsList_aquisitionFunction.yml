@@ -8,10 +8,14 @@ workflow:
       - outputname: TrainingData
         outputtype: parts
     - group:
-      - outputname: BayesianLinearRegression
+      - methodname: fitBayesianLinearRegression
+        methodtype: function
+        outputname: BayesianLinearRegression
         outputtype: parts
     - group:
-      - outputname: PredictionMeanAndVariance
+      - methodname: applyBayesianLinearRegression
+        methodtype: function
+        outputname: PredictionMeanAndVariance
         outputtype: parts
     - group:
       - methodname: UCBaquisitionFunction
@@ -36,7 +40,7 @@ workflow:
       - outputname: NewsetDescriptor
         outputtype: parts
     - group:
-      - methodname: apply_BayesianLinearRegression
+      - methodname: applyBayesianLinearRegression
         methodtype: function
         outputname: PredictionMeanAndVariance
         outputtype: parts
