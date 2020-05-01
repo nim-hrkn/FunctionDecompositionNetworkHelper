@@ -649,7 +649,7 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
-    doit = "each"
+    doit = "all"
 
     if doit == "each":
         doit_each(namelist)

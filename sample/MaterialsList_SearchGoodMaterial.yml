@@ -17,12 +17,12 @@ workflow:
     - group:
       - methodname: MaterialSynthesis
         methodtype: method
-        outputname: SynthesizedMaterils
+        outputname: SynthesizedMaterials
         outputtype: parts
     - group:
       - methodname: measureTargetQuanitty
         methodtype: function
-        outputname: newTargetValues
+        outputname: newTargetQuantityValues
         outputtype: parts
     - group:
       - methodname: SelectSynthesizedTaretMaterialsIteratively
@@ -68,18 +68,3 @@ workflow:
 #        outputname: getTargetSelectionCriterion
 #        outputtype: function
 
-  - blockname: null
-    order: workflow
-    list:
-    - group:
-      - methodname: MaterialsDatabase
-        methodtype: method
-        outputname: chooseMaterialsDatabase
-        outputtype: function
-      - outputname: chooseTargetValues
-        outputtype: function
-    - group:
-      - methodname: storeInMaterialsDataBase
-        methodtype: function
-        outputname: RicherMaterialsDatabase
-        outputtype: parts

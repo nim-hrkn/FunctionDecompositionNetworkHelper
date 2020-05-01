@@ -31,10 +31,10 @@ workflow:
     - group:
       - methodname: evaluateRegressionModel
         methodtype: function
-        outputname: RegressionModelValues
+        outputname: RegressionPredictionValues
         outputtype: function
     - group:
-      - methodname: sortRegressionModelValues
+      - methodname: sortRegressionPredictionValues
         methodtype: function
         outputname: raiseMaterialsList
         outputtype: function

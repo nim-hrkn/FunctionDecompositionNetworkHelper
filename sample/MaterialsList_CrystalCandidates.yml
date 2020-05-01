@@ -31,8 +31,6 @@ workflow:
         methodtype: method
         outputname: chooseMaterialsDatabase
         outputtype: function
-      - outputname: chooseMaterialSystem
-        outputtype: function
     - group:
       - methodname: CrystalsFromDatabase
         methodtype: parts
@@ -43,26 +41,26 @@ workflow:
         methodtype: function
         outputname: MaterialsKnowledge
         outputtype: method
-  - blockname: mateirals knowledge Target variable
-    order: workflow
-    list:
-    - group:
-      - methodname: MaterialsDatabase
-        methodtype: method
-        outputname: chooseMaterialsDatabase
-        outputtype: function
-    - group:
-      - methodname: TargetValuesFromDatabase
-        methodtype: parts
-        outputname: chooseTargetValues
-        outputtype: function
+#  - blockname: mateirals knowledge Target variable
+#    order: workflow
+#    list:
+#    - group:
+#      - methodname: MaterialsDatabase
+#        methodtype: method
+#        outputname: chooseMaterialsDatabase
+#        outputtype: function
+#    - group:
+#      - methodname: TargetValuesFromDatabase
+#        methodtype: parts
+#        outputname: chooseTargetValues
+#        outputtype: function
   - blockname: mateirals knowledge Target variable
     order: workflow
     list:
     - group:
       - outputname: chooseMaterialsDatabase
         outputtype: function
-      - outputname: chooseCrystals
+      - outputname: chooseMaterialsCategory
         outputtype: function
     - group:
       - methodname: CrystalsFromDatabase

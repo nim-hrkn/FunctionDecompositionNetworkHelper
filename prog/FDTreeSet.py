@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+#!/usr/bin/env python
+# coding: utf-8
 
 
 import yaml
@@ -111,12 +113,15 @@ class FDTreeSet(object):
     def print_names(self,name=None):
         if name is None:
             self.print_wf()
-            self.print_kl()
+            self.print_lk()
         if name in ["wf"]:
             self.print_wf()
         if name in ["lk"]:
             self.print_lk()
+
             
+
+       
 
 if __name__ == "__main__":
 

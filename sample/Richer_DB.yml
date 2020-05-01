@@ -1,0 +1,32 @@
+workflow:
+  format: v2.3
+  block:
+
+  - blockname: richerdb
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseMaterialsDatabase
+        outputtype: function
+      - outputname: newTargetQuantityValues
+        outputtype: parts
+      - outputname: NewSynthesizedCrystalCoordinates
+        outputtype: parts
+    - group:
+      - methodname: storeInMaterialsDataBase
+        methodtype: function
+        outputname: RicherMaterialsDatabase
+        outputtype: parts
+
+  - blockname: newcoordinate
+    order: workflow
+    list:
+    - group:
+      - outputname: SynthesizedMaterials
+        outputtype: parts
+    - group:
+      - methodname: NewCrystalCoordinates
+        methodtype: parts
+        outputname: NewSynthesizedCrystalCoordinates
+        outputtype: parts
+
