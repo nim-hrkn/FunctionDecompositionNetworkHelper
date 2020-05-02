@@ -89,7 +89,24 @@ class WFChain(object):
                     node1,node2 = wk
                     if node1["outputname"] == output1 and \
                        node2["outputname"] == output2 :
-                        selectedlist.append( [copy.deepcopy(node1),copy.deepcopy(node2)])
+                        if [node1,node2] not in selectedlist:
+                            selectedlist.append( [copy.deepcopy(node1),copy.deepcopy(node2)])
+
+        # add aditional link
+        additionallist =  []
+        for targetnodes in selectedlist:
+            _,targetnode2 = targetnodes
+            print("search>",targetnode2)
+            for wk in wklist:
+                node1,node2 = wk
+                if targetnode2["outputname"] == node2["outputname"] and \
+                   targetnode2["methodname"] == node2["methodname"] :
+                   if [copy.deepcopy(node1),copy.deepcopy(node2)] not in additionallist:
+                       print("add node>",node1)
+                       additionallist.append( [copy.deepcopy(node1),copy.deepcopy(node2)])
+            
+        selectedlist.extend(additionallist)
+
         return WFChain(selectedlist)
         #return selectedlist
     
