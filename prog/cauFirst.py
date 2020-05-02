@@ -28,6 +28,8 @@ class DecompositionTree(object):
         self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, "apply_same_rank": True }
         if dotoption is not None:
            self.dotoption.update(dotoption)
+
+        print("init:dotoption",dotoption)
         
         self.nodelabel_length = self.dotoption["nodelabel_length"]
         
@@ -109,6 +111,11 @@ class DecompositionTree(object):
         sameranklist = self.sameranklist
 
         apply_same_rank = self.dotoption["apply_same_rank"]
+        print("gen_tree: apply_same_rank",apply_same_rank)
+
+        connect_invis = True
+        if "connect_invis" in self.dotoption:
+            connect_invis = self.dotoption["connect_invis"]
         
         for edge in edgelist:
             s = edge.split(",")
@@ -118,10 +125,11 @@ class DecompositionTree(object):
             s = edge.split(",")
             for x0,x1 in zip(s[:-1],s[1:]):
                 dottree.edge(x0,x1)
-        for invisedge in invisedgelist:
-            s = invisedge.split(",")
-            for x0,x1 in zip(s[:-1],s[1:]):
-                dottree.edge(x0,x1,style=self.node_sequence_style)
+        if connect_invis:
+            for invisedge in invisedgelist:
+                s = invisedge.split(",")
+                for x0,x1 in zip(s[:-1],s[1:]):
+                    dottree.edge(x0,x1,style=self.node_sequence_style)
         for boxnode in boxnodelist:
             dottree.node(boxnode,shape="box")
         if apply_same_rank:
@@ -531,6 +539,8 @@ class FDTree(object):
         if dotoption is None:
             #self.dotoption = {"node_sequence_style":"dotted", "nodelabel_length": 0, "apply_same_rank": False }
             self.dotoption = { "nodelabel_length": 15}
+        else:
+            self.dotoption = dotoption
 
         self.dottree = dottree
         if dottree is None:
@@ -544,6 +554,8 @@ class FDTree(object):
 
         dotoption = self.dotoption
         dottree = self.dottree
+
+        print("DFTree:dotoption",dotoption)
 
         # options,  fix them now
         no_wf = True
