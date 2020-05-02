@@ -7,12 +7,12 @@ workflow:
     - group:
       - methodname: DomainKnowledge
         methodtype: method
-        outputname: getDomainKnowledge
+        outputname: getDomainKnowledge(group)
         outputtype: function
       - outputname: FeatureGroupCandidates
         outputtype: parts
     - group:
-      - methodname: DomainKnowledgeDataScienceClusteringSelection
+      - methodname: DomainKnowledgeDataScienceClusteringSelection(group)
         outputname: FeatureGroups
         outputtype: parts
   - blockname: gmm
@@ -22,7 +22,7 @@ workflow:
       - outputname: FeatureGroupCandidates
         outputtype: parts
     - group:
-      - methodname: DomainKnowledgeDataScienceClusteringSelection
+      - methodname: DomainKnowledgeDataScienceClusteringSelection(group)
         outputname: FeatureGroups
         outputtype: parts
   - blockname: kmeans

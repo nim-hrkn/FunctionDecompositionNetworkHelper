@@ -56,5 +56,5 @@ Importance:
 Group:
 	$(PROG) $(Group)
 clean:
-	rm -f sample/*.gv sample/*.png *.gv *.png
-
+	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.gv.png
+	rm -f sample/*.gv sample/*.gv.png 

@@ -15,7 +15,7 @@ workflow:
       - outputname: FeatureGroupCandidates
         outputtype: parts
     - group:
-      - methodname: DomainKnowledgeDataScienceClusteringSelection
+      - methodname: DomainKnowledgeDataScienceClusteringSelection(group)
         outputname: FeatureGroups
         outputtype: parts
   - blockname: dendrogram
