@@ -11,7 +11,7 @@ CONVERT= prog/unitfiletest.py
 
 default: Understanding
 
-Prediction= $(TargetValuePrediction)  $(MaterialsList)
+Prediction= $(TargetValuePrediction)  $(MaterialsList) sample/Richer_DB.yml
 Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
 	$(CONVERT) $(Prediction)
 	$(PROG) a.yml

@@ -7,26 +7,21 @@ workflow:
     - group:
       - outputname: BestScoreOfAllPredictionModels
         outputtype: parts
-      - methodname: generateBestScoreExceptGroup
-        methodtype: function
-        outputname: BestScoreExceptGroup
+      - outputname: BestScoreExceptGroup
         outputtype: parts
     - group:
       - methodname: takeDifferenceBetwenBestScoreOfAllAndBestScoreExceptGroup
         methodtype: function
         outputname: StrongDescriptorGroupImportance
         outputtype: parts
+
   - blockname: weakRelevance
     order: workflow
     list:
     - group:
-      - methodname: generateBestScoreExceptGroup
-        methodtype: function
-        outputname: BestScoreExceptGroup
+      - outputname: BestScoreOfAllPredictionModels
         outputtype: parts
-      - methodname: generateBestScoreExceptGroupWithSubgroup
-        methodtype: function
-        outputname: BestScoreExceptGroupWithSubgroup
+      - outputname: BestScoreExceptGroupWithSubgroup
         outputtype: parts
     - group:
       - methodname: takeDifferenceBetwenBestScoreExceptGroupAndBestScoreExceptGroupWithSubgroup
@@ -37,7 +32,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: AllPredictionModelsExceptGroup
+      - outputname: ScoreOfAllPredictionModelsExceptGroup
         outputtype: parts
     - group:
       - methodname: generateBestScoreExceptGroup
@@ -48,7 +43,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: AllPredictionModelsExceptGroupWithSubgroup
+      - outputname: ScoreOfAllPredictionModelsExceptGroupWithSubgroup
         outputtype: parts
     - group:
       - methodname: generateBestScoreExceptGroupWithSubgroup
