@@ -5,7 +5,11 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: ClusteredSetCandates
+      - methodname: DomainKnowledge
+        methodtype: method
+        outputname: getDomainKnowledge
+        outputtype: function
+      - outputname: FeatureGroupCandidates
         outputtype: parts
     - group:
       - methodname: DomainKnowledgeDataScienceClusteringSelection
@@ -15,7 +19,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: ClusteredSetCandates
+      - outputname: FeatureGroupCandidates
         outputtype: parts
     - group:
       - methodname: DomainKnowledgeDataScienceClusteringSelection
@@ -34,8 +38,8 @@ workflow:
         outputname: kMeansParameter
         outputtype: parts
     - group:
-      - methodname: FeaturekMeansClustering
-        outputname: ClusteredSetCandates
+      - methodname: FeaturekMeansClustering(group)
+        outputname: FeatureGroupCandidates
         outputtype: parts
   - blockname: gmm
     order: workflow
@@ -50,6 +54,6 @@ workflow:
         outputname: GMMParameter
         outputtype: parts
     - group:
-      - methodname: FeatureGMMClustering
-        outputname: ClusteredSetCandates
+      - methodname: FeatureGMMClustering(group)
+        outputname: FeatureGroupCandidates
         outputtype: parts

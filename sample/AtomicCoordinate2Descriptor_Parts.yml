@@ -12,13 +12,27 @@ workflow:
         methodtype: function
         outputname: CrystalCoordinates
         outputtype: parts
-      - outputname: ChooseCenterAtom
+    - group:
+      - methodname: AbsolutePositionToRelativeCoorinates
+        methodtype: method
+        outputname: relativeCoordiantes
+        outputtype: parts
+  - blockname: centeratom
+    order: workflow
+    list:
+    - group:
+      - methodname: eachAtom
+        methodtype: parts
+        outputname: ChooseCenterAtom
         outputtype: function
     - group:
       - methodname: AbsolutePositionToRelativeCoorinates
         methodtype: method
         outputname: relativeCoordiantes
         outputtype: parts
+
+
+
   - blockname: Behler symmetry function
     order: workflow
     list:

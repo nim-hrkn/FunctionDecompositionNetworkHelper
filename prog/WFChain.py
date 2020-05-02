@@ -32,20 +32,23 @@ class WFChain(object):
         wf = OrderedDict( {"workflow":blocks} )
 
         return wf
+       
+    def get_outputnames(self,only=["node1","node2"]):
+        wklist =  self.wklist
+        namelist = []
+        for node1, node2 in wklist:
+            if "node1" in only:
+                namelist.append(node1["outputname"])
+            if "node2" in only:
+                namelist.append(node2["outputname"])
+        return list(set(namelist))
     
     def search_link(self,outputname1,outputname2):
         wklist = self.wklist        
         self.linklist = []
         self.search_link_inside(outputname1,outputname2)
         return self.get_selectedWFChain()
-        
-    def get_outputnames(self,wklist):
-        namelist = []
-        for node1, node2 in wklist:
-            namelist.append(node1["outputname"])
-            namelist.append(node2["outputname"])
-        return list(set(namelist))
-
+ 
     def search_link_inside(self,outputname1,outputname2,link=[]):
         #print("search_link",outputname1,outputname2)
         if len(outputname1)==0:
@@ -54,19 +57,24 @@ class WFChain(object):
         wklist = self.wklist
         subwklist = []
         wklistnext = []
-        for node1, node2 in wklist:
+        outputnamefound = []
+        for wk in wklist:
+            node1 , node2 = wk
+            #print("match?",node1["outputname"],outputname1)
             if node1["outputname"] == outputname1:
                 wklistnext.append( node2["outputname"] )
                 #subwklist.append( [node1,node2])
                 if outputname2 is not None:
                     if node2["outputname"] == outputname2:
-                        link.append([outputname1,outputname2])
-                        print("found link",link)
-                        self.linklist.append(link)
-                        return 
+                        if outputname2 not in outputnamefound:
+                            outputnamefound.append(outputname2)
+                            link.append([outputname1,outputname2])
+                            print(">found link",link)
+                            self.linklist.append(link)
+                            #return 
 
         wklistnext = list(set(wklistnext))
-        #print("wklistnext",wklistnext)
+        print("wklistnext>",wklistnext)
         for newoutputname1 in wklistnext:
             newlink = copy.deepcopy(link)
             newlink.append([outputname1,newoutputname1])

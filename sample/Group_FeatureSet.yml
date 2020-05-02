@@ -12,7 +12,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: ClusteredSetCandates
+      - outputname: FeatureGroupCandidates
         outputtype: parts
     - group:
       - methodname: DomainKnowledgeDataScienceClusteringSelection
@@ -26,11 +26,11 @@ workflow:
         methodtype: function
         outputname: FeatureGroupsDistanceThresholdAll
         outputtype: parts
-      - outputname: FeatureDendrogram(Candidates)
+      - outputname: FeatureDendrogram(group)
         outputtype: parts
     - group:
       - methodname: DendrogramClusteringFeatureGroups
-        outputname: ClusteredSetCandates
+        outputname: FeatureGroupCandidates
         outputtype: parts
   - blockname: dendrogram
     order: workflow
@@ -40,5 +40,5 @@ workflow:
         outputtype: parts
     - group:
       - methodname: FeatureDistanceMatrixHierarchalClustering
-        outputname: FeatureDendrogram(Candidates)
+        outputname: FeatureDendrogram(group)
         outputtype: parts

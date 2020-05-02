@@ -5,8 +5,13 @@ workflow:
     order: workflow
     list:
     - group:
+      - methodname: DomainKnowledge
+        methodtype: method
+        outputname: getDomainKnowledge
+        outputtype: function
       - outputname: FeatureGroups
         outputtype: parts
+
     - group:
       - methodname: domainknowledgeSubgroupSelection
         outputname: FeatureSubgroups
@@ -22,11 +27,36 @@ workflow:
         methodtype: function
         outputname: FeatureSubgroupDistanceThresholdAll
         outputtype: parts
-      - methodname: genFeatureGroupDendrogram
-        methodtype: function
-        outputname: FeatureGroupDendrogram
-        outputtype: parts
+#      - methodname: genFeatureGroupDendrogram
+#        methodtype: function
+#        outputname: FeatureGroupDendrogram
+#        outputtype: parts
     - group:
       - methodname: DendrogramSubgroupsSelection
         outputname: FeatureSubgroups
         outputtype: parts
+
+  - blockname: DendrogramSubgroupSelection
+    order: workflow
+    list:
+    - group:
+      - outputname: FeatureGroups
+        outputtype: parts
+    - group:
+      - methodname: FeaturekMeansClustering(subgroup)
+        outputname: FeatureSubgroups
+        outputtype: parts
+
+
+  - blockname: DendrogramSubgroupSelection
+    order: workflow
+    list:
+    - group:
+      - outputname: FeatureGroups
+        outputtype: parts
+    - group:
+      - methodname: FeatureGMMClustering(subgroup)
+        outputname: FeatureSubgroups
+        outputtype: parts
+
+
