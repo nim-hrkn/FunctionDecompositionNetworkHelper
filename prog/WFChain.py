@@ -17,8 +17,9 @@ class WFChain(object):
         for wk in wklist:
             node1,node2 = wk
             if "methodname"  not in node2:
-                print(node1)
-                print(node2)
+                print("no methdname in node2 to connect node1 with node2.")
+                print("node1",node1)
+                print("node2",node2)
                 raise
             name = node1["outputname"]+"-"+node2["methodname"]+"-"+node2["outputname"]
             gglist = OrderedDict( ( ("blockname", name),\
