@@ -5,9 +5,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: GenerateGroup
-        methodtype: function
-        outputname: FeatureGroups
+      - outputname: FeatureGroups
         outputtype: parts
     - group:
       - methodname: GenerateSubgroupFromGroup

@@ -5,46 +5,73 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAllModels
-        methodtype: function
-        outputname: AllModels
+      - outputname: ScoreOfAllPredictionModels
         outputtype: parts
     - group:
-      - methodname: generateBestOfAllModels
+      - methodname: generateBestScoreOfAllPredictionModels
         methodtype: function
-        outputname: BestScoreOfAllModels
+        outputname: BestScoreOfAllPredictionModels
         outputtype: parts
+
+
   - blockname: deleteGroup
     order: workflow
     list:
     - group:
-      - methodname: generateAllModels
-        methodtype: function
-        outputname: AllModels
-        outputtype: parts
-      - methodname: GenerateFeatureGroup
+      - methodname: GenerateFeatureGroups
         methodtype: function
         outputname: FeatureGroups
         outputtype: parts
     - group:
-      - methodname: DeleteGroupFromAllModels
+      - methodname: Group
+        methodtype: method
+        outputname: chooseGroup
+        outputtype: function
+
+  - blockname: deleteGroup
+    order: workflow
+    list:
+    - group:
+      - methodname: generateAllPredictionModels
         methodtype: function
-        outputname: AllModelsExceptGroup
+        outputname: AllPredictionModels
         outputtype: parts
+
+      - methodname: Group
+        methodtype: method
+        outputname: chooseGroup
+        outputtype: function
+    - group:
+      - methodname: DeleteGroupFromAllPredictionModels
+        methodtype: function
+        outputname: AllPredictionModelsExceptGroup
+        outputtype: parts
+
   - blockname: deleteGroupAddSubgroup
     order: workflow
     list:
     - group:
-      - methodname: DeleteGroupFromAllModels
-        methodtype: function
-        outputname: AllModelsExceptGroup
+      - outputname: chooseSubgroup
+        outputtype: function
+      - outputname: AllPredictionModelsExceptGroup
         outputtype: parts
+    - group:
+
+      - methodname: AddSubgroup
+        methodtype: function
+        outputname: AllPredictionModelsExceptGroupWithSubgroup
+        outputtype: parts
+
+  - blockname: deleteGroupAddSubgroup
+    order: workflow
+    list:
+    - group:
       - methodname: GenerateSubgroupFromGroup
         methodtype: function
         outputname: FeatureSubgroups
         outputtype: parts
     - group:
-      - methodname: AddSubgroup
-        methodtype: function
-        outputname: AllModelsExceptGroupWithSubgroup
-        outputtype: parts
+      - methodname: Subgroup
+        outputname: chooseSubgroup
+        outputtype: function
+

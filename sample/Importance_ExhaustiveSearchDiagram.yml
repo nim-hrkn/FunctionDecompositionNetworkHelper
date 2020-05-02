@@ -5,9 +5,9 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAllModels
+      - methodname: generateAllPredictionModels
         methodtype: function
-        outputname: AllModels
+        outputname: AllPredictionModels
         outputtype: parts
     - group:
       - methodname: indicatorDiagram
@@ -18,9 +18,9 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAllModels
+      - methodname: generateAllPredictionModels
         methodtype: function
-        outputname: AllModels
+        outputname: AllPredictionModels
         outputtype: parts
     - group:
       - methodname: weightDiagram

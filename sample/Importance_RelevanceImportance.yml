@@ -5,9 +5,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateBestOfAllModels
-        methodtype: function
-        outputname: BestScoreOfAllModels
+      - outputname: BestScoreOfAllPredictionModels
         outputtype: parts
       - methodname: generateBestScoreExceptGroup
         methodtype: function
@@ -39,7 +37,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: AllModelsExceptGroup
+      - outputname: AllPredictionModelsExceptGroup
         outputtype: parts
     - group:
       - methodname: generateBestScoreExceptGroup
@@ -50,7 +48,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: AllModelsExceptGroupWithSubgroup
+      - outputname: AllPredictionModelsExceptGroupWithSubgroup
         outputtype: parts
     - group:
       - methodname: generateBestScoreExceptGroupWithSubgroup
