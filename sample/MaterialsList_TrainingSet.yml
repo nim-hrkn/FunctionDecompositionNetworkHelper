@@ -8,7 +8,7 @@ workflow:
       - outputname: chooseMaterialsDatabase
         outputtype: function
     - group:
-      - methodname: searchCrystalHavingTargetValues
+      - methodname: queryCrystalHavingTargetValues
         methodtype: function
         outputname: chooseTrainingSetCrystal
         outputtype: function

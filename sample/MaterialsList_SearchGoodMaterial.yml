@@ -22,12 +22,12 @@ workflow:
     - group:
       - methodname: measureTargetQuanitty
         methodtype: function
-        outputname: newTargetQuantityValues
+        outputname: NewTargetQuantityValues
         outputtype: parts
     - group:
       - methodname: SelectSynthesizedTaretMaterialsIteratively
         methodtype: function
-        outputname: newTargetMaterial
+        outputname: NewTargetMaterial
         outputtype: parts
   - blockname: null
     order: workflow
@@ -50,9 +50,9 @@ workflow:
         outputname: getTargetSelectionCriterion
         outputtype: function
     - group:
-      - methodname: SelectSynthesizedTaretMaterialsIteratively
+      - methodname: selectSynthesizedTaretMaterialsIteratively
         methodtype: function
-        outputname: newTargetMaterial
+        outputname: NewTargetMaterial
         outputtype: parts
 
 

@@ -25,7 +25,7 @@ class DecompositionTree(object):
             basename = "caus"
         self.basename = basename
 
-        self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, "apply_same_rank": True }
+        self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, "apply_same_rank": False }
         if dotoption is not None:
            self.dotoption.update(dotoption)
 
@@ -81,10 +81,12 @@ class DecompositionTree(object):
             linktype = "method"
         if linktype == "parts":
             return "apply_methodToGet_"
+            #return "apply_"
         elif linktype == "method":
             return "apply_"
         elif linktype == "function":
-            return "apply_methodTo_"
+            #return "apply_methodTo_"
+            return "(apply)"
         else:
             print("applymethod_prefix: unsupported",linktype)
             raise
@@ -225,14 +227,15 @@ class workflowWay(DecompositionTree):
 
             nodename2 = self.get_keyvalue(g2,"outputname")
             functype2 = self.get_keyvalue(g2,"outputtype")
-            methodname2 = self.get_keyvalue(g2,"methodname")
+            rawmethodname2 = self.get_keyvalue(g2,"methodname")
             methodtype2 = self.get_keyvalue(g2,"methodtype")
             funcname2 = self.func_prefix(functype2)+nodename2
             applymethodname2 = None
 
-            if methodname2 is not None:
-                methodname2 = self.method_prefix(methodtype2)+methodname2
-                applymethodname2 = self.applymethod_prefix(methodtype2)+methodname2
+            methodname2 = rawmethodname2
+            if rawmethodname2 is not None:
+                methodname2 = self.method_prefix(methodtype2)+rawmethodname2
+                applymethodname2 = self.applymethod_prefix(methodtype2)+rawmethodname2
 
         return nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2
  

@@ -8,7 +8,7 @@ workflow:
     - group:
       - outputname: chooseMaterialsDatabase
         outputtype: function
-      - outputname: newTargetQuantityValues
+      - outputname: NewTargetQuantityValues
         outputtype: parts
       - outputname: NewSynthesizedCrystalCoordinates
         outputtype: parts
