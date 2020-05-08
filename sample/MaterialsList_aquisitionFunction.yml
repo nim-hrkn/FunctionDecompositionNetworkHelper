@@ -10,13 +10,13 @@ workflow:
     - group:
       - methodname: fitBayesianLinearRegression
         methodtype: function
-        outputname: BayesianLinearRegression
+        outputname: RegressionPredictionModelWithVariance
         outputtype: parts
     - group:
       - methodname: applyBayesianLinearRegression
         methodtype: function
-        outputname: PredictionMeanAndVariance
-        outputtype: parts
+        outputname: predictMeanAndVariance
+        outputtype: function
     - group:
       - methodname: UCBaquisitionFunction
         methodtype: parts
@@ -26,6 +26,15 @@ workflow:
         methodtype: parts
         outputname: aquisitionFunctionValues
         outputtype: parts
+      - methodname: PIaquisitionFunction
+        methodtype: parts
+        outputname: aquisitionFunctionValues
+        outputtype: parts
+      - methodname: EIaquisitionFunction
+        methodtype: parts
+        outputname: aquisitionFunctionValues
+        outputtype: parts
+
     - group:
       - methodname: sortAquisitionFunctionValues
         methodtype: function
@@ -35,12 +44,12 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: BayesianLinearRegression
+      - outputname: RegressionPredictionModelWithVariance
         outputtype: parts
       - outputname: NewsetDescriptor
         outputtype: parts
     - group:
       - methodname: applyBayesianLinearRegression
         methodtype: function
-        outputname: PredictionMeanAndVariance
-        outputtype: parts
+        outputname: predictMeanAndVariance
+        outputtype: function

@@ -10,7 +10,7 @@ workflow:
       - outputname: searchMaterialsListHavingNoTargetVariable
         outputtype: function
     - group:
-      - methodname: selectNoExperiment
+      - methodname: selectNoExperimentMaterials
         methodtype: function
         outputname: NoExperimentMaterialsList
         outputtype: parts
@@ -22,10 +22,10 @@ workflow:
     - group:
       - methodname: measureTargetQuanitty
         methodtype: function
-        outputname: NewTargetQuantityValues
+        outputname: AttributeTargetOfNewMaterial
         outputtype: parts
     - group:
-      - methodname: SelectSynthesizedTaretMaterialsIteratively
+      - methodname: getSynthesizedTargetMaterial
         methodtype: function
         outputname: NewTargetMaterial
         outputtype: parts
@@ -36,7 +36,7 @@ workflow:
       - outputname: chooseMaterialsDatabase
         outputtype: function
     - group:
-      - methodname: queryCrystalDataHavingNotarget
+      - methodname: queryMaterialsWithCrystalAndNotarget
         methodtype: function
         outputname: searchMaterialsListHavingNoTargetVariable
         outputtype: function
@@ -49,8 +49,9 @@ workflow:
         methodtype: parts
         outputname: getTargetSelectionCriterion
         outputtype: function
+      - outputname: AttributeCrystalOfNewMaterial
     - group:
-      - methodname: selectSynthesizedTaretMaterialsIteratively
+      - methodname: getSynthesizedTargetMaterial
         methodtype: function
         outputname: NewTargetMaterial
         outputtype: parts

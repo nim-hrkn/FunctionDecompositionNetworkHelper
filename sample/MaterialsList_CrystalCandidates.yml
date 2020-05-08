@@ -5,7 +5,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: MaterialsKnowledge
+      - outputname: ExistingCrystalKnowledge
         outputtype: method
     - group:
       - methodname: randomGeneration
@@ -32,14 +32,14 @@ workflow:
         outputname: chooseMaterialsDatabase
         outputtype: function
     - group:
-      - methodname: CrystalsFromDatabase
-        methodtype: parts
+      - methodname: queryAttributeCrystalsOfExistingMaterials
+        methodtype: function
         outputname: existingCrystals
         outputtype: parts
     - group:
-      - methodname: getParticularQuantities
+      - methodname: getCrystalCharacteristics
         methodtype: function
-        outputname: MaterialsKnowledge
+        outputname: ExistingCrystalKnowledge
         outputtype: method
 #  - blockname: mateirals knowledge Target variable
 #    order: workflow
@@ -63,7 +63,7 @@ workflow:
       - outputname: chooseMaterialsCategory
         outputtype: function
     - group:
-      - methodname: CrystalsFromDatabase
-        methodtype: parts
+      - methodname: queryAttributeCrystalsOfExistingMaterials
+        methodtype: function
         outputname: existingCrystals
         outputtype: parts

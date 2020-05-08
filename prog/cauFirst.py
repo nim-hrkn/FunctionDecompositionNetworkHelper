@@ -42,6 +42,7 @@ class DecompositionTree(object):
         self.invisedgelist = []
         self.boxnodelist = []
         self.sameranklist = []
+        self.applynodelist = []
 
     def make_nodelabel(self,s):
         if self.nodelabel_length>5:
@@ -111,6 +112,7 @@ class DecompositionTree(object):
         invisedgelist = self.invisedgelist
         boxnodelist = self.boxnodelist
         sameranklist = self.sameranklist
+        applynodelist = self.applynodelist
 
         apply_same_rank = self.dotoption["apply_same_rank"]
         print("gen_tree: apply_same_rank",apply_same_rank)
@@ -134,6 +136,8 @@ class DecompositionTree(object):
                     dottree.edge(x0,x1,style=self.node_sequence_style)
         for boxnode in boxnodelist:
             dottree.node(boxnode,shape="box")
+        for applynode in applynodelist:
+            dottree.node(applynode,shape="octagon")
         if apply_same_rank:
             for samerank in sameranklist:
                 s = samerank.split(",")
@@ -277,8 +281,6 @@ class workflowWay(DecompositionTree):
 
                     nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2 = self.gen_names(g2)
 
-
-
                     if methodname2 is not None:
                        self.edgelist.append(",".join([funcname2,methodname2]))
                        self.edgelist.append(",".join([methodname2,funcname1]))
@@ -286,6 +288,7 @@ class workflowWay(DecompositionTree):
                        self.boxnodelist.append(methodname2) 
                        self.invisedgelist.append(",".join([funcname1,applymethodname2]))
                        self.sameranklist.append(",".join([funcname1,applymethodname2]))
+                       self.applynodelist.append(applymethodname2)
                     if methodname1 is not None:
                        self.edgelist.append(",".join([funcname1,methodname1]))
                        self.boxnodelist.append(methodname1)

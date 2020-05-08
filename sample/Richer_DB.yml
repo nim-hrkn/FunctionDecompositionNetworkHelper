@@ -8,15 +8,15 @@ workflow:
     - group:
       - outputname: chooseMaterialsDatabase
         outputtype: function
-      - outputname: NewTargetQuantityValues
+      - outputname: AttributeTargetOfNewMaterial
         outputtype: parts
-      - outputname: NewSynthesizedCrystalCoordinates
+      - outputname: AttributeCrystalOfNewMaterial
         outputtype: parts
     - group:
       - methodname: storeInMaterialsDataBase
         methodtype: function
-        outputname: RicherMaterialsDatabase
-        outputtype: parts
+        outputname: updateMaterialsDatabase
+        outputtype: function
 
   - blockname: newcoordinate
     order: workflow
@@ -25,8 +25,8 @@ workflow:
       - outputname: SynthesizedMaterials
         outputtype: parts
     - group:
-      - methodname: NewCrystalCoordinates
+      - methodname: measureCrystalOfNewMaterial
         methodtype: parts
-        outputname: NewSynthesizedCrystalCoordinates
+        outputname: AttributeCrystalOfNewMaterial
         outputtype: parts
 

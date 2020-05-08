@@ -8,7 +8,7 @@ workflow:
       - outputname: chooseMaterialsDatabase
         outputtype: function
     - group:
-      - methodname: queryCrystalHavingTargetValues
+      - methodname: queryMaterialsWithCrystalAndTarget
         methodtype: function
         outputname: chooseTrainingSetCrystal
         outputtype: function
@@ -19,15 +19,10 @@ workflow:
       - outputname: chooseMaterialsDatabase
         outputtype: function
     - group:
-      - methodname: queryTargetValuesHavingCrystal
+      - methodname: queryMaterialsWithCrystalAndTarget
         methodtype: function
-        outputname: TargetValuesHavingCrystalFromDatabase
-        outputtype: parts
-    - group:
-      - methodname: chooseTargetValues
-        methodtype: parts
-        outputname: TargetValues
-        outputtype: parts
+        outputname: chooseTrainingTargetValues
+        outputtype: function
   - blockname: null
     order: workflow
     list:
@@ -45,8 +40,8 @@ workflow:
     - group:
       - outputname: TrainingSetDescriptorAndRelationToTargetVariable
         outputtype: parts
-      - outputname: TargetValues
-        outputtype: parts
+      - outputname: chooseTrainingTargetValues
+        outputtype: function
     - group:
       - methodname: TrainingDataGeneration
         methodtype: method

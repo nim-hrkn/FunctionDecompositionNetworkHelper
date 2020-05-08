@@ -9,27 +9,27 @@ workflow:
         outputtype: parts
     - group:
       - methodname: NeuralNetworkRegression
-        outputname: RegressionModel
+        outputname: RegressionPredictionModel
         outputtype: parts
       - methodname: LinearRegression
-        outputname: RegressionModel
+        outputname: RegressionPredictionModel
         outputtype: parts
       - methodname: KernelRegression
-        outputname: RegressionModel
+        outputname: RegressionPredictionModel
         outputtype: parts
       - methodname: RandomForestRegression
-        outputname: RegressionModel
+        outputname: RegressionPredictionModel
         outputtype: parts
   - blockname: null
     order: workflow
     list:
     - group:
-      - outputname: RegressionModel
+      - outputname: RegressionPredictionModel
         outputtype: parts
       - outputname: NewsetDescriptor
         outputtype: parts
     - group:
-      - methodname: evaluateRegressionModel
+      - methodname: evaluateRegressionPredictionModel
         methodtype: function
         outputname: RegressionPredictionValues
         outputtype: function
