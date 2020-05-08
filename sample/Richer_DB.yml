@@ -6,16 +6,18 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseMaterialsDatabase
+      - methodname: MaterialsDatabase
+        methodtype: method
+        outputname: chooseMaterialsList
         outputtype: function
       - outputname: AttributeTargetOfNewMaterial
         outputtype: parts
       - outputname: AttributeCrystalOfNewMaterial
         outputtype: parts
     - group:
-      - methodname: storeInMaterialsDataBase
+      - methodname: storeNewMaterialInMaterialsList
         methodtype: function
-        outputname: updateMaterialsDatabase
+        outputname: updateMaterialsList
         outputtype: function
 
   - blockname: newcoordinate
@@ -29,4 +31,17 @@ workflow:
         methodtype: parts
         outputname: AttributeCrystalOfNewMaterial
         outputtype: parts
+
+#  - blockname: newcoordinate
+#    order: workflow
+#    list:
+#    - group:
+#      - outputname: updateMaterialsList
+#        outputtype: function
+#    - group:
+#      - methodname: MaterialsDatabase
+#        methodtype: method
+#        outputname: chooseMaterialsList
+#        outputtype: function
+
 

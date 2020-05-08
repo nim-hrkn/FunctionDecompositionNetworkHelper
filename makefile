@@ -9,14 +9,15 @@ PROG= prog/cauFirst.py --no_wf --no_taxo
 
 CONVERT= prog/unitfiletest.py 
 
-default: Understanding
+default: Prediction
 
 Prediction= $(TargetValuePrediction)  $(MaterialsList) sample/Richer_DB.yml
 Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
 	$(CONVERT) $(Prediction)
 	$(PROG) a.yml
 	mv caus.gv.png a.png 
-	$(PROG) $(Prediction)
+	$(PROG) --samerank="updateMaterialsList,get_NewTargetMaterial"  $(Prediction)
+	cp caus.gv.png /media/sf_local_pc
 
 TargetValuePrediction: $(TargetValuePrediction)
 	$(PROG) $(TargetValuePrediction)

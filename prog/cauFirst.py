@@ -25,11 +25,13 @@ class DecompositionTree(object):
             basename = "caus"
         self.basename = basename
 
-        self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, "apply_same_rank": False }
+        self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, 
+             "apply_same_rank": False, "samerank": None }
+
         if dotoption is not None:
            self.dotoption.update(dotoption)
 
-        print("init:dotoption",dotoption)
+        #print("init:dotoption",dotoption)
         
         self.nodelabel_length = self.dotoption["nodelabel_length"]
         
@@ -43,6 +45,11 @@ class DecompositionTree(object):
         self.boxnodelist = []
         self.sameranklist = []
         self.applynodelist = []
+
+        self.cmdsameranklist =  None
+        if self.dotoption["samerank"] is not None:
+            self.cmdsameranklist = self.dotoption["samerank"]
+            #print("cmdsameranklist",self.cmdsameranklist)
 
     def make_nodelabel(self,s):
         if self.nodelabel_length>5:
@@ -112,10 +119,20 @@ class DecompositionTree(object):
         invisedgelist = self.invisedgelist
         boxnodelist = self.boxnodelist
         sameranklist = self.sameranklist
+        cmdsameranklist = self.cmdsameranklist
         applynodelist = self.applynodelist
 
         apply_same_rank = self.dotoption["apply_same_rank"]
-        print("gen_tree: apply_same_rank",apply_same_rank)
+        #print("gen_tree: apply_same_rank",apply_same_rank)
+
+        if cmdsameranklist is not None:
+            for samerank in [cmdsameranklist]:
+                s = samerank.split(",")
+                with dottree.subgraph() as sub:
+                    sub.attr(rank="same")
+                    for x in s:
+                        sub.node(x)
+
 
         connect_invis = True
         if "connect_invis" in self.dotoption:
@@ -145,12 +162,14 @@ class DecompositionTree(object):
                     sub.attr(rank="same")
                     for x in s:
                         sub.node(x)
+
         return dottree
 
     def create_tree(self,dottree=None):
         if dottree is None:
             dottree = Digraph(self.basename)
-            dottree.graph_attr["rankdir"] = "TB"
+            dottree.graph_attr["rankdir"] = "TB;"
+            dottree.graph_attr["concentrate"] = "true;"
 
         dottree = self.gen_tree(dottree)
         return dottree
@@ -534,8 +553,8 @@ class taxologyWay(DecompositionTree):
         data = self.data
         linktype = self.get_keyvalue(data,"linktype")
         if "link" in list(data.keys()):
-            print("linktyp",linktype)
-            print(yaml.dump(data))
+            #print("linktyp",linktype)
+            #print(yaml.dump(data))
             self.gen_connection_link_link([data],linktype)
 
 
@@ -551,7 +570,8 @@ class FDTree(object):
         self.dottree = dottree
         if dottree is None:
             self.dottree = Digraph(basename)
-            self.dottree.graph_attr["rankdir"] = "TB"
+            self.dottree.graph_attr["rankdir"] = "TB;"
+            self.dottree.graph_attr["concentrated"] = "true;"
 
 
     def apply(self,dataall,basename = None,make_png = True): 
@@ -561,7 +581,7 @@ class FDTree(object):
         dotoption = self.dotoption
         dottree = self.dottree
 
-        print("DFTree:dotoption",dotoption)
+        #print("DFTree:dotoption",dotoption)
 
         # options,  fix them now
         no_wf = True
@@ -636,10 +656,12 @@ if __name__ == "__main__":
         parser.add_argument("filenames",nargs="*")
         parser.add_argument("--no_wf",action="store_true")
         parser.add_argument("--no_taxo",action="store_true")
+        parser.add_argument("--samerank",default=None)
 
         cmdopt = parser.parse_args()
 
-        return cmdopt.filenames
+        #return cmdopt.filenames
+        return cmdopt
 
     def doit_each(namelist):
         dottree = Digraph("caus")
@@ -662,7 +684,8 @@ if __name__ == "__main__":
 
     # start 
 
-    namelist = parse_cmd_option()
+    cmdopt = parse_cmd_option()
+    namelist = cmdopt.filenames
                     
     if len(namelist)==0:
         sys.exit(1)
@@ -674,7 +697,7 @@ if __name__ == "__main__":
 
     elif doit == "all":
         
-        fdtree = FDTree()
+        fdtree = FDTree(dotoption=cmdopt.__dict__)
         dottree = fdtree.apply_files(namelist)
 
     #end 

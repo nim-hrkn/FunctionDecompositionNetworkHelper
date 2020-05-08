@@ -29,10 +29,10 @@ workflow:
     - group:
       - methodname: MaterialsDatabase
         methodtype: method
-        outputname: chooseMaterialsDatabase
+        outputname: chooseMaterialsList
         outputtype: function
     - group:
-      - methodname: queryAttributeCrystalsOfExistingMaterials
+      - methodname: queryAttributeCrystalsOfMaterials
         methodtype: function
         outputname: existingCrystals
         outputtype: parts
@@ -47,7 +47,7 @@ workflow:
 #    - group:
 #      - methodname: MaterialsDatabase
 #        methodtype: method
-#        outputname: chooseMaterialsDatabase
+#        outputname: chooseMaterialsList
 #        outputtype: function
 #    - group:
 #      - methodname: TargetValuesFromDatabase
@@ -58,7 +58,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseMaterialsDatabase
+      - outputname: chooseMaterialsList
         outputtype: function
       - outputname: chooseMaterialsCategory
         outputtype: function

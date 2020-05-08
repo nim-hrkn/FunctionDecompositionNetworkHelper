@@ -33,7 +33,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseMaterialsDatabase
+      - outputname: chooseMaterialsList
         outputtype: function
     - group:
       - methodname: queryMaterialsWithCrystalAndNotarget
