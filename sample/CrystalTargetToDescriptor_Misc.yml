@@ -5,10 +5,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
       - methodname: AtomicDescriptorToCrystalDescriptorByMin
         methodtype: method
@@ -18,10 +18,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
       - methodname: AtomicDescriptorToCrystalDescriptorByMax
         methodtype: method
@@ -31,10 +31,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
       - methodname: AtomicDescriptorToCrystalDescriptorByExistence
         methodtype: method
@@ -44,10 +44,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
       - methodname: AtomicDescriptorToCrystalDescriptorByMultipleMomentExpansion
         methodtype: method
@@ -57,10 +57,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
       - methodname: AtomicDescriptorToCrystalDescriptorBySum
         methodtype: method
@@ -70,10 +70,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
       - methodname: AtomicDescriptorToCrystalDescriptorByAppendedVector
         methodtype: method
@@ -83,6 +83,8 @@ workflow:
     order: workflow
     list:
     - group:
+      - outputname: Crystal
+        outputtype: parts
       - methodname: SymmetryOperation
         methodtype: method
         outputname: SymmetryPropertyQuantity
@@ -121,6 +123,8 @@ workflow:
     order: workflow
     list:
     - group:
+      - outputname: Crystal
+        outputtype: parts
       - methodname: FunctionalGroupRatio
         methodtype: method
         outputname: CrystalPropertyQuantity
@@ -134,6 +138,8 @@ workflow:
     order: workflow
     list:
     - group:
+      - outputname: Crystal
+        outputtype: parts
       - methodname: PersistenHomology
         methodtype: method
         outputname: SpacePropertyQuantity

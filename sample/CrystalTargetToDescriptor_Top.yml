@@ -18,12 +18,12 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
-      - methodname: AtomDescriptorToCrystalDescriptor
+      - methodname: (general)AtomDescriptorToCrystalDescriptor
         methodtype: method
         outputname: CrystalDescriptor
         outputtype: parts
@@ -36,10 +36,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: generateAtomicDescriptor
+      - methodname: getAtomicDescriptor
         methodtype: function
-        outputname: AtomicDescriptor
-        outputtype: parts
+        outputname: getAtomicDescriptor
+        outputtype: function
     - group:
       - methodname: RelationshipBetweenAtomicDescriptorToAtomTarget
         methodtype: method

@@ -13,15 +13,15 @@ linkset:
           nodetype: parts
           linktype: part-of
           link:
-          - nodename: OneBody
+          - nodename: AttributeOneBodyTerm
             nodetype: parts
             linktype: part-of
             link:
-            - nodename: energyLevel
+            - nodename: AttributeenergyLevel
               nodetype: parts
-            - nodename: hoppingIntegral
+            - nodename: AttributehoppingIntegral
               nodetype: parts
-          - nodename: TwoBody
+          - nodename: AttributeTwoBodyTerm
             nodetype: parts
             linktype: part-of
             link:
@@ -29,7 +29,7 @@ linkset:
               linktype: is-a
               link:
               - nodename: UTM3d
-              - nodename: UTM3dRE4f
+              - nodename: UTM3d_URE4f
         - nodename: SpinModelHamiltonian
           nodetype: parts
           linktype: part-of
@@ -40,9 +40,9 @@ linkset:
             - nodename: SpinTM3d
             - nodename: SpinTM3dRE4f
             - nodename: SpinTM3dRE4fRE5d
-          - nodename: SpinSpinInteraction
+          - nodename: AttributeSpinSpinInteractionTerm
             nodetype: parts
-          - nodename: Anisotropy
+          - nodename: AttributeAnisotropyTerm
             nodetype: parts
       - nodename: ValuesOfTermsOfHamiltonian
         nodetype: parts
@@ -50,7 +50,7 @@ linkset:
         link:
         - nodename: MatchingExperiment
         - nodename: FirstPrinciples
-    - nodename: Solver
+    - nodename: HamiltonianSolver
       linktype: is-a
       link:
       - nodename: meanfield

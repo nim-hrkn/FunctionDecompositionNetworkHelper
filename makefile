@@ -28,6 +28,7 @@ CrystalTarget:
 DescriptorGeneration= $(CrystalTarget)  $(AtomicProperty)  $(AtomicCoordinate2Descriptor)
 DescriptorGeneration: $(DescriptorGeneration)
 	$(PROG) $(DescriptorGeneration)
+	cp caus.gv.png /media/sf_local_pc
 
 MaterialsList:
 	$(PROG) $(MaterialsList)
@@ -57,5 +58,5 @@ Importance:
 Group:
 	$(PROG) $(Group)
 clean:
-	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.gv.png
+	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.png
 	rm -f sample/*.gv sample/*.gv.png 

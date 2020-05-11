@@ -7,7 +7,7 @@ workflow:
     - group:
       - outputname: ModelHamiltonian
         outputtype: parts
-      - outputname: Solver
+      - outputname: HamiltonianSolver
         outputtype: parts
     - group:
       - methodname: PredictedTargetValue

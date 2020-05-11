@@ -7,14 +7,16 @@ workflow:
     - group:
       - outputname: Crystal
         outputtype: parts
-    - group:
-      - methodname: attributeElement
-        methodtype: parts
-        outputname: chooseElement
+      - outputname: chooseCenterAtom
         outputtype: function
     - group:
-      - methodname: getnumberOfElectron
-        methodtype: function
+      - methodname: AttributeElement
+        methodtype: parts
+        outputname: chooseCenterElement
+        outputtype: function
+    - group:
+      - methodname: AttributeNumberOfElectron
+        methodtype: parts
         outputname: numberOfElectron
         outputtype: parts
     - group:
@@ -39,19 +41,19 @@ workflow:
       - outputname: EigenWavefunction
         outputtype: parts
     - group:
-      - methodname: attributesOrbitalEnergy
+      - methodname: AttributesOrbitalEnergy
         methodtype: function
         outputname: TheoreticalEnergy
         outputtype: parts
-      - methodname: attributepOrbitalEnergy
+      - methodname: AttributepOrbitalEnergy
         methodtype: function
         outputname: TheoreticalEnergy
         outputtype: parts
-      - methodname: attributedOrbitalEnergy
+      - methodname: AttributedOrbitalEnergy
         methodtype: function
         outputname: TheoreticalEnergy
         outputtype: parts
-      - methodname: attributefOrbitalEnergy
+      - methodname: AttributefOrbitalEnergy
         methodtype: function
         outputname: TheoreticalEnergy
         outputtype: parts
@@ -60,18 +62,18 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseElement
+      - outputname: chooseCenterElement
         outputtype: function
     - group:
-      - methodname: attributeAveragedMass
+      - methodname: AttributeAveragedMass
         methodtype: parts
         outputname: averagedMass
         outputtype: parts
-      - methodname: attributeIsotopeMass
+      - methodname: AttributeIsotopeMass
         methodtype: parts
         outputname: isotopeMass
         outputtype: parts
-      - methodname: attributenumberOfElectron
+      - methodname: AttributeNumberOfElectron
         methodtype: parts
         outputname: numberOfElectron
         outputtype: parts
@@ -84,7 +86,7 @@ workflow:
       - outputname: GroundStateWavefunction
         outputtype: parts
     - group:
-      - methodname: attributeTotalenergy
+      - methodname: AttributeTotalenergy
         methodtype: parts
         outputname: TheoreticalEnergy
         outputtype: parts
@@ -95,15 +97,15 @@ workflow:
       - outputname: ElectricConfiguration
         outputtype: parts
     - group:
-      - methodname: attributeS3dAngularMoment
+      - methodname: AttributeS3dAngularMoment
         methodtype: method
         outputname: 3dAngularMomentum
         outputtype: parts
-      - methodname: attributeL3dAngularMoment
+      - methodname: AttributeL3dAngularMoment
         methodtype: method
         outputname: 3dAngularMomentum
         outputtype: parts
-      - methodname: attributeJ3dAngularMoment
+      - methodname: AttributeJ3dAngularMoment
         methodtype: method
         outputname: 3dAngularMomentum
         outputtype: parts
@@ -114,7 +116,7 @@ workflow:
       - outputname: ElectricConfiguration
         outputtype: parts
     - group:
-      - methodname: attributeJ4fAngularMoment
+      - methodname: AttributeJ4fAngularMoment
         methodtype: method
         outputname: J4f
         outputtype: parts
@@ -122,7 +124,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: attributeJ4fAngularMoment
+      - methodname: AttributeJ4fAngularMoment
         methodtype: method
         outputname: J4f
         outputtype: parts
@@ -133,11 +135,11 @@ workflow:
     - group:
       - methodname: (gJ-1)J4f
         methodtype: parts
-        outputname: J4fSpinDirectionProjection
+        outputname: AttributeJ4fSpinDirectionProjection
         outputtype: parts
       - methodname: (2-gJ)J4f
         methodtype: parts
-        outputname: J4fOrbitalDirectionProjection
+        outputname: AttributeJ4fOrbitalDirectionProjection
         outputtype: parts
   - blockname: r2
     order: workflow
@@ -146,7 +148,7 @@ workflow:
       - outputname: GroundStateWavefunction
         outputtype: parts
     - group:
-      - methodname: attributeR2Length
+      - methodname: AttributeR2Length
         methodtype: parts
         outputname: TheoreticalLength
         outputtype: parts
@@ -158,19 +160,19 @@ workflow:
       - outputname: EigenWavefunction
         outputtype: parts
     - group:
-      - methodname: attributesOrbitalR2Length
+      - methodname: AttributesOrbitalR2Length
         methodtype: method
         outputname: TheoreticalLength
         outputtype: parts
-      - methodname: attributepOrbitalR2Length
+      - methodname: AttributepOrbitalR2Length
         methodtype: method
         outputname: TheoreticalLength
         outputtype: parts
-      - methodname: attributedOrbitalR2Length
+      - methodname: AttributedOrbitalR2Length
         methodtype: method
         outputname: TheoreticalLength
         outputtype: parts
-      - methodname: attributefOrbitalR2Length
+      - methodname: AttributefOrbitalR2Length
         methodtype: method
         outputname: TheoreticalLength
         outputtype: parts
@@ -178,7 +180,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseElement
+      - outputname: chooseCenterElement
         outputtype: function
     - group:
       - methodname: getAttributePeriodictableRow
@@ -189,7 +191,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseElement
+      - outputname: chooseCenterElement
         outputtype: function
     - group:
       - methodname: getAttributePeriodictableColumn

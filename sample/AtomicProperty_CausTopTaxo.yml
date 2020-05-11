@@ -1,8 +1,8 @@
 linkset:
   block:
   - link:
-    - nodename: AtomicDescriptor
-      nodetype: parts
+    - nodename: getAtomicDescriptor
+      nodetype: function
       linktype: part-of
       link:
       - nodename: AtomicDescriptorFeature
@@ -18,7 +18,7 @@ linkset:
     - nodename: AtomicElementDescriptor
       linktype: is-a
       link:
-      - nodename: ExperimentalAtomicPropertyQuantity
+      - nodename: ExperimentalAtomicCharacteristicProperty
         nodetype: parts
         linktype: is-a
         link:
@@ -97,5 +97,5 @@ linkset:
             link:
             - nodename: J4f
             - nodename: gJ
-            - nodename: J4fSpinDirectionProjection
-            - nodename: J4fOrbitalDirectionProjection
+            - nodename: AttributeJ4fSpinDirectionProjection
+            - nodename: AttributeJ4fOrbitalDirectionProjection

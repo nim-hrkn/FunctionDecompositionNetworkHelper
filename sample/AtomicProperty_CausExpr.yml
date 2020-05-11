@@ -5,8 +5,11 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseDatabase
+      - outputname: MaterialsDatabase
+        outputtype: parts
+      - outputname: chooseCenterElement
         outputtype: function
+
     - group:
       - methodname: typicalMaterials
         methodtype: function

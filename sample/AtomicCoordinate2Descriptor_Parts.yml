@@ -22,8 +22,8 @@ workflow:
     list:
     - group:
       - methodname: eachAtom
-        methodtype: parts
-        outputname: ChooseCenterAtom
+        methodtype: method
+        outputname: chooseCenterAtom
         outputtype: function
     - group:
       - methodname: AbsolutePositionToRelativeCoorinates

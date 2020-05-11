@@ -7,13 +7,13 @@ workflow:
     - group:
       - outputname: raiseMaterialsList
         outputtype: function
-      - outputname: searchMaterialsListHavingNoTargetVariable
-        outputtype: function
-    - group:
-      - methodname: selectNoExperimentMaterials
-        methodtype: function
-        outputname: NoExperimentMaterialsList
-        outputtype: parts
+#      - outputname: searchMaterialsListHavingNoTargetVariable
+#        outputtype: function
+#    - group:
+#      - methodname: selectNoExperimentMaterials
+#        methodtype: function
+#        outputname: NoExperimentMaterialsList
+#        outputtype: parts
     - group:
       - methodname: MaterialSynthesis
         methodtype: method
@@ -27,19 +27,19 @@ workflow:
     - group:
       - methodname: getSynthesizedTargetMaterial
         methodtype: function
-        outputname: NewTargetMaterial
+        outputname: NewMaterialSatisfyingSelectionCriterion
         outputtype: parts
-  - blockname: null
-    order: workflow
-    list:
-    - group:
-      - outputname: chooseMaterialsList
-        outputtype: function
-    - group:
-      - methodname: queryMaterialsWithCrystalAndNotarget
-        methodtype: function
-        outputname: searchMaterialsListHavingNoTargetVariable
-        outputtype: function
+#  - blockname: null
+#    order: workflow
+#    list:
+#    - group:
+#      - outputname: chooseMaterialsList
+#        outputtype: function
+#    - group:
+#      - methodname: queryMaterialsWithCrystalAndNotarget
+#        methodtype: function
+#        outputname: searchMaterialsListHavingNoTargetVariable
+#        outputtype: function
 
   - blockname: null
     order: workflow
