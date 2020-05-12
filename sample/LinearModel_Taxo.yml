@@ -9,13 +9,13 @@ linkset:
         nodetype: parts
       - nodename: RidgeModel
         nodetype: parts
-      - nodename: noPenaltyLinearModel
+      - nodename: NopenaltyLinearModel
         nodetype: parts
     - nodename: SparseModeling
       nodetype: parts
       linktype: is-a
       link:
-      - nodename: greedyBestModel
+      - nodename: greedyBestModel(general)
         nodetype: parts
       - nodename: LassoModel
         nodetype: parts

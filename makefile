@@ -11,12 +11,13 @@ CONVERT= prog/unitfiletest.py
 
 default: Prediction
 
+#------------------------
 Prediction= $(TargetValuePrediction)  $(MaterialsList) sample/Richer_DB.yml
 Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
 	$(CONVERT) $(Prediction)
 	$(PROG) a.yml
 	mv caus.gv.png a.png 
-	$(PROG) --samerank="updateMaterialsList,get_NewTargetMaterial"  $(Prediction)
+	$(PROG) --samerank="updateMaterialsList,get_NewMaterialSatisfyingSelectionCriterion"  $(Prediction)
 	cp caus.gv.png /media/sf_local_pc
 
 TargetValuePrediction: $(TargetValuePrediction)
@@ -25,6 +26,7 @@ TargetValuePrediction: $(TargetValuePrediction)
 CrystalTarget:
 	$(PROG) $(CrystalTarget)
 
+#---------------------------
 DescriptorGeneration= $(CrystalTarget)  $(AtomicProperty)  $(AtomicCoordinate2Descriptor)
 DescriptorGeneration: $(DescriptorGeneration)
 	$(PROG) $(DescriptorGeneration)
@@ -37,19 +39,18 @@ AtomicCoordinate2Descriptor:
 AtomicProperty:
 	$(PROG) $(AtomicProperty)
 
-
-UnderstandingFiles= sample/Understand_Taxo.yml sample/SparseModeling.yml sample/LinearModel_Taxo.yml sample/EXSparseModel.yml  $(Importance) $(Group)
+#------------------------
+UnderstandingFiles= sample/Understand_Taxo.yml sample/SparseModeling.yml sample/LinearModel_Taxo.yml sample/EXSparseModel*.yml  $(Importance) $(Group)
 
 Understanding: $(UnderstandingFiles)
 	$(CONVERT) $(UnderstandingFiles)
 	$(PROG) a.yml
 	mv caus.gv.png a.png 
 	$(PROG) $(UnderstandingFiles)
+	cp caus.gv.png /media/sf_local_pc
 
 
-
-
-
+#--------------------------
 Importance= sample/Importance_*.yml
 Group= sample/Group_*.yml
 

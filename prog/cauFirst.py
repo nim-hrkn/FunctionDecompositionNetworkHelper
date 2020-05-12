@@ -43,6 +43,7 @@ class DecompositionTree(object):
         self.edgelist = []
         self.invisedgelist = []
         self.boxnodelist = []
+        self.isanodelist = []
         self.sameranklist = []
         self.applynodelist = []
 
@@ -111,6 +112,7 @@ class DecompositionTree(object):
             self.edgelist = list(set(self.edgelist))
             self.invisedgelist = list(set(self.invisedgelist))
             self.boxnodelist = list(set(self.boxnodelist))
+            self.isanodelist = list(set(self.isanodelist))
             self.sameranklist = list(set(self.sameranklist))
 
     def gen_tree(self,dottree,del_dup=True):
@@ -118,6 +120,7 @@ class DecompositionTree(object):
         edgelist = self.edgelist
         invisedgelist = self.invisedgelist
         boxnodelist = self.boxnodelist
+        isanodelist = self.isanodelist
         sameranklist = self.sameranklist
         cmdsameranklist = self.cmdsameranklist
         applynodelist = self.applynodelist
@@ -151,6 +154,9 @@ class DecompositionTree(object):
                 s = invisedge.split(",")
                 for x0,x1 in zip(s[:-1],s[1:]):
                     dottree.edge(x0,x1,style=self.node_sequence_style)
+        for isanode in isanodelist:
+            dottree.node(isanode,style="filled",bgcolor="gray")
+
         for boxnode in boxnodelist:
             dottree.node(boxnode,shape="box")
         for applynode in applynodelist:
@@ -176,7 +182,7 @@ class DecompositionTree(object):
         
 
 class workflowWay(DecompositionTree):
-    def __init__(self,basename="taxo",dotoption=None):
+    def __init__(self,basename="wf",dotoption=None):
         super().__init__(basename,dotoption)
 
         #self.den_edgelist = []
@@ -443,7 +449,7 @@ class taxologyWay(DecompositionTree):
                 nodetype = self.get_keyvalue(linkline,"nodetype")
                 self.gen_connection_link_link(link,linktype,name,nodetype)
         else:
-            if plinktype == "part-of" or plinktype is None:
+            if plinktype == "part-of" or plinktype == "or" or plinktype is None:
                 funcnamelist = []
                 for linkline in linklist:
                     name = self.get_keyvalue(linkline,"nodename")
@@ -469,12 +475,13 @@ class taxologyWay(DecompositionTree):
 
                 applyp = self.applymethod_prefix(pnodetype) + plinkname
 
+                self.applynodelist.append(applyp)
                 self.edgelist.append(",".join([methodp,applyp]))
                 funcnamelist.append(applyp)
                 self.invisedgelist.append(",".join(funcnamelist))
                 self.sameranklist.append(",".join(funcnamelist))
 
-            elif plinktype == "is-a":
+            elif plinktype == "is-a" or plinktype == "xor" :
 
                 namelist = []
                 for linkline in linklist:
@@ -494,22 +501,14 @@ class taxologyWay(DecompositionTree):
                     func1 = self.func_prefix(nodetype) + name
                     method1 = self.method_prefix(nodetype) + name
 
-                    if False:
-                        if link is None: 
-                            self.edgelist.append(",".join([funcp,method1]))
-                            self.boxnodelist.append(method1)
-                        else:
-                            self.edgelist.append(",".join([funcp,methodp]))
-                            self.boxnodelist.append(methodp)
-                            self.edgelist.append(",".join([methodp,func1]))
-                    else:
-                        self.edgelist.append(",".join([funcp,method1]))
-                        if linktype != "part-of":
-                            self.edgelist.append(",".join([method1,func1]))
-                            
-                        self.boxnodelist.append(method1)
-                        self.excludenodelist.append(name)
-                  
+                    self.isanodelist.append(funcp)
+                    self.edgelist.append(",".join([funcp,method1]))
+                    if linktype != "part-of":
+                        self.edgelist.append(",".join([method1,func1]))
+                        
+                    self.boxnodelist.append(method1)
+                    self.excludenodelist.append(name)
+              
                     self.gen_connection_link_link(link,linktype,name,nodetype)
 
             elif plinktype == "FunctionFirst":

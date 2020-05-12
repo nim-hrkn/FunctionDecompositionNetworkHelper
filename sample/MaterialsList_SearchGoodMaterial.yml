@@ -53,7 +53,7 @@ workflow:
     - group:
       - methodname: getSynthesizedTargetMaterial
         methodtype: function
-        outputname: NewTargetMaterial
+        outputname: NewMaterialSatisfyingSelectionCriterion
         outputtype: parts
 
 
