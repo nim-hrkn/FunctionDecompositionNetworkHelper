@@ -5,7 +5,7 @@ AtomicProperty= sample/AtomicProperty_Caus*.yml
 MaterialsList= sample/MaterialsList_*.yml
 AtomicCoordinate2Descriptor= sample/AtomicCoordinate2Descriptor_*.yml
 
-PROG= prog/cauFirst.py --no_wf --no_taxo
+PROG= prog/cauFirst.py --no_wf --no_taxo --no_connect_invis --concentrate
 
 CONVERT= prog/unitfiletest.py 
 
@@ -46,16 +46,16 @@ Understanding: $(UnderstandingFiles)
 	$(CONVERT) $(UnderstandingFiles)
 	$(PROG) a.yml
 	mv caus.gv.png a.png 
-	$(PROG) $(UnderstandingFiles)
+	$(PROG)  $(UnderstandingFiles)
 	cp caus.gv.png /media/sf_local_pc
 
 
-#--------------------------
 Importance= sample/Importance_*.yml
 Group= sample/Group_*.yml
 
 Importance:
 	$(PROG) $(Importance)
+	cp caus.gv.png /media/sf_local_pc
 Group:
 	$(PROG) $(Group)
 clean:

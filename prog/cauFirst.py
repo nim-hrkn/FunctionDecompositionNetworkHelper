@@ -26,7 +26,8 @@ class DecompositionTree(object):
         self.basename = basename
 
         self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, 
-             "apply_same_rank": False, "samerank": None }
+             "apply_same_rank": False, "samerank": None, "connect_invis": False,
+             "concentrate": True }
 
         if dotoption is not None:
            self.dotoption.update(dotoption)
@@ -135,11 +136,12 @@ class DecompositionTree(object):
                     sub.attr(rank="same")
                     for x in s:
                         sub.node(x)
+                for x in s:
+                    dottree.node(x,style="solid,filled",fillcolor="darkslategray1")
 
 
-        connect_invis = True
-        if "connect_invis" in self.dotoption:
-            connect_invis = self.dotoption["connect_invis"]
+        connect_invis = self.dotoption["connect_invis"]
+        print("connect_invis",connect_invis)
         
         for edge in edgelist:
             s = edge.split(",")
@@ -175,7 +177,7 @@ class DecompositionTree(object):
         if dottree is None:
             dottree = Digraph(self.basename)
             dottree.graph_attr["rankdir"] = "TB;"
-            dottree.graph_attr["concentrate"] = "true;"
+            dottree.graph_attr["concentrate"] = str(self.dotoption["concetrate"])+";"
 
         dottree = self.gen_tree(dottree)
         return dottree
@@ -570,7 +572,8 @@ class FDTree(object):
         if dottree is None:
             self.dottree = Digraph(basename)
             self.dottree.graph_attr["rankdir"] = "TB;"
-            self.dottree.graph_attr["concentrated"] = "true;"
+            #self.dottree.graph_attr["concentrate"] = "true;"
+            self.dottree.graph_attr["concentrate"] = str(self.dotoption["concentrate"])+";"
 
 
     def apply(self,dataall,basename = None,make_png = True): 
@@ -655,7 +658,10 @@ if __name__ == "__main__":
         parser.add_argument("filenames",nargs="*")
         parser.add_argument("--no_wf",action="store_true")
         parser.add_argument("--no_taxo",action="store_true")
+        parser.add_argument("--no_connect_invis",dest="connect_invis",action="store_false")
+        parser.add_argument("--concentrate",action="store_true")
         parser.add_argument("--samerank",default=None)
+
 
         cmdopt = parser.parse_args()
 
@@ -684,6 +690,7 @@ if __name__ == "__main__":
     # start 
 
     cmdopt = parse_cmd_option()
+    print(cmdopt)
     namelist = cmdopt.filenames
                     
     if len(namelist)==0:

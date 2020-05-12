@@ -16,8 +16,13 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: decisionTreeRegressionModel
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
         outputtype: parts
+    - group:
+      - methodname: DecisionTreeRegressionModel
+        methodtype: method
+        outputname: getDecisionTreeRegressionModel
+        outputtype: function
     - group:
       - methodname: decisionTreeImpurityMethod
         methodtype: method
@@ -45,3 +50,5 @@ workflow:
         methodtype: function
         outputname: VisualizedFeatureImportance
         outputtype: parts
+
+
