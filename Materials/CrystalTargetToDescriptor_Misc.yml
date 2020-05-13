@@ -138,9 +138,9 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: Crystal
+      - outputname: CrystalCoordinates
         outputtype: parts
-      - methodname: PersistenHomology
+      - methodname: PersistentHomology
         methodtype: method
         outputname: SpacePropertyQuantity
         outputtype: parts

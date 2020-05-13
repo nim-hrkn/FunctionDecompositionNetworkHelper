@@ -1,0 +1,61 @@
+workflow:
+  format: v2.3
+  block:
+
+  - blockname: permutation importance
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: (general)RegressionModel
+        methodtype: method
+        outputname: get(general)RegressionModel
+        outputtype: function
+    - group:
+      - methodname: Attribute(general)RegressionModelScore
+        methodtype: method
+        outputname: getAttribute(general)RegressionModelScore
+        outputtype: function
+
+
+  - blockname: permutation importance
+    order: workflow
+    list:
+    - group:
+      - outputname: get(general)RegressionModel
+        outputtype: function
+      - outputname: AFeaturePermutatedData
+        outputtype: parts
+    - group:
+      - methodname: PermutationScore
+        methodtype: method
+        outputname: getPermutationScore
+        outputtype: parts
+
+  - blockname: permutation importance
+    order: workflow
+    list:
+    - group:
+      - outputname: getAttribute(general)RegressionModelScore
+        outputtype: function
+      - outputname: getPermutationScore
+        outputtype: parts
+    - group:
+      - methodname: PermutationImportance
+        methodtype: method
+        outputname: FeatureImportance
+        outputtype: parts
+
+  - blockname: permutation importance
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: FeaturePermutation
+        methodtype: method
+        outputname: AFeaturePermutatedData
+        outputtype: parts
