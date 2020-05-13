@@ -492,12 +492,15 @@ class taxologyWay(DecompositionTree):
                     link = self.get_keyvalue(linkline,"link")
                     nodetype = self.get_keyvalue(linkline,"nodetype")
 
+                    print(">",plinkname,plinktype,"->",name,nodetype,link,linktype)
+
                     no_mf = False
 
 
                     namelist.append(name)
 
-                    #funcp->methodp edge
+                    # funcp->method1 edge
+                    # method1 -> func1 edge
                     funcp = self.func_prefix(pnodetype) + plinkname
                     methodp = self.method_prefix(pnodetype) + plinkname
                     func1 = self.func_prefix(nodetype) + name
@@ -505,8 +508,10 @@ class taxologyWay(DecompositionTree):
 
                     self.isanodelist.append(funcp)
                     self.edgelist.append(",".join([funcp,method1]))
+                    print("edge:funcp->method1",[funcp,method1])
                     if linktype != "part-of":
                         self.edgelist.append(",".join([method1,func1]))
+                        print("edge:method1->func1",[method1,func1])
                         
                     self.boxnodelist.append(method1)
                     self.excludenodelist.append(name)

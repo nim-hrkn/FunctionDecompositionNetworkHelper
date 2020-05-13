@@ -1,0 +1,27 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: regression
+    order: workflow
+    list:
+    - group:
+      - outputname: RegressionModel
+        outputtype: parts
+    - group:
+      - methodname: IntegrateWithTargetAxis
+        methodtype: function
+        outputname: SeparatedDistributiononTarget
+        outputtype: parts
+
+  - blockname: regression
+    order: workflow
+    list:
+    - group:
+      - outputname: DescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: Regression
+        methodtype: method
+        outputname: RegressionModel
+        outputtype: parts
+ 

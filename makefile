@@ -9,7 +9,7 @@ PROG= prog/cauFirst.py --no_wf --no_taxo --no_connect_invis --concentrate
 
 CONVERT= prog/unitfiletest.py 
 
-default: Prediction
+default: SDistribution
 
 #------------------------
 Prediction= $(TargetValuePrediction)  $(MaterialsList) Materials/Richer_DB.yml
@@ -36,6 +36,14 @@ Understanding: $(UnderstandingFiles)
 	mv caus.gv.png a.png 
 	$(PROG)  $(UnderstandingFiles)
 	cp caus.gv.png /media/sf_local_pc
+
+#---------------------------
+DistributionFiles=  Distribution/*.yml
+SDistribution: 
+	$(PROG)   $(DistributionFiles)
+	cp caus.gv.png /media/sf_local_pc
+
 clean:
 	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.png
 	rm -f Materials/*.gv sample/*.gv.png 
+

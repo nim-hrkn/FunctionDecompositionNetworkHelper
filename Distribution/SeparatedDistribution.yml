@@ -1,0 +1,49 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: separated distribution
+    order: workflow
+    list:
+    - group:
+      - outputname: Items
+        outputtype: parts
+    - group:
+      - methodname: ItemsConditionCandidates(AND_OR)
+        methodtype: method
+        outputname: getItemsConditionCandidates(AND_OR)
+        outputtype: function
+
+    - group:
+      - methodname: RMSELossDistribution
+        methodtype: method
+        outputname: SeparatedDistribution
+        outputtype: parts
+      - methodname: SwDistribution
+        methodtype: method
+        outputname: SeparatedDistribution
+        outputtype: parts
+      - methodname: t-valueDistribution
+        methodtype: method
+        outputname: SeparatedDistribution
+        outputtype: parts
+
+#  - blockname: separated distribution
+#    order: workflow
+#    list:
+#    - group:
+#      - outputname: TargetCondition
+#        outputtype: parts
+#    - group:
+#      - methodname: RMSELoss
+#        methodtype: method
+#        outputname: SeparatedDistribution
+#        outputtype: parts
+#      - methodname: Sw
+#        methodtype: method
+#        outputname: SeparatedDistribution
+#        outputtype: parts
+#      - methodname: t-value
+#        methodtype: method
+#        outputname: SeparatedDistribution
+#        outputtype: parts
+
