@@ -14,15 +14,15 @@ workflow:
         outputtype: function
 
     - group:
-      - methodname: RMSELossDistribution
+      - methodname: MSE_LossDistribution
         methodtype: method
         outputname: SeparatedDistribution
         outputtype: parts
-      - methodname: SwDistribution
+      - methodname: Sw_Distribution
         methodtype: method
         outputname: SeparatedDistribution
         outputtype: parts
-      - methodname: t-valueDistribution
+      - methodname: t-value_Distribution
         methodtype: method
         outputname: SeparatedDistribution
         outputtype: parts

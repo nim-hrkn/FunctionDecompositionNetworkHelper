@@ -21,4 +21,15 @@ workflow:
         methodtype: parts
         outputname: Items
         outputtype: parts
-
+  - blockname: descriptor to items
+    order: workflow
+    list:
+    - group:
+      - outputname: DescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: AttributeTargetValues
+        methodtype: parts
+        outputname: TargetValues
+        outputtype: parts
+ 

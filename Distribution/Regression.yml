@@ -5,7 +5,12 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: RegressionModel
+      - outputname: DescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: (general)Regression
+        methodtype: method
+        outputname: RegressionModel
         outputtype: parts
     - group:
       - methodname: IntegrateWithTargetAxis
@@ -13,15 +18,4 @@ workflow:
         outputname: SeparatedDistributiononTarget
         outputtype: parts
 
-  - blockname: regression
-    order: workflow
-    list:
-    - group:
-      - outputname: DescriptorAndRelationToTargetVariable
-        outputtype: parts
-    - group:
-      - methodname: Regression
-        methodtype: method
-        outputname: RegressionModel
-        outputtype: parts
- 
+

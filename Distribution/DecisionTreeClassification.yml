@@ -5,11 +5,21 @@ workflow:
     order: workflow
     list:
     - group:
+      - outputname: TargetValues
+        outputtype: parts
+    - group:
+      - methodname: choosemanyTargetValues
+        methodtype: function
+        outputname: TargetCondition
+        outputtype: parts
+ 
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
       - outputname: Items
         outputtype: parts
-      - methodname: manyTargetValues
-        methodtype: method
-        outputname: TargetCondition
+      - outputname: TargetCondition
         outputtype: parts
     - group:
       - methodname: ImpurityDecisionTreeDecomposition
@@ -84,6 +94,24 @@ workflow:
         outputname: ClassificationScore
         outputtype: parts
 
+  - blockname: decisiontree regression
+    order: workflow
+    list:
+    - group:
+      - outputname: Items
+        outputtype: parts
+      - outputname: TargetValues
+        outputtype: parts
+    - group:
+      - methodname: MSE_DecisionTreeDecomposition
+        methodtype: method
+        outputname: RegressionModel
+        outputtype: parts
+      - methodname: MAE_DecisionTreeDecomposition
+        methodtype: method
+        outputname: RegressionModel
+        outputtype: parts
+
 
 
   - blockname: classification
@@ -123,8 +151,6 @@ workflow:
         methodtype: method
         outputname: ClassificationScore
         outputtype: parts
-
-
 
 
 
