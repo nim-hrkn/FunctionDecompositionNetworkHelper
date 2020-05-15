@@ -9,7 +9,7 @@ PROG= prog/cauFirst.py --no_wf --no_taxo --no_connect_invis --concentrate
 
 CONVERT= prog/unitfiletest.py 
 
-default: SDistribution
+default: decisionTree
 
 #------------------------
 Prediction= $(TargetValuePrediction)  $(MaterialsList) Materials/Richer_DB.yml
@@ -38,10 +38,17 @@ Understanding: $(UnderstandingFiles)
 	cp caus.gv.png /media/sf_local_pc
 
 #---------------------------
-DistributionFiles=  Distribution/*.yml
-SDistribution: 
-	$(PROG)   $(DistributionFiles)
+distributionfiles=  distribution/*.yml
+sdistribution: 
+	$(PROG)   $(distributionfiles)
 	cp caus.gv.png /media/sf_local_pc
+#---------------------------
+decisionTreefiles= DecisionTree/EnsembleTree.yml
+
+decisionTree: 
+	$(PROG) --samerank="updateDecisionTreeNode,generateDecisionTreeModel,getInitialStatusForDecisionTreeConstruction"   $(decisionTreefiles)
+	cp caus.gv.png /media/sf_local_pc
+
 
 clean:
 	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.png

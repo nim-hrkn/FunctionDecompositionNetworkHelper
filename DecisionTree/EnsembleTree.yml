@@ -1,0 +1,111 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseSample
+        outputtype: function
+    - group:
+      - methodname: bootstrap
+        methodtype: method
+        outputname: chooseParentSampleRandomly
+        outputtype: function
+    - group:
+      - methodname: BootStrappedSampling
+        methodtype: method
+        outputname: getParentNodeSample
+        outputtype: function
+    - group:
+      - methodname: getInitialStatusInDecisionTreePool
+        methodtype: function
+        outputname: getInitialStatusForDecisionTreeConstruction
+        outputtype: function
+ 
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group: 
+      - methodname: DecisionTreePool
+        methodtype: method
+        outputname: chooseDecisionTreePool(initial)
+        outputtype: function
+    - group:
+      - methodname: getInitialStatusInDecisionTreePool
+        methodtype: function
+        outputname: getInitialStatusForDecisionTreeConstruction
+        outputtype: function
+  
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseDecisionTreePool
+        outputtype: function
+    - group:
+      - methodname: chooseParentNode
+        methodtype: function
+        outputname: chooseParentNodeSample
+        outputtype: function
+
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseParentNodeSample
+        outputtype: function
+      - methodname: chooseParentNodeUntilCondtion
+        methodtype: function
+        outputname: chooseParentNodeSample
+        outputtype: function
+      - outputname: chooseTargetCondition
+        outputtype: function
+      - outputname: chooseFeatureItems
+        outputtype: function
+
+
+    - group:
+      - methodname: chooseFeatureItembyMaxImpurity
+        methodtype: function
+        outputname: generateDecisionTreeNode
+        outputtype: function
+      - methodname: chooseFeatureItemByMaxEntropy
+        methodtype: function
+        outputname: generateDecisionTreeNode
+        outputtype: function
+    - group:
+      - methodname: storeFeatureItemToSamplePool
+        methodtype: function
+        outputname: updateDecisionTreeNode
+        outputtype: function
+
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - methodname: DecisionTreePool
+        methodtype: method
+        outputname: chooseDecisionTreePool
+        outputtype: function
+    - group:
+      - methodname: storeFeatureItemToSamplePool
+        methodtype: function
+        outputname: updateDecisionTreeNode
+        outputtype: function
+
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - methodname: DecisionTreePool
+        methodtype: method
+        outputname: chooseDecisionTreePool(AllProcessed)
+        outputtype: function
+    - group:
+      - methodname: DecisionTreeModelConstruction
+        methodtype: method
+        outputname: generateDecisionTreeModel
+        outputtype: function
+
+
