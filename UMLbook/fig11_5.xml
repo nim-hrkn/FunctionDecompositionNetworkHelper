@@ -1,0 +1,28 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: fig11.5
+    order: workflow
+    list:
+    - group:
+      - outputname: packLuggage
+        outputtype: function
+      - outputname: taxiComes
+        outputtype: function
+    - group:
+      - methodname: waitForPackingAndTaxy
+        methodtype: function
+        outputname: departToAirport
+        outputtype: function
+
+  - blockname: fig11.5
+    order: workflow
+    list:
+    - group:
+      - outputname: startPacking
+        outputtype: function
+    - group:
+      - methodname: startPackingTwoHoursBefore
+        methodtype: method
+        outputname: packLuggage
+        outputtype: function

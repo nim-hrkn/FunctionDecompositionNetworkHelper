@@ -1,0 +1,67 @@
+
+workflow:
+  format: v2.3
+  block:
+
+  - blockname: fig11_1
+    order: workflow
+    list:
+    - group:
+      - outputname: receiveOrder
+        outputtype: function
+    - group:
+      - methodname: methodFillOrder
+        methodtype: method
+        outputname: fillOrder
+        outputtype: function
+      - methodname: methodSendInvoice
+        methodtype: method
+        outputname: sendInvoice
+        outputtype: function
+
+
+
+
+  - blockname: fig11_1
+    order: workflow
+    list:
+    - group:
+      - outputname: receivePayment
+        outputtype: function
+      - outputname: decideDeliverty
+        outputtype: function
+    - group:
+      - methodname: waitForOrderAndPayment
+        methodtype: method
+        outputname: closeOrder
+        outputtype: function
+
+  - blockname: fig11_1
+    order: workflow
+    list:
+    - group:
+      - outputname: fillOrder
+        outputtype: function
+    - group:
+      - methodname: regularDelivery
+        methodtype: function
+        outputname: decideDeliverty
+        outputtype: function
+      - methodname: PrimaryDelivery
+        methodtype: function
+        outputname: decideDeliverty
+        outputtype: function
+
+  - blockname: fig11_1
+    order: workflow
+    list:
+    - group:
+      - outputname: sendInvoice
+        outputtype: function
+    - group:
+      - methodname: confirmPayment
+        methodtype: function
+        outputname: receivePayment
+        outputtype: function
+
+

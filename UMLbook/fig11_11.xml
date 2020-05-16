@@ -1,0 +1,93 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: fig11.9 initialize
+    order: workflow
+    list:
+    - group:
+      - outputname: getTopics
+        outputtype: function
+      - methodname: ArticleBoard
+        methodtype: method
+        outputname: chooseAttributeTopic
+        outputtype: function
+    - group:
+      - methodname: AttributeTopic
+        methodtype: function
+        outputname: placeAttributeTopicOnSlots
+        outputtype: function
+
+  - blockname: fig11.9 author
+    order: workflow
+    list:
+    - group:
+      - methodname: ArticleBoard
+        methodtype: method
+        outputname: chooseAttributeTopic
+        outputtype: function
+    - group:
+      - methodname: AuthorWritingOnATopic
+        methodtype: method
+        outputname: writeArticle
+        outputtype: function
+    - group:
+      - methodname: ArticleReview
+        methodtype: method
+        outputname: ReviewedArticle
+        outputtype: parts
+
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - methodname: ArticleBoard
+        methodtype: method
+        outputname: chooseAttributeArticle
+        outputtype: function
+      - outputname: ReviewedArticle
+        outputtype: parts
+      - methodname: ArticleAcceptCriterion
+        methodtype: method
+        outputname: chooseCriterion
+        outputtype: function
+    - group:
+      - methodname: methodAcceptedArticle
+        methodtype: method
+        outputname: placeGoodArticleOnEachSlot
+        outputtype: function
+
+  - blockname:
+    order: workflow
+    list:
+    - group:
+      - outputname: ReviewedArticle
+        outputtype: parts
+      - methodname: ArticleAcceptCriterion
+        methodtype: method
+        outputname: chooseCriterion
+        outputtype: function
+ 
+    - group:
+      - methodname: methodRejectedArticle
+        methodtype: method
+        outputname: placeGoodArticleOnEachSlot
+        outputtype: function
+
+
+
+
+  - blockname: fig11.9 publish
+    order: workflow
+    list:
+    - group:
+      - methodname: ArticleBoard
+        methodtype: method
+        outputname: getAttributeArticlesOnAllSlots
+        outputtype: function
+    - group:
+      - methodname: getAttributeArticlesAll
+        methodtype: function
+        outputname: publishNewsletter
+        outputtype: function
+
+
