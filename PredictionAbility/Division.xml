@@ -1,0 +1,62 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: make train&test data CV
+    order: workflow
+    list:
+    
+    - group:
+      - outputname: getSample
+        outputtype: function
+      - methodname: all-division
+        methodtype: method
+        outputname: divideSampleEqually
+        outputtype: function
+
+      - methodname: k-division
+        methodtype: method
+        outputname: divideSampleEqually
+        outputtype: function
+    - group:
+      - methodname: selectASet(CV)
+        methodtype: method
+        outputname: getTestSets
+        outputtype: function
+    - group:
+      - methodname: selectTheRest(CV)
+        methodtype: method
+        outputname: getTrainingSets
+        outputtype: function
+    - group:
+      - methodname: UniteTrainingAndTestSets
+        methodtype: method
+        outputname: getTrainingAndTestSets
+        outputtype: function
+
+  - blockname: make train&test data ratio
+    order: workflow
+    list:
+    - group:
+      - outputname: getSample
+        outputtype: function
+      - methodname: TestRatio
+        methodtype: method
+        outputname: divideSamplebyRatio
+        outputtype: function
+
+    - group:
+      - methodname: selectASet(Ratio)
+        methodtype: method
+        outputname: getTestSet
+        outputtype: function
+    - group:
+      - methodname: selectTheRest(Ratio)
+        methodtype: method
+        outputname: getTrainingSet
+        outputtype: function
+    - group:
+      - methodname: UniteTrainingAndTestSet
+        methodtype: method
+        outputname: getTrainingAndTestSet
+        outputtype: function
+

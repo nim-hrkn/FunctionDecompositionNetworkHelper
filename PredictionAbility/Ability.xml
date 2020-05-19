@@ -1,0 +1,90 @@
+workflow:
+  format: v2.3
+  block:
+
+  - blockname:  chooseOne
+    order: workflow
+    list:
+
+    - group:
+      - outputname: getTrainingAndTestSamples
+        outputtype: function
+ 
+    - group:
+      - methodname: doEachTraingAndTestSample
+        methodtype: method
+        outputname: chooseEachTraingAndTestSample
+        outputtype: function
+    - group:
+      - methodname: TraingAndTestSample
+        methodtype: method
+        outputname: getTrainingSample
+        outputtype: function
+   
+  - blockname:  make model
+    order: workflow
+    list:
+    - group:
+      - methodname: TraingAndTestSample
+        methodtype: method
+        outputname: getTrainingSample
+        outputtype: function
+    - group:
+      - methodname: R2(training)
+        methodtype: method
+        outputname: getRegressionModel
+        outputtype: function
+      - methodname: RMSE(training)
+        methodtype: method
+        outputname: getRegressionModel
+        outputtype: function
+      - methodname: MAE(training)
+        methodtype: method
+        outputname: getRegressionModel
+        outputtype: function
+
+  - blockname: prediction score
+    order: workflow
+    list:
+    - group:
+      - outputname: getRegressionModel
+        outputtype: function
+      - methodname: TraingAndTestSample
+        methodtype: method
+        outputname: getTestSample
+        outputtype: function
+    - group:
+      - methodname: R2(test)
+        methodtype: method
+        outputname: evaluatePredictionScore 
+        outputtype: function
+      - methodname: RMSE(test)
+        methodtype: method
+        outputname: evaluatePredictionScore 
+        outputtype: function
+      - methodname: MAE(test)
+        methodtype: method
+        outputname: evaluatePredictionScore 
+        outputtype: function
+
+  - blockname: prediction score
+    order: workflow
+    list:
+    - group:
+      - outputname: evaluatePredictionScore
+        outputtype: function
+    - group:
+      - methodname: finish_doEachTrainingAndTestSample
+        methodtype: function
+        outputname: evaluatePredictionScores
+        outputtype: function
+    - group:
+      - methodname: average
+        methodtype: method
+        outputname: getAveragedPredictionScore
+        outputtype: function
+      - methodname: averageAndVariance
+        methodtype: method
+        outputname: getAverageAndVariancePredictionScore
+        outputtype: function
+ 

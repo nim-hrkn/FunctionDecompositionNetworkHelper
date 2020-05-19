@@ -5,13 +5,16 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: startOrderSummary
+      - outputname: getCustomerID
         outputtype: function
-
+      - methodname: Database
+        methodtype: method
+        outputname: getOrderSummaryFromDatabase
+        outputtype: function
     - group:
       - methodname: selectCustumersAndOrdersFromDatabase
         methodtype: method
-        outputname: formatOrderSummaryReport
+        outputname: getCustumersAndOrders
         outputtype: function
 
   - blockname: fig16.1 external
@@ -20,7 +23,7 @@ workflow:
     - group:
       - methodname: XMLinput
         methodtype: method
-        outputname: (Customer)fillNameAndOrders
+        outputname: <Customer>fillNameAndOrders
         outputtype: function
     - group:
       - methodname: parseXMLName
@@ -31,11 +34,23 @@ workflow:
         methodtype: function
         outputname: getOrders
         outputtype: function
-
     - group:
       - methodname: XMLparse
         methodtype: method
+        outputname: getCustumersAndOrders
+        outputtype: function
+
+  - blockname: fig16.1 summary
+    order: workflow
+    list:
+    - group:
+      - outputname: getCustumersAndOrders
+        outputtype: function
+    - group:
+      - methodname: OrderSummaryReport
+        methodtype: method
         outputname: formatOrderSummaryReport
         outputtype: function
+
 
 

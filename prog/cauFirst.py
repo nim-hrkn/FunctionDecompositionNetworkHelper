@@ -579,6 +579,7 @@ class FDTree(object):
             self.dottree.graph_attr["rankdir"] = "TB;"
             #self.dottree.graph_attr["concentrate"] = "true;"
             self.dottree.graph_attr["concentrate"] = str(self.dotoption["concentrate"])+";"
+            self.dottree.edge_attr["len"] = "2.2"
 
 
     def apply(self,dataall,basename = None,make_png = True): 

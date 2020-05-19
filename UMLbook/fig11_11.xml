@@ -7,7 +7,7 @@ workflow:
     - group:
       - outputname: getTopics
         outputtype: function
-      - methodname: ArticleBoard
+      - methodname: ArticleSlots
         methodtype: method
         outputname: chooseAttributeTopic
         outputtype: function
@@ -21,7 +21,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: ArticleBoard
+      - methodname: ArticleSlots
         methodtype: method
         outputname: chooseAttributeTopic
         outputtype: function
@@ -40,7 +40,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: ArticleBoard
+      - methodname: ArticleSlots
         methodtype: method
         outputname: chooseAttributeArticle
         outputtype: function
@@ -80,7 +80,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: ArticleBoard
+      - methodname: ArticleSlots
         methodtype: method
         outputname: getAttributeArticlesOnAllSlots
         outputtype: function

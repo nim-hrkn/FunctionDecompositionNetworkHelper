@@ -1,0 +1,77 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: steepest descent
+    order: workflow
+    list:
+    - group:
+      - methodname: PositionForceSet
+        methodtype: method
+        outputname: getPositionForceSet
+        outputtype: function
+    - group:
+      - methodname: AttributePosition
+        methodtype: method
+        outputname: getPosition
+        outputtype: function
+      - methodname: AttributeForce
+        methodtype: method
+        outputname: getForce
+        outputtype: function
+    - group:
+      - methodname: steepestDescent
+        methodtype: method
+        outputname: updatePosition
+        outputtype: function
+    - group:
+      - methodname: evaluateForce
+        methodtype: function
+        outputname: calculateForce
+        outputtype: function
+    - group:
+      - methodname: Force!=0
+        methodtype: method
+        outputname: getNonZeroForce
+        outputtype: function
+
+  - blockname: steepest descent
+    order: workflow
+    list:
+    - group:
+      - outputname: getNonZeroForce
+        outputtype: function
+      - outputname: updatePosition
+        outputtype: function
+      - methodname: PositionForceSet
+        methodtype: method
+        outputname: choosePositionForceSet
+        outputtype: function
+    - group:
+      - methodname: updatePositionForceSet
+        methodtype: function
+        outputname: makePositionStaber
+        outputtype: function
+        
+  - blockname: steepest descent
+    order: workflow
+    list:
+    - group:
+      - methodname: evaluateForce
+        methodtype: function
+        outputname: calculateForce
+        outputtype: function
+    - group:
+      - methodname: Force==0
+        methodtype: method
+        outputname: getZeroForce
+        outputtype: function
+      - outputname: updatePosition
+        outputtype: function
+
+    - group:
+      - methodname: ZeroForcePosition
+        methodtype: method
+        outputname: getStablePosition
+        outputtype: function
+
+

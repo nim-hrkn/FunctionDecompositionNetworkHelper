@@ -1,0 +1,99 @@
+workflow:
+  format: v2.3
+  block:
+
+  - blockname:  hyperparemter opt bruteforce
+    order: workflow
+    list:
+    - group:
+      - methodname: PreviousBestHyperparameterScoreSet
+        methodtype: method
+        outputname: getPreviousBestHyperparameterScore
+        outputtype: function
+    - group:
+      - methodname: AttributeHyperparameter
+        methodtype: method
+        outputname: getAttributeHyperparameter
+        outputtype: function
+    - group:
+      - methodname: AttributeHyperparameterSetting
+        methodtype: method
+        outputname: getHyperparameterCandidates
+        outputtype: function
+      - methodname: AttributeHyperparameterSetting
+        methodtype: method
+        outputname: getHyperparameterCandidates
+        outputtype: function
+    - group:
+      - methodname: RegressionScores
+        methodtype: method
+        outputname: getRegressionScores
+        outputtype: function
+    - group:
+      - methodname: chooseTheBestScoreModel
+        methodtype: function
+        outputname: chooseTheBestHyperparameterAndScoreWithinHyperparameterSetting
+        outputtype: function
+
+
+  - blockname:  hyperparemter opt bruteforce
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseTheBestHyperparameterAndScoreWithinHyperparameterSetting
+        outputtype: function
+    - group:
+      - methodname: CurrentBest!=PreviousBest
+        methodtype: function
+        outputname: getNewHyperparameter
+        outputtype: function
+
+  - blockname:  hyperparemter opt bruteforce
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseTheBestHyperparameterAndScoreWithinHyperparameterSetting
+        outputtype: function
+      - outputname: chooseThePreviousBestScore
+        outputtype: function
+    - group:
+      - methodname: CurrentBest==PreviousBest
+        methodtype: function
+        outputname: getTheBestHyperparameter
+        outputtype: function
+
+
+  - blockname:  hyperparemter opt bruteforce
+    order: workflow
+    list:
+    - group:
+      - outputname: getPreviousBestHyperparameterScore
+        outputtype: function
+    - group:
+      - methodname: AttributeScore
+        methodtype: method
+        outputname: chooseThePreviousBestScore
+        outputtype: function
+    - group:
+      - methodname: CurrentBest!=PreviousBest
+        methodtype: function
+        outputname: getNewHyperparameter
+        outputtype: function
+
+
+  - blockname:  hyperparemter opt bruteforce
+    order: workflow
+    list:
+    - group:
+      - outputname: getNewHyperparameter
+        outputtype: function
+      - methodname: PreviousBestHyperparameterScoreSet
+        methodtype: method
+        outputname: getPreviousBestHyperparameterScoreSet
+        outputtype: function
+    - group:
+      - methodname: updateHyperparameter
+        methodtype: function
+        outputname: findBetterHyperparameter
+        outputtype: function
+
