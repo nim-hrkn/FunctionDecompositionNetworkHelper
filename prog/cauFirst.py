@@ -26,7 +26,7 @@ class DecompositionTree(object):
         self.basename = basename
 
         self.dotoption={"node_sequence_style":"invis", "nodelabel_length":15, 
-             "apply_same_rank": False, "samerank": None, "connect_invis": False,
+             "apply_same_rank": False, "samerank": None, "connect_invis": True,
              "concentrate": True }
 
         if dotoption is not None:
@@ -668,8 +668,8 @@ if __name__ == "__main__":
         parser.add_argument("filenames",nargs="*")
         parser.add_argument("--no_wf",action="store_true")
         parser.add_argument("--no_taxo",action="store_true")
-        parser.add_argument("--no_connect_invis",dest="connect_invis",action="store_false")
-        parser.add_argument("--concentrate",action="store_true")
+        parser.add_argument("--no_connect_invis",dest="connect_invis",action="store_true")
+        parser.add_argument("--no_concentrate",dest="concentrate",action="store_false")
         parser.add_argument("--samerank",default=None)
 
 
@@ -681,6 +681,7 @@ if __name__ == "__main__":
     def doit_each(namelist):
         dottree = Digraph("caus")
         dottree.graph_attr["rankdir"] = "TB"
+        dottree.graph_attr["concentrate"] = str(self.dotoption["concetrate"])+";"
 
         for filename in namelist:
 

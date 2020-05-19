@@ -5,7 +5,7 @@ AtomicProperty= Materials/AtomicProperty_Caus*.yml
 MaterialsList= Materials/MaterialsList_*.yml
 AtomicCoordinate2Descriptor= Materials/AtomicCoordinate2Descriptor_*.yml
 
-PROG= prog/cauFirst.py --no_wf --no_taxo --no_connect_invis --concentrate
+PROG= prog/cauFirst.py # --no_wf --no_taxo --no_connect_invis --concentrate
 
 CONVERT= prog/unitfiletest.py 
 
