@@ -1,0 +1,13 @@
+
+linkset:
+  block:
+  - link:
+    - nodename: getNextX
+      nodetype: function
+      linktype: is-a
+      link:
+      - nodename: updateX
+        nodetype: function
+      - nodename: holdX
+        nodetype: function
+

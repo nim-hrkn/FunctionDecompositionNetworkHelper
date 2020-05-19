@@ -220,7 +220,11 @@ class workflowWay(DecompositionTree):
 
     def check_names(self,g2):
         namelist = ["outputname","outputtype","methodname","methodtype"]
-        g2 = dict(g2)
+        try:
+            g2 = dict(g2)
+        except:
+            print("failed to dict(g2),g2=",g2)
+            raise
         for x in g2.keys():
             if x not in namelist:
                 print("unknown keyword",x)

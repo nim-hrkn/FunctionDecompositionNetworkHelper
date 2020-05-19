@@ -1,0 +1,126 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: Metripolis
+    order: workflow
+    list:
+    - group:
+      - methodname: Xlist
+        methodtype: method
+        outputname: chooseLastX
+        outputtype: function
+    - group:
+      - methodname: generateX'
+        methodtype: function
+        outputname: generateSampleCandidateX'
+        outputtype: function
+    - group:
+      - methodname: P(x')/P(x)
+        methodtype: method
+        outputname: getTargetDistribution
+        outputtype: function
+    - group:
+      - methodname: Q(x'_x)/Q(x_x')
+        methodtype: method
+        outputname: getProposedDistribution
+        outputtype: function
+
+  - blockname: Metripolis
+    order: workflow
+    list:
+    - group:
+      - outputname: getTargetDistribution
+        outputtype: function
+      - outputname: getProposedDistribution
+        outputtype: function
+    - group:
+      - methodname: multiplyThem
+        methodtype: function
+        outputname: getAlpha
+        outputtype: function
+    - group:
+      - methodname: Alpha>1
+        methodtype: method
+        outputname: acceptX'
+        outputtype: function
+      - methodname: Alpha<1
+        methodtype: method
+        outputname: ConditionAlpha<1
+        outputtype: parts
+
+  - blockname: Metripolis reject 
+    order: workflow
+    list:
+    - group:
+      - outputname: ConditionAlpha<1
+        outputtype: parts
+      - outputname: getProbabilityP
+        outputtype: function
+    - group:
+      - methodname: P>Alpha
+        methodtype: method
+        outputname: acceptX'
+        outputtype: function
+
+  - blockname: Metripolis retry
+    order: workflow
+    list:
+    - group:
+      - methodname: P>Alpha
+        methodtype: method
+        outputname: acceptX'
+        outputtype: function
+      - outputname: generateSampleCandidateX'
+        outputtype: function
+    - group:
+      - methodname: replaceX
+        methodtype: function
+        outputname: getNextX
+        outputtype: function
+
+  - blockname: Metripolis reject
+    order: workflow
+    list:
+    - group:
+      - outputname: ConditionAlpha<1
+        outputtype: parts
+      - outputname: getProbabilityP
+        outputtype: function
+    - group:
+      - methodname: P<Alpha
+        methodtype: method
+        outputname: holdX
+        outputtype: function
+
+  - blockname: appendX
+    order: workflow
+    list:
+    - group:
+      - methodname: Xlist
+        methodtype: method
+        outputname: chooseXlist
+        outputtype: function
+      - outputname: getNextX
+        outputtype: function
+    - group:
+      - methodname: appendXtoXlist
+        methodtype: method
+        outputname: appendX
+        outputtype: function
+
+
+  - blockname: appendX
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseLastX
+        outputtype: function
+      - outputname: holdX
+        outputtype: function
+    - group:
+      - methodname: useX
+        methodtype: function
+        outputname: getNextX
+        outputtype: function
+
+

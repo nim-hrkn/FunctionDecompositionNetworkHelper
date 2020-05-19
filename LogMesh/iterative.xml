@@ -1,0 +1,112 @@
+workflow:
+  format: v2.3
+  block:
+
+  - blockname: hyperparameter init
+    order: workflow
+    list:
+    - group:
+      - methodname: LoopCounter
+        methodtype: method
+        outputname: chooseLoopCounter
+        outputtype: function
+    - group:
+      - methodname: initCounter
+        methodtype: function
+        outputname: InitializeCounter
+        outputtype: function
+ 
+  - blockname: hyperparameter loop
+    order: workflow
+    list:
+    - group:
+      - outputname: getGenerationParameter
+        outputtype: function
+      - methodname: LoopCounter
+        methodtype: method
+        outputname: getAttributeCounter
+        outputtype: function
+    - group:
+      - methodname: Logmesh
+        methodtype: function
+        outputname: getHyperparameter
+        outputtype: function
+
+  - blockname: hyperparameter Counter<Last
+    order: workflow
+    list:
+    - group:
+      - outputname: getHyperparameter
+        outputtype: function
+      - methodname: HyperparameterPool
+        methodtype: method
+        outputname: chooseHyperparameterPool
+        outputtype: function
+    - group:
+      - methodname: appendHyperparameterToSet
+        methodtype: function
+        outputname: updateHyperparameterSet
+        outputtype: function
+
+  - blockname: hyperparameter Counter<Last
+    order: workflow
+    list:
+    - group:
+      - outputname: updateHyperparameterSet
+        outputtype: function
+    - group:
+      - methodname: nextCounter
+        methodtype: function
+        outputname: incrementCounter
+        outputtype: function
+    - group:
+      - methodname: updateCounterIfCounter_LT_Last
+        methodtype: function
+        outputname: getNonLastCounter
+        outputtype: function
+#      - methodname: LoopCounter
+#        methodtype: method
+      - outputname: chooseLoopCounter
+        outputtype: function
+    - group:
+      - methodname: nextLoopCounter
+        methodtype: function
+        outputname: updateLoopCounter
+        outputtype: function
+
+
+  - blockname: hyperparameter Counter==Last
+    order: workflow
+    list:
+    - group:
+      - outputname: incrementCounter
+        outputtype: function
+    - group:
+      - methodname: Counter==Last
+        methodtype: method
+        outputname: LastCounter
+        outputtype: parts
+    - group:
+      - methodname: AllHyperparameter
+        methodtype: parts
+        outputname: getHyperparameterSet
+        outputtype: function
+
+  - blockname: hyperparameter Counter==Last
+    order: workflow
+    list:
+    - group:
+      - methodname: HyperparameterPool
+        methodtype: method
+        outputname: chooseHyperparameterPool
+        outputtype: function
+    - group:
+      - methodname: AllHyperparameter
+        methodtype: parts
+        outputname: getHyperparameterSet
+        outputtype: function
+
+
+
+
+
