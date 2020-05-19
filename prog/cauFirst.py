@@ -86,7 +86,7 @@ class DecompositionTree(object):
             print("func_prefix: unsupported",linktype)
             raise 
             
-    def applymethod_prefix(self,linktype=None):
+    def applyfunction_prefix(self,linktype=None):
         if linktype is None:
             linktype = "method"
         if linktype == "parts":
@@ -98,7 +98,7 @@ class DecompositionTree(object):
             #return "apply_methodTo_"
             return "(apply)"
         else:
-            print("applymethod_prefix: unsupported",linktype)
+            print("applyfunction_prefix: unsupported",linktype)
             raise
        
     def check_extension(self,name,ext=None):
@@ -219,7 +219,7 @@ class workflowWay(DecompositionTree):
         return value
 
     def check_names(self,g2):
-        namelist = ["outputname","outputtype","methodname","methodtype"]
+        namelist = ["outputname","outputtype","methodname","methodtype","applymethodname","applymethodtype"]
         try:
             g2 = dict(g2)
         except:
@@ -246,7 +246,7 @@ class workflowWay(DecompositionTree):
             methodtype2 = self.get_keyvalue(g2,"methodtype")
             if nodename2 is not None:
                 funcname2 = self.func_prefix(functype2)+nodename2
-            applymethodname2 = None
+            applyfunctionname2 = None
 
             if nodename2 is None and methodname2 is not None:
                 nodename2 = "outputOf_to"+methodname2
@@ -256,7 +256,13 @@ class workflowWay(DecompositionTree):
                 methodname2 = "method_to_"+funcname2
                 methodtype2 = "auto"
 
-            applymethodname2 = self.applymethod_prefix("method")+methodname2
+            applyfunctionname2 = self.applyfunction_prefix("method")+methodname2
+
+            rawapplymethodname2 = self.func_prefix(g2,"applymethodname")
+            applymethodname2 = rawapplymethodname2
+            applymethodtype2 = self.func_prefix(g2,"applymethodtype")
+            if rawapplymethodname2 is not None:
+                applymethodname2 = self.method_prefix(applymethodtype2)+rawapplymethodname2
 
         else:
 
@@ -265,14 +271,20 @@ class workflowWay(DecompositionTree):
             rawmethodname2 = self.get_keyvalue(g2,"methodname")
             methodtype2 = self.get_keyvalue(g2,"methodtype")
             funcname2 = self.func_prefix(functype2)+nodename2
-            applymethodname2 = None
+            applyfunctionname2 = None
 
             methodname2 = rawmethodname2
             if rawmethodname2 is not None:
                 methodname2 = self.method_prefix(methodtype2)+rawmethodname2
-                applymethodname2 = self.applymethod_prefix(methodtype2)+rawmethodname2
+                applyfunctionname2 = self.applyfunction_prefix(methodtype2)+rawmethodname2
 
-        return nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2
+            rawapplymethodname2 = self.get_keyvalue(g2,"applymethodname")
+            applymethodname2 = rawapplymethodname2
+            applymethodtype2 = self.get_keyvalue(g2,"applymethodtype")
+            if rawapplymethodname2 is not None:
+                applymethodname2 = self.method_prefix(applymethodtype2)+rawapplymethodname2
+
+        return nodename2,funcname2,functype2,methodname2,methodtype2,applyfunctionname2,applymethodname2
  
 
     def convert_from_workflow(self,wflist):
@@ -288,7 +300,7 @@ class workflowWay(DecompositionTree):
             nodename1list = []
             methodname1list = []
             for g1 in group1:
-                nodename1,funcname1,funtype1,methodname1,methodtype1,_ = self.gen_names(g1)
+                nodename1,funcname1,funtype1,methodname1,methodtype1,_,_ = self.gen_names(g1)
 
                 funcname1list.append(funcname1)
                 nodename1list.append(nodename1)
@@ -304,22 +316,25 @@ class workflowWay(DecompositionTree):
         for group1,group2 in zip(grouplist[:-1],grouplist[1:]):
 
             for g1 in group1:
-                nodename1,funcname1,functype1,methodname1,methodtype1,_ = self.gen_names(g1)
+                nodename1,funcname1,functype1,methodname1,methodtype1,_,_ = self.gen_names(g1)
 
                 funcname1list.append(funcname1)
 
                 for g2 in group2:
 
-                    nodename2,funcname2,functype2,methodname2,methodtype2,applymethodname2 = self.gen_names(g2)
+                    nodename2,funcname2,functype2,methodname2,methodtype2,applyfunctionname2,applymethodname2 = self.gen_names(g2)
 
                     if methodname2 is not None:
                        self.edgelist.append(",".join([funcname2,methodname2]))
                        self.edgelist.append(",".join([methodname2,funcname1]))
-                       self.edgelist.append(",".join([methodname2,applymethodname2]))
+                       self.edgelist.append(",".join([methodname2,applyfunctionname2]))
                        self.boxnodelist.append(methodname2) 
-                       self.invisedgelist.append(",".join([funcname1,applymethodname2]))
-                       self.sameranklist.append(",".join([funcname1,applymethodname2]))
-                       self.applynodelist.append(applymethodname2)
+                       self.invisedgelist.append(",".join([funcname1,applyfunctionname2]))
+                       self.sameranklist.append(",".join([funcname1,applyfunctionname2]))
+                       self.applynodelist.append(applyfunctionname2)
+                       if applymethodname2 is not None:
+                           self.edgelist.append(",".join([applyfunctionname2,applymethodname2]))
+                           self.boxnodelist.append(applymethodname2) 
                     if methodname1 is not None:
                        self.edgelist.append(",".join([funcname1,methodname1]))
                        self.boxnodelist.append(methodname1)
@@ -479,7 +494,7 @@ class taxologyWay(DecompositionTree):
                   
                     self.gen_connection_link_link(link,linktype,name,nodetype)
 
-                applyp = self.applymethod_prefix(pnodetype) + plinkname
+                applyp = self.applyfunction_prefix(pnodetype) + plinkname
 
                 self.applynodelist.append(applyp)
                 self.edgelist.append(",".join([methodp,applyp]))
@@ -542,7 +557,7 @@ class taxologyWay(DecompositionTree):
                     method1 = self.method_prefix(nodetype1) + name1
                     func2 = self.func_prefix(nodetype2) + name2
                     method2 = self.method_prefix(nodetype2) + name2
-                    apply2 = self.applymethod_prefix(nodetype2) + name2
+                    apply2 = self.applyfunction_prefix(nodetype2) + name2
 
                     # generate links
                     self.edgelist.append(",".join([func2,method2]))

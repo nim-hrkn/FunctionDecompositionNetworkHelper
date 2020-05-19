@@ -5,9 +5,9 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: PositionForceSet
+      - methodname: Database
         methodtype: method
-        outputname: getPositionForceSet
+        outputname: getDatabase
         outputtype: function
     - group:
       - methodname: AttributePosition
@@ -42,13 +42,15 @@ workflow:
         outputtype: function
       - outputname: updatePosition
         outputtype: function
-      - methodname: PositionForceSet
-        methodtype: method
-        outputname: choosePositionForceSet
-        outputtype: function
+#      - methodname: Database
+#        methodtype: method
+#        outputname: chooseDatabase
+#        outputtype: function
     - group:
-      - methodname: updatePositionForceSet
+      - methodname: updateDatabase
         methodtype: function
+        applymethodname: Database
+        applymethodtype: method
         outputname: makePositionStaber
         outputtype: function
         
