@@ -1,7 +1,0 @@
-link:
-  - nodename: CrystalCandidates
-    nodetype: parts
-    linktype: IsA
-    link: 
-      - nodename: ParticleSwarm
-      - nodename: GeneticAlgorithm
