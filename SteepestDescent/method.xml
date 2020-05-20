@@ -47,7 +47,7 @@ workflow:
 #        outputname: chooseDatabase
 #        outputtype: function
     - group:
-      - methodname: updateDatainDatabase
+      - methodname: updatePositionAndForceOnDatabase
         methodtype: function
         applymethodname: Database
         applymethodtype: method

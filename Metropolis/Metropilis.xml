@@ -1,17 +1,34 @@
 workflow:
   format: v2.3
   block:
+
+  - blockname: Metripolis initialize
+    order: workflow
+    list:
+    - group:
+      - methodname: initialX
+        methodtype: method
+        outputname: getinitialX
+        outputtype: function
+    - group:
+      - methodname: setDatabase
+        methodtype: method
+        applymethodname: Database
+        applymethodtype: method
+        outputname: initializeDatabase
+        outputtype: function
+   
   - blockname: Metripolis
     order: workflow
     list:
     - group:
-      - methodname: Xlist
+      - methodname: Database
         methodtype: method
-        outputname: chooseLastX
+        outputname: getLastX
         outputtype: function
     - group:
-      - methodname: generateX'
-        methodtype: function
+      - methodname: Q(x'_xt)
+        methodtype: method
         outputname: generateSampleCandidateX'
         outputtype: function
     - group:
@@ -41,7 +58,7 @@ workflow:
     - group:
       - methodname: Alpha>1
         methodtype: method
-        outputname: acceptX'
+        outputname: useX'
         outputtype: function
       - methodname: Alpha<1
         methodtype: method
@@ -54,28 +71,28 @@ workflow:
     - group:
       - outputname: ConditionAlpha<1
         outputtype: parts
-      - outputname: getProbabilityP
+      - outputname: getProbabilityR
         outputtype: function
     - group:
-      - methodname: P>Alpha
+      - methodname: R>Alpha
         methodtype: method
-        outputname: acceptX'
+        outputname: useX'
         outputtype: function
 
   - blockname: Metripolis retry
     order: workflow
     list:
     - group:
-      - methodname: P>Alpha
+      - methodname: R>Alpha
         methodtype: method
-        outputname: acceptX'
+        outputname: useX'
         outputtype: function
-      - outputname: generateSampleCandidateX'
-        outputtype: function
+#      - outputname: generateSampleCandidateX'
+#        outputtype: function
     - group:
-      - methodname: replaceX
+      - methodname: useX'
         methodtype: function
-        outputname: getNextX
+        outputname: getX
         outputtype: function
 
   - blockname: Metripolis reject
@@ -84,27 +101,29 @@ workflow:
     - group:
       - outputname: ConditionAlpha<1
         outputtype: parts
-      - outputname: getProbabilityP
+      - outputname: getProbabilityR
         outputtype: function
     - group:
-      - methodname: P<Alpha
+      - methodname: R<Alpha
         methodtype: method
-        outputname: holdX
+        outputname: useLastX
         outputtype: function
 
   - blockname: appendX
     order: workflow
     list:
     - group:
-      - methodname: Xlist
-        methodtype: method
-        outputname: chooseXlist
-        outputtype: function
-      - outputname: getNextX
+#      - methodname: Database
+#        methodtype: method
+#        outputname: chooseDatabase
+#        outputtype: function
+      - outputname: getX
         outputtype: function
     - group:
-      - methodname: appendXtoXlist
-        methodtype: method
+      - methodname: appendXtoDatabase
+        methodtype: function
+        applymethodname: Database
+        applymethodtype: method
         outputname: appendX
         outputtype: function
 
@@ -113,14 +132,14 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseLastX
-        outputtype: function
-      - outputname: holdX
+#      - outputname: chooseLastX
+#        outputtype: function
+      - outputname: useLastX
         outputtype: function
     - group:
-      - methodname: useX
+      - methodname: useLastX
         methodtype: function
-        outputname: getNextX
+        outputname: getX
         outputtype: function
 
 
