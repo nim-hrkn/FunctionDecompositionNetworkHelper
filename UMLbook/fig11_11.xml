@@ -7,60 +7,73 @@ workflow:
     - group:
       - outputname: getTopics
         outputtype: function
-      - methodname: ArticleSlots
-        methodtype: method
-        outputname: chooseAttributeTopic
-        outputtype: function
+#      - methodname: ArticleDatabase
+#        methodtype: method
+#        outputname: chooseAttributeTopic
+#        outputtype: function
     - group:
-      - methodname: AttributeTopic
+      - methodname: writeTopics
         methodtype: function
-        outputname: placeAttributeTopicOnSlots
+        applymethodname: ArticleDatabase
+        applymethodtype: method
+        outputname: initializeArticleDatabase
         outputtype: function
 
   - blockname: fig11.9 author
     order: workflow
     list:
     - group:
-      - methodname: ArticleSlots
+      - methodname: ArticleDatabase
         methodtype: method
-        outputname: chooseAttributeTopic
+        outputname: chooseTopic
         outputtype: function
     - group:
-      - methodname: AuthorWritingOnATopic
+      - methodname: AuthorWriteArticleOnTopic
         methodtype: method
-        outputname: writeArticle
+        outputname: getArticle
         outputtype: function
     - group:
       - methodname: ArticleReview
         methodtype: method
-        outputname: ReviewedArticle
+        outputname: ArticleReviewScore
         outputtype: parts
 
   - blockname:
     order: workflow
     list:
     - group:
-      - methodname: ArticleSlots
-        methodtype: method
-        outputname: chooseAttributeArticle
-        outputtype: function
-      - outputname: ReviewedArticle
+#      - methodname: ArticleDatabase
+#        methodtype: method
+#        outputname: chooseAttributeArticle
+#        outputtype: function
+      - outputname: ArticleReviewScore
         outputtype: parts
       - methodname: ArticleAcceptCriterion
         methodtype: method
         outputname: chooseCriterion
         outputtype: function
     - group:
-      - methodname: methodAcceptedArticle
+      - methodname: Score>Criterion
         methodtype: method
-        outputname: placeGoodArticleOnEachSlot
+        outputname: getGoodArticle
         outputtype: function
+    - group:
+      - methodname: writeArticleOnDatabase
+        methodtype:  function
+        applymethodname: ArticleDatabase
+        applymethodtype: method
+        outputname: getGoodArticleOnDatabase
+        outputtype: function
+
+
+
+
 
   - blockname:
     order: workflow
     list:
     - group:
-      - outputname: ReviewedArticle
+      - outputname: ArticleReviewScore
         outputtype: parts
       - methodname: ArticleAcceptCriterion
         methodtype: method
@@ -68,9 +81,19 @@ workflow:
         outputtype: function
  
     - group:
-      - methodname: methodRejectedArticle
+      - methodname: Score<Criterion
         methodtype: method
-        outputname: placeGoodArticleOnEachSlot
+#        applymethodname: ArticleDatabase
+#        applymethodtype: method
+        outputname: getBadArticle
+        outputtype: function
+
+    - group:
+      - methodname: rewriteTopic
+        methodtype: function
+        applymethodname: ArticleDatabase
+        applymethodtype: method
+        outputname: askRewriteOnTopic
         outputtype: function
 
 
@@ -80,12 +103,12 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: ArticleSlots
+      - methodname: ArticleDatabase
         methodtype: method
-        outputname: getAttributeArticlesOnAllSlots
+        outputname: checkAllArticlesAreWritten
         outputtype: function
     - group:
-      - methodname: getAttributeArticlesAll
+      - methodname: getAllArticles
         methodtype: function
         outputname: publishNewsletter
         outputtype: function

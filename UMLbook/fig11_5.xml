@@ -5,8 +5,8 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: packLuggage
-        outputtype: function
+      - outputname: packedLuggage
+        outputtype: parts
       - outputname: taxiComes
         outputtype: function
     - group:
@@ -19,10 +19,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: startPacking
-        outputtype: function
+      - outputname: TwoHoursBefore
+        outputtype: parts
     - group:
       - methodname: startPackingTwoHoursBefore
-        methodtype: method
-        outputname: packLuggage
-        outputtype: function
+        methodtype: function
+        outputname: packedLuggage
+        outputtype: parts

@@ -16,7 +16,7 @@ workflow:
         outputtype: function
       - methodname: methodSendInvoice
         methodtype: method
-        outputname: sendInvoice
+        outputname: getInvoiceToSend
         outputtype: function
 
 
@@ -56,10 +56,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: sendInvoice
+      - outputname: getInvoiceToSend
         outputtype: function
     - group:
-      - methodname: confirmPayment
+      - methodname: sendInvoice
         methodtype: function
         outputname: receivePayment
         outputtype: function
