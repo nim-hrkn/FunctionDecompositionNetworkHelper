@@ -15,20 +15,20 @@ workflow:
     - group:
       - methodname: AbsolutePositionToRelativeCoorinates
         methodtype: method
-        outputname: relativeCoordiantes
+        outputname: relativeCoordianteVectors
         outputtype: parts
   - blockname: centeratom
     order: workflow
     list:
     - group:
-      - methodname: eachAtom
-        methodtype: method
-        outputname: chooseCenterAtom
+#      - methodname: eachAtom
+#        methodtype: method
+      - outputname: chooseCenterAtoms
         outputtype: function
     - group:
       - methodname: AbsolutePositionToRelativeCoorinates
         methodtype: method
-        outputname: relativeCoordiantes
+        outputname: relativeCoordianteVectors
         outputtype: parts
 
 
@@ -37,7 +37,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: relativeCoordiantes
+      - outputname: relativeCoordianteVectors
         outputtype: parts
     - group:
       - methodname: relativeRadialDistributionWithAngleConvolution
@@ -48,7 +48,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: relativeCoordiantes
+      - outputname: relativeCoordianteVectors
         outputtype: parts
     - group:
       - methodname: relativeRadialDistribution
@@ -64,7 +64,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: relativeCoordiantes
+      - outputname: relativeCoordianteVectors
         outputtype: parts
     - group:
       - methodname: VoronoiAngle
@@ -86,7 +86,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: relativeCoordiantes
+      - outputname: relativeCoordianteVectors
         outputtype: parts
     - group:
       - methodname: 4DExpansion

@@ -7,7 +7,7 @@ workflow:
     - group:
       - outputname: Crystal
         outputtype: parts
-      - outputname: chooseCenterAtom
+      - outputname: chooseCenterAtoms
         outputtype: function
     - group:
       - methodname: AttributeElement
