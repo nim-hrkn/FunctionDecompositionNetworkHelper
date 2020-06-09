@@ -7,7 +7,7 @@ workflow:
     - group:
       - outputname: MaterialsDatabase
         outputtype: parts
-      - outputname: chooseCenterElement
+      - outputname: chooseCenterElements
         outputtype: function
 
     - group:

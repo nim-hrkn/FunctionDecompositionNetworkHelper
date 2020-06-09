@@ -75,6 +75,8 @@ workflow:
         methodtype: method
         outputname: VoroniiNearestNeighbourAtoms
         outputtype: parts
+      - outputname: ElectricConfiguration
+        outputtype: parts
     - group:
       - methodname: AtomicOrbitalFieldMatrix
         methodtype: method

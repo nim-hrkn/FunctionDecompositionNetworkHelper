@@ -12,7 +12,7 @@ workflow:
     - group:
       - methodname: AttributeElement
         methodtype: parts
-        outputname: chooseCenterElement
+        outputname: chooseCenterElements
         outputtype: function
     - group:
       - methodname: AttributeNumberOfElectron
@@ -62,7 +62,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseCenterElement
+      - outputname: chooseCenterElements
         outputtype: function
     - group:
       - methodname: AttributeAveragedMass
@@ -180,7 +180,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseCenterElement
+      - outputname: chooseCenterElements
         outputtype: function
     - group:
       - methodname: getAttributePeriodictableRow
@@ -191,7 +191,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: chooseCenterElement
+      - outputname: chooseCenterElements
         outputtype: function
     - group:
       - methodname: getAttributePeriodictableColumn
