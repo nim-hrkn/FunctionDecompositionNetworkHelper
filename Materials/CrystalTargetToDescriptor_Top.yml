@@ -5,8 +5,8 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: DirectlyGenerateCrystalDescriptor
-        methodtype: function
+      - methodname: (general)DirectCrystalDescriptorGeneration
+        methodtype: method
         outputname: CrystalDescriptor
         outputtype: parts
     - group:
