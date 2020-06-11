@@ -142,6 +142,7 @@ class DecompositionTree(object):
 
         connect_invis = self.dotoption["connect_invis"]
         print("connect_invis",connect_invis)
+
         
         for edge in edgelist:
             s = edge.split(",")
@@ -511,7 +512,7 @@ class taxologyWay(DecompositionTree):
                     link = self.get_keyvalue(linkline,"link")
                     nodetype = self.get_keyvalue(linkline,"nodetype")
 
-                    print(">",plinkname,plinktype,"->",name,nodetype,link,linktype)
+                    #print(">",plinkname,plinktype,"->",name,nodetype,link,linktype)
 
                     no_mf = False
 
@@ -527,10 +528,10 @@ class taxologyWay(DecompositionTree):
 
                     self.isanodelist.append(funcp)
                     self.edgelist.append(",".join([funcp,method1]))
-                    print("edge:funcp->method1",[funcp,method1])
+                    #print("edge:funcp->method1",[funcp,method1])
                     if linktype != "part-of":
                         self.edgelist.append(",".join([method1,func1]))
-                        print("edge:method1->func1",[method1,func1])
+                        #print("edge:method1->func1",[method1,func1])
                         
                     self.boxnodelist.append(method1)
                     self.excludenodelist.append(name)
@@ -592,13 +593,17 @@ class FDTree(object):
         else:
             self.dotoption = dotoption
 
-        self.dottree = dottree
+        self.dottree = None
         if dottree is None:
+            print("FDTree:init generate dotreee")
             self.dottree = Digraph(basename)
             self.dottree.graph_attr["rankdir"] = "TB;"
             #self.dottree.graph_attr["concentrate"] = "true;"
             self.dottree.graph_attr["concentrate"] = str(self.dotoption["concentrate"])+";"
             self.dottree.edge_attr["len"] = "2.2"
+        else:
+            self.dottree = dottree
+
 
 
     def apply(self,dataall,basename = None,make_png = True): 
@@ -608,11 +613,11 @@ class FDTree(object):
         dotoption = self.dotoption
         dottree = self.dottree
 
-        #print("DFTree:dotoption",dotoption)
 
         # options,  fix them now
-        no_wf = True
-        no_taxo = True
+        gen_wf = dotoption["gen_wf"]
+        gen_taxo = dotoption["gen_taxo"]
+        print("gen_wf,gen_taxo",gen_wf,gen_taxo)
 
         for key in dataall:
             data = dataall[key]
@@ -623,12 +628,14 @@ class FDTree(object):
                 wf.linktree()
                 dottree = wf.create_tree(dottree)
 
-                if not no_wf :
+                if gen_wf :
+                    print("Digraph, basename",basename)
                     dotwf = Digraph(basename)
                     dotwf.graph_attr["rankdir"] = "BT"
                     dotwf = wf.create_workflow(dotwf)
                     dotwf.format = "png"
                     dotwf.render(view=False)
+                    print("png is made.")
  
             elif key == "linkset":
                 taxo = taxologyWay(dotoption=dotoption)
@@ -638,12 +645,14 @@ class FDTree(object):
                     taxo.linktree()
                     dottree = taxo.create_tree(dottree)
 
-                if not no_taxo:
+                if gen_taxo:
+                    print("Digraph, basename",basename)
                     dottaxo = Digraph(basename)
                     dottaxo.graph_attr["rankdir"] = "TB"
                     dottaxo = taxo.create_dendrogram(dottaxo)
                     dottaxo.format = "png"
                     dottaxo.render(view=False)
+                    print("png is made.")
 
         if make_png:
             dottree.format="png"
@@ -681,11 +690,12 @@ if __name__ == "__main__":
     def parse_cmd_option():
         parser = argparse.ArgumentParser()
         parser.add_argument("filenames",nargs="*")
-        parser.add_argument("--no_wf",action="store_true")
-        parser.add_argument("--no_taxo",action="store_true")
+        parser.add_argument("--gen_wf",action="store_true")
+        parser.add_argument("--gen_taxo",action="store_true")
         parser.add_argument("--no_connect_invis",dest="connect_invis",action="store_true")
         parser.add_argument("--no_concentrate",dest="concentrate",action="store_false")
         parser.add_argument("--samerank",default=None)
+        parser.add_argument("--doit",default="all")
 
 
         cmdopt = parser.parse_args()
@@ -693,21 +703,23 @@ if __name__ == "__main__":
         #return cmdopt.filenames
         return cmdopt
 
-    def doit_each(namelist):
+    def doit_each(namelist,dotoption):
+
         dottree = Digraph("caus")
         dottree.graph_attr["rankdir"] = "TB"
-        dottree.graph_attr["concentrate"] = str(self.dotoption["concetrate"])+";"
+        dottree.graph_attr["concentrate"] = str(dotoption["concentrate"])+";"
 
         for filename in namelist:
 
             basename,ext = os.path.splitext(filename)
             #ext = ext[1:]
+            print("doit_each, basename",basename)
 
             with open(filename) as f:
                 dataall = yaml.safe_load(f)
 
-            fdtree = FDTree(dottree,basename)
-            dottree = fdtree.apply(dataall,make_png=False)
+            fdtree = FDTree(basename,dottree,dotoption=dotoption)
+            dottree = fdtree.apply(dataall,basename=basename,make_png=False)
        
         dottree.format="png"
         dottree.render(view=False)
@@ -722,10 +734,10 @@ if __name__ == "__main__":
     if len(namelist)==0:
         sys.exit(1)
 
-    doit = "all"
+    doit = cmdopt.doit
 
     if doit == "each":
-        doit_each(namelist)
+        doit_each(namelist,cmdopt.__dict__)
 
     elif doit == "all":
         

@@ -30,6 +30,13 @@ Importance= Materials/Importance_*.yml
 Group= Materials/Group_*.yml
 
 
+atomicproperty:
+	for i in Materials/AtomicProperty_*.yml; do \
+	  $(PROG) --doit=each --gen_wf --gen_taxo $$i; \
+    done
+	$(PROG) Materials/AtomicProperty_*.yml 
+	
+
 Understanding: $(UnderstandingFiles)
 	$(CONVERT) $(UnderstandingFiles)
 	$(PROG) a.yml
