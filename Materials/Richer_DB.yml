@@ -6,10 +6,10 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: MaterialsDatabase
-        methodtype: method
-        outputname: chooseMaterialsList
-        outputtype: function
+#      - methodname: MaterialsDatabase
+#        methodtype: method
+#        outputname: chooseMaterialsList
+#        outputtype: function
       - outputname: AttributeTargetOfNewMaterial
         outputtype: parts
       - outputname: AttributeCrystalOfNewMaterial
@@ -17,6 +17,8 @@ workflow:
     - group:
       - methodname: storeNewMaterialInMaterialsList
         methodtype: function
+        applymethodname: MaterialsDatabase
+        applymethodtype: method
         outputname: updateMaterialsList
         outputtype: function
 

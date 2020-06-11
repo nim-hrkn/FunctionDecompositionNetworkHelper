@@ -60,10 +60,10 @@ workflow:
     - group:
       - outputname: chooseMaterialsList
         outputtype: function
-      - outputname: chooseMaterialsCategory
-        outputtype: function
+#      - outputname: chooseMaterialsCategory
+#        outputtype: function
     - group:
-      - methodname: queryAttributeCrystalsOfExistingMaterials
+      - methodname: queryAttributeCrystalsOfMaterials
         methodtype: function
         outputname: existingCrystals
         outputtype: parts

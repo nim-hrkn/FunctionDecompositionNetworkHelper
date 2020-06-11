@@ -25,7 +25,7 @@ DescriptorGeneration: $(DescriptorGeneration)
 	$(PROG) $(DescriptorGeneration)
 	cp caus.gv.png /media/sf_local_pc
 #------------------------
-UnderstandingFiles= Materials/Understand_Taxo.yml sample/SparseModeling.yml sample/LinearModel_Taxo.yml sample/EXSparseModel*.yml  $(Importance) $(Group)
+UnderstandingFiles= Materials/Understand_Taxo.yml Materials/SparseModeling.yml Materials/LinearModel_Taxo.yml Materials/EXSparseModel*.yml  $(Importance) $(Group)
 Importance= Materials/Importance_*.yml
 Group= Materials/Group_*.yml
 
@@ -38,8 +38,8 @@ Understanding: $(UnderstandingFiles)
 	cp caus.gv.png /media/sf_local_pc
 
 #---------------------------
-distributionfiles=  distribution/*.yml
-sdistribution: 
+distributionfiles=  Distribution/*.yml
+SeparatedDistribution: 
 	$(PROG)   $(distributionfiles)
 	cp caus.gv.png /media/sf_local_pc
 #---------------------------
@@ -47,6 +47,63 @@ decisionTreefiles= DecisionTree/EnsembleTree.yml
 
 decisionTree: 
 	$(PROG) --samerank="updateDecisionTreeNode,generateDecisionTreeModel,getInitialStatusForDecisionTreeConstruction"   $(decisionTreefiles)
+	cp caus.gv.png /media/sf_local_pc
+
+PredictionAbilityFiles = PredictionAbility/*.xml
+
+predictionAbility:
+	$(PROG) $(PredictionAbilityFiles)
+	cp caus.gv.png /media/sf_local_pc
+	
+steepestDescentFiles = SteepestDescent/*.xml
+
+steepestDescent:
+	$(PROG) $(steepestDescentFiles)
+	cp caus.gv.png /media/sf_local_pc
+
+logmeshFiles = LogMesh/*.xml
+logMesh: 
+	$(PROG) $(logmeshFiles)
+	cp caus.gv.png /media/sf_local_pc
+
+metropolisFiles = Metropolis/*.xml
+metropolis: 
+	$(PROG) $(metropolisFiles)
+	cp caus.gv.png /media/sf_local_pc
+
+optFiles = Optimization/*.xml
+optimization: 
+	$(PROG) $(optFiles)
+	cp caus.gv.png /media/sf_local_pc
+
+umlfig11_1 = UMLbook/fig11_1.xml
+umlfig11_1: 
+	$(PROG) $(umlfig11_1)
+	cp caus.gv.png /media/sf_local_pc
+
+umlfig11_5 = UMLbook/fig11_11.xml
+umlfig11_5: 
+	$(PROG) $(umlfig11_5)
+	cp caus.gv.png /media/sf_local_pc
+
+umlfig11_6 = UMLbook/fig11_11.xml
+umlfig11_6: 
+	$(PROG) $(umlfig11_6)
+	cp caus.gv.png /media/sf_local_pc
+
+umlfig11_11 = UMLbook/fig11_11.xml
+umlfig11_11: 
+	$(PROG) $(umlfig11_11)
+	cp caus.gv.png /media/sf_local_pc
+
+umlfig11_12 = UMLbook/fig11_11.xml
+umlfig11_12: 
+	$(PROG) $(umlfig11_12)
+	cp caus.gv.png /media/sf_local_pc
+
+umlfig16_1 = UMLbook/fig16_1.xml
+umlfig16_1: 
+	$(PROG) $(umlfig16_1)
 	cp caus.gv.png /media/sf_local_pc
 
 
