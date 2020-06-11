@@ -46,62 +46,62 @@ SeparatedDistribution:
 decisionTreefiles= DecisionTree/EnsembleTree.yml
 
 decisionTree: 
-	$(PROG) --samerank="updateDecisionTreeNode,generateDecisionTreeModel,getInitialStatusForDecisionTreeConstruction"   $(decisionTreefiles)
+	$(PROG) --samerank="updateDecisionTreeNodeForNewSearch,generateDecisionTreeModel,getInitialStatusForDecisionTreeConstruction"   $(decisionTreefiles)
 	cp caus.gv.png /media/sf_local_pc
 
-PredictionAbilityFiles = PredictionAbility/*.xml
+PredictionAbilityFiles = PredictionAbility/*.yml
 
 predictionAbility:
 	$(PROG) $(PredictionAbilityFiles)
 	cp caus.gv.png /media/sf_local_pc
 	
-steepestDescentFiles = SteepestDescent/*.xml
+steepestDescentFiles = SteepestDescent/*.yml
 
 steepestDescent:
-	$(PROG) $(steepestDescentFiles)
+	$(PROG) --samerank="updatePositionForNewSearch,initializePositionForceDatabase" $(steepestDescentFiles)
 	cp caus.gv.png /media/sf_local_pc
 
-logmeshFiles = LogMesh/*.xml
+logmeshFiles = LogMesh/*.yml
 logMesh: 
-	$(PROG) $(logmeshFiles)
+	$(PROG) --samerank="updateLoopCounterForNewLoop,getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmeshFiles)
 	cp caus.gv.png /media/sf_local_pc
 
-metropolisFiles = Metropolis/*.xml
+metropolisFiles = Metropolis/*.yml
 metropolis: 
-	$(PROG) $(metropolisFiles)
+	$(PROG) --samerank="appendXAndGetNewX,initializeDatabase" $(metropolisFiles)
 	cp caus.gv.png /media/sf_local_pc
 
-optFiles = Optimization/*.xml
+optFiles = Optimization/*.yml
 optimization: 
-	$(PROG) $(optFiles)
+	$(PROG) --samerank="getTheBestVariable,updateVariableForNewSearch" $(optFiles)
 	cp caus.gv.png /media/sf_local_pc
 
-umlfig11_1 = UMLbook/fig11_1.xml
+umlfig11_1 = UMLbook/fig11_1.yml
 umlfig11_1: 
 	$(PROG) $(umlfig11_1)
 	cp caus.gv.png /media/sf_local_pc
 
-umlfig11_5 = UMLbook/fig11_11.xml
+umlfig11_5 = UMLbook/fig11_11.yml
 umlfig11_5: 
 	$(PROG) $(umlfig11_5)
 	cp caus.gv.png /media/sf_local_pc
 
-umlfig11_6 = UMLbook/fig11_11.xml
+umlfig11_6 = UMLbook/fig11_11.yml
 umlfig11_6: 
 	$(PROG) $(umlfig11_6)
 	cp caus.gv.png /media/sf_local_pc
 
-umlfig11_11 = UMLbook/fig11_11.xml
+umlfig11_11 = UMLbook/fig11_11.yml
 umlfig11_11: 
 	$(PROG) $(umlfig11_11)
 	cp caus.gv.png /media/sf_local_pc
 
-umlfig11_12 = UMLbook/fig11_11.xml
+umlfig11_12 = UMLbook/fig11_11.yml
 umlfig11_12: 
 	$(PROG) $(umlfig11_12)
 	cp caus.gv.png /media/sf_local_pc
 
-umlfig16_1 = UMLbook/fig16_1.xml
+umlfig16_1 = UMLbook/fig16_1.yml
 umlfig16_1: 
 	$(PROG) $(umlfig16_1)
 	cp caus.gv.png /media/sf_local_pc

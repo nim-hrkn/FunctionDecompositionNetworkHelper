@@ -124,7 +124,7 @@ workflow:
         methodtype: function
         applymethodname: Database
         applymethodtype: method
-        outputname: appendX
+        outputname: appendXAndGetNewX
         outputtype: function
 
 

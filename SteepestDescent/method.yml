@@ -5,7 +5,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: Database
+      - methodname: PositionForceDatabase
         methodtype: method
         outputname: getPreviousData
         outputtype: function
@@ -42,18 +42,24 @@ workflow:
         outputtype: function
       - outputname: getCurrentPosition
         outputtype: function
-#      - methodname: Database
+#      - methodname: PositionForceDatabase
 #        methodtype: method
 #        outputname: chooseDatabase
 #        outputtype: function
     - group:
+      - methodname: nonZeroForcePosition
+        methodtype: function
+        outputname: getStablerPosition
+        outputtype: function
+    - group:
       - methodname: updatePositionAndForceOnDatabase
         methodtype: function
-        applymethodname: Database
+        applymethodname: PositionForceDatabase
         applymethodtype: method
-        outputname: makePositionStaber
+        outputname: updatePositionForNewSearch
         outputtype: function
-        
+
+
   - blockname: steepest descent
     order: workflow
     list:
@@ -74,6 +80,29 @@ workflow:
       - methodname: ZeroForcePosition
         methodtype: method
         outputname: getStablePosition
+        outputtype: function
+
+  - blockname: initialize steepest descent
+    order: workflow
+    list:
+    - group:
+      - methodname: initialPosition
+        methodtype: method
+        outputname: getInitialPosition
+        outputtype: function
+    - group:
+      - methodname: Force
+        methodtype: method
+        outputname: getForce
+        outputtype: function
+      - outputname: getInitialPosition
+        outputtype: function
+    - group:
+      - methodname: initializeDatabase
+        methodtype: method
+        applymethodname: PositionForceDatabase
+        applymethodtype: method
+        outputname: initializePositionForceDatabase
         outputtype: function
 
 

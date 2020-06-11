@@ -6,10 +6,12 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: getFirstCounterValue
+      - methodname: FirstCounterValue
+        methodtype:
+        outputname: getFirstCounterValue
         outputtype: function
     - group:
-      - methodname: setCounterTheFirstValue
+      - methodname: initializeLoopCounterDatabase
         methodtype: function
         applymethodname: LoopCounterDatabase
         outputname: InitializeCounter
@@ -49,7 +51,9 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: getInitLogmeshValue
+      - methodname: InitialLogmeshDatabaseValues
+        methodtype: method
+        outputname: getInitLogmeshValue
         outputtype: function
     - group:
       - methodname: LogmeshValueDatabaseInit
@@ -103,7 +107,7 @@ workflow:
         methodtype: function
         applymethodname: LoopCounterDatabase
         applymethodtype: method
-        outputname: updateLoopCounter
+        outputname: updateLoopCounterForNewLoop
         outputtype: function
 
 
@@ -123,7 +127,7 @@ workflow:
         methodtype: parts
         applymethodname: LogmeshValueDatabase
         applymethodtype: method
-        outputname: getLogmeshAValueSet
+        outputname: getLogmeshValueSet
         outputtype: function
 
 #  - blockname: hyperparameter Counter==Last

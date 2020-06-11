@@ -80,7 +80,7 @@ workflow:
         methodtype: function
         applymethodname: DecisionTreeDatabase
         applymethodtype: method
-        outputname: updateDecisionTreeNode
+        outputname: updateDecisionTreeNodeForNewSearch
         outputtype: function
 
 #  - blockname: decisiontree
