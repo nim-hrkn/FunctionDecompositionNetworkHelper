@@ -11,20 +11,18 @@ workflow:
         outputname: getinitialX
         outputtype: function
     - group:
-      - methodname: setDatabase
-        methodtype: method
-        applymethodname: Database
-        applymethodtype: method
-        outputname: initializeDatabase
+      - methodname: initializeX
+        methodtype: function
+#        applymethodname: Database
+#        applymethodtype: method
+        outputname: getLastX
         outputtype: function
    
   - blockname: Metripolis
     order: workflow
     list:
     - group:
-      - methodname: Database
-        methodtype: method
-        outputname: getLastX
+      - outputname: getLastX
         outputtype: function
     - group:
       - methodname: Q(x'_xt)
@@ -122,9 +120,12 @@ workflow:
     - group:
       - methodname: appendXtoDatabase
         methodtype: function
-        applymethodname: Database
-        applymethodtype: method
-        outputname: appendXAndGetNewX
+        outputname: updateDatabase
+        outputtype: function
+    - group:
+      - methodname: LastX
+        methodtype: method
+        outputname: getLastX
         outputtype: function
 
 

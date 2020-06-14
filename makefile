@@ -51,10 +51,15 @@ SeparatedDistribution:
 	cp caus.gv.png /media/sf_local_pc
 #---------------------------
 decisionTreefiles= DecisionTree/EnsembleTree.yml
-
 decisionTree: 
 	$(PROG) --samerank="updateDecisionTreeNodeForNewSearch,generateDecisionTreeModel,getInitialStatusForDecisionTreeConstruction"   $(decisionTreefiles)
 	cp caus.gv.png /media/sf_local_pc
+
+decisionTree2files= DecisionTree2/EnsembleTree.yml
+decisionTree2: 
+	$(PROG) --samerank="generateDecisionTreeModel"  $(decisionTree2files)
+	cp caus.gv.png /media/sf_local_pc
+
 
 PredictionAbilityFiles = PredictionAbility/*.yml
 
@@ -65,17 +70,29 @@ predictionAbility:
 steepestDescentFiles = SteepestDescent/*.yml
 
 steepestDescent:
-	$(PROG) --samerank="getStablePosition,updatePositionForNewSearch,initializePositionForceDatabase" $(steepestDescentFiles)
+	$(PROG) --samerank="getStablePosition,getStablerPosition" $(steepestDescentFiles)
 	cp caus.gv.png /media/sf_local_pc
 
 logmeshFiles = LogMesh/*.yml
 logMesh: 
-	$(PROG) --samerank="updateLoopCounterForNewExecution,getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmeshFiles)
+	$(PROG) --samerank="getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmeshFiles)
 	cp caus.gv.png /media/sf_local_pc
+
+logmesh2Files = LogMesh2/*.yml
+logMesh2: 
+	$(PROG) --samerank="getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmesh2Files)
+	cp caus.gv.png /media/sf_local_pc
+
+logmesh3Files = LogMesh3/*.yml
+logMesh3: 
+	$(PROG) --samerank="getAllLogmeshValues" $(logmesh3Files)
+	cp caus.gv.png /media/sf_local_pc
+
+
 
 metropolisFiles = Metropolis/*.yml
 metropolis: 
-	$(PROG) --samerank="appendXAndGetNewX,initializeDatabase" $(metropolisFiles)
+	$(PROG) --samerank="updateDatabase" $(metropolisFiles)
 	cp caus.gv.png /media/sf_local_pc
 
 optFiles = Optimization/*.yml

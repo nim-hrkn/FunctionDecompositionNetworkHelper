@@ -5,8 +5,8 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: PositionForceDatabase
-        methodtype: method
+      - methodname: updateData
+        methodtype: function
         outputname: getPreviousData
         outputtype: function
     - group:
@@ -52,11 +52,11 @@ workflow:
         outputname: getStablerPosition
         outputtype: function
     - group:
-      - methodname: updatePositionAndForceOnDatabase
+      - methodname: updateData
         methodtype: function
-        applymethodname: PositionForceDatabase
-        applymethodtype: method
-        outputname: updatePositionForNewSearch
+#        applymethodname: PositionForceDatabase
+#        applymethodtype: method
+        outputname: getPreviousData
         outputtype: function
 
 
@@ -98,11 +98,11 @@ workflow:
       - outputname: getInitialPosition
         outputtype: function
     - group:
-      - methodname: initializeDatabase
-        methodtype: method
-        applymethodname: PositionForceDatabase
-        applymethodtype: method
-        outputname: initializePositionForceDatabase
+      - methodname: initializeData
+        methodtype: function
+#        applymethodname: PositionForceDatabase
+#        applymethodtype: method
+        outputname: getPreviousData
         outputtype: function
 
 

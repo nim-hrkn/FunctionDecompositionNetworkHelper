@@ -6,15 +6,19 @@ workflow:
     order: workflow
     list:
     - group:
+      - methodname: logmeshVector
+        methodtype: method
+        outputname: initialzieLogmeshVector
+        outputtype: function
       - methodname: FirstCounterValue
         methodtype: method
         outputname: getFirstCounterValue
         outputtype: function
     - group:
-      - methodname: initializeCounter
+      - methodname: initializeData
         methodtype: function
 #        applymethodname: LoopCounterDatabase
-        outputname: getPreviousCounter
+        outputname: getCurrentCounter
         outputtype: function
  
   - blockname: hyperparameter loop
@@ -36,7 +40,7 @@ workflow:
     - group:
       - methodname: Logmesh
         methodtype: function
-        outputname: getLogmeshAValue
+        outputname: getLogmeshValue
         outputtype: function
 #    - group:
 #      - methodname: incrementCounter
@@ -45,39 +49,37 @@ workflow:
 #        outputtype: function
 
 
-  - blockname: Logmesh database init
-    order: workflow
-    list:
-    - group:
-      - methodname: InitialLogmeshDatabaseValues
-        methodtype: method
-        outputname: getInitLogmeshValue
-        outputtype: function
-    - group:
-      - methodname: LogmeshValueDatabaseInit
-        methodtype: method
-        applymethodname: LogmeshValueDatabase
-        applymethodtype: method
-        outputname: InitializeLogmeshValueDatabase
-        outputtype: function
+#  - blockname: Logmesh database init
+#    order: workflow
+#    list:
+#    - group:
+#      - outputname: generateLogmeshDatabase
+#        outputtype: function
+#    - group:
+#      - methodname: LogmeshValueDatabaseInit
+#        methodtype: method
+#        applymethodname: LogmeshValueDatabase
+#        applymethodtype: method
+#        outputname: InitializeLogmeshValueDatabase
+#        outputtype: function
 
 
   - blockname: hyperparameter Counter<Last
     order: workflow
     list:
     - group:
-      - outputname: getLogmeshAValue
+      - outputname: getLogmeshValue
         outputtype: function
 #      - methodname: LogmeshValueDatabase
 #        methodtype: method
 #        outputname: chooseLogmeshValueDatabase
 #        outputtype: function
     - group:
-      - methodname: appendLogmeshToDatabase
+      - methodname: appendLogmeshValueToVector
         methodtype: function
-        applymethodname: LogmeshValueDatabase
-        applymethodtype: method
-        outputname: updateLogmeshSet
+##        applymethodname: LogmeshValueDatabase
+##        applymethodtype: method
+        outputname: updateLogmeshVector
         outputtype: function
 
   - blockname: hyperparameter Counter<Last
@@ -85,6 +87,22 @@ workflow:
     list:
     - group:
       - outputname: getCurrentCounter
+        outputtype: function
+      - outputname: updateLogmeshVector
+        outputtype: function
+    - group:
+      - methodname: getCounterAndLogmeshValue
+        methodtype: function
+        outputname: updateData
+        outputtype: function
+
+
+
+  - blockname: hyperparameter Counter<Last
+    order: workflow
+    list:
+    - group:
+      - outputname: updateData
         outputtype: function
 #    - group:
 #      - methodname: nextCounter
@@ -113,7 +131,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: getCurrentCounter
+      - outputname: updateData
         outputtype: function
     - group:
       - methodname: Counter==Last
@@ -121,12 +139,29 @@ workflow:
         outputname: LastCounter
         outputtype: parts
     - group:
-      - methodname: AllLogmesh
-        methodtype: parts
-        applymethodname: LogmeshValueDatabase
-        applymethodtype: method
-        outputname: getLogmeshValueSet
+      - methodname: AllValuesInLogmeshVector
+        methodtype: method
+#        applymethodname: LogmeshValueDatabase
+#        applymethodtype: method
+        outputname: getAllLogmeshValues
         outputtype: function
+
+#  - blockname: hyperparameter Counter==Last
+#    order: workflow
+#    list:
+#    - group:
+#      - outputname: getAllLogmesh
+#        outputtype: function
+#    - group:
+#      - methodname: AllLogmesh
+#        methodtype: method
+##        applymethodname: LogmeshValueDatabase
+##        applymethodtype: method
+#        outputname: getLogmeshValueSet
+#        outputtype: function
+
+
+
 
 #  - blockname: hyperparameter Counter==Last
 #    order: workflow
