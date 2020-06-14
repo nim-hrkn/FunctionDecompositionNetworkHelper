@@ -65,12 +65,12 @@ predictionAbility:
 steepestDescentFiles = SteepestDescent/*.yml
 
 steepestDescent:
-	$(PROG) --samerank="updatePositionForNewSearch,initializePositionForceDatabase" $(steepestDescentFiles)
+	$(PROG) --samerank="getStablePosition,updatePositionForNewSearch,initializePositionForceDatabase" $(steepestDescentFiles)
 	cp caus.gv.png /media/sf_local_pc
 
 logmeshFiles = LogMesh/*.yml
 logMesh: 
-	$(PROG) --samerank="updateLoopCounterForNewLoop,getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmeshFiles)
+	$(PROG) --samerank="updateLoopCounterForNewExecution,getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmeshFiles)
 	cp caus.gv.png /media/sf_local_pc
 
 metropolisFiles = Metropolis/*.yml

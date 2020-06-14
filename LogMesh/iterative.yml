@@ -107,7 +107,7 @@ workflow:
         methodtype: function
         applymethodname: LoopCounterDatabase
         applymethodtype: method
-        outputname: updateLoopCounterForNewLoop
+        outputname: updateLoopCounterForNewExecution
         outputtype: function
 
 
