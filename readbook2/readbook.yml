@@ -6,19 +6,19 @@ workflow:
     order: workflow
     list:
     - group:
-      - methodname: ElectricFied
+      - methodname: ElectronHoleCreation
         methodtype: method
         outputname: applyElectricFieldToMaterial
         outputtype: function
     - group:
-      - methodname: ElectronHoleCreation
+      - methodname: reconnectElectronAndhole
         methodtype: method
-        outputname: ElectronAndHole
+        outputname: StateTransition
         outputtype: parts
     - group:
-      - methodname: reconnectElectronAndhole
-        methodtype: function
-        outputname: light
+      - methodname: Luminescence
+        methodtype: method
+        outputname: LightFromMaterial
         outputtype: parts
 
   - blockname: 
@@ -37,7 +37,7 @@ workflow:
     - group:
       - methodname: RadiationLight
         methodtype: method
-        outputname: light
+        outputname: LightFromMaterial
         outputtype: parts
 
 

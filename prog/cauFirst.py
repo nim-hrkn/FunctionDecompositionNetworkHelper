@@ -365,6 +365,11 @@ class workflowWay(DecompositionTree):
             self.wf_methodlist = list(set(self.wf_methodlist))
             self.wf_sameranklist = list(set(self.wf_sameranklist))
 
+    def fix_dotlabel(self,s):
+        s = s.replace("<","\\<")
+        s = s.replace(">","\\>")
+        return s
+
     def create_workflow(self,dot=None):
         if dot is None:
             dot = graphiz(self.basename)
@@ -386,10 +391,10 @@ class workflowWay(DecompositionTree):
                 dot.edge(edge1,edge2,style=invisstyle)
         for node in self.wf_objlist:
             s = node.split(",")
-            dot.node(s[0],shape="record",color="white",label=s[1]) 
+            dot.node(s[0],shape="record",color="white",label=self.fix_dotlabel(s[1]) )
         for node in self.wf_methodlist:
             s = node.split(",")
-            dot.node(s[0],shape="record",label=s[1]) 
+            dot.node(s[0],shape="record",label=self.fix_dotlabel(s[1]) )
         for samerank in self.wf_sameranklist:
             s = samerank.split(",")
             with dot.subgraph() as sub:

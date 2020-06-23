@@ -1,9 +1,9 @@
 
-CrystalTarget= Materials/CrystalTargetToDescriptor_*.yml
-TargetValuePrediction= Materials/TheoreticalTargetValuePrediction_*.yml
-AtomicProperty= Materials/AtomicProperty_Caus*.yml
-MaterialsList= Materials/MaterialsList_*.yml
-AtomicCoordinate2Descriptor= Materials/AtomicCoordinate2Descriptor_*.yml
+CrystalTarget= Materials2/CrystalTargetToDescriptor_*.yml
+TargetValuePrediction= Materials2/TheoreticalTargetValuePrediction_*.yml
+AtomicProperty= Materials2/AtomicProperty_Caus*.yml
+MaterialsList= Materials2/MaterialsList_*.yml
+AtomicCoordinate2Descriptor= Materials2/AtomicCoordinate2Descriptor_*.yml
 
 PROG= prog/cauFirst.py # --no_wf --no_taxo --no_connect_invis --concentrate
 
@@ -12,7 +12,7 @@ CONVERT= prog/unitfiletest.py
 default: decisionTree
 
 #------------------------
-Prediction= $(TargetValuePrediction)  $(MaterialsList) Materials/Richer_DB.yml
+Prediction= $(TargetValuePrediction)  $(MaterialsList) Materials2/Richer_DB.yml
 Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
 	$(CONVERT) $(Prediction)
 	$(PROG) a.yml
@@ -25,16 +25,16 @@ DescriptorGeneration: $(DescriptorGeneration)
 	$(PROG) $(DescriptorGeneration)
 	cp caus.gv.png /media/sf_local_pc
 #------------------------
-UnderstandingFiles= Materials/Understand_Taxo.yml Materials/SparseModeling.yml Materials/LinearModel_Taxo.yml Materials/EXSparseModel*.yml  $(Importance) $(Group)
-Importance= Materials/Importance_*.yml
-Group= Materials/Group_*.yml
+UnderstandingFiles= Materials2/Understand_Taxo.yml Materials2/SparseModeling.yml Materials2/LinearModel_Taxo.yml Materials2/EXSparseModel*.yml  $(Importance) $(Group)
+Importance= Materials2/Importance_*.yml
+Group= Materials2/Group_*.yml
 
 
 atomicproperty:
-	for i in Materials/AtomicProperty_*.yml; do \
+	for i in Materials2/AtomicProperty_*.yml; do \
 	  $(PROG) --doit=each --gen_wf --gen_taxo $$i; \
     done
-	$(PROG) Materials/AtomicProperty_*.yml 
+	$(PROG) Materials2/AtomicProperty_*.yml 
 	
 
 Understanding: $(UnderstandingFiles)
@@ -145,8 +145,14 @@ umlfig16_1:
 	$(PROG) $(umlfig16_1)
 	cp caus.gv.png /media/sf_local_pc
 
+readBook2files = readbook2/readbook*.yml
+readBook2: 
+	$(PROG) --doit=each --gen_wf --gen_taxo $(readBook2files)
+	$(PROG) $(readBook2files)
+	cp caus.gv.png /media/sf_local_pc
+
 
 clean:
 	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.png
-	rm -f Materials/*.gv sample/*.gv.png 
+	rm -f Materials2/*.gv sample/*.gv.png 
 
