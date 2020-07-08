@@ -5,9 +5,9 @@ AtomicProperty= Materials2/AtomicProperty_Caus*.yml
 MaterialsList= Materials2/MaterialsList_*.yml
 AtomicCoordinate2Descriptor= Materials2/AtomicCoordinate2Descriptor_*.yml
 
-PROG= prog/cauFirst.py # --no_wf --no_taxo --no_connect_invis --concentrate
+PROG= ../prog/cauFirst.py # --no_wf --no_taxo --no_connect_invis --concentrate
 
-CONVERT= prog/unitfiletest.py 
+CONVERT= ../prog/unitfiletest.py 
 
 default: decisionTree
 

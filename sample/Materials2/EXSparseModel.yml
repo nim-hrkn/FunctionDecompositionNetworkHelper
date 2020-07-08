@@ -1,0 +1,106 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - outputname: AllRegressionPredictionModels
+        outputtype: parts
+    - group:
+      - methodname: chooseModelByMaxScore
+        methodtype: function
+        outputname: SparseModeling
+        outputtype: parts
+
+  - blockname: ESsparseLasso
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseFeatureCombinationsOfTrainingData
+        outputtype: function
+    - group:
+      - methodname: generateAllPredictionModels
+        methodtype: function
+        outputname: AllRegressionPredictionModels
+        outputtype: parts
+
+
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: EXFeatureCombinations
+        methodtype: method
+        outputname: chooseFeatureCombinationsOfTrainingData
+        outputtype: function
+
+
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: AttributeDescriptorFeatures
+        methodtype:
+        outputname: DescriptorOfAllData
+        outputtype: parts
+
+
+
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: greedyBestModel(general)
+        methodtype: method
+        outputname: greedyBestModel(general)
+        outputtype: parts
+
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: LassoModel
+        methodtype: method
+        outputname: LassoModel
+        outputtype: parts
+
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: RidgeModel
+        methodtype: method
+        outputname: RidgeModel
+        outputtype: parts
+
+
+  - blockname: ESsparse
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: NopenaltyLinearModel
+        methodtype: method
+        outputname: NopenaltyLinearModel
+        outputtype: parts
+
+
+

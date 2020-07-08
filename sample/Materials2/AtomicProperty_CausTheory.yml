@@ -1,0 +1,200 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: Crystal
+        outputtype: parts
+      - outputname: chooseCenterAtoms
+        outputtype: function
+    - group:
+      - methodname: AttributeElement
+        methodtype: parts
+        outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: AttributeNumberOfElectron
+        methodtype: parts
+        outputname: numberOfElectron
+        outputtype: parts
+    - group:
+      - methodname: DiracSchroedingerEq
+        methodtype: method
+        outputname: EigenWavefunction
+        outputtype: parts
+      - methodname: DiracSchroedingerEq
+        methodtype: method
+        outputname: ElectricConfiguration
+        outputtype: parts
+    - group:
+      - methodname: constructGroundStateWavefunction
+        methodtype: function
+        outputname: GroundStateWavefunction
+        outputtype: parts
+
+  - blockname: orbitalEnergy
+    order: workflow
+    list:
+    - group:
+      - outputname: EigenWavefunction
+        outputtype: parts
+    - group:
+      - methodname: AttributesOrbitalEnergy
+        methodtype: function
+        outputname: TheoreticalEnergy
+        outputtype: parts
+      - methodname: AttributepOrbitalEnergy
+        methodtype: function
+        outputname: TheoreticalEnergy
+        outputtype: parts
+      - methodname: AttributedOrbitalEnergy
+        methodtype: function
+        outputname: TheoreticalEnergy
+        outputtype: parts
+      - methodname: AttributefOrbitalEnergy
+        methodtype: function
+        outputname: TheoreticalEnergy
+        outputtype: parts
+        
+  - blockname: averagedmass
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: AttributeAveragedMass
+        methodtype: parts
+        outputname: averagedMass
+        outputtype: parts
+      - methodname: AttributeIsotopeMass
+        methodtype: parts
+        outputname: isotopeMass
+        outputtype: parts
+      - methodname: AttributeNumberOfElectron
+        methodtype: parts
+        outputname: numberOfElectron
+        outputtype: parts
+
+
+  - blockname: totalenergy
+    order: workflow
+    list:
+    - group:
+      - outputname: GroundStateWavefunction
+        outputtype: parts
+    - group:
+      - methodname: AttributeTotalenergy
+        methodtype: parts
+        outputname: TheoreticalEnergy
+        outputtype: parts
+  - blockname: angularMoment
+    order: workflow
+    list:
+    - group:
+      - outputname: ElectricConfiguration
+        outputtype: parts
+    - group:
+      - methodname: AttributeS3dAngularMoment
+        methodtype: method
+        outputname: 3dAngularMomentum
+        outputtype: parts
+      - methodname: AttributeL3dAngularMoment
+        methodtype: method
+        outputname: 3dAngularMomentum
+        outputtype: parts
+      - methodname: AttributeJ3dAngularMoment
+        methodtype: method
+        outputname: 3dAngularMomentum
+        outputtype: parts
+  - blockname: J4fangularMoment
+    order: workflow
+    list:
+    - group:
+      - outputname: ElectricConfiguration
+        outputtype: parts
+    - group:
+      - methodname: AttributeJ4fAngularMoment
+        methodtype: method
+        outputname: J4f
+        outputtype: parts
+  - blockname: J4fangularMomentProjection
+    order: workflow
+    list:
+    - group:
+      - methodname: AttributeJ4fAngularMoment
+        methodtype: method
+        outputname: J4f
+        outputtype: parts
+      - methodname: getgJ
+        methodtype: function
+        outputname: gJ
+        outputtype: parts
+    - group:
+      - methodname: (gJ-1)J4f
+        methodtype: parts
+        outputname: AttributeJ4fSpinDirectionProjection
+        outputtype: parts
+      - methodname: (2-gJ)J4f
+        methodtype: parts
+        outputname: AttributeJ4fOrbitalDirectionProjection
+        outputtype: parts
+  - blockname: r2
+    order: workflow
+    list:
+    - group:
+      - outputname: GroundStateWavefunction
+        outputtype: parts
+    - group:
+      - methodname: AttributeR2Length
+        methodtype: parts
+        outputname: TheoreticalLength
+        outputtype: parts
+
+  - blockname: r2_L
+    order: workflow
+    list:
+    - group:
+      - outputname: EigenWavefunction
+        outputtype: parts
+    - group:
+      - methodname: AttributesOrbitalR2Length
+        methodtype: method
+        outputname: TheoreticalLength
+        outputtype: parts
+      - methodname: AttributepOrbitalR2Length
+        methodtype: method
+        outputname: TheoreticalLength
+        outputtype: parts
+      - methodname: AttributedOrbitalR2Length
+        methodtype: method
+        outputname: TheoreticalLength
+        outputtype: parts
+      - methodname: AttributefOrbitalR2Length
+        methodtype: method
+        outputname: TheoreticalLength
+        outputtype: parts
+  - blockname: periodictable
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: getAttributePeriodictableRow
+        methodtype: function
+        outputname: PeriodictableRow
+        outputtype: parts
+  - blockname: periodictable
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: getAttributePeriodictableColumn
+        methodtype: function
+        outputname: PeriodictableColumn
+        outputtype: parts
