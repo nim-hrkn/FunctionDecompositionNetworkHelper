@@ -1,4 +1,27 @@
 # FunctionalDecompositionTreeHelper
-needs graphviz.
+needs graphviz inside.
 
 version 0.2.6
+
+# install & uninstall
+
+## to install
+```
+$ python setup.py install
+```
+
+## to uninstall
+```
+$ python setup.py install --record=installedfiles.txt
+```
+and delete files in installedfiles.txt
+
+# sample
+```
+$ cd sample
+```
+You can select a number of cases, e.g.,
+```
+$ make decisionTree
+```
+Please read makefile for possible target of the makefile.

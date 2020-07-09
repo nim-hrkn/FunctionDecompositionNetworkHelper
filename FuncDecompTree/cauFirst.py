@@ -631,6 +631,7 @@ class workflowWay(DecompositionTree):
 class taxologyWay(DecompositionTree):
     """make is-a, part-of diagram
     """
+
     def __init__(self, basename="taxo", dotoption=None):
 
         super().__init__(basename, dotoption)
@@ -641,6 +642,19 @@ class taxologyWay(DecompositionTree):
         self.data = None
 
     def load(self, filename=None, data=None):
+        """load filename or use dataall
+
+        Parameters
+        ----------
+        filename: filename of json or None
+            read filename if it is not None
+
+        data: dict
+
+        Returns
+        -------
+        None
+        """
         if filename is not None and data is None:
             with open(filename) as f:
                 data = yaml.safe_load(f)
@@ -652,6 +666,17 @@ class taxologyWay(DecompositionTree):
             raise
 
     def create_dendrogram(self, dot=None):
+        """create dendrogram diagram
+
+        Parameters
+        ----------
+        dot: Digraph object or None
+            create Digraph if it is None
+
+        Returns
+        -------
+        Digraph object
+        """
         den_edgelist = self.den_edgelist
         if dot is None:
             dot = Digraph(self.basename)
@@ -665,6 +690,17 @@ class taxologyWay(DecompositionTree):
         return dot
 
     def get_keyvalue(self, line, key):
+        """return value of the key in line dict
+
+        Parameters
+        ----------
+        line: dict
+        key: key of the dict
+
+        Returns
+        -------
+        value of the key
+        """
         if key in line.keys():
             value = line[key]
         else:
@@ -672,6 +708,25 @@ class taxologyWay(DecompositionTree):
         return value
 
     def gen_connection_link_link(self, linklist, plinktype=None, plinkname=None, pnodetype=None):
+        """generate connection among linklist
+
+        Parameters
+        ----------
+        linklist: a list of link
+
+        plinktype: string
+            type of the parent link
+
+        plinkname: string
+            name of the parent link
+
+        pnodetype: string
+            name of the parent node
+
+        Reeturns
+        --------
+        None
+        """
         if linklist is None:
             return
         if plinkname is not None:
@@ -796,6 +851,16 @@ class taxologyWay(DecompositionTree):
                 raise
 
     def linktree(self):
+        """generate link tree
+
+        Parameters
+        ----------
+        None
+
+        Returns
+        -------
+        None
+        """
         data = self.data
         linktype = self.get_keyvalue(data, "linktype")
         if "link" in list(data.keys()):
@@ -803,7 +868,27 @@ class taxologyWay(DecompositionTree):
 
 
 class FDTree(object):
+    """Functional Decomposition Tree class
+    """
+
     def __init__(self, basename="caus", dottree=None, dotoption=None):
+        """initilization
+
+        Parameters
+        ----------
+        basename: string
+            name of the Digraph
+
+        dottree: Digraph object or None
+            create Digraph if it is None
+
+        dotoption: dict
+            options to pass Digraph
+
+        Returns
+        -------
+        None
+        """
         self.dotoption = None
         if dotoption is None:
             self.dotoption = {"nodelabel_length": 15}
@@ -821,6 +906,23 @@ class FDTree(object):
             self.dottree = dottree
 
     def apply(self, dataall, basename=None, make_png=True):
+        """make Digraph diagram
+
+        Parameters
+        ----------
+        dataall: diagram data
+            it is read from json filename
+
+        basename: string
+            name of Digraph
+
+        make_png: boolean
+            create png if True
+
+        Returns
+        -------
+        Digraph object
+        """
         if basename is None:
             basename = "caus"
 
@@ -874,7 +976,17 @@ class FDTree(object):
         return dottree
 
     def apply_files(self, namelist):
+        """execute .apply() from files in namelist
 
+        Parameters
+        ----------
+        namelist: list
+            a list of files to read
+
+        Returns
+        -------
+        None
+        """
         # dotoption = self.dotoption
         dottree = self.dottree
 
