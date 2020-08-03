@@ -2,26 +2,26 @@ workflow:
   format: v2.3
   block:
 
-  - blockname: 
+  - blockname:  Luminescence
     order: workflow
     list:
     - group:
-      - methodname: ElectronHoleCreation
-        methodtype: method
-        outputname: applyElectricFieldToMaterial
-        outputtype: function
-    - group:
-      - methodname: reconnectElectronAndhole
-        methodtype: method
-        outputname: StateTransition
+      - methodname: semiconductorHeteroJunction
+        methodtype: parts
+        outputname: ElectronHole
         outputtype: parts
+    - group:
+      - methodname: electricField
+        methodtype: method
+        outputname: reconnectElectronAndhole
+        outputtype: function
     - group:
       - methodname: Luminescence
         methodtype: method
         outputname: LightFromMaterial
         outputtype: parts
 
-  - blockname: 
+  - blockname: radiation
     order: workflow
     list:
     - group:
