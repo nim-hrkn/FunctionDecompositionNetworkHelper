@@ -143,6 +143,13 @@ readBook2: $(readBook2dir)/readbook*.yml
 	$(PROG) $^
 	cp caus.gv.png $(readBook2dir)
 
+readBook3dir = readbook3
+readBook3: $(readBook3dir)/readbook*.yml
+	$(PROG) --doit=each --gen_wf --gen_taxo $^
+	$(PROG) $^
+	cp caus.gv.png $(readBook3dir)
+
+
 clean:
 	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.png
 	rm -f Materials2/*.gv sample/*.gv.png 
