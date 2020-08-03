@@ -1,158 +1,151 @@
 
-CrystalTarget= Materials2/CrystalTargetToDescriptor_*.yml
-TargetValuePrediction= Materials2/TheoreticalTargetValuePrediction_*.yml
-AtomicProperty= Materials2/AtomicProperty_Caus*.yml
-MaterialsList= Materials2/MaterialsList_*.yml
-AtomicCoordinate2Descriptor= Materials2/AtomicCoordinate2Descriptor_*.yml
 
 PROG= ../prog/cauFirst.py # --no_wf --no_taxo --no_connect_invis --concentrate
-
 CONVERT= ../prog/unitfiletest.py 
 
 default: decisionTree
 
+MaterialsDir = Materials2
+
 #------------------------
-Prediction= $(TargetValuePrediction)  $(MaterialsList) Materials2/Richer_DB.yml
-Prediction:  $(TargetValuePrediction)  $(MaterialsList) 
-	$(CONVERT) $(Prediction)
+TargetValuePrediction= $(MaterialsDir)/TheoreticalTargetValuePrediction_*.yml
+MaterialsList= $(MaterialsDir)/MaterialsList_*.yml
+Prediction:  $(TargetValuePrediction)  $(MaterialsList)  Materials2/Richer_DB.yml
+	$(CONVERT) $^
 	$(PROG) a.yml
 	mv caus.gv.png a.png 
-	$(PROG) --samerank="updateMaterialsList,get_NewMaterialSatisfyingSelectionCriterion"  $(Prediction)
-	cp caus.gv.png /media/sf_local_pc
+	$(PROG) --samerank="updateMaterialsList,get_NewMaterialSatisfyingSelectionCriterion"  $^
+	cp caus.gv.png $(MaterialsDir)/Prediction.png
+
 #---------------------------
-DescriptorGeneration= $(CrystalTarget)  $(AtomicProperty)  $(AtomicCoordinate2Descriptor)
-DescriptorGeneration: $(DescriptorGeneration)
-	$(PROG) $(DescriptorGeneration)
-	cp caus.gv.png /media/sf_local_pc
+AtomicProperty= $(MaterialsDir)/AtomicProperty_Caus*.yml
+AtomicCoordinate2Descriptor= $(MaterialsDir)/AtomicCoordinate2Descriptor_*.yml
+CrystalTarget= $(MaterialsDir)/CrystalTargetToDescriptor_*.yml
+DescriptorGeneration: $(CrystalTarget)  $(AtomicProperty)  $(AtomicCoordinate2Descriptor)
+	$(PROG) $^
+	cp caus.gv.png $(MaterialsDir)/DescriptorGeneration.png
+
 #------------------------
-UnderstandingFiles= Materials2/Understand_Taxo.yml Materials2/SparseModeling.yml Materials2/LinearModel_Taxo.yml Materials2/EXSparseModel*.yml  $(Importance) $(Group)
-Importance= Materials2/Importance_*.yml
-Group= Materials2/Group_*.yml
-
-
 atomicproperty:
 	for i in Materials2/AtomicProperty_*.yml; do \
 	  $(PROG) --doit=each --gen_wf --gen_taxo $$i; \
     done
 	$(PROG) Materials2/AtomicProperty_*.yml 
-	
+	cp caus.gv.png $(MaterialsDir)/atomicproperty.png
 
-Understanding: $(UnderstandingFiles)
-	$(CONVERT) $(UnderstandingFiles)
+Importance= Materials2/Importance_*.yml
+Group= Materials2/Group_*.yml
+Understanding: Materials2/Understand_Taxo.yml Materials2/SparseModeling.yml Materials2/LinearModel_Taxo.yml Materials2/EXSparseModel*.yml  $(Importance) $(Group)
+	$(CONVERT) $^
 	$(PROG) a.yml
 	mv caus.gv.png a.png 
-	$(PROG)  $(UnderstandingFiles)
-	cp caus.gv.png /media/sf_local_pc
+	$(PROG)  $^
+	cp caus.gv.png $(MaterialsDir)/Understanding.png
 
 #---------------------------
-distributionfiles=  Distribution/*.yml
-SeparatedDistribution: 
-	$(PROG)   $(distributionfiles)
-	cp caus.gv.png /media/sf_local_pc
+distributionDir=  Distribution
+SeparatedDistribution: $(distributionDir)/*.yml
+	$(PROG)   $^
+	cp caus.gv.png $(distributionDir)
 #---------------------------
-decisionTreefiles= DecisionTree/EnsembleTree.yml
-decisionTree: 
-	$(PROG) --samerank="updateDecisionTreeNodeForNewSearch,generateDecisionTreeModel,getInitialStatusForDecisionTreeConstruction"   $(decisionTreefiles)
-	cp caus.gv.png /media/sf_local_pc
 
-decisionTree2files= DecisionTree2/EnsembleTree.yml
-decisionTree2: 
-	$(PROG) --doit=each --gen_wf  $(decisionTree2files)
-	$(PROG) --samerank="generateDecisionTreeModel"  $(decisionTree2files)
-	cp caus.gv.png /media/sf_local_pc
+decisionTreeDir= DecisionTree
+decisionTree: $(decisionTreeDir)/EnsembleTree.yml
+	$(PROG) --samerank="updateDecisionTreeNodeForNewSearch,generateDecisionTreeModel,getInitialStatusForDecisionTreeConstruction"   $^
+	cp caus.gv.png $(decisionTreeDir)
+
+decisionTree2Dir= DecisionTree2
+decisionTree2: $(decisionTree2Dir)/EnsembleTree.yml
+	$(PROG) --doit=each --gen_wf  $^
+	$(PROG) --samerank="generateDecisionTreeModel"  $^
+	cp caus.gv.png $(decisionTree2Dir)
 
 
-PredictionAbilityFiles = PredictionAbility/*.yml
-
-predictionAbility:
-	$(PROG) $(PredictionAbilityFiles)
-	cp caus.gv.png /media/sf_local_pc
+PredictionAbilityDir = PredictionAbility
+predictionAbility: $(PredictionAbilityDir)/*.yml
+	$(PROG) $^
+	cp caus.gv.png $(PredictionAbilityDir)
 	
-steepestDescentFiles = SteepestDescent/*.yml
-steepestDescent:
-	$(PROG) --doit=each --gen_wf $(steepestDescentFiles)
-	$(PROG) --samerank="getStablePosition,getStablerPosition" $(steepestDescentFiles)
-	cp caus.gv.png /media/sf_local_pc
+steepestDescentDir = SteepestDescent
+steepestDescent: $(steepestDescentDir)/*.yml
+	$(PROG) --doit=each --gen_wf $^
+	$(PROG) --samerank="getStablePosition,getStablerPosition" $^
+	cp caus.gv.png $(steepestDescentDir)
 
-steepestDescent0Files = SteepestDescent0/*.yml
-steepestDescent0:
-	$(PROG) --samerank="initializePositionForceDatabase,getStablePosition,updatePositionForNewSearch" $(steepestDescent0Files)
-	cp caus.gv.png /media/sf_local_pc
-
-
-logmeshFiles = LogMesh/*.yml
-logMesh: 
-	$(PROG) --samerank="getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmeshFiles)
-	cp caus.gv.png /media/sf_local_pc
-
-logmesh0Files = LogMesh0/*.yml
-logMesh0: 
-	$(PROG) --samerank="InitializeCounter,updateLoopCounterForNewExecution,getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmesh0Files)
-	cp caus.gv.png /media/sf_local_pc
+steepestDescent0Dir = SteepestDescent0
+steepestDescent0: $(steepestDescent0Dir)/*.yml
+	$(PROG) --samerank="initializePositionForceDatabase,getStablePosition,updatePositionForNewSearch" $^
+	cp caus.gv.png $(steepestDescent0Dir)
 
 
-logmesh2Files = LogMesh2/*.yml
-logMesh2: 
-	$(PROG) --samerank="getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $(logmesh2Files)
-	cp caus.gv.png /media/sf_local_pc
+logmeshDir = LogMesh
+logMesh: $(logmeshDir)/*.yml
+	$(PROG) --samerank="getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $^
+	cp caus.gv.png $(logmeshDir)
 
-logmesh3Files = LogMesh3/*.yml
-logMesh3: 
-	$(PROG) --doit=each --gen_wf $(logmesh3Files)
-	$(PROG) --samerank="getAllLogmeshValues" $(logmesh3Files)
-	cp caus.gv.png /media/sf_local_pc
-
+logmesh0Dir = LogMesh0
+logMesh0: $(logmesh0Dir)/*.yml
+	$(PROG) --samerank="InitializeCounter,updateLoopCounterForNewExecution,getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $^
+	cp caus.gv.png $(logmesh0Dir)
 
 
-metropolisFiles = Metropolis/*.yml
-metropolis: 
-	$(PROG) --doit=each --gen_wf $(metropolisFiles)
-	$(PROG) --samerank="updateDatabase" $(metropolisFiles)
-	cp caus.gv.png /media/sf_local_pc
+logmesh2Dir = LogMesh2
+logMesh2: $(logmesh2Dir)/*.yml
+	$(PROG) --samerank="getLogmeshValueSet,InitializeLogmeshValueDatabase,updateLogmeshSet" $^
+	cp caus.gv.png $(logmesh2Dir)
 
-optFiles = Optimization/*.yml
-optimization: 
-	$(PROG) --samerank="getTheBestVariable,updateVariableForNewSearch" $(optFiles)
-	cp caus.gv.png /media/sf_local_pc
+logmesh3Dir = LogMesh3
+logMesh3:  $(logmesh3Dir)/*.yml
+	$(PROG) --doit=each --gen_wf $^
+	$(PROG) --samerank="getAllLogmeshValues" $^
+	cp caus.gv.png $(logmesh3Dir)
 
-umlfig11_1 = UMLbook/fig11_1.yml
-umlfig11_1: 
-	$(PROG) $(umlfig11_1)
-	cp caus.gv.png /media/sf_local_pc
 
-umlfig11_5 = UMLbook/fig11_11.yml
-umlfig11_5: 
-	$(PROG) $(umlfig11_5)
-	cp caus.gv.png /media/sf_local_pc
+metropolisDir = Metropolis
+metropolis: $(metropolisDir)/*.yml
+	$(PROG) --doit=each --gen_wf $^
+	$(PROG) --samerank="updateDatabase" $^
+	cp caus.gv.png $(metropolisDir)
 
-umlfig11_6 = UMLbook/fig11_11.yml
-umlfig11_6: 
-	$(PROG) $(umlfig11_6)
-	cp caus.gv.png /media/sf_local_pc
+optDir = Optimization
+optimization: $(optDir)/*.yml
+	$(PROG) --samerank="getTheBestVariable,updateVariableForNewSearch" $^
+	cp caus.gv.png $(optDir)
 
-umlfig11_11 = UMLbook/fig11_11.yml
-umlfig11_11: 
-	$(PROG) $(umlfig11_11)
-	cp caus.gv.png /media/sf_local_pc
+umldir= UMLbook
+umlfig11_1: $(umldir)/fig11_1.yml
+	$(PROG) $^
+	cp caus.gv.png $(umldir)/fig11_1.png
 
-umlfig11_12 = UMLbook/fig11_11.yml
-umlfig11_12: 
-	$(PROG) $(umlfig11_12)
-	cp caus.gv.png /media/sf_local_pc
+umlfig11_5: $(umldir)/fig11_5.yml
+	$(PROG) $^
+	cp caus.gv.png $(umldir)/fig11_5.png
 
-umlfig16_1 = UMLbook/fig16_1.yml
-umlfig16_1: 
-	$(PROG) $(umlfig16_1)
-	cp caus.gv.png /media/sf_local_pc
+umlfig11_6: $(umldir)/fig11_6.yml
+	$(PROG) $^
+	cp caus.gv.png $(umldir)/fig11_6.png
 
-readBook2files = readbook2/readbook*.yml
-readBook2: 
-	$(PROG) --doit=each --gen_wf --gen_taxo $(readBook2files)
-	$(PROG) $(readBook2files)
-	cp caus.gv.png /media/sf_local_pc
+umlfig11_11: $(umldir)/fig11_11.yml
+	$(PROG) $^
+	cp caus.gv.png $(umldir)/fig11_11.png
 
+umlfig11_12: $(umldir)/fig11_12.yml
+	$(PROG) $^
+	cp caus.gv.png $(umldir)/fig11_12.png
+
+umlfig16_1: UMLbook/fig16_1.yml 
+	$(PROG) $^
+	cp caus.gv.png $(umldir)/fig16_1.png
+
+readBook2dir = readbook2
+readBook2: $(readBook2dir)/readbook*.yml
+	$(PROG) --doit=each --gen_wf --gen_taxo $^
+	$(PROG) $^
+	cp caus.gv.png $(readBook2dir)
 
 clean:
 	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.png
 	rm -f Materials2/*.gv sample/*.gv.png 
+
+
 
