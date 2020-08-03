@@ -54,14 +54,14 @@ workflow:
     - group:
       - methodname: CharacterRecognition
         methodtype: method
-        outputname: sentense
+        outputname: characterString
         outputtype: parts
 
   - blockname: 
     order: workflow
     list:
     - group:
-      - outputname: sentense
+      - outputname: characterString
         outputtype: parts
     - group:
       - methodname: directUnderstandingInBrain
@@ -73,7 +73,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: sentense
+      - outputname: characterString
         outputtype: parts
     - group:
       - methodname: text-to-speech-inBrain
@@ -90,7 +90,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: sentense
+      - outputname: characterString
         outputtype: parts
     - group:
       - methodname: text-to-speech-bySound
