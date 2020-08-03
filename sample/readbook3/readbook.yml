@@ -40,7 +40,6 @@ workflow:
         outputname: light
         outputtype: parts
 
-
   - blockname: 
     order: workflow
     list:
@@ -49,7 +48,9 @@ workflow:
         methodtype: method
         outputname: HaveABook
         outputtype: function
-      - outputname: light
+      - methodname: SunLight
+        methodtype: method
+        outputname: light
         outputtype: parts
     - group:
       - methodname: CharacterRecognition
