@@ -1,0 +1,29 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: text
+    order: workflow
+    list:
+    - group:
+      - outputname: DescriptorGroupRelevanceImportance
+        outputtype: parts
+    - group:
+      - methodname: VisualizeImportanceWithTextList
+        methodtype: function
+        outputname: VisualizedRelevanceScoreImportance
+        outputtype: parts
+  - blockname: dendrogram
+    order: workflow
+    list:
+    - group:
+      - methodname: generateDendrogram
+        methodtype: function
+        outputname: FeatureDendrogram
+        outputtype: parts
+      - outputname: DescriptorGroupRelevanceImportance
+        outputtype: parts
+    - group:
+      - methodname: VisualizeImportanceWithDendrogram
+        methodtype: function
+        outputname: VisualizedRelevanceScoreImportance
+        outputtype: parts

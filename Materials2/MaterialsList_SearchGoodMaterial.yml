@@ -1,0 +1,71 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: raiseMaterialsList
+        outputtype: function
+#      - outputname: searchMaterialsListHavingNoTargetVariable
+#        outputtype: function
+#    - group:
+#      - methodname: selectNoExperimentMaterials
+#        methodtype: function
+#        outputname: NoExperimentMaterialsList
+#        outputtype: parts
+    - group:
+      - methodname: MaterialSynthesis
+        methodtype: method
+        outputname: SynthesizedMaterials
+        outputtype: parts
+    - group:
+      - methodname: measureTargetQuanitty
+        methodtype: function
+        outputname: AttributeTargetOfNewMaterial
+        outputtype: parts
+    - group:
+      - methodname: getSynthesizedTargetMaterial
+        methodtype: function
+        outputname: NewMaterialSatisfyingSelectionCriterion
+        outputtype: parts
+#  - blockname: null
+#    order: workflow
+#    list:
+#    - group:
+#      - outputname: chooseMaterialsList
+#        outputtype: function
+#    - group:
+#      - methodname: queryMaterialsWithCrystalAndNotarget
+#        methodtype: function
+#        outputname: searchMaterialsListHavingNoTargetVariable
+#        outputtype: function
+
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - methodname: TargetSelectionCriterion
+        methodtype: parts
+        outputname: getTargetSelectionCriterion
+        outputtype: function
+      - outputname: AttributeCrystalOfNewMaterial
+    - group:
+      - methodname: getSynthesizedTargetMaterial
+        methodtype: function
+        outputname: NewMaterialSatisfyingSelectionCriterion
+        outputtype: parts
+
+
+#  - blockname: null
+#    order: workflow
+#    list:
+#    - group:
+#      - outputname: TargetCriterion
+#        outputtype: parts
+#    - group:
+#      - methodname: TargetSelectionCriterion
+#        methodtype: parts
+#        outputname: getTargetSelectionCriterion
+#        outputtype: function
+

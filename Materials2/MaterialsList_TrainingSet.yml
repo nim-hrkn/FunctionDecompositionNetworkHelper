@@ -1,0 +1,49 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseMaterialsList
+        outputtype: function
+    - group:
+      - methodname: queryMaterialsWithCrystalAndTarget
+        methodtype: function
+        outputname: chooseTrainingSetCrystal
+        outputtype: function
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseMaterialsList
+        outputtype: function
+    - group:
+      - methodname: queryMaterialsWithCrystalAndTarget
+        methodtype: function
+        outputname: chooseTrainingTargetValues
+        outputtype: function
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseTrainingSetCrystal
+        outputtype: function
+    - group:
+      - methodname: CrystalToDescriptorAndRelationToTargetVariable(trainingSet)
+        methodtype: method
+        outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingSetDescriptorAndRelationToTargetVariable
+        outputtype: parts
+      - outputname: chooseTrainingTargetValues
+        outputtype: function
+    - group:
+      - methodname: TrainingDataGeneration
+        methodtype: method
+        outputname: TrainingData
+        outputtype: parts

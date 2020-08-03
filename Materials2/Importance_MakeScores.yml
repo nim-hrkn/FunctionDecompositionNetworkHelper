@@ -1,0 +1,77 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: all
+    order: workflow
+    list:
+    - group:
+      - outputname: ScoreOfAllPredictionModels
+        outputtype: parts
+    - group:
+      - methodname: generateBestScoreOfAllPredictionModels
+        methodtype: function
+        outputname: BestScoreOfAllPredictionModels
+        outputtype: parts
+
+
+  - blockname: deleteGroup
+    order: workflow
+    list:
+    - group:
+      - methodname: GenerateFeatureGroups
+        methodtype: function
+        outputname: FeatureGroups
+        outputtype: parts
+    - group:
+      - methodname: Group
+        methodtype: method
+        outputname: chooseGroup
+        outputtype: function
+
+  - blockname: deleteGroup
+    order: workflow
+    list:
+    - group:
+      - methodname: generateAllPredictionModels
+        methodtype: function
+        outputname: AllPredictionModels
+        outputtype: parts
+
+      - methodname: Group
+        methodtype: method
+        outputname: chooseGroup
+        outputtype: function
+    - group:
+      - methodname: DeleteGroupFromAllPredictionModels
+        methodtype: function
+        outputname: AllPredictionModelsExceptGroup
+        outputtype: parts
+
+  - blockname: deleteGroupAddSubgroup
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseSubgroup
+        outputtype: function
+      - outputname: AllPredictionModelsExceptGroup
+        outputtype: parts
+    - group:
+
+      - methodname: AddSubgroup
+        methodtype: function
+        outputname: AllPredictionModelsExceptGroupWithSubgroup
+        outputtype: parts
+
+  - blockname: deleteGroupAddSubgroup
+    order: workflow
+    list:
+    - group:
+      - methodname: GenerateSubgroupFromGroup
+        methodtype: function
+        outputname: FeatureSubgroups
+        outputtype: parts
+    - group:
+      - methodname: Subgroup
+        outputname: chooseSubgroup
+        outputtype: function
+
