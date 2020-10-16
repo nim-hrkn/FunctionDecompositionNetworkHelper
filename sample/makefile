@@ -14,7 +14,7 @@ Prediction:  $(TargetValuePrediction)  $(MaterialsList)  Materials2/Richer_DB.ym
 	$(CONVERT) $^
 	$(PROG) a.yml
 	mv caus.gv.png a.png 
-	$(PROG) --samerank="updateMaterialsList,get_NewMaterialSatisfyingSelectionCriterion"  $^
+	$(PROG) --samerank="get_NewMaterialBelowCriterion,get_NewMaterialSatisfyingSelectionCriterion"  $^
 	cp caus.gv.png $(MaterialsDir)/Prediction.png
 
 #---------------------------
@@ -149,6 +149,10 @@ readBook3: $(readBook3dir)/readbook*.yml
 	$(PROG) $^
 	cp caus.gv.png $(readBook3dir)
 
+simpleCounterdir = SimpleCounter
+simplecounter: $(simpleCounterdir)/simpleCounter.yml
+	$(PROG) --doit=each --gen_wf  $^
+	cp caus.gv.png $(simpleCounterdir)
 
 clean:
 	rm -f jupyter/*.gv jupyter/*.gv.png *.gv *.png

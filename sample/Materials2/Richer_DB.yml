@@ -15,11 +15,11 @@ workflow:
       - outputname: AttributeCrystalOfNewMaterial
         outputtype: parts
     - group:
-      - methodname: storeNewMaterialInMaterialsList
+      - methodname: NewMaterialBelowCriterion
         methodtype: function
 #        applymethodname: MaterialsDatabase
 #        applymethodtype: method
-        outputname: updateMaterialsList
+        outputname: get_NewMaterialBelowCriterion
         outputtype: function
     - group:
       - methodname: MaterialsDatabase
