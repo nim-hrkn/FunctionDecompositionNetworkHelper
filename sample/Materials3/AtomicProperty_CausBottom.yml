@@ -1,0 +1,36 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: crystal
+    order: workflow
+    list:
+    - group:
+      - methodname: Crystal
+        methodtype: method
+        outputname: crystal
+        outputtype: parts
+    - group:
+      - methodname: AttributeAtomicCoordinate
+        methodtype: method
+        outputname: AtomicCoordinate
+        outputtype: parts
+
+  - blockname: crystal
+    order: workflow
+    list:
+    - group:
+      - methodname: Crystal
+        methodtype: method
+        outputname: crystal
+        outputtype: parts
+    - group:
+      - methodname: AttributeCenterAtomElements
+        methodtype: method
+        outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: AttributeElectricConfiguration
+        methodtype: method
+        outputname: ElectricConfiguration
+        outputtype: parts
+

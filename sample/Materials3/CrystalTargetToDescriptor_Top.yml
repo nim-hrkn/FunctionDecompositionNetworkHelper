@@ -1,0 +1,43 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: CD_CT
+    order: workflow
+    list:
+    - group:
+      - outputname: SymmetrizedCrystalDescriptor
+        outputtype: parts
+    - group:
+      - methodname: SymmetrizedCrystalDescriptorToCrystalTarget
+        methodtype: method
+        outputname: RelationshipBetweenCrystalTargetAndSymmetrizedDescriptor
+        outputtype: parts
+  - blockname: AD_CD_CT
+    order: workflow
+    list:
+    - group:
+      - outputname: SymmetrizedCrystalDescriptor
+        outputtype: parts
+    - group:
+      - methodname: SymmetrizedCrystalDescriptorToCrystalTarget
+        methodtype: method
+        outputname: RelationshipBetweenCrystalTargetAndSymmetrizedDescriptor
+        outputtype: parts
+  - blockname: AD_AT_CT
+    order: workflow
+    list:
+    - group:
+      - methodname: getAtomicDescriptor
+        methodtype: function
+        outputname: getAtomicDescriptor
+        outputtype: function
+    - group:
+      - methodname: RelationshipBetweenAtomicDescriptorToAtomTarget
+        methodtype: method
+        outputname: AtomicTarget
+        outputtype: parts
+    - group:
+      - methodname: AtomTargetToSymmetrizedCrystalTarget
+        methodtype: method
+        outputname: RelationshipBetweenCrystalTargetAndSymmetrizedDescriptor
+        outputtype: parts

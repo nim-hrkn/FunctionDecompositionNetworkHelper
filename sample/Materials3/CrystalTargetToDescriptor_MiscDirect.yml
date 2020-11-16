@@ -1,0 +1,26 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: spacegroup
+    order: workflow
+    list:
+    - group:
+      - outputname: AtomicCoordinate
+        outputtype: parts
+    - group:
+      - methodname: spacegroup
+        methodtype: method
+        outputname: generateCrystalDescriptorBySymmetry
+        outputtype: direct
+  - blockname: spacegroup
+    order: workflow
+    list:
+    - group:
+      - outputname: AtomicCoordinate
+        outputtype: parts
+    - group:
+      - methodname: persistenthomology
+        methodtype: method
+        outputname: generateCrystalDescriptorBySpacePropertyQuantity
+        outputtype: direct
+
