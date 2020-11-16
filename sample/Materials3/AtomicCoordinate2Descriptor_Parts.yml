@@ -24,6 +24,7 @@ workflow:
         methodtype: parts
         outputname: Behler3bodySymmetryFunction
         outputtype: parts
+
   - blockname: RDF
     order: workflow
     list:
@@ -40,6 +41,7 @@ workflow:
         methodtype: method
         outputname: Behler2bodySymmetryFunction
         outputtype: parts
+
   - blockname: Voronoi
     order: workflow
     list:
@@ -58,7 +60,7 @@ workflow:
     - group:
       - methodname: AtomicOrbitalFieldMatrix
         methodtype: method
-        outputname: AtomicOrbitalFieldMatrixRepresentation
+        outputname: AtomicOrbitalFieldMatrix
         outputtype: parts
   - blockname: bispectrum
     order: workflow
@@ -74,5 +76,5 @@ workflow:
     - group:
       - methodname: bispectrum
         methodtype: method
-        outputname: SOAPVector
+        outputname: SOAPfeature
         outputtype: parts
