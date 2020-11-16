@@ -5,7 +5,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: AtomicCoordinate
+      - outputname: AtomicCoordinates
         outputtype: parts
     - group:
       - methodname: spacegroup
@@ -16,7 +16,7 @@ workflow:
     order: workflow
     list:
     - group:
-      - outputname: AtomicCoordinate
+      - outputname: AtomicCoordinates
         outputtype: parts
     - group:
       - methodname: persistenthomology

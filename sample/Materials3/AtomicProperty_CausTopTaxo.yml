@@ -16,9 +16,28 @@ linkset:
         linktype: is-a
         link:
         - nodename: AtomicElementDescriptor
-          nodetype: parts
-      - nodename: AtomicCoordinateDescriptor
+      - nodename: RelativeAtomicCoordinateFeature
         nodetype: parts
+        linktype: is-a
+        link:
+        - nodename: radialDistributionFunction
+        - nodename: highDescriptiveRelativeCoordinateFeatures
+          nodetype: parts
+          linktype: is-a
+          link:
+          - nodename: BehlerSymmetryFunction
+            nodetype: parts
+            linktype: is-a
+            link:
+            - nodename: Behler2bodySymmetryFunction
+            - nodename: Behler3bodySymmetryFunction
+          - nodename: SOAPfeature
+        - nodename: highDescriptiveElementCombinationFeatures
+          nodetype: parts
+          linktype: is-a
+          link:
+          - nodename: orbitalFieldMatrix
+
     - nodename: AtomicElementDescriptor
       linktype: is-a
       link:

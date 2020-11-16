@@ -10,9 +10,9 @@ workflow:
         outputname: crystal
         outputtype: parts
     - group:
-      - methodname: AttributeAtomicCoordinate
+      - methodname: AttributeAtomicCoordinates
         methodtype: method
-        outputname: AtomicCoordinate
+        outputname: AtomicCoordinates
         outputtype: parts
 
   - blockname: crystal

@@ -21,7 +21,7 @@ Prediction:  $(TargetValuePrediction)  $(MaterialsList)  Materials2/Richer_DB.ym
 AtomicProperty= $(MaterialsDir)/AtomicProperty_Caus*.yml
 AtomicCoordinate2Descriptor= $(MaterialsDir)/AtomicCoordinate2Descriptor_*.yml
 CrystalTarget= $(MaterialsDir)/CrystalTargetToDescriptor_*.yml
-DescriptorGeneration: $(CrystalTarget)  $(AtomicProperty) # $(AtomicCoordinate2Descriptor)
+DescriptorGeneration: $(CrystalTarget)  $(AtomicProperty)  $(AtomicCoordinate2Descriptor)
 	$(PROG) $^
 	cp caus.gv.png $(MaterialsDir)/DescriptorGeneration.png
 
