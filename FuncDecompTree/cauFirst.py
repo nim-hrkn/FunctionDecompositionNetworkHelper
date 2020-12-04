@@ -121,9 +121,9 @@ class DecompositionTree(object):
         if linktype is None:
             linktype = "parts"
         if linktype == "parts":
-            return "get_"
+            return "Obtain "
         elif linktype == "method":
-            return "get_outputOf_"
+            return "Obtain outputOf "
         elif linktype == "function" or linktype == "direct":
             return ""
         else:
@@ -145,11 +145,11 @@ class DecompositionTree(object):
         if linktype is None:
             linktype = "method"
         if linktype == "parts":
-            return "apply_methodToGet_"
+            return "Apply methodToGet "
         elif linktype == "method":
-            return "apply_"
+            return "Apply "
         elif linktype == "function":
-            return "(apply)"
+            return "(Apply)"
         else:
             print("applyfunction_prefix: unsupported", linktype)
             raise

@@ -1,0 +1,74 @@
+workflow:
+  block:
+  - blockname: CD CT
+    list:
+    - group:
+      - outputname: crystal desriptor satisfying all invariance
+    - group:
+      - methodname: association with crystal descriptor and crystal target variable
+        outputname: association with descriptor and crystal target variable satisfying all invariance
+
+  - blockname: AD AT CT
+    list:
+    - group:
+      - outputname: each atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: combine all atomic descriptors satisfying coordinate invariance
+        outputname: all atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: association with atomic descriptor with atomic target varaiable
+        outputname: atomic target variable
+    - group:
+      - methodname: association with atomic target variable and crystal target variable
+        outputname: association with descriptor and crystal target variable satisfying all invariance
+
+  - blockname: AD CD by min
+    list:
+    - group:
+      - outputname: all atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: conversion by min
+        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by min
+
+  - blockname: AD CD by max
+    list:
+    - group:
+      - outputname: all atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: conversion by max
+        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by max
+
+  - blockname: AD CD by sum
+    list:
+    - group:
+      - outputname: all atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: conversion by sum
+        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by sum
+
+  - blockname: AD CD by multiple moment expansion
+    list:
+    - group:
+      - outputname: all atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: conversion by multiple moment expansion
+        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by multiple moment expansion
+
+
+  - blockname: AD CD by sum in category
+    list:
+    - group:
+      - outputname: all atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: conversion by sum in category
+        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by sum in category
+
+  - blockname: AD CD by sum in category
+    list:
+    - group:
+      - outputname: all atomic descriptors satisfying coordinate invariance
+    - group:
+      - methodname: conversion by categorical existence
+        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by categorical existence
+
+

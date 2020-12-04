@@ -1,0 +1,274 @@
+workflow:
+  block:
+  - blockname: crystal to each element
+    list:
+    - group:
+      - methodname: material all attributes
+        outputname: material
+    - group:
+      - methodname: attribute atomic coordinates 
+        outputname: each atomic coordinates
+      - methodname: attribute element
+        outputname: each element
+    - group: 
+      - methodname: persistent homology
+        outputname: persistent diagram
+      - methodname: spacegroup finder
+        outputname: spacegroup number
+
+  - blockname: element to distribution
+    list:
+    - group: 
+      - outputname: each element
+      - outputname: each atomic coordinates
+    - group:
+      - methodname: atomic position bluring
+        outputname: smoothed atomic distribution
+    - group:
+      - methodname: radial and angular orthogonal function expansion 
+        outputname: orthogonal function expansion coefficients
+    - group:
+      - methodname: angular component symmetrization
+        outputname: SOAP
+
+  - blockname: each element name to basic properties
+    list:
+    - group:
+      - outputname: each element
+    - group:
+      - methodname: attribute atomic number 
+        outputname: atomic number (discrete)
+      - methodname: attribute atomic existence
+        outputname: elemental existence (categorical)
+      - methodname: attribute elemental existence
+        outputname: elemental existence (categorical)
+      - methodname: attribute elemental category
+        outputname: elemental category (categorical)
+      - methodname: attribute periodic table row
+        outputname: peridic table row (categorical)
+      - methodname: attribute peridic tbale column
+        outputname: peridic table column (categorical)
+      - methodname: attribute Mendeleev number
+        outputname: Mendeleev number (categorical)
+      - methodname: number density conversion
+        outputname: number density
+      - methodname: average mass density conversion
+        outputname: average mass density
+
+  - blockname: isotope mass
+    list:
+    - group:
+      - outputname: each element
+      - methodname: attribute neutron number
+        outputname: neutron number 
+    - group:
+      - methodname: isotope mass density conversion
+        outputname: isotope mass density 
+
+  - blockname: each element name to isolated atom
+    list:
+    - group:
+      - outputname: each element
+      - methodname: attribute valence number
+        outputname: valence number 
+    - group:
+      - methodname: attribute isolated atom 
+        outputname: isolated atom
+
+  - blockname: isolated atom to number of electrons and angular momentum
+    list:
+    - group:
+      - outputname: isolated atom
+    - group:
+      - methodname: attribute electric configuration of isolated atom 
+        outputname: electric configuration of isolated atom
+    - group:
+      - methodname: s electron number conversion
+        outputname: s electron number (categorical)
+      - methodname: p electron number conversion
+        outputname: p electron number (categorical)
+      - methodname: d electron number conversion
+        outputname: d electron number (categorical)
+      - methodname: f electron number conversion
+        outputname: f electron number (categorical)
+      - methodname: L_3d conversion
+        outputname: L_3d (continuum)
+      - methodname: S_3d conversion
+        outputname: S_3d (continuum)
+      - methodname: J_3d conversion
+        outputname: J_3d (continuum)
+
+  - blockname: experimental atom to angular momentum
+    list:
+    - group:
+      - outputname: isolated atom
+    - group:
+      - methodname: attribute electric configuration of atom in crystal
+        outputname: electric configuration of atom in crystal
+    - group:
+      - methodname: J_4f conversion
+        outputname: J_4f (continuum)
+      - methodname: g_J conversion
+        outputname: g_J (continuum)
+
+  - blockname: J_4f and g_J to 4f projection
+    list:
+    - group:
+      - outputname: J_4f (continuum)
+      - outputname: g_J (continuum)
+    - group:
+      - methodname: (g_J-1)J_4f
+        outputname: spin direction projected J_4f (continuum)
+      - methodname: (2-g_J)J_4f
+        outputname: orbital direction projected J_4f (continuum)
+
+  - blockname: isolated atom to wavefunction related values
+    list:
+    - group:
+      - outputname: isolated atom
+    - group:
+      - methodname: first-principles calculation
+        outputname: isolatd atom wavefunction
+    - group:
+      - methodname: s eigen orbital selection
+        outputname: s orbital
+      - methodname: p eigen orbital selection
+        outputname: p orbital
+      - methodname: d eigen orbital selection
+        outputname: d orbital
+      - methodname: f eigen orbital selection
+        outputname: f orbital
+      - methodname: total energy selection
+        outputname: total energy
+      - methodname: s orbital energy selection
+        outputname: s orbital energy
+      - methodname: p orbital energy selection
+        outputname: p orbital energy
+      - methodname: d orbital energy selection
+        outputname: d orbital energy
+      - methodname: f orbital energy selection
+        outputname: f orbital energy
+
+  - blockname: orbital to r^2
+    list:
+    - group:
+      - outputname: s orbital
+    - group:
+      - methodname: s orbital r^2
+        outputname: s orbital r^2 expectation value
+
+  - blockname: orbital to r^2
+    list:
+    - group:
+      - outputname: p orbital
+    - group:
+      - methodname: p orbital r^2
+        outputname: p orbital r^2 expectation value
+
+  - blockname: orbital to r^2
+    list:
+    - group:
+      - outputname: d orbital
+    - group:
+      - methodname: d orbital r^2
+        outputname: d orbital r^2 expectation value
+
+  - blockname: orbital to r^2
+    list:
+    - group:
+      - outputname: f orbital
+    - group:
+      - methodname: f orbital r^2
+        outputname: f orbital r^2 expectation value
+
+  - blockname: isolated atom to energy quantities
+    list:
+    - group:
+      - outputname: isolated atom
+    - group:
+      - methodname: ionization energy measurement
+        outputname: ionization energy
+      - methodname: electron affinity measurement
+        outputname: electron affinity
+
+  - blockname: all electron affinity
+    list:
+    - group:
+      - methodname: dissociation energies of typical molecules in database
+        outputname: dissociation energies of typical molecules
+    - group:
+      - methodname: electron affinity generation
+        outputname: electron affinity of all elements
+
+  - blockname: electron affinity
+    list:
+    - group:
+      - outputname: each element
+      - outputname: electron affinity of all elements
+    - group:
+      - methodname: elemental electron negativity selection
+        outputname: electron negativity 
+
+  - blockname: absolute to relative coodinates
+    list:
+    - group: 
+      - outputname: each atomic coordinates
+    - group:
+      - methodname: absolute to relative coordinates conversion
+        outputname: each relative atomic coordinates
+
+  - blockname: Behler 2body atomic coordinate feature 
+    list:
+    - group:
+      - outputname: each ralative atomic coordinates
+      - outputname: each element
+    - group:
+      - methodname: radial distribution 
+        outputname: radial distribution
+    - group:
+      - methodname: radial distribution convolution
+        outputname: Behler's 2body symmetry function
+
+  - blockname: Behler 3body atomic coordinate feature 
+    list:
+    - group:
+      - outputname: each relative atomic coordinates
+      - outputname: each element
+    - group:
+      - methodname: angle distribution 
+        outputname: angle distribution
+    - group:
+      - methodname: Behler's 3body symmetry function conversion
+        outputname: Behler's 3body symmetry function
+
+  - blockname: environmental OFM onehot
+    list:
+    - group:
+      - outputname: each relative atomic coordinates
+      - outputname: atomic features (dimensionless categorical) generated from element
+    - group:
+      - methodname: Voronoi angle
+        outputname: generalized coordination number contribution for each atomic category
+    - group:
+      - methodname: environmental OFM
+        outputname: environmental OFM vector
+
+  - blockname: central OFM  onehot
+    list:
+    - group:
+      - outputname: atomic features (dimensionless categorical) generated from element
+    - group:
+      - methodname: central OFM
+        outputname: central OFM vector
+
+  - blockname: OFM 
+    list:
+    - group:
+      - outputname: central OFM vector
+      - outputname: environmental OFM vector
+    - group:
+      - methodname: OFM conversion
+        outputname: atomic orbital field matrix
+
+
+
