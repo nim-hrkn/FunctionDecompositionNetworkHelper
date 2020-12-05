@@ -7,12 +7,12 @@ linkset:
       - nodename: directly derived crystal descriptor
         linktype: is-a
         link:
-        - nodename: atomic coodinate high precision crystal features
+        - nodename: atomic coodinates high precision crystal features
           linktype: is-a
           link:
           - nodename: SOAP
             linktype: is-a
-        - nodename: atomic coodinate low precision crystal features
+        - nodename: atomic coodinates functional crystal features
           linktype: is-a
           link:
           - nodename: persistent diagram

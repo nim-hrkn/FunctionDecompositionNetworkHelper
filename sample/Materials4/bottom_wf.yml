@@ -215,7 +215,7 @@ workflow:
       - outputname: each atomic coordinates
     - group:
       - methodname: absolute to relative coordinates conversion
-        outputname: each relative atomic coordinates
+        outputname: each relative atomic distribution
 
   - blockname: Behler 2body atomic coordinate feature 
     list:
@@ -232,7 +232,7 @@ workflow:
   - blockname: Behler 3body atomic coordinate feature 
     list:
     - group:
-      - outputname: each relative atomic coordinates
+      - outputname: each relative atomic distribution
       - outputname: each element
     - group:
       - methodname: angle distribution 
@@ -241,33 +241,21 @@ workflow:
       - methodname: Behler's 3body symmetry function conversion
         outputname: Behler's 3body symmetry function
 
-  - blockname: environmental OFM onehot
+  - blockname: OFM Voronoi part
     list:
     - group:
-      - outputname: each relative atomic coordinates
-      - outputname: atomic features (dimensionless categorical) generated from element
+      - outputname: each relative atomic distribution
     - group:
       - methodname: Voronoi angle
-        outputname: generalized coordination number contribution for each atomic category
-    - group:
-      - methodname: environmental OFM
-        outputname: environmental OFM vector
+        outputname: generalized coordination number
 
-  - blockname: central OFM  onehot
+  - blockname: OFM atomic category part
     list:
     - group:
       - outputname: atomic features (dimensionless categorical) generated from element
+      - outputname: generalized coordination number
     - group:
-      - methodname: central OFM
-        outputname: central OFM vector
-
-  - blockname: OFM 
-    list:
-    - group:
-      - outputname: central OFM vector
-      - outputname: environmental OFM vector
-    - group:
-      - methodname: OFM conversion
+      - methodname: orbital field matrix conversion
         outputname: atomic orbital field matrix
 
 
