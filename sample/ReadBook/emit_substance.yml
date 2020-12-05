@@ -1,0 +1,36 @@
+workflow:
+  block:
+  - blockname: radiant light
+    list:
+    - group:
+      - outputname: Conduct electric current to substance
+        outputtype: function
+    - group:
+      - methodname: Electrical Resistance Heating
+        methodtype: method
+        outputname: heated substance
+        outputtype: parts
+    - group:
+      - methodname: Radiant Light
+        methodtype: method
+        outputname: Emit substance
+        outputtype: function
+
+  - blockname: elecroluminescence light
+    list:
+    - group:
+      - methodname: Semiconductor Hetro Junction
+        methodtype: method
+        outputname: Bring electrons and holes into close proximity
+        outputtype: function
+    - group:
+      - methodname: Electric Field Transfer
+        methodtype: method
+        outputname: Recombine electrons and holes
+        outputtype: function
+    - group:
+      - methodname: Injection Electroluminescence
+        methodtype: method
+        outputname: Emit substance
+        outputtype: function
+

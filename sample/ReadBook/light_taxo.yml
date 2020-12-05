@@ -1,0 +1,12 @@
+linkset:
+  block:
+  - link:
+    - nodename: Obtain light
+      nodetype: function
+      linktype: is-a
+      link:
+      - nodename: Emit substance
+        nodetype: function
+      - nodename: Sun light
+        nodetype: parts
+
