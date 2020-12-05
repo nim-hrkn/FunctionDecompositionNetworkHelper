@@ -10,7 +10,7 @@
 #
 
 import os
-from graphviz import Digraph
+from graphviz import Digraph, Graph
 import yaml
 
 
@@ -56,6 +56,7 @@ class DecompositionTree(object):
         self.invisedgelist = []
         self.boxnodelist = []
         self.isanodelist = []
+        self.isaboxnodelist = []
         self.sameranklist = []
         self.applynodelist = []
 
@@ -209,6 +210,7 @@ class DecompositionTree(object):
         invisedgelist = self.invisedgelist
         boxnodelist = self.boxnodelist
         isanodelist = self.isanodelist
+        isaboxnodelist = self.isaboxnodelist
         sameranklist = self.sameranklist
         cmdsameranklist = self.cmdsameranklist
         applynodelist = self.applynodelist
@@ -242,13 +244,16 @@ class DecompositionTree(object):
                 s = invisedge.split(",")
                 for x0, x1 in zip(s[:-1], s[1:]):
                     dottree.edge(x0, x1, style=self.node_sequence_style)
-        for isanode in isanodelist:
-            dottree.node(isanode, style="filled", bgcolor="gray")
+        #for isanode in isanodelist:
+        #    dottree.node(isanode, style="filled", bgcolor="gray")
 
         for boxnode in boxnodelist:
-            dottree.node(boxnode, shape="box")
+            if boxnode in isaboxnodelist:
+                dottree.node(boxnode, shape="box", fillcolor="gray", style="filled")
+            else:
+                dottree.node(boxnode, shape="box")
         for applynode in applynodelist:
-            dottree.node(applynode, shape="octagon")
+            dottree.node(applynode, shape="hexagon")
         if apply_same_rank:
             for samerank in sameranklist:
                 s = samerank.split(",")
@@ -809,6 +814,7 @@ class taxologyWay(DecompositionTree):
                         # print("edge:method1->func1",[method1,func1])
 
                     self.boxnodelist.append(method1)
+                    self.isaboxnodelist.append(method1)
                     self.excludenodelist.append(name)
 
                     self.gen_connection_link_link(link, linktype, name, nodetype)
@@ -898,7 +904,8 @@ class FDTree(object):
         self.dottree = None
         if dottree is None:
             print("FDTree:init generate dotreee")
-            self.dottree = Digraph(basename)
+            # self.dottree = Digraph(basename)
+            self.dottree = Graph(basename)
             self.dottree.graph_attr["rankdir"] = "TB;"
             self.dottree.graph_attr["concentrate"] = str(self.dotoption["concentrate"])+";"
             self.dottree.edge_attr["len"] = "2.2"
