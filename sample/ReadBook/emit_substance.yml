@@ -13,8 +13,8 @@ workflow:
     - group:
       - methodname: Radiant Light
         methodtype: method
-        outputname: Emit substance
-        outputtype: function
+        outputname: lighting
+        outputtype: parts
 
   - blockname: elecroluminescence light
     list:
@@ -31,6 +31,6 @@ workflow:
     - group:
       - methodname: Injection Electroluminescence
         methodtype: method
-        outputname: Emit substance
-        outputtype: function
+        outputname: lighting
+        outputtype: parts
 

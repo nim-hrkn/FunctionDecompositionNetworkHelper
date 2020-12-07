@@ -98,11 +98,11 @@ class DecompositionTree(object):
         if linktype is None:
             linktype = "method"
         if linktype == "parts":
-            return "method_toGet_"
+            return "Way_toGet_"
         elif linktype == "method" or linktype == "direct":
             return ""
         elif linktype == "function":
-            return "method_to_"
+            return "Way_to_"
         else:
             print("method_prefix: unsupported", linktype)
             raise
@@ -279,6 +279,7 @@ class DecompositionTree(object):
         if dottree is None:
             dottree = Digraph(self.basename)
             dottree.graph_attr["rankdir"] = "TB;"
+            dottree.graph_attr["slines"] = "line;"
             dottree.graph_attr["concentrate"] =\
                 str(self.dotoption["concetrate"])+";"
 
@@ -686,6 +687,7 @@ class taxologyWay(DecompositionTree):
         if dot is None:
             dot = Digraph(self.basename)
             dot.graph_attr["rankdir"] = "TB"
+            dot.graph_attr["splines"] = "line"
         for den in den_edgelist:
             den0 = den[0]
             den1 = den[1]
@@ -906,7 +908,8 @@ class FDTree(object):
             print("FDTree:init generate dotreee")
             # self.dottree = Digraph(basename)
             self.dottree = Graph(basename)
-            self.dottree.graph_attr["rankdir"] = "TB;"
+            self.dottree.graph_attr["rankdir"] = "TB"
+            self.dottree.graph_attr["splines"] = "line"
             self.dottree.graph_attr["concentrate"] = str(self.dotoption["concentrate"])+";"
             self.dottree.edge_attr["len"] = "2.2"
         else:
