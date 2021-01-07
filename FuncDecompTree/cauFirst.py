@@ -588,6 +588,7 @@ class workflowWay(DecompositionTree):
         if dot is None:
             dot = Digraph(self.basename)
             dot.graph_attr["rankdir"] = "BT"
+            dot.graph_attr["splines"] = "line"
 
         self.drop_wf_dup()
 
@@ -809,11 +810,13 @@ class taxologyWay(DecompositionTree):
                     method1 = self.method_prefix(nodetype) + name
 
                     self.isanodelist.append(funcp)
-                    self.edgelist.append(",".join([funcp, method1]))
+                    if not method1.endswith(" way"):
+                        method1 = method1 + " way"
                     # print("edge:funcp->method1",[funcp,method1])
+                    self.edgelist.append(",".join([funcp, method1]))
                     if linktype != "part-of":
-                        self.edgelist.append(",".join([method1, func1]))
                         # print("edge:method1->func1",[method1,func1])
+                        self.edgelist.append(",".join([method1, func1]))
 
                     self.boxnodelist.append(method1)
                     self.isaboxnodelist.append(method1)
@@ -956,6 +959,7 @@ class FDTree(object):
                     print("Digraph, basename", basename)
                     dotwf = Digraph(basename)
                     dotwf.graph_attr["rankdir"] = "BT"
+                    dotwf.graph_attr["splines"] = "line"
                     dotwf = wf.create_workflow(dotwf)
                     dotwf.format = "png"
                     dotwf.render(view=False)

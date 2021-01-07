@@ -16,7 +16,7 @@ workflow:
       - methodname: Atomic descriptor to crystal target way
         outputname: atomic target variable satisfying all invariance
     - group:
-      - methodname: Atomic target to crystal atarget association
+      - methodname: Atomic target to crystal atarget association way
         outputname: association with descriptor and crystal target variable satisfying all invariance
 
   - blockname: AD CD by min
