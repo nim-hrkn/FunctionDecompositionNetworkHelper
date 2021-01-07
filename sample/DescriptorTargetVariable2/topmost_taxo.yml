@@ -1,0 +1,24 @@
+linkset:
+  block:
+  - link:
+    - nodename: association with descriptor and crystal target variable
+      linktype: is-a
+      link:
+      - nodename: association with descriptor and crystal target variable satisfying all invariance
+        linktype: is-a
+      - nodename: association with descriptor and crystal target variable not satisfying all invariance
+        linktype: is-a
+
+  - link:
+    - nodename: crystal desriptor satisfying all invariance
+      linktype: is-a
+      link:
+      - nodename: crystal desriptor satisfying all invariance from atomic descriptors
+        linktype: is-a
+        link:
+        - nodename: crystal desriptor satisfying all invariance from all atomic descripotrs by min.
+        - nodename: crystal desriptor satisfying all invariance from all atomic descripotrs by max.
+        - nodename: crystal desriptor satisfying all invariance from all atomic descripotrs by sum
+        - nodename: crystal desriptor satisfying all invariance from all atomic descripotrs by multiple moment expansion
+        - nodename: crystal desriptor satisfying all invariance from all atomic descripotrs by sum in category
+        - nodename: crystal desriptor satisfying all invariance from all atomic descripotrs by categorical existence
