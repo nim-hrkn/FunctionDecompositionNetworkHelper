@@ -4,127 +4,116 @@ linkset:
     - nodename: crystal desriptor satisfying all invariance
       linktype: is-a
       link:
-      - nodename: directly derived crystal descriptor
+      - nodename: directly derived crystal descriptor satisfying all invariance
         linktype: is-a
         link:
-        - nodename: atomic coodinates high precision crystal features
+        - nodename: crystal high precision features satisfying all invariance
           linktype: is-a
           link:
           - nodename: SOAP
             linktype: is-a
-        - nodename: atomic coodinates functional crystal features
+        - nodename: crystal atomic distribution functional features satisfying all invariance
           linktype: is-a
           link:
           - nodename: persistent diagram
-          - nodename: spacegroup number
+          - nodename: space group
   - link:
-    - nodename: each atomic descriptors satisfying coordinate invariance
+    - nodename: all atomic descriptors satisfying coordinate invariance
       linktype: is-a
       link:
-      - nodename: atomic features generated from element
+      - nodename: each atomic features from element
         linktype: is-a
         link:
-        - nodename: atomic features (dimensionless categorical) generated from element
+        - nodename: categorical quantity of each atom
           linktype: is-a
           link:
-          - nodename: basic atomic features
+          - nodename: categorical basic quantities of each atom
             linktype: is-a
             link:
-            - nodename: elemental category (categorical)
-          - nodename: periodic table atomic features
+              - nodename: periodic table row number of each atom
+              - nodename: periodic table group number of each atom
+              - nodename: elemental category of each atom
+              - nodename: Mendeleev number of each atom
+              - nodename: atomic number of each atom
+          - nodename: Obtain electron number quantities of each atom
             linktype: is-a
             link:
-            - nodename: peridic table row (categorical)
-            - nodename: peridic table column (categorical)
-            - nodename: Mendeleev number (categorical)
-          - nodename: electron number atomic features
-            linktype: is-a
-            link:
-            - nodename: s electron number (categorical)
-            - nodename: p electron number (categorical)
-            - nodename: d electron number (categorical)
-            - nodename: f electron number (categorical)
-      - nodename: atomic features generated from element
-        linktype: is-a
-        link:
-        - nodename: atomic features (dimensionless continuum) generated from element
+            - nodename: s-electron number of each atom
+            - nodename: p-electron number of each atom
+            - nodename: d-electron number of each atom
+            - nodename: f-electron number of each atom
+        - nodename: continuum quantity of each atomic features
           linktype: is-a
           link:
-          - nodename: basic atomic features
+          - nodename: angular momentum of each atoms
             linktype: is-a
             link:
-            - nodename: atomic number (categorical)
-          - nodename: periodic table atomic features
-          - nodename: electron number atomic features
-          - nodename: angular momentum atomic features
+              - nodename: 3d angular momentum of each atomic features
+                linktype: is-a
+                link:
+                - nodename: L_3d of each atom
+                - nodename: S_3d of each atom
+                - nodename: J_3d of each atom
+              - nodename: 4f angular momentum of each atomic features
+                linktype: is-a
+                link:
+                - nodename: J_4f of each atom
+                - nodename: spin direction projected J_4f of each atom
+                - nodename: orbital direction projected J_4f of each atom
+             
+          - nodename: length-unit  features of each atom
             linktype: is-a
             link:
-            - nodename: 3d angular momentum atomic features
+            - nodename: length-unit crystal derived features of each atom
               linktype: is-a
               link:
-              - nodename: L_3d (continuum)
-              - nodename: S_3d (continuum)
-              - nodename: J_3d (continuum)
-            - nodename: 4f angular momentum atomic features
+              - nodename: vdW radius of each atom 
+              - nodename: covalent radius of each atom 
+            - nodename: length-unit wavefunction derived features of each atom
               linktype: is-a
               link:
-              - nodename: J_4f (continuum)
-              - nodename: spin direction projected J_4f (continuum)
-              - nodename: orbital direction projected J_4f (continuum)
-
-           
-        - nodename: atomic features (length continuum) generated from element
-          linktype: is-a
-          link:
-          - nodename: crystal atomic length
+              - nodename: s-orbital r^2 expectation value of each atom
+              - nodename: p-orbital r^2 expectation value of each atom
+              - nodename: d-orbital r^2 expectation value of each atom
+              - nodename: f-orbital r^2 expectation value of each atom
+          - nodename: energy-unit experimental features of each atom
             linktype: is-a
             link:
-            - nodename: vdW radius
-            - nodename: covalent radius
-          - nodename: isolated atomic atomic length
+            - nodename: waveunction-derived atomic energy 
+              linktype: is-a
+              link: 
+              - nodename: total energy of each atom
+              - nodename: s-orbital energy of each atom
+              - nodename: p-orbital energy of each atom
+              - nodename: d-orbital energy of each atom
+              - nodename: f-orbital energy of each atom
+            - nodename: experimental atomic atomic energy 
+              linktype: is-a
+              link:
+              - nodename: ionization energy of each atom
+              - nodename: electron affinity of each atom
+              - nodename: electron negativity of each atom
+              - nodename: dissociation energy of each atom
+          - nodename: density-unit  features of each atom
             linktype: is-a
             link:
-            - nodename: s orbital r^2 expectation value
-            - nodename: p orbital r^2 expectation value
-            - nodename: d orbital r^2 expectation value
-            - nodename: f orbital r^2 expectation value
-        - nodename: atomic features (energy continuum) generated from element
-          linktype: is-a
-          link:
-          - nodename: waveunction-derived atomic energy 
-            linktype: is-a
-            link: 
-            - nodename: total energy
-            - nodename: s orbital energy
-            - nodename: p orbital energy
-            - nodename: d orbital energy
-            - nodename: f orbital energy
-          - nodename: isolated atomic atomic energy 
-            linktype: is-a
-            link:
-            - nodename: ionization energy
-            - nodename: electron affinity
-            - nodename: electron negativity 
-        - nodename: atomic features (density continuum) generated from element
-          linktype: is-a
-          link:
-          - nodename: number density
-          - nodename: average mass density
-          - nodename: isotope mass density
-      - nodename: atomic features from the atomic distribution around each atom
+            - nodename: number density of each atom
+            - nodename: average mass density of each atom
+            - nodename: isotope mass density of each atom
+      - nodename: each atomic features from atom-centered positions satisfying coordinate invariance
         linktype: is-a
         link:
-        - nodename: atomic coodinate high precision atomic features 
+        - nodename: Obtain each atomic high-precision features from atom-centered positions satisfying coordinate invariance
           linktype: is-a
           link:
-          - nodename: SOAP
+          - nodename: SNAP
             linktype: is-a
           - nodename: Behler's symmetry function
             linktype: is-a
             link:
-            - nodename: Behler's 2body symmetry function
-            - nodename: Behler's 3body symmetry function
-        - nodename: elemental type descriptive features
+            - nodename: Behler's 2-body symmetry function
+            - nodename: Behler's 3-body symmetry function
+        - nodename: each atomic features from categories and local atom-centered positions satisfying coordinate invariance
           linktype: is-a
           link:
           - nodename: atomic orbital field matrix

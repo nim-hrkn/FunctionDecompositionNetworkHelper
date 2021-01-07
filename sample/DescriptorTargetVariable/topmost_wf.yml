@@ -5,21 +5,18 @@ workflow:
     - group:
       - outputname: crystal desriptor satisfying all invariance
     - group:
-      - methodname: association with crystal descriptor and crystal target variable
+      - methodname: association with crystal descriptor and crystal target variable way
         outputname: association with descriptor and crystal target variable satisfying all invariance
 
   - blockname: AD AT CT
     list:
     - group:
-      - outputname: each atomic descriptors satisfying coordinate invariance
+      - outputname: all atomic descriptors satisfying coordinate invariance
     - group:
-      - methodname: combine all atomic descriptors satisfying coordinate invariance
-        outputname: all atomic descriptors satisfying coordinate invariance
+      - methodname: Atomic descriptor to crystal target way
+        outputname: atomic target variable satisfying all invariance
     - group:
-      - methodname: association with atomic descriptor with atomic target varaiable
-        outputname: atomic target variable
-    - group:
-      - methodname: association with atomic target variable and crystal target variable
+      - methodname: Atomic target to crystal atarget association way
         outputname: association with descriptor and crystal target variable satisfying all invariance
 
   - blockname: AD CD by min
@@ -27,32 +24,32 @@ workflow:
     - group:
       - outputname: all atomic descriptors satisfying coordinate invariance
     - group:
-      - methodname: conversion by min
-        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by min
+      - methodname: conversion by min. way
+        outputname: crystal desriptor satisfying all invariance from all atomic descripotrs by min.
 
   - blockname: AD CD by max
     list:
     - group:
       - outputname: all atomic descriptors satisfying coordinate invariance
     - group:
-      - methodname: conversion by max
-        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by max
+      - methodname: conversion by max. way
+        outputname: crystal desriptor satisfying all invariance from all atomic descripotrs by max.
 
   - blockname: AD CD by sum
     list:
     - group:
       - outputname: all atomic descriptors satisfying coordinate invariance
     - group:
-      - methodname: conversion by sum
-        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by sum
+      - methodname: conversion by sum way
+        outputname: crystal desriptor satisfying all invariance from all atomic descripotrs by sum
 
   - blockname: AD CD by multiple moment expansion
     list:
     - group:
       - outputname: all atomic descriptors satisfying coordinate invariance
     - group:
-      - methodname: conversion by multiple moment expansion
-        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by multiple moment expansion
+      - methodname: conversion by multiple moment expansion way
+        outputname: crystal desriptor satisfying all invariance from all atomic descripotrs by multiple moment expansion
 
 
   - blockname: AD CD by sum in category
@@ -60,15 +57,15 @@ workflow:
     - group:
       - outputname: all atomic descriptors satisfying coordinate invariance
     - group:
-      - methodname: conversion by sum in category
-        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by sum in category
+      - methodname: conversion by sum in category way
+        outputname: crystal desriptor satisfying all invariance from all atomic descripotrs by sum in category
 
   - blockname: AD CD by sum in category
     list:
     - group:
       - outputname: all atomic descriptors satisfying coordinate invariance
     - group:
-      - methodname: conversion by categorical existence
-        outputname: crystal desriptor from all atomic descripotrs satisfying all invariance by categorical existence
+      - methodname: conversion by categorical existence way
+        outputname: crystal desriptor satisfying all invariance from all atomic descripotrs by categorical existence
 
 
