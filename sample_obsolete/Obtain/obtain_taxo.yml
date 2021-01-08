@@ -1,0 +1,17 @@
+linkset:
+  block:
+  - link:
+    - nodename: Obtain part(s)
+      nodetype: function
+      linktype: is-a
+      link:
+      - nodename: Generate part(s)
+        nodetype: function
+      - nodename: Construct part(s)
+        nodetype: function
+        linktype: is-a
+        link:
+        - nodename: Obtain parts from subparts
+          nodetype: function
+        - nodename: Obtain a single part
+          nodetype: function

@@ -1,0 +1,167 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - outputname: numberOfElectron
+        outputtype: parts
+    - group:
+      - methodname: FirstPrinciplesCalculation
+        methodtype: method
+        outputname: Wavefunction
+        outputtype: parts
+    - group:
+      - methodname: Attribute_sEigenfunction
+        methodtype: function
+        outputname: sEigenfunction
+        outputtype: parts
+      - methodname: Attribute_pEigenfunction
+        methodtype: function
+        outputname: pEigenfunction
+        outputtype: parts
+      - methodname: Attribute_dEigenfunction
+        methodtype: function
+        outputname: dEigenfunction
+        outputtype: parts
+      - methodname: Attribute_fEigenfunction
+        methodtype: function
+        outputname: fEigenfunction
+        outputtype: parts
+      - methodname: Attribute_totalWavefunction
+        methodtype: function
+        outputname: totalWavefunction
+        outputtype: parts
+
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_sEigenfunction
+        methodtype: function
+        outputname: sEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_E_s
+        methodtype: function
+        outputname: E_s
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_pEigenfunction
+        methodtype: function
+        outputname: sEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_E_p
+        methodtype: function
+        outputname: E_p
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_dEigenfunction
+        methodtype: function
+        outputname: dEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_E_d
+        methodtype: function
+        outputname: E_d
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_fEigenfunction
+        methodtype: function
+        outputname: fEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_E_f
+        methodtype: function
+        outputname: E_f
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_totalWavefunction
+        methodtype: function
+        outputname: totalWavefunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_totalEnergy
+        methodtype: function
+        outputname: E_total
+        outputtype: parts
+
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_sEigenfunction
+        methodtype: function
+        outputname: sEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_r2_s
+        methodtype: function
+        outputname: r2_s
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_pEigenfunction
+        methodtype: function
+        outputname: sEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_r2_p
+        methodtype: function
+        outputname: r2_p
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_dEigenfunction
+        methodtype: function
+        outputname: dEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_r2_d
+        methodtype: function
+        outputname: r2_d
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_fEigenfunction
+        methodtype: function
+        outputname: fEigenfunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_r2_f
+        methodtype: function
+        outputname: r2_f
+        outputtype: parts
+  - blockname: wavefunction
+    order: workflow
+    list:
+    - group:
+      - methodname: Attribute_totalWavefunction
+        methodtype: function
+        outputname: totalWavefunction
+        outputtype: parts
+    - group:
+      - methodname: evaluate_r2_all
+        methodtype: function
+        outputname: r2_all
+        outputtype: parts

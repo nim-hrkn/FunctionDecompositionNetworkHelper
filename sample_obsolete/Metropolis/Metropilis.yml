@@ -1,0 +1,146 @@
+workflow:
+  format: v2.3
+  block:
+
+  - blockname: Metripolis initialize
+    order: workflow
+    list:
+    - group:
+      - methodname: initialX
+        methodtype: method
+        outputname: getinitialX
+        outputtype: function
+    - group:
+      - methodname: initializeX
+        methodtype: function
+#        applymethodname: Database
+#        applymethodtype: method
+        outputname: getLastX
+        outputtype: function
+   
+  - blockname: Metripolis
+    order: workflow
+    list:
+    - group:
+      - outputname: getLastX
+        outputtype: function
+    - group:
+      - methodname: Q(x'_xt)
+        methodtype: method
+        outputname: generateSampleCandidateX'
+        outputtype: function
+    - group:
+      - methodname: P(x')/P(x)
+        methodtype: method
+        outputname: getTargetDistribution
+        outputtype: function
+    - group:
+      - methodname: Q(x'_x)/Q(x_x')
+        methodtype: method
+        outputname: getProposedDistribution
+        outputtype: function
+
+  - blockname: Metripolis
+    order: workflow
+    list:
+    - group:
+      - outputname: getTargetDistribution
+        outputtype: function
+      - outputname: getProposedDistribution
+        outputtype: function
+    - group:
+      - methodname: multiplyThem
+        methodtype: function
+        outputname: getAlpha
+        outputtype: function
+    - group:
+      - methodname: Alpha>1
+        methodtype: method
+        outputname: useX'
+        outputtype: function
+      - methodname: Alpha<1
+        methodtype: method
+        outputname: ConditionAlpha<1
+        outputtype: parts
+
+  - blockname: Metripolis reject 
+    order: workflow
+    list:
+    - group:
+      - outputname: ConditionAlpha<1
+        outputtype: parts
+      - outputname: getProbabilityR
+        outputtype: function
+    - group:
+      - methodname: R>Alpha
+        methodtype: method
+        outputname: useX'
+        outputtype: function
+
+  - blockname: Metripolis retry
+    order: workflow
+    list:
+    - group:
+      - methodname: R>Alpha
+        methodtype: method
+        outputname: useX'
+        outputtype: function
+#      - outputname: generateSampleCandidateX'
+#        outputtype: function
+    - group:
+      - methodname: useX'
+        methodtype: function
+        outputname: getX
+        outputtype: function
+
+  - blockname: Metripolis reject
+    order: workflow
+    list:
+    - group:
+      - outputname: ConditionAlpha<1
+        outputtype: parts
+      - outputname: getProbabilityR
+        outputtype: function
+    - group:
+      - methodname: R<Alpha
+        methodtype: method
+        outputname: useLastX
+        outputtype: function
+
+  - blockname: appendX
+    order: workflow
+    list:
+    - group:
+#      - methodname: Database
+#        methodtype: method
+#        outputname: chooseDatabase
+#        outputtype: function
+      - outputname: getX
+        outputtype: function
+    - group:
+      - methodname: appendXtoDatabase
+        methodtype: function
+        outputname: updateDatabase
+        outputtype: function
+    - group:
+      - methodname: LastX
+        methodtype: method
+        outputname: getLastX
+        outputtype: function
+
+
+  - blockname: appendX
+    order: workflow
+    list:
+    - group:
+#      - outputname: chooseLastX
+#        outputtype: function
+      - outputname: useLastX
+        outputtype: function
+    - group:
+      - methodname: useLastX
+        methodtype: function
+        outputname: getX
+        outputtype: function
+
+

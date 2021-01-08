@@ -1,0 +1,104 @@
+workflow:
+  format: v2.3
+  block:
+
+  - blockname:  Luminescence
+    order: workflow
+    list:
+    - group:
+      - methodname: semiconductorHeteroJunction
+        methodtype: parts
+        outputname: ElectronHole
+        outputtype: parts
+    - group:
+      - methodname: electricField
+        methodtype: method
+        outputname: reconnectElectronAndhole
+        outputtype: function
+    - group:
+      - methodname: Luminescence
+        methodtype: method
+        outputname: LightFromMaterial
+        outputtype: parts
+
+  - blockname: radiation
+    order: workflow
+    list:
+    - group:
+      - methodname: Current
+        methodtype: method
+        outputname: ApplyCurrentToMaterial
+        outputtype: parts
+    - group:
+      - methodname: HeatingByResistance
+        methodtype: method
+        outputname: heatedMaterial
+        outputtype: parts
+    - group:
+      - methodname: RadiationLight
+        methodtype: method
+        outputname: LightFromMaterial
+        outputtype: parts
+
+
+  - blockname: 
+    order: workflow
+    list:
+    - group:
+      - methodname: PrintedBook
+        methodtype: method
+        outputname: HaveABook
+        outputtype: function
+      - outputname: light
+        outputtype: parts
+    - group:
+      - methodname: CharacterRecognition
+        methodtype: method
+        outputname: sentense
+        outputtype: parts
+
+  - blockname: 
+    order: workflow
+    list:
+    - group:
+      - outputname: sentense
+        outputtype: parts
+    - group:
+      - methodname: directUnderstandingInBrain
+        methodtype: method
+        outputname: understandtheMeanings
+        outputtype: function
+
+  - blockname: 
+    order: workflow
+    list:
+    - group:
+      - outputname: sentense
+        outputtype: parts
+    - group:
+      - methodname: text-to-speech-inBrain
+        methodtype: method
+        outputname: speechInBrain
+        outputtype: parts
+    - group:
+      - methodname: understandSpeechInBrain
+        methodtype: function
+        outputname: understandtheMeanings
+        outputtype: function
+ 
+  - blockname: 
+    order: workflow
+    list:
+    - group:
+      - outputname: sentense
+        outputtype: parts
+    - group:
+      - methodname: text-to-speech-bySound
+        methodtype: method
+        outputname: speech
+        outputtype: parts
+    - group:
+      - methodname: understandSpeech
+        methodtype: function
+        outputname: understandtheMeanings
+        outputtype: function

@@ -1,0 +1,31 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: domainknowledgeSubgroup
+    order: workflow
+    list:
+    - group:
+      - outputname: FeatureGroups
+        outputtype: parts
+    - group:
+      - methodname: ClusteringFeatureSubgroup(sameAs-DescriptorOfAllData-FeatureGroupCandidate)
+        outputname: FeatureSubgroupCandidates
+        outputtype: parts
+    - group:
+      - methodname: DomainknowledgeDataScienceClusteringSelection(subgroup)
+        outputname: FeatureSubgroups
+        outputtype: parts
+
+  - blockname: domainknowledgeSubgroup
+    order: workflow
+    list:
+    - group:
+      - methodname: DomainKnowledge
+        methodtype: method
+        outputname: getDomainKnowledge(subgroup)
+        outputtype: function
+    - group:
+      - methodname: DomainknowledgeDataScienceClusteringSelection(subgroup)
+        outputname: FeatureSubgroups
+        outputtype: parts
+

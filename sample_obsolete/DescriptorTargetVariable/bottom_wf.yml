@@ -22,8 +22,8 @@ workflow:
       - outputname: each element
       - outputname: each atomic coordinates
     - group:
-      - methodname: atomic position bluring
-        outputname: smoothed atomic distribution
+      - methodname: crystal atomic disribution conversion
+        outputname: crystal atomic distribution
     - group:
       - methodname: radial and angular orthogonal function expansion 
         outputname: orthogonal function expansion coefficients
@@ -248,29 +248,29 @@ workflow:
       - outputname: each atomic coordinates
     - group:
       - methodname: absolute to relative coordinates conversion
-        outputname: each relative atomic distribution
+        outputname: each relative atomic coordinates
 
   - blockname: Behler 2body atomic coordinate feature 
     list:
     - group:
-      - outputname: each ralative atomic coordinates
+      - outputname: each relative atomic coordinates
       - outputname: each element
     - group:
-      - methodname: radial distribution conversion
-        outputname: radial distribution
+      - methodname: radial variables conversion
+        outputname: radial variables
     - group:
-      - methodname: radial distribution convolution
+      - methodname: radial variables convolution
         outputname: Behler's 2body symmetry function
 
   - blockname: Behler 3body atomic coordinate feature 
     list:
     - group:
       - outputname: each element
-      - outputname: each ralative atomic coordinates
+      - outputname: each relative atomic coordinates
     - group:
-      - methodname: angle distribution conversion
-        outputname: angle distribution
-      - outputname: radial distribution
+      - methodname: angle variables conversion
+        outputname: angle variables
+      - outputname: radial variables
     - group:
       - methodname: Behler's 3body symmetry function conversion
         outputname: Behler's 3body symmetry function
@@ -278,7 +278,8 @@ workflow:
   - blockname: OFM Voronoi part
     list:
     - group:
-      - outputname: each relative atomic distribution
+      - outputname: each relative atomic coordinates
+      - outputname: each element
     - group:
       - methodname: Voronoi angle
         outputname: generalized coordination number

@@ -1,0 +1,14 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: featureselection
+    order: workflow
+    list:
+    - group:
+      - outputname: FeatureGroups
+        outputtype: parts
+    - group:
+      - methodname: GenerateSubgroupFromGroup
+        methodtype: function
+        outputname: FeatureSubgroups
+        outputtype: parts

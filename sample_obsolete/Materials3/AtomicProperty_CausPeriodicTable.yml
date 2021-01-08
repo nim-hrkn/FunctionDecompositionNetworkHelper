@@ -1,0 +1,37 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: periodictable
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: getAttributePeriodictableRow
+        methodtype: function
+        outputname: PeriodictableRow
+        outputtype: parts
+  - blockname: periodictable
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: getAttributePeriodictableColumn
+        methodtype: function
+        outputname: PeriodictableColumn
+        outputtype: parts
+  - blockname: periodictable
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseCenterElements
+        outputtype: function
+    - group:
+      - methodname: getAttributeMendeleevNumber
+        methodtype: function
+        outputname: MendeleevNumber
+        outputtype: parts
+

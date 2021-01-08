@@ -1,0 +1,69 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: random generation
+    order: workflow
+    list:
+    - group:
+      - outputname: ExistingCrystalKnowledge
+        outputtype: method
+    - group:
+      - methodname: randomGeneration
+        methodtype: method
+        outputname: NewsetCrystal
+        outputtype: parts
+  - blockname: random generation
+    order: workflow
+    list:
+    - group:
+      - outputname: existingCrystals
+        outputtype: parts
+    - group:
+      - methodname: substituteElements
+        methodtype: function
+        outputname: NewsetCrystal
+        outputtype: parts
+  - blockname: mateirals knowledge
+    order: workflow
+    list:
+    - group:
+      - methodname: MaterialsDatabase
+        methodtype: method
+        outputname: chooseMaterialsList
+        outputtype: function
+    - group:
+      - methodname: queryAttributeCrystalsOfMaterials
+        methodtype: function
+        outputname: existingCrystals
+        outputtype: parts
+    - group:
+      - methodname: getCrystalCharacteristics
+        methodtype: function
+        outputname: ExistingCrystalKnowledge
+        outputtype: method
+#  - blockname: mateirals knowledge Target variable
+#    order: workflow
+#    list:
+#    - group:
+#      - methodname: MaterialsDatabase
+#        methodtype: method
+#        outputname: chooseMaterialsList
+#        outputtype: function
+#    - group:
+#      - methodname: TargetValuesFromDatabase
+#        methodtype: parts
+#        outputname: chooseTargetValues
+#        outputtype: function
+  - blockname: mateirals knowledge Target variable
+    order: workflow
+    list:
+    - group:
+      - outputname: chooseMaterialsList
+        outputtype: function
+#      - outputname: chooseMaterialsCategory
+#        outputtype: function
+    - group:
+      - methodname: queryAttributeCrystalsOfMaterials
+        methodtype: function
+        outputname: existingCrystals
+        outputtype: parts

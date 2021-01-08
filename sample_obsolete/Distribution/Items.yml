@@ -1,0 +1,35 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: descriptor to items
+    order: workflow
+    list:
+    - group:
+      - outputname: DescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: AttributeDescriptor
+        methodtype: parts
+        outputname: Descriptor
+        outputtype: parts
+    - group:
+      - methodname: AllMidValues
+        methodtype: parts
+        outputname: Items
+        outputtype: parts
+      - methodname: EquallyDividedValues
+        methodtype: parts
+        outputname: Items
+        outputtype: parts
+  - blockname: descriptor to items
+    order: workflow
+    list:
+    - group:
+      - outputname: DescriptorAndRelationToTargetVariable
+        outputtype: parts
+    - group:
+      - methodname: AttributeTargetValues
+        methodtype: parts
+        outputname: TargetValues
+        outputtype: parts
+ 

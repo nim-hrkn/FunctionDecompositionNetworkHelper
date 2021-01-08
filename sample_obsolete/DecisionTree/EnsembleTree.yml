@@ -1,0 +1,121 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - methodname: Sample
+        methodtype: method
+        outputname: chooseSample
+        outputtype: function
+    - group:
+      - methodname: BootStrappedSampling
+        methodtype: method
+        outputname: getParentSamples
+        outputtype: function
+    - group:
+      - methodname: writeParentSamplesAsNodeToDatabase
+        methodtype: function
+        applymethodname: DecisionTreeDatabase
+        applymethodtype: method
+        outputname: getInitialStatusForDecisionTreeConstruction
+        outputtype: function
+ 
+#  - blockname: decisiontree
+#    order: workflow
+#    list:
+#    - group: 
+#      - methodname: DecisionTreeDatabase
+#        methodtype: method
+#        outputname: chooseDecisionTreeDatabase(initial)
+#        outputtype: function
+#    - group:
+#      - methodname: getInitialStatusInDecisionTreeDatabase
+#        methodtype: function
+#        outputname: getInitialStatusForDecisionTreeConstruction
+#        outputtype: function
+  
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - methodname: DecisionTreeDatabase
+        methodtype: method
+        outputname: tryReadingNodeToProcess
+        outputtype: function
+    - group:
+      - methodname: findNodeToProcess
+        methodtype: method
+        outputname: getParentNodeToProcess
+        outputtype: function
+
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - outputname: getParentNodeToProcess
+        outputtype: function
+#      - methodname: chooseParentNodeUntilCondtion
+#        methodtype: function
+#        outputname: chooseParentNodeSample
+#        outputtype: function
+      - outputname: chooseTargetCondition
+        outputtype: function
+      - outputname: chooseFeatureItems
+        outputtype: function
+
+
+    - group:
+      - methodname: chooseFeatureItembyMaxImpurity
+        methodtype: function
+        outputname: generateChildNodes
+        outputtype: function
+      - methodname: chooseFeatureItemByMaxEntropy
+        methodtype: function
+        outputname: generateChildNodes
+        outputtype: function
+    - group:
+      - methodname: writeDecisionTreeToDatabase
+        methodtype: function
+        applymethodname: DecisionTreeDatabase
+        applymethodtype: method
+        outputname: updateDecisionTreeNodeForNewSearch
+        outputtype: function
+
+#  - blockname: decisiontree
+#    order: workflow
+#    list:
+#    - group:
+#      - methodname: DecisionTreeDatabase
+#        methodtype: method
+#        outputname: chooseDecisionTreeDatabase
+#        outputtype: function
+#    - group:
+#      - methodname: storeFeatureItemToSamplePool
+#        methodtype: function
+#        outputname: updateDecisionTreeNode
+#        outputtype: function
+
+  - blockname: decisiontree
+    order: workflow
+    list:
+    - group:
+      - methodname: DecisionTreeDatabase
+        methodtype: method
+        outputname: tryReadingNodeToProcess
+        outputtype: function
+    - group:
+      - methodname: NoNodeToProcess
+        methodtype: method
+        outputname: AllProcesFinished
+        outputtype: parts
+    - group:
+      - methodname: readAllDecisionTree
+        methodtype: function
+        applymethodname: DecisionTreeDatabase
+        applymethodtype: method
+        outputname: generateDecisionTreeModel
+        outputtype: function
+
+

@@ -1,0 +1,76 @@
+workflow:
+  block:
+  - blockname: generate
+    list:
+    - group:
+      - outputname: Obtain subparts of different categories
+        outputtype: direct
+    - group:
+      - methodname: Generation Decomposition
+        outputname: Generate part(s)
+        outputtype: direct
+
+  - blockname: parts decomposition
+    list:
+    - group:
+      - outputname: Obtain subparts
+        outputtype: direct
+    - group:
+      - methodname: Subparts Decomposition
+        outputname: Construct part(s)
+        outputtype: direct
+
+  - blockname: parts deformation
+    list:
+    - group:
+      - outputname: Obtain subparts
+        outputtype: direct
+    - group:
+      - methodname: Subparts Deformation
+        outputname: Construct part(s)
+        outputtype: direct
+
+  - blockname: parts integration
+    list:
+    - group:
+      - outputname: Obtain subparts
+        outputtype: direct
+    - group:
+      - methodname: Subparts Integration
+        outputname: Construct part(s)
+        outputtype: direct
+
+  - blockname: parts random selection
+    list:
+    - group:
+      - outputname: Obtain subparts
+        outputtype: direct
+    - group:
+      - methodname: Subparts Random Selection
+        outputname: Obtain a single part
+        outputtype: direct
+
+  - blockname: evaluation value selection
+    list:
+    - group:
+      - outputname: Obtain subparts
+        outputtype: direct
+    - group:
+      - methodname: Evaluation Value Generation
+        methodtype: method
+        outputname: Generate evaluation values
+        outputtype: direct
+
+  - blockname: parts selection
+    list:
+    - group:
+      - outputname: Obtain subparts
+        outputtype: direct
+      - outputname: Generate evaluation values
+        outputtype: direct
+      - outputname: Obtain evaluation criteria
+        outputtype: direct
+    - group:
+      - methodname: Criteria Selection
+        outputname: Obtain a single part
+        outputtype: direct

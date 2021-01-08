@@ -1,0 +1,51 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: TrainingData
+        outputtype: parts
+    - group:
+      - methodname: NeuralNetworkRegression
+        outputname: RegressionPredictionModel
+        outputtype: parts
+      - methodname: LinearRegression
+        outputname: RegressionPredictionModel
+        outputtype: parts
+      - methodname: KernelRegression
+        outputname: RegressionPredictionModel
+        outputtype: parts
+      - methodname: RandomForestRegression
+        outputname: RegressionPredictionModel
+        outputtype: parts
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: RegressionPredictionModel
+        outputtype: parts
+      - outputname: NewsetDescriptor
+        outputtype: parts
+    - group:
+      - methodname: evaluateRegressionPredictionModel
+        methodtype: function
+        outputname: RegressionPredictionValues
+        outputtype: function
+    - group:
+      - methodname: sortRegressionPredictionValues
+        methodtype: function
+        outputname: raiseMaterialsList
+        outputtype: function
+  - blockname: null
+    order: workflow
+    list:
+    - group:
+      - outputname: NewsetCrystal
+        outputtype: parts
+    - group:
+      - methodname: CrystalToDescriptorAndRelationToTargetVariable(newSet)
+        methodtype: method
+        outputname: NewsetDescriptor
+        outputtype: parts

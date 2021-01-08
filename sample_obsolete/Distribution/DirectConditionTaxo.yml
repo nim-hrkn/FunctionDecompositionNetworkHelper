@@ -1,0 +1,22 @@
+linkset:
+  block:
+  - link:
+    - nodename: DirectCondition
+      nodetype: parts
+      linktype: is-a
+      link:
+      - nodename: QualityCriterion
+        nodetype: parts
+        linktype: is-a
+        link:
+        - nodename: ItemsetMiningScore
+          linktype: is-a
+        - nodename: ClassificationScore
+          linktype: is-a
+      - nodename: QuantityCriterion
+        nodetype: parts
+        linktype: is-a
+        link:
+        - nodename: SeparatedDistribution
+          nodetype: parts
+          linktype: is-a

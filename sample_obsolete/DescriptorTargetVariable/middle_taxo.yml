@@ -99,7 +99,7 @@ linkset:
             - nodename: p orbital energy
             - nodename: d orbital energy
             - nodename: f orbital energy
-          - nodename: isolated atomic atomic energy 
+          - nodename: experimental atomic atomic energy 
             linktype: is-a
             link:
             - nodename: ionization energy
@@ -111,7 +111,7 @@ linkset:
           - nodename: number density
           - nodename: average mass density
           - nodename: isotope mass density
-      - nodename: atomic features from the atomic distribution around each atom
+      - nodename: atomic features from the atomic coordinates around each atom
         linktype: is-a
         link:
         - nodename: atomic coodinate high precision atomic features 
@@ -124,7 +124,7 @@ linkset:
             link:
             - nodename: Behler's 2body symmetry function
             - nodename: Behler's 3body symmetry function
-        - nodename: elemental type descriptive features
+        - nodename: category type descriptive features
           linktype: is-a
           link:
           - nodename: atomic orbital field matrix

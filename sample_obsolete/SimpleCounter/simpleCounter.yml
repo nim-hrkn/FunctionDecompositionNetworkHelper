@@ -1,0 +1,39 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: hyperparameter loop
+    order: workflow
+    list:
+    - group:
+      - outputname: getCurrentCounter
+        outputtype: function
+    - group:
+      - methodname: Counter!=9
+        methodtype: method
+        outputname: getnonLastCounter
+        outputtype: function
+    - group:
+      - methodname: incrementCounter
+        methodtype: function
+        outputname: getCurrentCounter
+        outputtype: function
+
+  - blockname: hyperparameter  counter==last
+    order: workflow
+    list:
+    - group:
+      - methodname: InitialCounterValue
+        methodtype: method
+        outputname: SetInitialCounterValue
+        outputtype: function
+    - group:
+      - methodname: initializeCounter
+        methodtype: function
+        outputname: getCurrentCounter
+        outputtype: function
+    - group:
+      - methodname: Counter==9
+        methodtype: method
+        outputname: getLastCounter
+        outputtype: function
+

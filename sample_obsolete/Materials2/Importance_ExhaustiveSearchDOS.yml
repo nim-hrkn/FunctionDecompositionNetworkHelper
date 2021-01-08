@@ -1,0 +1,66 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: StrongDOS
+    order: workflow
+    list:
+    - group:
+      - outputname: AllPredictionModels
+        outputtype: parts
+    - group:
+      - methodname: AttributeScoreOfAllPredictionModels
+        methodtype: method
+        outputname: ScoreOfAllPredictionModels
+        outputtype: parts
+
+  - blockname: StrongDOS
+    order: workflow
+    list:
+    - group:
+      - outputname: AllPredictionModelsExceptGroup
+        outputtype: parts
+    - group:
+      - methodname: AttributeScoreOfAllPredictionModelsExceptGroup
+        methodtype: method
+        outputname: ScoreOfAllPredictionModelsExceptGroup
+        outputtype: parts
+
+
+  - blockname: strongDOS
+    order: workflow
+    list:
+    - group:
+      - outputname: ScoreOfAllPredictionModelsExceptGroup
+        outputtype: parts
+      - outputname: ScoreOfAllPredictionModels
+        outputtype: parts
+    - group:
+      - methodname: VisualizeStrongRelevanceDOS
+        methodtype: function
+        outputname: VisualizedRelevanceDOSImportance
+        outputtype: parts
+  - blockname: weakDOS
+    order: workflow
+    list:
+    - group:
+      - outputname: AllPredictionModelsExceptGroupWithSubgroup
+        outputtype: parts
+    - group:
+      - methodname: AtrributeScoreOfAllPredictionModelsExceptGroupWithSubgroup
+        methodtype: method
+        outputname: ScoreOfAllPredictionModelsExceptGroupWithSubgroup
+        outputtype: parts
+
+  - blockname: weakDOS
+    order: workflow
+    list:
+    - group:
+      - outputname: ScoreOfAllPredictionModelsExceptGroupWithSubgroup
+        outputtype: parts
+      - outputname: ScoreOfAllPredictionModelsExceptGroup
+        outputtype: parts
+    - group:
+      - methodname: VisualizeWeakRelevanceDOS
+        methodtype: function
+        outputname: VisualizedRelevanceDOSImportance
+        outputtype: parts

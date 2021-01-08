@@ -1,0 +1,21 @@
+workflow:
+  format: v2.3
+  block:
+  - blockname: dummy
+    order: workflow
+    list:
+    - group:
+      - outputname: ModelHamiltonian
+        outputtype: parts
+      - outputname: HamiltonianSolver
+        outputtype: parts
+    - group:
+      - methodname: PredictedTargetValue
+        methodtype: parts
+        outputname: PredictedTargetValue
+        outputtype: parts
+    - group:
+      - methodname: sortTheoreticalModelValues
+        methodtype: function
+        outputname: raiseMaterialsList
+        outputtype: function
