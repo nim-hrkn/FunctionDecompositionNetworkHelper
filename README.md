@@ -1,7 +1,7 @@
 # FunctionalDecompositionNetworkHelper
 needs graphviz inside.
 
-version 0.2.6
+version 0.2.8
 
 # install & uninstall
 
