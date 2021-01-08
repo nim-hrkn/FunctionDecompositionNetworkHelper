@@ -1,4 +1,4 @@
-# FunctionalDecompositionTreeHelper
+# FunctionalDecompositionNetworkHelper
 needs graphviz inside.
 
 version 0.2.6
@@ -19,9 +19,6 @@ and delete files in installedfiles.txt
 # sample
 ```
 $ cd sample
-```
-You can select a number of cases, e.g.,
-```
-$ make decisionTree
+$ make 
 ```
 Please read makefile for possible target of the makefile.

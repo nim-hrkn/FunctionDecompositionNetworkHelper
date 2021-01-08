@@ -156,7 +156,7 @@ workflow:
   - blockname: isolated atom to number of electrons and angular momentum
     list:
     - group:
-      - outputname: atomic number of each atom
+      - outputname: element of each atom
     - group:
       - methodname: Isolated neutral atom way
         outputname: electronic configuration of isolated state of each atom
@@ -179,7 +179,7 @@ workflow:
   - blockname: experimental atom to angular momentum
     list:
     - group:
-      - outputname: atomic number of each atom
+      - outputname: element of each atom
     - group:
       - methodname: Crystal valence state way
         outputname: valence state of each atom
