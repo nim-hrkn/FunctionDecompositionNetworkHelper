@@ -18,7 +18,7 @@ and delete files in installedfiles.txt
 
 # sample
 ```
-$ cd sample
+$ cd sample/{some directory}
 $ make 
 ```
 Please read makefile for possible target of the makefile.

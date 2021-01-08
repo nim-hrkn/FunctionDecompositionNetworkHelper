@@ -4,13 +4,12 @@ workflow:
   - blockname: book to string
     list:
     - group:
-      - outputname: a book
+      - outputname: book
         outputtype: parts
       - outputname: light
         outputtype: parts
     - group:
-      - methodname: String Brain Visual Readout
-        methodtype: method
+      - methodname: String brain visual-readout way
         outputname: strings in brain
         outputtype: parts
 
@@ -21,10 +20,9 @@ workflow:
       - outputname: strings in brain
         outputtype: parts
     - group:
-      - methodname: Brain String Understainding
-        methodtype: method
-        outputname: Understanding of a sentense
-        outputtype: function
+      - methodname: Brain string-understainding way
+        outputname: Understanding of sentences
+        outputtype: parts
         
   - blockname: read a book
     list:
@@ -32,15 +30,13 @@ workflow:
       - outputname: strings in brain
         outputtype: parts
     - group:
-      - methodname: External Phonation
-        methodtype: method
+      - methodname: External phonation way
         outputname: external speech 
         outputtype: parts
     - group:
-      - methodname: External Speech Understanding
-        methodtype: method
-        outputname: Understanding of a sentense
-        outputtype: function
+      - methodname: External Speech-understanding way
+        outputname: Understanding of sentences
+        outputtype: parts
 
   - blockname: read a book
     list:
@@ -48,12 +44,10 @@ workflow:
       - outputname: strings in brain
         outputtype: parts
     - group:
-      - methodname: Brain Phonation
-        methodtype: method
+      - methodname: Brain phonation way
         outputname: speech in brain
         outputtype: parts
     - group:
-      - methodname: Brain Speech  Understanding
-        methodtype: method
-        outputname: Understanding of a sentense
-        outputtype: function
+      - methodname: Brain speech-understanding way
+        outputname: Understanding of sentences
+        outputtype: parts

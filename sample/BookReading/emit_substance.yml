@@ -6,31 +6,26 @@ workflow:
       - outputname: Conduct electric current to substance
         outputtype: function
     - group:
-      - methodname: Electrical Resistance Heating
-        methodtype: method
+      - methodname: Electrical resistance heating way
         outputname: heated substance
         outputtype: parts
     - group:
-      - methodname: Radiant Light
-        methodtype: method
+      - methodname: Radiant light way
         outputname: lighting
         outputtype: parts
 
   - blockname: elecroluminescence light
     list:
     - group:
-      - methodname: Semiconductor Hetro Junction
-        methodtype: method
+      - methodname: Semiconductor hetrojunction way
         outputname: Bring electrons and holes into close proximity
         outputtype: function
     - group:
-      - methodname: Electric Field Transfer
-        methodtype: method
+      - methodname: Electric field transfer way
         outputname: Recombine electrons and holes
         outputtype: function
     - group:
-      - methodname: Injection Electroluminescence
-        methodtype: method
+      - methodname: Injection electroluminescence way
         outputname: lighting
         outputtype: parts
 

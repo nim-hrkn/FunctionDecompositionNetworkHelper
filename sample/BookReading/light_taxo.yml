@@ -5,8 +5,6 @@ linkset:
       nodetype: parts
       linktype: is-a
       link:
-      - nodename: lighting
-        nodetype: parts
-      - nodename: Sun light
-        nodetype: parts
+      - nodename: lighting 
+      - nodename: Sunlight
 

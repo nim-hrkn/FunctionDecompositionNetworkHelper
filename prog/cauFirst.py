@@ -14,7 +14,7 @@ import sys
 import yaml
 from graphviz import Digraph
 
-from FuncDecompTree import FDTree
+from FuncDecompHelper import FDTree
 
 
 if __name__ == "__main__":

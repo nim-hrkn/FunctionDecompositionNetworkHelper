@@ -1,9 +1,0 @@
-linkset:
-  block:
-  - link:
-    - nodename: NewsetCrystal
-      nodetype: parts
-      linktype: is-a
-      link:
-      - nodename: ParticleSwarm
-      - nodename: GeneticAlgorithm
