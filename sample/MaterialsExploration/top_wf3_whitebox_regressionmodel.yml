@@ -1,0 +1,66 @@
+workflow:
+  block:
+  - blockname: 2-5-(6,7,8)
+    list:
+    - group:
+      - outputname: material data from material database
+      - methodname: prediction model selection way
+        outputname: select prediction model
+        outputtype: direct
+    - group:
+      - methodname: material data to target variable association way
+        outputname: association with material with target variable
+    - group:
+      - methodname: trainingSet testSet division way
+        outputname: materials with target physical property values as training set
+    - group:
+      - methodname: Prediction model with errors way
+        outputname: Prediction model with errors
+
+  - blockname:
+    list:
+    - group:
+      - outputname: association with material with target variable
+    - group:
+      - methodname: trainingSet testSet division way
+        outputname: materials without target physical property values as test set
+
+  - blockname:
+    list:
+    - group:
+      - outputname: Prediction model with errors
+      - outputname: materials without target physical property values as test set
+    - group:
+      - methodname: UCB aquisition function way
+        outputname: UCB aquisition function values
+      - methodname: Thompson sampling aquisition function way
+        outputname: Thompson sampling aquisition function values
+
+
+  - blockname:
+    list:
+    - group:
+      - outputname: aquisition function values
+    - group:
+      - methodname: aquisition function MaterialCandidates way
+        outputname: candidate materials to observe physical property
+    - group:
+      - methodname: Observation way
+        outputname: physical property values of new materials
+    - group:
+      - methodname: Database update way
+        outputname: updated material database
+      - methodname: Material properties EqualTo or greaterThanThreshold evaluation way
+        outputname: new materials with physical property values equal to or above the threshold value
+      - methodname: Material properties LessThanThreshold evaluation way
+        outputname: new materials with physical property values below the threshold value
+
+  - blockname: 
+    list:
+    - group:
+      - outputname: new materials with physical property values below the threshold value
+      - outputname: updated material database
+    - group:
+      - methodname: New material databse for next repetition trigger way
+        outputname: new material database for next repetition
+ 

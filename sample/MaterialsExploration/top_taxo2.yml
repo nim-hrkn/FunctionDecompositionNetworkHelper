@@ -1,0 +1,16 @@
+linkset:
+  block:
+  - link:
+    - nodename: material data from material database
+      linktype: is-a
+      link:
+      - nodename: an initial material database
+      - nodename: new material database for next repetition
+
+  - link:
+    - nodename: prediction model
+      linktype: is-a
+      link:
+      - nodename: initial prediction model
+      - nodename: new prediction model for next repetition
+
