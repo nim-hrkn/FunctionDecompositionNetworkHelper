@@ -14,8 +14,14 @@ import sys
 import yaml
 from graphviz import Digraph
 
-from FuncDecompHelper import FDTree
+if True:
+    sys.path.insert(0,"/home/kino/work/01_FunctionalDecompositionTreeHelper/v2.9_dev/FuncDecompHelper")
+    from FuncDecompHelper import FDTree
 
+    import FuncDecompHelper
+    print(FuncDecompHelper.__version__)
+else:
+    from FuncDecompHelper import FDTree
 
 if __name__ == "__main__":
 
@@ -29,6 +35,7 @@ if __name__ == "__main__":
         parser.add_argument("--no_connect_invis", dest="connect_invis", action="store_true")
         parser.add_argument("--no_concentrate", dest="concentrate", action="store_false")
         parser.add_argument("--samerank", default=None)
+        parser.add_argument("--splines", default="true")
         parser.add_argument("--doit", default="all")
 
         cmdopt = parser.parse_args()

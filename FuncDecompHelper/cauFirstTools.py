@@ -662,10 +662,14 @@ class taxologyWay(DecompositionTree):
         -------
         None
         """
+        print("---taxology load",filename,data)
         if filename is not None and data is None:
             with open(filename) as f:
                 data = yaml.safe_load(f)
             self.data = data
+            print("debug")
+            print(data)
+            
         elif filename is None and data is not None:
             self.data = data
         else:
@@ -909,11 +913,15 @@ class FDTree(object):
         self.dottree = None
         if dottree is None:
             print("FDTree:init generate dotreee")
-            # self.dottree = Digraph(basename)
-            self.dottree = Graph(basename)
+            self.dottree = Digraph(basename)
+            # self.dottree = Graph(basename)
             self.dottree.graph_attr["rankdir"] = "TB"
-            self.dottree.graph_attr["splines"] = "line"
-            self.dottree.graph_attr["concentrate"] = str(self.dotoption["concentrate"])+";"
+            if "splines" in self.dotoption:
+                self.dottree.graph_attr["splines"] = self.dotoption["splines"]
+            else:
+                self.dottree.graph_attr["splines"] = "line"
+            print("cencentrate{}".format(str(self.dotoption["concentrate"])))
+            self.dottree.graph_attr["concentrate"] = str(self.dotoption["concentrate"])
             self.dottree.edge_attr["len"] = "2.2"
         else:
             self.dottree = dottree
