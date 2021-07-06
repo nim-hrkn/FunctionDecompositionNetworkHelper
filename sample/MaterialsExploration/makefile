@@ -6,7 +6,7 @@ FILES =  top_taxo3.yml  top_wf3_whitebox_regressionmodel.yml
 default:  MaterialExploration.png
 
 MaterialExploration.png: $(FILES)
-	$(PROG) --splines=true --samerank="Obtain updated material database,Obtain new materials with physical property values equal to or above the threshold value,Obtain new materials with physical property values below the threshold value" $^
+	$(PROG) --splines=true --samerank="Obtain the updated material database,Obtain new materials with physical property values equal to or above the threshold value,Obtain new materials with physical property values below the threshold value" $^
 	mv caus.gv.png descriptorTargetvariableRelation.png
 
 workflow: $(FILES)

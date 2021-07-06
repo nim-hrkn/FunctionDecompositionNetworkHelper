@@ -3,53 +3,54 @@ workflow:
   - blockname: 2-5-(6,7,8)
     list:
     - group:
-      - outputname: material data from material database
+      - outputname: material data from the material database
       - methodname: prediction model selection way
-        outputname: select prediction model
+        outputname: Select prediction model
         outputtype: direct
     - group:
       - methodname: material data to target variable association way
         outputname: association with material with target variable
     - group:
       - methodname: trainingSet testSet division way
-        outputname: materials with target physical property values as training set
+        outputname: materials with target physical property values as the training set
     - group:
       - methodname: Prediction model with errors way
-        outputname: Prediction model with errors
+        outputname: the prediction model with errors
 
   - blockname:
     list:
     - group:
-      - outputname: association with material with target variable
+      - outputname: Associate material with target variable
+        outputtype: direct
     - group:
       - methodname: trainingSet testSet division way
-        outputname: materials without target physical property values as test set
+        outputname: materials without target physical property values as the test set
 
   - blockname:
     list:
     - group:
       - outputname: Prediction model with errors
-      - outputname: materials without target physical property values as test set
+      - outputname: materials without target physical property values as the test set
     - group:
-      - methodname: UCB aquisition function way
-        outputname: UCB aquisition function values
-      - methodname: Thompson sampling aquisition function way
-        outputname: Thompson sampling aquisition function values
+      - methodname: UCB acquisition function way
+        outputname: UCB acquisition function values
+      - methodname: Thompson sampling acquisition function way
+        outputname: Thompson sampling acquisition function values
 
 
   - blockname:
     list:
     - group:
-      - outputname: aquisition function values
+      - outputname: acquisition function values
     - group:
-      - methodname: aquisition function MaterialCandidates way
+      - methodname: acquisition function material candidates way
         outputname: candidate materials to observe physical property
     - group:
       - methodname: Observation way
         outputname: physical property values of new materials
     - group:
       - methodname: Database update way
-        outputname: updated material database
+        outputname: the updated material database
       - methodname: Material properties EqualTo or greaterThanThreshold evaluation way
         outputname: new materials with physical property values equal to or above the threshold value
       - methodname: Material properties LessThanThreshold evaluation way
@@ -59,8 +60,8 @@ workflow:
     list:
     - group:
       - outputname: new materials with physical property values below the threshold value
-      - outputname: updated material database
+      - outputname: the updated material database
     - group:
-      - methodname: New material databse for next repetition trigger way
-        outputname: new material database for next repetition
+      - methodname: New material database for the next repetition trigger way
+        outputname: new material database for the next repetition
  
