@@ -4,18 +4,18 @@ workflow:
     list:
     - group:
       - outputname: material data from the material database
-      - methodname: prediction model selection way
+      - wayname: prediction model selection way
         outputname: Select prediction model
         outputtype: direct
     - group:
-      - methodname: material data to target variable association way
+      - wayname: material data to target variable association way
         outputname: Associate material with target variable
         outputtype: direct
     - group:
-      - methodname: trainingSet testSet division way
+      - wayname: trainingSet testSet division way
         outputname: materials with target physical property values as the training set
     - group:
-      - methodname: Prediction model with errors way
+      - wayname: Prediction model with errors way
         outputname: the prediction model and errors
 
   - blockname:
@@ -24,7 +24,7 @@ workflow:
       - outputname: Associate material with target variable
         outputtype: direct
     - group:
-      - methodname: trainingSet testSet division way
+      - wayname: trainingSet testSet division way
         outputname: materials without target physical property values as the test set
 
   - blockname:
@@ -33,9 +33,9 @@ workflow:
       - outputname: the prediction model and errors
       - outputname: materials without target physical property values as the test set
     - group:
-      - methodname: UCB acquisition function way
+      - wayname: UCB acquisition function way
         outputname: UCB acquisition function values
-      - methodname: Thompson sampling acquisition function way
+      - wayname: Thompson sampling acquisition function way
         outputname: Thompson sampling acquisition function values
 
 
@@ -44,17 +44,17 @@ workflow:
     - group:
       - outputname: acquisition function values
     - group:
-      - methodname: acquisition function material candidates way
+      - wayname: acquisition function material candidates way
         outputname: candidate materials to observe physical property
     - group:
-      - methodname: Observation way
+      - wayname: Observation way
         outputname: physical property values of new materials
     - group:
-      - methodname: Database update way
+      - wayname: Database update way
         outputname: the updated material database
-      - methodname: Material properties EqualTo or greaterThanThreshold evaluation way
+      - wayname: Material properties EqualTo or greaterThanThreshold evaluation way
         outputname: new materials with physical property values equal to or above the threshold value
-      - methodname: Material properties LessThanThreshold evaluation way
+      - wayname: Material properties LessThanThreshold evaluation way
         outputname: new materials with physical property values below the threshold value
 
   - blockname: 
@@ -63,6 +63,6 @@ workflow:
       - outputname: new materials with physical property values below the threshold value
       - outputname: the updated material database
     - group:
-      - methodname: New material database for the next repetition trigger way
+      - wayname: New material database for the next repetition trigger way
         outputname: new material database for the next repetition
  

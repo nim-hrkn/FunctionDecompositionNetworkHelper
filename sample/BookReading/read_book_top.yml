@@ -9,7 +9,7 @@ workflow:
       - outputname: light
         outputtype: parts
     - group:
-      - methodname: String brain visual-readout way
+      - wayname: String brain visual-readout way
         outputname: strings in brain
         outputtype: parts
 
@@ -20,7 +20,7 @@ workflow:
       - outputname: strings in brain
         outputtype: parts
     - group:
-      - methodname: Brain string-understainding way
+      - wayname: Brain string-understainding way
         outputname: Understanding of sentences
         outputtype: parts
         
@@ -30,11 +30,11 @@ workflow:
       - outputname: strings in brain
         outputtype: parts
     - group:
-      - methodname: External phonation way
+      - wayname: External phonation way
         outputname: external speech 
         outputtype: parts
     - group:
-      - methodname: External Speech-understanding way
+      - wayname: External Speech-understanding way
         outputname: Understanding of sentences
         outputtype: parts
 
@@ -44,10 +44,10 @@ workflow:
       - outputname: strings in brain
         outputtype: parts
     - group:
-      - methodname: Brain phonation way
+      - wayname: Brain phonation way
         outputname: speech in brain
         outputtype: parts
     - group:
-      - methodname: Brain speech-understanding way
+      - wayname: Brain speech-understanding way
         outputname: Understanding of sentences
         outputtype: parts

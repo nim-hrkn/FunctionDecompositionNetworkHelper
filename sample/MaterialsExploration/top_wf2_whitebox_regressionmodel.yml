@@ -5,35 +5,35 @@ workflow:
     - group:
       - outputname: material data from material database
     - group:
-      - methodname: trainingSet testSet division method
+      - wayname: trainingSet testSet division method
         outputname: training set
-      - methodname: trainingSet testSet division method
+      - wayname: trainingSet testSet division method
         outputname: test set
       - outputname: association with material with target variable
       - outputname: prediction model
     - group:
-      - methodname: Prediction model with errors way
+      - wayname: Prediction model with errors way
         outputname: Prediction model with errors
       - outputname: test set
       - outputname: association with material with target variable
     - group:
-      - methodname: model evaluation with test set way
+      - wayname: model evaluation with test set way
         outputname: model prediction index
     - group:
-      - methodname: prediction model index EqualTo or greaterThanThreshold evaluation way
+      - wayname: prediction model index EqualTo or greaterThanThreshold evaluation way
         outputname: a valid prediction model with prediction errors
     - group:
-      - methodname: BayesianOptimization MaterialCandidates way
+      - wayname: BayesianOptimization MaterialCandidates way
         outputname: a list of new materials
     - group:
-      - methodname: Observation way
+      - wayname: Observation way
         outputname: physical properties of new materials
     - group:
-      - methodname: Database update way
+      - wayname: Database update way
         outputname: updated material database
-      - methodname: Material properties EqualTo or greaterThanThreshold evaluation way
+      - wayname: Material properties EqualTo or greaterThanThreshold evaluation way
         outputname: new materials with physical property values equal to or above the threshold value
-      - methodname: Material properties LessThanThreshold evaluation way
+      - wayname: Material properties LessThanThreshold evaluation way
         outputname: new materials with physical property values below the threshold value
 
   - blockname: 
@@ -41,10 +41,10 @@ workflow:
     - group:
       - outputname: model prediction index
     - group:
-      - methodname: prediction model index LessThanThreshold evaluation way
+      - wayname: prediction model index LessThanThreshold evaluation way
         outputname: a non-valid prediction model with prediction errors
     - group:
-      - methodname: New prediction model for next prepetition trigger way
+      - wayname: New prediction model for next prepetition trigger way
         outputname: new prediction model for next repetition
 
   - blockname: 
@@ -53,6 +53,6 @@ workflow:
       - outputname: new materials with physical property values below the threshold value
       - outputname: updated material database
     - group:
-      - methodname: New material databse for next repetition trigger way
+      - wayname: New material databse for next repetition trigger way
         outputname: new material database for next repetition
  

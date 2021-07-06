@@ -366,8 +366,8 @@ class workflowWay(DecompositionTree):
         -------
         None
         """
-        namelist = ["outputname", "outputtype", "methodname", "methodtype",
-                    "applymethodname", "applymethodtype"]
+        namelist = ["outputname", "outputtype", "wayname", "waytype",
+                    "applywayname", "applywaytype"]
         try:
             g2 = dict(g2)
         except:
@@ -400,50 +400,50 @@ class workflowWay(DecompositionTree):
         if complement == "auto":
 
             nodename2 = self.get_keyvalue(g2, "outputname")
-            methodname2 = self.get_keyvalue(g2, "methodname")
+            wayname2 = self.get_keyvalue(g2, "wayname")
             functype2 = self.get_keyvalue(g2, "outputtype")
-            methodtype2 = self.get_keyvalue(g2, "methodtype")
+            waytype2 = self.get_keyvalue(g2, "waytype")
             if nodename2 is not None:
                 funcname2 = self.func_prefix(functype2)+nodename2
             applyfunctionname2 = None
 
-            if nodename2 is None and methodname2 is not None:
-                nodename2 = "outputOf_to"+methodname2
-                funcname2 = "gen_outputOfTo_"+methodname2
+            if nodename2 is None and wayname2 is not None:
+                nodename2 = "outputOf_to"+wayname2
+                funcname2 = "gen_outputOfTo_"+wayname2
                 # nodetype2 = "auto"
-            elif nodename2 is not None and methodname2 is None:
-                methodname2 = "method_to_"+funcname2
-                methodtype2 = "auto"
+            elif nodename2 is not None and wayname2 is None:
+                wayname2 = "method_to_"+funcname2
+                waytype2 = "auto"
 
-            applyfunctionname2 = self.applyfunction_prefix("method") + methodname2
+            applyfunctionname2 = self.applyfunction_prefix("method") + wayname2
 
-            rawapplymethodname2 = self.func_prefix(g2, "applymethodname")
-            applymethodname2 = rawapplymethodname2
-            applymethodtype2 = self.func_prefix(g2, "applymethodtype")
-            if rawapplymethodname2 is not None:
-                applymethodname2 = self.method_prefix(applymethodtype2) + rawapplymethodname2
+            rawapplywayname2 = self.func_prefix(g2, "applywayname")
+            applywayname2 = rawapplywayname2
+            applywaytype2 = self.func_prefix(g2, "applywaytype")
+            if rawapplywayname2 is not None:
+                applywayname2 = self.method_prefix(applywaytype2) + rawapplywayname2
 
         else:
 
             nodename2 = self.get_keyvalue(g2, "outputname")
             functype2 = self.get_keyvalue(g2, "outputtype")
-            rawmethodname2 = self.get_keyvalue(g2, "methodname")
-            methodtype2 = self.get_keyvalue(g2, "methodtype")
+            rawwayname2 = self.get_keyvalue(g2, "wayname")
+            waytype2 = self.get_keyvalue(g2, "waytype")
             funcname2 = self.func_prefix(functype2)+nodename2
             applyfunctionname2 = None
 
-            methodname2 = rawmethodname2
-            if rawmethodname2 is not None:
-                methodname2 = self.method_prefix(methodtype2)+rawmethodname2
-                applyfunctionname2 = self.applyfunction_prefix(methodtype2) + rawmethodname2
+            wayname2 = rawwayname2
+            if rawwayname2 is not None:
+                wayname2 = self.method_prefix(waytype2)+rawwayname2
+                applyfunctionname2 = self.applyfunction_prefix(waytype2) + rawwayname2
 
-            rawapplymethodname2 = self.get_keyvalue(g2, "applymethodname")
-            applymethodname2 = rawapplymethodname2
-            applymethodtype2 = self.get_keyvalue(g2, "applymethodtype")
-            if rawapplymethodname2 is not None:
-                applymethodname2 = self.method_prefix(applymethodtype2) + rawapplymethodname2
+            rawapplywayname2 = self.get_keyvalue(g2, "applywayname")
+            applywayname2 = rawapplywayname2
+            applywaytype2 = self.get_keyvalue(g2, "applywaytype")
+            if rawapplywayname2 is not None:
+                applywayname2 = self.method_prefix(applywaytype2) + rawapplywayname2
 
-        return nodename2, funcname2, functype2, methodname2, methodtype2, applyfunctionname2, applymethodname2
+        return nodename2, funcname2, functype2, wayname2, waytype2, applyfunctionname2, applywayname2
 
     def convert_from_workflow(self, wflist):
         """convert from workflow list to workflow diagram
@@ -466,74 +466,74 @@ class workflowWay(DecompositionTree):
         for group1 in grouplist:
             funcname1list = []
             nodename1list = []
-            methodname1list = []
+            wayname1list = []
             for g1 in group1:
                 nodename1, funcname1, funtype1,\
-                    methodname1, methodtype1, _, _ = self.gen_names(g1)
+                    wayname1, waytype1, _, _ = self.gen_names(g1)
 
                 funcname1list.append(funcname1)
                 nodename1list.append(nodename1)
-                if methodname1 is not None:
-                    methodname1list.append(methodname1)
+                if wayname1 is not None:
+                    wayname1list.append(wayname1)
             if len(funcname1list) > 1:
                 self.invisedgelist.append(",".join(funcname1list))
                 self.sameranklist.append(",".join(funcname1list))
-            if len(methodname1list) > 1:
-                self.wf_invisedgelist.append(",".join(methodname1list))
-                self.wf_sameranklist.append(",".join(methodname1list))
+            if len(wayname1list) > 1:
+                self.wf_invisedgelist.append(",".join(wayname1list))
+                self.wf_sameranklist.append(",".join(wayname1list))
 
         for group1, group2 in zip(grouplist[:-1], grouplist[1:]):
 
             for g1 in group1:
                 nodename1, funcname1,\
-                    functype1, methodname1,\
-                    methodtype1, _, _ = self.gen_names(g1)
+                    functype1, wayname1,\
+                    waytype1, _, _ = self.gen_names(g1)
 
                 funcname1list.append(funcname1)
 
                 for g2 in group2:
 
                     nodename2, funcname2,\
-                        functype2, methodname2,\
-                        methodtype2, applyfunctionname2,\
-                        applymethodname2 = self.gen_names(g2)
+                        functype2, wayname2,\
+                        waytype2, applyfunctionname2,\
+                        applywayname2 = self.gen_names(g2)
 
-                    if methodname2 is not None:
+                    if wayname2 is not None:
                         self.edgelist.append(",".join([funcname2,
-                                                       methodname2]))
-                        self.edgelist.append(",".join([methodname2,
+                                                       wayname2]))
+                        self.edgelist.append(",".join([wayname2,
                                                        funcname1]))
-                        self.edgelist.append(",".join([methodname2,
+                        self.edgelist.append(",".join([wayname2,
                                                        applyfunctionname2]))
-                        self.boxnodelist.append(methodname2)
+                        self.boxnodelist.append(wayname2)
                         self.invisedgelist.append(",".join([funcname1,
                                                             applyfunctionname2]))
                         self.sameranklist.append(",".join([funcname1,
                                                            applyfunctionname2]))
                         self.applynodelist.append(applyfunctionname2)
-                        if applymethodname2 is not None:
+                        if applywayname2 is not None:
                             self.edgelist.append(",".join([applyfunctionname2,
-                                                           applymethodname2]))
-                            self.boxnodelist.append(applymethodname2)
-                    if methodname1 is not None:
+                                                           applywayname2]))
+                            self.boxnodelist.append(applywayname2)
+                    if wayname1 is not None:
                         self.edgelist.append(",".join([funcname1,
-                                                       methodname1]))
-                        self.boxnodelist.append(methodname1)
+                                                       wayname1]))
+                        self.boxnodelist.append(wayname1)
 
-                    if methodname1 is not None and nodename1 is not None:
-                        self.wf_edgelist.append(",".join([methodname1,
+                    if wayname1 is not None and nodename1 is not None:
+                        self.wf_edgelist.append(",".join([wayname1,
                                                           nodename1]))
-                    if methodname2 is not None and nodename1 is not None:
+                    if wayname2 is not None and nodename1 is not None:
                         self.wf_edgelist.append(",".join([nodename1,
-                                                          methodname2]))
-                    if methodname2 is not None and nodename2 is not None:
-                        self.wf_edgelist.append(",".join([methodname2,
+                                                          wayname2]))
+                    if wayname2 is not None and nodename2 is not None:
+                        self.wf_edgelist.append(",".join([wayname2,
                                                           nodename2]))
 
-                    if methodname1 is not None:
-                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(methodname1, methodtype1))
-                    if methodname2 is not None:
-                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(methodname2, methodtype2))
+                    if wayname1 is not None:
+                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(wayname1, waytype1))
+                    if wayname2 is not None:
+                        self.wf_methodlist.append("{0},{{{0}|{1}}}".format(wayname2, waytype2))
                     if nodename1 is not None:
                         self.wf_objlist.append("{0},{{{0}|{1}}}".format(nodename1, functype2))
                     if nodename2 is not None:
