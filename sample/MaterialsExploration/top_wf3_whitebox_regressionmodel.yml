@@ -9,13 +9,14 @@ workflow:
         outputtype: direct
     - group:
       - methodname: material data to target variable association way
-        outputname: association with material with target variable
+        outputname: Associate material with target variable
+        outputtype: direct
     - group:
       - methodname: trainingSet testSet division way
         outputname: materials with target physical property values as the training set
     - group:
       - methodname: Prediction model with errors way
-        outputname: the prediction model with errors
+        outputname: the prediction model and errors
 
   - blockname:
     list:
@@ -29,7 +30,7 @@ workflow:
   - blockname:
     list:
     - group:
-      - outputname: Prediction model with errors
+      - outputname: the prediction model and errors
       - outputname: materials without target physical property values as the test set
     - group:
       - methodname: UCB acquisition function way

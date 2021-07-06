@@ -4,7 +4,7 @@ linkset:
     - nodename: material data from the material database
       linktype: is-a
       link:
-      - nodename: an initial material database
+      - nodename: initial material database
       - nodename: new material database for the next repetition
 
   - link:
